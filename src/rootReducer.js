@@ -1,11 +1,8 @@
 import { combineReducers } from "redux";
+import grid from "./GridManagement/reducers/gridReducer";
 
-//Test Function For Setup --- Remove this function from combine reducer with actaul reducer
-const test = () => {
-    return {}
-}
 const rootReducer = combineReducers({
-    test,
+    grid,
 });
 
 export default rootReducer;

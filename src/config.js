@@ -1,6 +1,6 @@
 const local = {
     urls: {
-        ENV: "http://localhost:8000"
+        ENV: "https://jsonplaceholder.typicode.com/"
     }
 }
 const dev = {
@@ -34,6 +34,7 @@ const getConfig = (config) => {
         default:
             env = local
     }
+    return env;
 }
 
 const config = getConfig(process.env.APP_ENV);
