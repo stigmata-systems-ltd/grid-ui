@@ -29,6 +29,11 @@
     color: #000;
 }
 
+.sub-nav {
+    list-style: none;
+    cursor: pointer;
+}
+
 /*Header Styles
 **************/
 
@@ -38,4 +43,15 @@
 }
 .nav-profile {
     cursor: pointer;
+}
+
+/*Grid DPR
+************/
+.inner-card {
+    box-shadow: none;
+    border: none;
+}
+.cleaning-card {
+    border: 2px solid #e7eaed;
+    margin-bottom: 5%;
 }

@@ -4,20 +4,24 @@ export const metaDataNavbar = [
         navText: "Dashboard",
         iconName: "faHome",
         hasSubNav: false,
+        route: "dashboard",
     },
     {
         id: "2",
         navText: "Grid",
         iconName: "faThLarge",
         hasSubNav: true,
+        route: "dashboard",
         subNavs: [
             {
                 id: "gridSub" + 1,
-                navText: "Grid Layer - DPR"
+                navText: "Grid Layer - DPR",
+                route: "griddpr",
             },
             {
                 id: "gridSub" + 2,
-                navText: "View Grids"
+                navText: "Create Grid",
+                route: "creategrid",
             }
         ]
     },
@@ -26,29 +30,34 @@ export const metaDataNavbar = [
         navText: "Client Billing",
         iconName: "faFileInvoiceDollar",
         hasSubNav: false,
+        route: "creategrid",
     },
     {
         id: "4",
         navText: "Sub-Contractor",
         iconName: "faUser",
         hasSubNav: false,
+        route: "dashboard",
     },
     {
         id: "5",
         navText: "Reports",
         iconName: "faChartPie",
         hasSubNav: false,
+        route: "dashboard",
     },
     {
         id: "6",
         navText: "Help",
         iconName: "faQuestionCircle",
         hasSubNav: false,
+        route: "dashboard",
     },
     {
         id: "7",
         navText: "Settings",
         iconName: "faCog",
         hasSubNav: false,
+        route: "login",
     }
 ]
