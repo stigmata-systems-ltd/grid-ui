@@ -55,3 +55,10 @@
     border: 2px solid #e7eaed;
     margin-bottom: 5%;
 }
+
+/*Create Grid
+************/
+
+.location-row > div{
+    margin-bottom: 5%;
+}

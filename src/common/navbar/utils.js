@@ -22,6 +22,11 @@ export const metaDataNavbar = [
                 id: "gridSub" + 2,
                 navText: "Create Grid",
                 route: "creategrid",
+            },
+            {
+                id: "gridSub" + 3,
+                navText: "View Grid",
+                route: "viewgrid",
             }
         ]
     },
@@ -30,7 +35,7 @@ export const metaDataNavbar = [
         navText: "Client Billing",
         iconName: "faFileInvoiceDollar",
         hasSubNav: false,
-        route: "creategrid",
+        route: "clientbilling",
     },
     {
         id: "4",

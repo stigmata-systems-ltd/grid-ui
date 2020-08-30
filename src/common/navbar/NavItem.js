@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as fa from '@fortawesome/free-solid-svg-icons';
 import { withRouter } from "react-router-dom";
+
 class NavItem extends Component {
 
     constructor(props) {

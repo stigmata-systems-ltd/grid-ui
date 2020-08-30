@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ContentLoader from "../../common/ContentLoader";
-import FormContainer from "../../components/FormContainer";
+import FormContainer from "../../common/forms/FormContainer";
 import Cleaning from "./Cleaning";
 class GridDPR extends Component {
 
