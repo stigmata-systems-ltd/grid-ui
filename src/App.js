@@ -15,6 +15,7 @@ import GridDPR from "./pages/gridDPR/GridDPR";
 import CreateGrid from "./pages/createGrid/CreateGrid";
 import ViewGrid from "./pages/viewGrid/ViewGrid";
 import ClientBilling from "./pages/clientBilling/ClientBilling";
+import SubContractor from "./pages/subContractor/SubContractor";
 
 function App() {
   return (
@@ -40,6 +41,9 @@ function App() {
         </Route>
         <Route path="/clientbilling">
           <ClientBilling />
+        </Route>
+        <Route path="/subcontractor">
+          <SubContractor />
         </Route>
       </Switch>
     </Router>

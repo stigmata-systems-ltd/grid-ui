@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ContentLoader from "../../common/ContentLoader";
-import TabContent from "./TabContent";
+import TabContent from "./Overview";
 import PieChart from "./PieChart";
 class Dashboard extends Component {
     

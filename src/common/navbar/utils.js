@@ -42,7 +42,7 @@ export const metaDataNavbar = [
         navText: "Sub-Contractor",
         iconName: "faUser",
         hasSubNav: false,
-        route: "dashboard",
+        route: "subcontractor",
     },
     {
         id: "5",

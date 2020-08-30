@@ -1,5 +1,19 @@
 /*Custom Styles
 ***************/
+/*TabStyles
+**********/
+.custom-tabs {
+    margin-bottom: 3%;
+}
+.custom-tabs li a{
+    cursor: pointer;
+}
+
+/*DataTable
+**********/
+.data-table {
+    margin-bottom: 3%;
+}
 
 /*Navbar Custom Styles
 *********************/
