@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import '../../assets/css/map.css';
-
+import Chart from "../../common/forms/charts/PieChart";
 class PieChart extends Component {
   static defaultProps = {
     center: {
@@ -35,6 +35,7 @@ class PieChart extends Component {
             <div class="card">
               <div class="card-body">
                 <h4 class="card-title">Pie Chart</h4>
+                <Chart />
               </div>
             </div>
           </div>
