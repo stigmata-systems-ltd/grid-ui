@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ContentLoader from "../../common/ContentLoader";
-import DataTable from "../../common/DataTable";
+import ActionDataTable from "../../common/ActionDataTable";
 import FormContainer from "../../common/forms/FormContainer";
 import FormRow from "../../common/forms/FormRow";
 
@@ -13,7 +13,7 @@ class Dashboard extends Component {
             <ContentLoader>
                 <FormContainer formTitle={"Grid List"}>
                     <FormRow>
-                        <DataTable
+                        <ActionDataTable
                             metaData={_viewGridMetaData}
                             bodyData={_bodyData}
                         />

@@ -21568,7 +21568,7 @@ dl li {
 }
 
 .navbar .navbar-menu-wrapper .navbar-nav .nav-item.nav-profile .nav-link::after {
-  color: #4a4a4a;
+  color: transparent;
 }
 
 .navbar .navbar-menu-wrapper .navbar-nav .nav-item.dropdown .dropdown-menu {

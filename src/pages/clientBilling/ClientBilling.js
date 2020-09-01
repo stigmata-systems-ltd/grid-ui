@@ -3,8 +3,6 @@ import ContentLoader from "../../common/ContentLoader";
 import FormContainer from "../../common/forms/FormContainer";
 import FormRow from "../../common/forms/FormRow";
 import TextInput from "../../common/forms/TextInput";
-import AddLatLng from "../createGrid/AddLatLng";
-import IconTextButton from "../../common/forms/IconTextButton";
 import Button from "../../common/forms/Button";
 import SimpleDropDown from "../../common/forms/SimpleDropDown";
 import CheckBox from "../../common/forms/CheckBox";
@@ -66,6 +64,7 @@ class ClientBilling extends Component {
                         <DataTable
                             metaData={_clientBillingMetaData}
                             bodyData={_bodyData}
+                            showRowDelete={true}
                         />
                     </FormRow>
                     <FormRow>

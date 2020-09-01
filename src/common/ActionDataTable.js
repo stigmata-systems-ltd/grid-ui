@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import IconButton from "../common/forms/IconButton";
+import Button from "./forms/Button";
 
-class DataTable extends Component {
+class ActionDataTable extends Component {
   renderTableHeaders = () => {
     return this.props.metaData.map((header) => <th>{header}</th>);
   };
@@ -17,19 +17,15 @@ class DataTable extends Component {
             {this.props.bodyData.map((data) => {
               return (
                 <tr>
-                  {this.props.showRowDelete && (
-                    <td class="action-btns" style={{width: "1%"}}>
-                      <IconButton
-                        iconName="faTrash"
-                        onClick={this.props.onClick}
-                      />
-                    </td>
-                  )}
                   {Object.keys(data).map((key) => (
                     <>
                       <td> {data[key].toString()}</td>
                     </>
                   ))}
+                  <td class="action-btns">
+                    <Button btnText="View" btnType="btn-link" onClick={this.props.onClick} />
+                    <Button btnText="Delete" btnType="btn-secondary" onClick={this.props.onClick} />
+                  </td>
                 </tr>
               );
             })}
@@ -40,4 +36,4 @@ class DataTable extends Component {
   }
 }
 
-export default DataTable;
+export default ActionDataTable;

@@ -1,6 +1,6 @@
 
 import React, { Component } from "react";
-
+import FaIcon from "../FaIcon";
 class CheckBox extends Component {
 
     render() {

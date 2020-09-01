@@ -1,7 +1,8 @@
 export const _viewGridMetaData = [
     "S.No",
     "Grid Number",
-    "Grid Layer"
+    "Completed Layer",
+    "Actions"
 ]
 
 export const _bodyData = [

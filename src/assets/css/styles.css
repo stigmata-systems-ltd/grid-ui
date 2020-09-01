@@ -6,6 +6,14 @@
 .no-margin-bottom {
     margin-bottom: 0px;
 }
+.action-btns button{
+    margin-right: 2%;
+}
+/*Header Styles
+**************/
+.logo img {
+    width: auto !important;
+}
 /*TabStyles
 **********/
 .custom-tabs {
@@ -85,6 +93,10 @@
     margin-top: 1%;
     margin-bottom: 3%;
     background-color: #e9ecef;
+}
+.quantity-card div {
+    align-items: center;
+    display: flex;
 }
 
 /*Create Grid
