@@ -1,39 +1,19 @@
 import React, { Component } from "react";
-import CanvasJSReact from "./canvasjs.react";
-var CanvasJSChart = CanvasJSReact.CanvasJSChart;
+import { PieChart } from "react-minimal-pie-chart";
 
-class PieChart extends Component {
-
-    render() {
-        const options = {
-			theme: "light",
-			animationEnabled: true,
-			exportFileName: "Grid Status",
-			exportEnabled: true,
-			title:{
-				text: "Grid Status"
-			},
-			data: [{
-				type: "pie",
-				showInLegend: true,
-				legendText: "{label}",
-				toolTipContent: "{label}: <strong>{y}%</strong>",
-				indexLabel: "{y}%",
-				indexLabelPlacement: "inside",
-				dataPoints: [
-					{ y: 35, label: "Completed" },
-					{ y: 35, label: "InProgress" },
-					{ y: 30, label: "Yet To Start" }
-				]
-			}]
-		}
-        return (
-            <div>
-                <CanvasJSChart options = {options} />
-            </div>
-            
-        )
-    }
+class Chart extends Component {
+  render() {
+    return (
+      <PieChart
+        data={[
+          { title: "One", value: 10, color: "#E38627" },
+          { title: "Two", value: 15, color: "#C13C37" },
+          { title: "Three", value: 20, color: "#6A2135" },
+        ]}
+        animate={true}
+      />
+    );
+  }
 }
 
-export default PieChart;
+export default Chart;
