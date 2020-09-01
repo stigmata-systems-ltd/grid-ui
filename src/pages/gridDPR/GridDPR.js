@@ -108,16 +108,15 @@ class GridDPR extends Component {
                                 <div class="col-md-12">
                                     <div class="form-group row">
                                         <div class="col-sm-12">
-                                            <h4>Completed Layers: 5</h4>
+                                            <h5>Completed Layers: 5</h5>
                                         </div>
-                                    </div>
-                                    <div class="form-group row">
                                         <div class="col-sm-12">
                                             <ProgressBar now={33} />
                                         </div>
                                     </div>
                                 </div>
                             </FormRow>
+                            {/* ADD QUANTITY COMPONENT */}
                             <AddQuantity />
                             <FormRow>
                                 <TextInput label="Fill Type" />

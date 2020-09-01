@@ -1,5 +1,11 @@
 /*Custom Styles
 ***************/
+
+/*Common Styles
+**************/
+.no-margin-bottom {
+    margin-bottom: 0px;
+}
 /*TabStyles
 **********/
 .custom-tabs {
@@ -73,11 +79,13 @@
     border: 2px solid #e7eaed;
     margin-bottom: 5%;
 }
-/* .quantity-card {
+.quantity-card {
     padding: 10px;
     border: 2px solid #e7eaed;
-    margin-bottom: 5%;
-} */
+    margin-top: 1%;
+    margin-bottom: 3%;
+    background-color: #e9ecef;
+}
 
 /*Create Grid
 ************/
