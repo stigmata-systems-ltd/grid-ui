@@ -8,6 +8,11 @@ export const tabMetaData = [
         id: 2,
         navText: "Cleaning and Grubbing",
         isActive: false,
+    },
+    {
+        id: 3,
+        navText: "Layer Photographs",
+        isActive: false,
     }
 ]
 export const gridNumber = [
@@ -83,4 +88,48 @@ export const subContractorTableBodyData = [
         "qty": "30",
         "sub": "Test User-3"
     }
+]
+
+export const layerStsMeta = [
+    {
+        text: "In Progress",
+        value: 1
+    },
+    {
+        text: "Completed",
+        value: 2,
+    },
+    {
+        text: "Yet To Start",
+        value: 3,
+    },
+]
+
+export const images = [
+    "https://homepages.cae.wisc.edu/~ece533/images/airplane.png",
+    "https://homepages.cae.wisc.edu/~ece533/images/arctichare.png",
+    "https://homepages.cae.wisc.edu/~ece533/images/boat.png",
+]
+
+export const subContractorMeta = [
+    {
+        text: "Sub-Contractor-1",
+        value: 1
+    },
+    {
+        text: "Sub-Contractor-2",
+        value: 2,
+    },
+    {
+        text: "Sub-Contractor-3",
+        value: 3,
+    },
+    {
+        text: "Sub-Contractor-4",
+        value: 4,
+    },
+    {
+        text: "Sub-Contractor-5",
+        value: 5,
+    },
 ]

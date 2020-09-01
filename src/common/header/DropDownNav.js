@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import { metaDataHeaderDropDowNav } from "./utils";
 import DropDownNavItem from "./DropDownNavItem";
 import { PROFILE_TEMP } from "../../assets/images/index";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import FaIcon from "../FaIcon";
 
 class DropDownNav extends Component {
 
@@ -29,11 +28,14 @@ class DropDownNav extends Component {
                         onBlur={this.hideDropDown}
                         class="nav-link dropdown-toggle"
                     >
-                        <img src={PROFILE_TEMP} alt="profile" />
+                        <FaIcon
+                            iconName="faUser"
+                            className="navIcons drop-down-icon"
+                        />
                         <span class="nav-profile-name">Ananth Prasad</span>
-                        <FontAwesomeIcon
-                            icon={faAngleDown} className="navIcons"
-                            className="drop-down-icon"
+                        <FaIcon
+                            iconName="faAngleDown"
+                            className="navIcons drop-down-icon"
                         />
                     </a>
                     <div

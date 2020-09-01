@@ -10,7 +10,7 @@ class IconTextButton extends Component {
                 onClick={this.props.onClick}
             >
                 <FaIcon iconName="faPlusCircle" />
-                    {this.props.btnText}
+                    {` ${this.props.btnText}`}
             </button>
         )
     }

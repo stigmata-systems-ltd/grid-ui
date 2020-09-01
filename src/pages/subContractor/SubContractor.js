@@ -3,7 +3,7 @@ import ContentLoader from "../../common/ContentLoader";
 import FormContainer from "../../common/forms/FormContainer";
 import FormRow from "../../common/forms/FormRow";
 import TextInput from "../../common/forms/TextInput";
-import AddLatLng from "../../components/AddLatLng";
+import AddLatLng from "../createGrid/AddLatLng";
 import IconTextButton from "../../common/forms/IconTextButton";
 import Button from "../../common/forms/Button";
 import SimpleDropDown from "../../common/forms/SimpleDropDown";

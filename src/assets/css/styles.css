@@ -27,6 +27,10 @@
     width: 100%;
 }
 
+.sidebar ul li svg {
+    color: inherit;
+}
+
 .navIcons {
     font-size: 1.125rem;
     line-height: 1;
@@ -69,6 +73,11 @@
     border: 2px solid #e7eaed;
     margin-bottom: 5%;
 }
+/* .quantity-card {
+    padding: 10px;
+    border: 2px solid #e7eaed;
+    margin-bottom: 5%;
+} */
 
 /*Create Grid
 ************/

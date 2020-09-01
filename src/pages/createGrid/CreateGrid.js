@@ -3,7 +3,7 @@ import ContentLoader from "../../common/ContentLoader";
 import FormContainer from "../../common/forms/FormContainer";
 import FormRow from "../../common/forms/FormRow";
 import TextInput from "../../common/forms/TextInput";
-import AddLatLng from "../../components/AddLatLng";
+import AddLatLng from "./AddLatLng";
 import IconTextButton from "../../common/forms/IconTextButton";
 import Button from "../../common/forms/Button";
 
@@ -55,7 +55,7 @@ class CreateGrid extends Component {
                             <div class="form-group row">
                                 <div class="col-sm-12">
                                     <Button
-                                        btnText="View Grid Area In Map"
+                                        btnText="Preview In Map"
                                         btnType="primary"
                                     />
                                 </div>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import FaIcon from "../common/FaIcon";
-import IconButton  from "../common/forms/IconButton";
+import FaIcon from "../../common/FaIcon";
+import IconButton  from "../../common/forms/IconButton";
 
 class AddLatLng extends Component {
 

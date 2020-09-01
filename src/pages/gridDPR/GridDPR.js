@@ -6,10 +6,10 @@ import SimpleDropDown from "../../common/forms/SimpleDropDown";
 import TabContent from "../../common/tabs/TabContent";
 import TabPane from "../../common/tabs/TabPane";
 import TabNavs from "../../common/tabs/TabNavs";
-import DataTable from "../../common/DataTable";
 
 import {
-    gridNumber, layers, tabMetaData, subContractorTableMetaData, subContractorTableBodyData
+    gridNumber, layers, tabMetaData,
+    layerStsMeta,
 } from "./utils";
 import Cleaning from "./Cleaning";
 import TextInput from "../../common/forms/TextInput";
@@ -17,7 +17,11 @@ import TextArea from "../../common/forms/TextArea";
 import CheckBox from "../../common/forms/CheckBox";
 import FileInput from "../../common/forms/FileInput";
 import Button from "../../common/forms/Button";
-import IconTextButton from "../../common/forms/IconTextButton";
+
+import ProgressBar from "react-bootstrap/ProgressBar";
+import Photographs from "./Photographs";
+import Modal from "../../common/Modal";
+import AddQuantity from "./AddQuantity";
 
 class GridDPR extends Component {
 
@@ -35,8 +39,12 @@ class GridDPR extends Component {
                 {
                     id: 2,
                     isActive: false
+                },
+                {
+                    id: 3,
+                    isActive: false
                 }
-            ]
+            ],
         }
     }
     handleGridSelection = (val) => {
@@ -89,26 +97,28 @@ class GridDPR extends Component {
                                 <TextInput label="Area Of Layer" />
                             </FormRow>
                             <FormRow>
-                                <div class="col-md-6">
+                                <SimpleDropDown
+                                    label="Layer Status"
+                                    selectOptions={layerStsMeta}
+                                    onChange={this.handleLayerSelection}
+                                    value={this.state.selectedLayer}
+                                />
+                            </FormRow>
+                            <FormRow>
+                                <div class="col-md-12">
                                     <div class="form-group row">
-                                        <div class="col-sm-8">
-                                            <h4>Total Quantity: 100</h4>
+                                        <div class="col-sm-12">
+                                            <h4>Completed Layers: 5</h4>
                                         </div>
-                                        <div class="col-sm-8">
-                                            <IconTextButton
-                                                btnText="Add Quantity"
-                                                onClick={this.handleLocationRows}
-                                            />
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-12">
+                                            <ProgressBar now={33} />
                                         </div>
                                     </div>
                                 </div>
                             </FormRow>
-                            <FormRow>
-                                <DataTable
-                                    metaData={subContractorTableMetaData}
-                                    bodyData={subContractorTableBodyData}
-                                />
-                            </FormRow>
+                            <AddQuantity />
                             <FormRow>
                                 <TextInput label="Fill Type" />
                                 <TextInput label="Top Level Fill Material" />
@@ -162,6 +172,9 @@ class GridDPR extends Component {
                         {/* Cleaning Tab */}
                         <TabPane isActive={this.state.tabPaneStatus[1].isActive}>
                             <Cleaning />
+                        </TabPane>
+                        <TabPane  isActive={this.state.tabPaneStatus[2].isActive}>
+                            <Photographs />
                         </TabPane>
                     </TabContent>
                 </FormContainer >
