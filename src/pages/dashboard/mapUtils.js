@@ -96,7 +96,7 @@ export const gridData = (lat, lng) => {
       lng: centers[0].longitude,
       title: "Grid-H1V2",
       description: "Right Grid",
-      status: "inProgess",
+      status: "completed",
       rectCords: getGridCords(centers[0].latitude, centers[0].longitude),
     },
     {

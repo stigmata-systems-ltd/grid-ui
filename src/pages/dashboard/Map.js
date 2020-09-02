@@ -1,8 +1,48 @@
 import React, { Component } from "react";
-import { Map, InfoWindow, Marker, GoogleApiWrapper, Polygon } from "google-maps-react";
+import {
+  Map,
+  InfoWindow,
+  Marker,
+  GoogleApiWrapper,
+  Polygon,
+} from "google-maps-react";
 import { gridData } from "./mapUtils";
+import Button from "../../common/forms/Button";
+import { withRouter } from "react-router-dom";
+import FaIcon from "../../common/FaIcon";
 
 class GridMap extends Component {
+  state = {
+    showingInfoWindow: false,
+    activeMarker: {},
+    selectedPlace: {},
+  };
+
+  onMarkerClick = (props, marker, e) =>
+    this.setState({
+      selectedPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: true,
+    });
+
+  onMapClicked = (props) => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null,
+      });
+    }
+  };
+  handleGridView = () => {
+    console.log("click")
+    this.props.history.push("griddetails");
+  };
+
+  getStatusIcon = (sts) => {
+      return sts === "completed" ?
+        <FaIcon iconName="faCheckCircle" className="txt-success" /> :
+        <FaIcon iconName="faPeopleCarry" className="txt-danger" />
+  }
 
   render() {
     return (
@@ -18,23 +58,46 @@ class GridMap extends Component {
           height: "100%",
         }}
         containerStyle={containerStyle}
+        onClick={this.onMapClicked}
       >
         {gridData(12.9941172, 80.1686781).map((grid) => (
-            <Marker
-              name={grid.title}
-              position={{ lat: grid.lat, lng: grid.lng }}
-            />
+          <Marker
+            onClick={this.onMarkerClick}
+            name={grid.title}
+            position={{ lat: grid.lat, lng: grid.lng }}
+          />
+        ))}
+        {gridData().map((grid) => (
+          <InfoWindow
+            marker={this.state.activeMarker}
+            visible={this.state.showingInfoWindow}
+            onClose={this.onMapClicked}
+          >
+            <div className="col-md-12">
+              <h5>{this.state.selectedPlace.name}</h5>
+              {/* <h6>{grid.description}</h6> */}
+              <h6 className={`${grid.status === "completed" ? "text-success" : "text-warning"}`}>
+                {this.getStatusIcon(grid.status)}
+                {` ${grid.status}`}
+              </h6>
+              <Button
+                btnText={"View"}
+                btnType="btn-info"
+                onClick={this.handleGridView}
+              />
+            </div>
+          </InfoWindow>
         ))}
         {gridData(12.9941172, 80.1686781).map((grid) => (
           <Polygon
-              paths={grid.rectCords}
-              strokeColor="#0000FF"
-              strokeOpacity={0.8}
-              strokeWeight={2}
-              fillColor="#0000FF"
-              fillOpacity={0.35}
-            />
-            ))}
+            paths={grid.rectCords}
+            strokeColor="#0000FF"
+            strokeOpacity={0.8}
+            strokeWeight={2}
+            fillColor="#0000FF"
+            fillOpacity={0.35}
+          />
+        ))}
       </Map>
     );
   }
@@ -47,4 +110,4 @@ const containerStyle = {
 
 export default GoogleApiWrapper({
   apiKey: "AIzaSyD981UnRbwbMPy4ifleYDzkT5-WH9_rUOY",
-})(GridMap);
+})(withRouter(GridMap));
