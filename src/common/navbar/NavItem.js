@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as fa from '@fortawesome/free-solid-svg-icons';
+import { withRouter } from "react-router-dom";
 
 class NavItem extends Component {
 
@@ -11,22 +12,32 @@ class NavItem extends Component {
 
         }
     }
-    renderSubNavs = () => {
-        return (
+    renderSubNavs = (subNavs) => {
+        return (subNavs.map((subNav) =>
             <div class={`collapse ${this.state.isSubNavOpen && "show"}`} id="ui-basic">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item">
-                        <a class="nav-link" href="../../pages/ui-features/buttons.html">Buttons</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../../pages/ui-features/typography.html">Typography</a>
+                    <li class="nav-item sub-nav">
+                        <a
+                            class="nav-link"
+                            onClick={() => this.handleSubMenuRedirect(subNav.route)}
+                        >
+                            {subNav.navText}
+                        </a>
                     </li>
                 </ul>
             </div>
         )
+        )
     }
-    handleSubMenuShow = () => {
-        this.setState({ isSubNavOpen: !this.state.isSubNavOpen })
+    handleSubMenuRedirect = (route) => {
+        this.props.history.push(route)
+    }
+    handleSubMenuShow = (navItem) => {
+        if (navItem.hasSubNav) {
+            this.setState({ isSubNavOpen: !this.state.isSubNavOpen })
+        } else {
+            this.props.history.push(navItem.route)
+        }
     }
     render() {
         return (
@@ -34,17 +45,17 @@ class NavItem extends Component {
                 <button
                     key={navItem.id}
                     class={`nav-link ${this.state.isSubNavOpen && "show"}`}
-                    onClick={this.handleSubMenuShow}
+                    onClick={() => this.handleSubMenuShow(navItem)}
                 >
                     <FontAwesomeIcon
                         key={"navIcon" + navItem.id}
-                        icon={fa[navItem.iconName]} className="navIcons" 
+                        icon={fa[navItem.iconName]} className="navIcons"
                     />
                     <span class="menu-title">{navItem.navText}</span>
-                    {navItem.hasSubNav && 
-                    (!this.state.isSubNavOpen ?
-                        <FontAwesomeIcon icon={fa.faAngleRight} className="menu-arrow" /> :
-                        <FontAwesomeIcon icon={fa.faAngleDown} className="menu-arrow" />)}
+                    {navItem.hasSubNav &&
+                        (!this.state.isSubNavOpen ?
+                            <FontAwesomeIcon icon={fa.faAngleRight} className="menu-arrow" /> :
+                            <FontAwesomeIcon icon={fa.faAngleDown} className="menu-arrow" />)}
                 </button>
                 {navItem.hasSubNav && this.renderSubNavs(navItem.subNavs)}
             </li>)
@@ -53,4 +64,4 @@ class NavItem extends Component {
     }
 }
 
-export default NavItem;
+export default withRouter(NavItem);

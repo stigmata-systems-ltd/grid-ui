@@ -1,6 +1,34 @@
 /*Custom Styles
 ***************/
 
+/*Common Styles
+**************/
+.no-margin-bottom {
+    margin-bottom: 0px;
+}
+.action-btns button{
+    margin-right: 2%;
+}
+/*Header Styles
+**************/
+.logo img {
+    width: auto !important;
+}
+/*TabStyles
+**********/
+.custom-tabs {
+    margin-bottom: 3%;
+}
+.custom-tabs li a{
+    cursor: pointer;
+}
+
+/*DataTable
+**********/
+.data-table {
+    margin-bottom: 3%;
+}
+
 /*Navbar Custom Styles
 *********************/
 
@@ -11,6 +39,10 @@
     margin: 0em;
     border: none;
     width: 100%;
+}
+
+.sidebar ul li svg {
+    color: inherit;
 }
 
 .navIcons {
@@ -29,6 +61,11 @@
     color: #000;
 }
 
+.sub-nav {
+    list-style: none;
+    cursor: pointer;
+}
+
 /*Header Styles
 **************/
 
@@ -38,4 +75,33 @@
 }
 .nav-profile {
     cursor: pointer;
+}
+
+/*Grid DPR
+************/
+.inner-card {
+    box-shadow: none;
+    border: none;
+}
+.cleaning-card {
+    border: 2px solid #e7eaed;
+    margin-bottom: 5%;
+}
+.quantity-card {
+    padding: 10px;
+    border: 2px solid #e7eaed;
+    margin-top: 1%;
+    margin-bottom: 3%;
+    background-color: #e9ecef;
+}
+.quantity-card div {
+    align-items: center;
+    display: flex;
+}
+
+/*Create Grid
+************/
+
+.location-row > div{
+    margin-bottom: 5%;
 }

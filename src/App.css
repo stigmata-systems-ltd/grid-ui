@@ -10309,7 +10309,7 @@ pre code {
   color: #495057;
   background-color: #ffffff;
   background-clip: padding-box;
-  border: 1px solid #ced4da;
+  border: 1px solid #aaa;
   border-radius: 2px;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
@@ -20326,13 +20326,13 @@ code {
 
 .input-group-append .input-group-text,
 .input-group-prepend .input-group-text {
-  border-color: #f3f3f3;
+  border-color: #aaaaaa;
   padding: 0.875rem 0.75rem;
   color: #c9c8c8;
 }
 
 .form-control, .dataTables_wrapper select {
-  border: 1px solid #f3f3f3;
+  border: 1px solid #aaaaaa;
   font-weight: 400;
   font-size: 0.875rem;
 }
@@ -20340,7 +20340,7 @@ code {
 select.form-control, .dataTables_wrapper select {
   padding: .4375rem .75rem;
   border: 0;
-  outline: 1px solid #f3f3f3;
+  outline: 1px solid #aaaaaa;
   color: #c9c8c8;
 }
 
@@ -21290,7 +21290,7 @@ dl li {
   padding: 0;
 }
 
-.sidebar .nav.sub-menu .nav-item::before {
+/* .sidebar .nav.sub-menu .nav-item::before {
   content: '';
   position: absolute;
   width: 5px;
@@ -21298,7 +21298,7 @@ dl li {
   border-radius: 50%;
   background: #000;
   margin-top: 15px;
-}
+} */
 
 .sidebar .nav.sub-menu .nav-item .nav-link {
   color: #656565;
@@ -21568,7 +21568,7 @@ dl li {
 }
 
 .navbar .navbar-menu-wrapper .navbar-nav .nav-item.nav-profile .nav-link::after {
-  color: #4a4a4a;
+  color: transparent;
 }
 
 .navbar .navbar-menu-wrapper .navbar-nav .nav-item.dropdown .dropdown-menu {
