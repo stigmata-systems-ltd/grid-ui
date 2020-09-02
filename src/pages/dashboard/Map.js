@@ -1,23 +1,17 @@
 import React, { Component } from "react";
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
+import { Map, InfoWindow, Marker, GoogleApiWrapper, Polygon } from "google-maps-react";
 import { gridData } from "./mapUtils";
 
 class GridMap extends Component {
-  static defaultProps = {
-    center: {
-      lat: 19.076,
-      lng: 72.8777,
-    },
-    zoom: 17,
-  };
+
   render() {
     return (
       <Map
         google={this.props.google}
-        zoom={20}
+        zoom={16}
         initialCenter={{
           lat: 12.9941172,
-          lng: 80.1686781
+          lng: 80.1686781,
         }}
         style={{
           width: "100%",
@@ -26,11 +20,21 @@ class GridMap extends Component {
         containerStyle={containerStyle}
       >
         {gridData(12.9941172, 80.1686781).map((grid) => (
-          <Marker
-            name={grid.title}
-            position={{ lat: grid.lat, lng: grid.lng }}
-          />
+            <Marker
+              name={grid.title}
+              position={{ lat: grid.lat, lng: grid.lng }}
+            />
         ))}
+        {gridData(12.9941172, 80.1686781).map((grid) => (
+          <Polygon
+              paths={grid.rectCords}
+              strokeColor="#0000FF"
+              strokeOpacity={0.8}
+              strokeWeight={2}
+              fillColor="#0000FF"
+              fillOpacity={0.35}
+            />
+            ))}
       </Map>
     );
   }
