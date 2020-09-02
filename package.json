@@ -17,6 +17,7 @@
     "react-charts": "^2.0.0-beta.7",
     "react-dom": "^16.13.1",
     "react-fullscreen-image": "0.0.3",
+    "react-minimal-pie-chart": "^8.0.1",
     "react-modal": "^3.11.2",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
