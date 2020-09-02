@@ -1,15 +1,8 @@
 import React, { Component } from 'react';
-import GoogleMapReact from 'google-map-react';
-import '../../assets/css/map.css';
 import Chart from "../../common/forms/charts/PieChart";
+import Map from "./Map";
+
 class PieChart extends Component {
-  static defaultProps = {
-    center: {
-      lat: 19.076,
-      lng: 72.8777,
-    },
-    zoom: 17,
-  };
 
   render() {
     return (
@@ -20,13 +13,7 @@ class PieChart extends Component {
               <div class="card-body">
                 <h4 class="card-title">Map</h4>
                 <div className="google-map">
-                  <GoogleMapReact
-                    bootstrapURLKeys={{
-                      key: 'AIzaSyD981UnRbwbMPy4ifleYDzkT5-WH9_rUOY',
-                    }}
-                    defaultCenter={this.props.center}
-                    defaultZoom={this.props.zoom}
-                  ></GoogleMapReact>
+                  <Map />
                 </div>
               </div>
             </div>
