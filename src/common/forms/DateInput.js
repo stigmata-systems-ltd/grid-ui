@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class TextInput extends Component {
+class DateInput extends Component {
 
     render() {
         return (
@@ -8,7 +8,7 @@ class TextInput extends Component {
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label">{this.props.label}</label>
                     <div class="col-sm-9">
-                        <input type="text" value={this.props.value}  class="form-control" />
+                        <input type="date"  class="form-control" />
                     </div>
                 </div>
             </div>
@@ -16,4 +16,4 @@ class TextInput extends Component {
     }
 }
 
-export default TextInput;
+export default DateInput;

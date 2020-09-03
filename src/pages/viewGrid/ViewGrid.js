@@ -3,6 +3,7 @@ import ContentLoader from "../../common/ContentLoader";
 import ActionDataTable from "../../common/ActionDataTable";
 import FormContainer from "../../common/forms/FormContainer";
 import FormRow from "../../common/forms/FormRow";
+import SearchBox from "../../common/forms/SearchBox";
 
 import { _viewGridMetaData, _bodyData } from "./utils";
 
@@ -12,7 +13,9 @@ class Dashboard extends Component {
         return (
             <ContentLoader>
                 <FormContainer formTitle={"Grid List"}>
+
                     <FormRow>
+                    <SearchBox />
                         <ActionDataTable
                             metaData={_viewGridMetaData}
                             bodyData={_bodyData}

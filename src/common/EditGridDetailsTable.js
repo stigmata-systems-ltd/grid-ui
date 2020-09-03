@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import Button from './forms/Button';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
-class GridDetailsDataTable extends Component {
+class EditGridDetailsTable extends Component {
   renderTableHeaders = () => {
     return this.props.metaData.map(header => <th>{header}</th>);
   };
@@ -10,7 +9,7 @@ class GridDetailsDataTable extends Component {
   render() {
     return (
       <div class="table-responsive pt-3 data-table">
-        <table class="table table-bordered">
+        <table class="table table-bordered table-striped">
           <thead>
             <tr>{this.renderTableHeaders()}</tr>
           </thead>
@@ -24,13 +23,11 @@ class GridDetailsDataTable extends Component {
                     </>
                   ))}
                   <td class="action-btns">
-                    {/* <Button
-                      btnText="Edit"
+                    <Button
+                      btnText="Save"
                       btnType="btn-secondary"
                       onClick={this.props.onClick}
-                    /> */}
-
-                    <Link to="/griddpr" className="btn btn-secondary">Edit</Link>
+                    />
                   </td>
                 </tr>
               );
@@ -42,4 +39,4 @@ class GridDetailsDataTable extends Component {
   }
 }
 
-export default GridDetailsDataTable;
+export default EditGridDetailsTable;

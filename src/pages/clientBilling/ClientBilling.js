@@ -11,6 +11,8 @@ import DataTable from "../../common/DataTable";
 import { gridNumber } from "./utils";
 import { completedLayers, _clientBillingMetaData, _bodyData } from "./utils";
 
+
+
 class ClientBilling extends Component {
 
     constructor() {
@@ -18,6 +20,7 @@ class ClientBilling extends Component {
         this.state = {
             selectedGrid: 0,
         }
+
     }
 
 
@@ -31,9 +34,19 @@ class ClientBilling extends Component {
         this.setState({ selectedGrid: e.target.value })
     }
 
+    triggerDelete(task, index) {
+        if (window.confirm("Are you sure you want to delete this task?")) {
+            let taskList = [...this.state.taskList]
+            taskList.splice(index, 1);
+            this.setState({ taskList: taskList })
+        }
+    }
+
     render() {
         return (
+
             <ContentLoader>
+
                 <FormContainer formTitle={"Client Billing"}>
                     <FormRow>
                         <SimpleDropDown
@@ -67,6 +80,7 @@ class ClientBilling extends Component {
                             showRowDelete={true}
                         />
                     </FormRow>
+
                     <FormRow>
                         <TextInput
                             label="Select Billing Month"
@@ -85,7 +99,7 @@ class ClientBilling extends Component {
                     />
                 </FormContainer>
             </ContentLoader>
-        )
+        );
     }
 }
 

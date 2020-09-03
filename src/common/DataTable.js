@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import IconButton from "../common/forms/IconButton";
+import Button from '../common/forms/Button';
+
+
 
 class DataTable extends Component {
   renderTableHeaders = () => {
@@ -30,6 +33,11 @@ class DataTable extends Component {
                       <td> {data[key].toString()}</td>
                     </>
                   ))}
+
+                  <td>
+                  <Button btnText="Edit" btnType="primary" />&nbsp;
+                  <Button btnText="Delete" btnType="secondary" />
+                  </td>
                 </tr>
               );
             })}

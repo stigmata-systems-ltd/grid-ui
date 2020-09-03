@@ -1,29 +1,28 @@
 export const _viewGridMetaData = [
     "S.No",
     "Grid Number",
-    "Completed Layer",
     "Actions"
 ]
 
 export const _bodyData = [
     {
         sno: "1",
-        gridNum: "Grid-H1 V1",
-        layerNum: "Layer-1, Layer-2, Layer-3, Layer-4"
+        gridNum: "H45V60",
+        
     },
     {
-        sno: "1",
-        gridNum: "Grid-H1 V1",
-        layerNum: "Layer-1, Layer-2, Layer-3, Layer-4"
+        sno: "2",
+        gridNum: "H45V61",
+        
     },
     {
-        sno: "1",
-        gridNum: "Grid-H1 V1",
-        layerNum: "Layer-1, Layer-2, Layer-3, Layer-4"
+        sno: "3",
+        gridNum: "H45V62",
+        
     },
     {
-        sno: "1",
-        gridNum: "Grid-H1 V1",
-        layerNum: "Layer-1, Layer-2, Layer-3, Layer-4"
+        sno: "4",
+        gridNum: "H45V63",
+        
     },
 ]

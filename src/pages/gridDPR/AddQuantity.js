@@ -10,6 +10,7 @@ import {
   subContractorTableMetaData,
   subContractorTableBodyData,
   subContractorMeta,
+  
 } from "./utils";
 
 class AddQuantity extends Component {
@@ -68,8 +69,12 @@ class AddQuantity extends Component {
             <DataTable
               metaData={subContractorTableMetaData}
               bodyData={subContractorTableBodyData}
+             
             />
+            
+            
           </FormRow>
+          
         </Modal>
       </>
     );
