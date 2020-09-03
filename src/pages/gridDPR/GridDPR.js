@@ -7,9 +7,10 @@ import TabContent from '../../common/tabs/TabContent';
 import TabPane from '../../common/tabs/TabPane';
 import TabNavs from '../../common/tabs/TabNavs';
 
-import { gridNumber, layers, tabMetaData, layerStsMeta } from './utils';
+import { gridNumber, layers, tabMetaData, layerStsMeta , status} from './utils';
 import Cleaning from './Cleaning';
 import TextInput from '../../common/forms/TextInput';
+import DateInput from '../../common/forms/DateInput';
 import TextArea from '../../common/forms/TextArea';
 import CheckBox from '../../common/forms/CheckBox';
 import FileInput from '../../common/forms/FileInput';
@@ -81,28 +82,21 @@ class GridDPR extends Component {
                 <SimpleDropDown
                   label="Grid Number"
                   selectOptions={gridNumber}
-                  onChange={this.handleGridSelection}
-                  value={this.state.selectedGrid}
+                // onChange={this.handleGridSelection}
+                // value={this.state.selectedGrid}
                 />
                 <SimpleDropDown
                   label="Layer Number"
                   selectOptions={layers}
-                  onChange={this.handleLayerSelection}
-                  value={this.state.selectedLayer}
+                // onChange={this.handleLayerSelection}
+                // value={this.state.selectedLayer}
                 />
               </FormRow>
               <FormRow>
-                <TextInput label="Date" />
-                <TextInput label="Area Of Layer" />
+                <DateInput label="Date of Filing" />
+                <TextInput label="Area Of Layer (Sqm)" />
               </FormRow>
-              <FormRow>
-                <SimpleDropDown
-                  label="Layer Status"
-                  selectOptions={layerStsMeta}
-                  onChange={this.handleLayerSelection}
-                  value={this.state.selectedLayer}
-                />
-              </FormRow>
+
               <FormRow>
                 <div class="col-md-12">
                   <div class="form-group row">
@@ -130,16 +124,26 @@ class GridDPR extends Component {
                 <TextInput label="RFI Number" />
               </FormRow>
               <FormRow>
-                <TextInput label="Inspection Date" />
-                <TextInput label="Inspection Date" />
+                <DateInput label="Inspection Date" />
+                <DateInput label="Inspection Date" />
               </FormRow>
               <FormRow>
-                <TextInput label="Approval Date" />
-                <TextInput label="Approval Date" />
+                <DateInput label="Approval Date" />
+                <DateInput label="Approval Date" />
               </FormRow>
               <FormRow>
-                <TextInput label="RFI Status" />
-                <TextInput label="RFI Status" />
+                <SimpleDropDown
+                  label="RFI Status (Approval)"
+                  selectOptions={status}
+                // onChange={this.handleGridSelection}
+                // value={this.state.selectedGrid}
+                />
+                <SimpleDropDown
+                  label="RFI Status (Approval)"
+                  selectOptions={status}
+                // onChange={this.handleGridSelection}
+                // value={this.state.selectedGrid}
+                />
               </FormRow>
               <FormRow>
                 <TextArea label="Material Description" size="col-md-6" />
@@ -147,6 +151,15 @@ class GridDPR extends Component {
               </FormRow>
               <FormRow>
                 <TextArea label="Remarks" size="col-md-12" />
+              </FormRow>
+
+              <FormRow>
+                <SimpleDropDown
+                  label="Layer Status"
+                  selectOptions={layerStsMeta}
+                // onChange={this.handleLayerSelection}
+                // value={this.state.selectedLayer}
+                />
               </FormRow>
               <Button btnText="Save" btnType="primary" />
               <Button btnText="Cancel" btnType="cancel" />

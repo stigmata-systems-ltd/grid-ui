@@ -1,3 +1,5 @@
+
+
 export const tabMetaData = [
   {
     id: 1,
@@ -44,41 +46,35 @@ export const gridNumber = [
 
 export const layers = [
   {
-    text: 'Layer-1',
+    text: 'At + 4.67m CD',
     value: 0,
   },
   {
-    text: 'Layer-2',
+    text: 'At + 4.74m CD',
     value: 1,
   },
   {
-    text: 'Layer-3',
+    text: 'At + 4.92m CD',
     value: 2,
   },
   {
-    text: 'Layer-4',
+    text: 'At + 5.10m CD',
     value: 3,
   },
-  {
-    text: 'Layer-5',
-    value: 4,
-  },
-  {
-    text: 'Layer-6',
-    value: 5,
-  },
+ 
 ];
 
 export const subContractorTableMetaData = [
   'Quantity',
   'Sub-Contractor',
-  'Selction',
+  'Action',
 ];
 
 export const subContractorTableBodyData = [
   {
     qty: '30',
     sub: 'Test User-1',
+    
   },
   {
     qty: '30',
@@ -133,3 +129,16 @@ export const subContractorMeta = [
     value: 5,
   },
 ];
+
+export const status = [
+  {
+    text: 'Yes',
+    value: 1,
+  },
+  {
+    text: 'No',
+    value: 2,
+  },
+  
+];
+

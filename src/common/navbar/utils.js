@@ -13,16 +13,17 @@ export const metaDataNavbar = [
     hasSubNav: true,
     route: 'dashboard',
     subNavs: [
-      {
+       {
         id: 'gridSub' + 1,
-        navText: 'Grid Layer - DPR',
-        route: 'griddpr',
-      },
-      {
-        id: 'gridSub' + 2,
         navText: 'Create Grid',
         route: 'creategrid',
       },
+      {
+        id: 'gridSub' + 2,
+        navText: 'Grid Layer - DPR',
+        route: 'griddpr',
+      },
+   
       {
         id: 'gridSub' + 3,
         navText: 'View Grid',
