@@ -11,7 +11,7 @@ import GridDPR from './pages/gridDPR/GridDPR';
 import CreateGrid from './pages/createGrid/CreateGrid';
 import ViewGrid from './pages/viewGrid/ViewGrid';
 import ViewGridDpr from './pages/viewGridDPR/ViewGridDpr';
-import GridDetails from './pages/gridDetails/GridDetails';
+// import GridDetails from './pages/gridDetails/GridDetails';
 import EditDridDetails from './pages/editGridDetails/EditGridDetails';
 import ClientBilling from './pages/clientBilling/ClientBilling';
 import SubContractor from './pages/subContractor/SubContractor';
@@ -41,9 +41,9 @@ function App() {
         <Route path="/viewgriddpr">
           <ViewGridDpr />
         </Route>
-        <Route path="/griddetails">
+        {/* <Route path="/griddetails">
           <GridDetails />
-        </Route>
+        </Route> */}
         <Route path="/editgriddetails">
           <EditDridDetails />
         </Route>

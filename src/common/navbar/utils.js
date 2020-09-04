@@ -29,11 +29,11 @@ export const metaDataNavbar = [
         navText: 'View Grid',
         route: 'viewgrid',
       },
-      {
-        id: 'gridSub' + 4,
-        navText: 'Grid Details',
-        route: 'griddetails',
-      },
+      // {
+      //   id: 'gridSub' + 4,
+      //   navText: 'Grid Details',
+      //   route: 'griddetails',
+      // },
     ],
   },
   {
