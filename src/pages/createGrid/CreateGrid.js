@@ -6,6 +6,7 @@ import TextInput from "../../common/forms/TextInput";
 import AddLatLng from "./AddLatLng";
 import IconTextButton from "../../common/forms/IconTextButton";
 import Button from "../../common/forms/Button";
+import Map from "./Map";
 
 class CreateGrid extends Component {
 
@@ -64,7 +65,10 @@ class CreateGrid extends Component {
                         <div class="col-md-6 stretch-card">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">Map</h4>
+                                   
+                                    
+                                        <Map />
+                                    
                                 </div>
                             </div>
                         </div>
