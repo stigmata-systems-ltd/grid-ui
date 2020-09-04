@@ -14,7 +14,7 @@ import ViewGridDpr from './pages/viewGridDPR/ViewGridDpr';
 import GridDetails from './pages/gridDetails/GridDetails';
 import EditDridDetails from './pages/editGridDetails/EditGridDetails';
 import ClientBilling from './pages/clientBilling/ClientBilling';
-import SubContractor from './pages/subContractor/SubContractor';
+import SubContractor from './container/subContractor/SubContractorContainer';
 
 function App() {
   return (
