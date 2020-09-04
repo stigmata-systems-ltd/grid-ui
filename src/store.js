@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 let middlewares = [];
@@ -7,10 +7,15 @@ if (process.env.NODE_ENV === `local` || process.env.NODE_ENV === `dev`) {
   middlewares.push(logger);
 }
 middlewares.push(thunk);
+
 export default function storeConfig(initialState = {}) {
   return createStore(
     rootReducer,
     initialState,
-    applyMiddleware(...middlewares)
+    compose(
+      applyMiddleware(...middlewares),
+      window.__REDUX_DEVTOOLS_EXTENSION__ &&
+        window.__REDUX_DEVTOOLS_EXTENSION__()
+    )
   );
 }
