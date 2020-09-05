@@ -9,7 +9,7 @@ import Login from './pages/Login';
 import Dashboard from './pages/dashboard/Dashoard';
 import GridDPR from './pages/gridDPR/GridDPR';
 import CreateGrid from './pages/createGrid/CreateGrid';
-import ViewGrid from './pages/viewGrid/ViewGrid';
+import ViewGrid from './container/grid/viewGrid';
 import ViewGridDpr from './pages/viewGridDPR/ViewGridDpr';
 import GridDetails from './pages/gridDetails/GridDetails';
 import EditDridDetails from './pages/editGridDetails/EditGridDetails';
