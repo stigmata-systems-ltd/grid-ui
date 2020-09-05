@@ -35,6 +35,8 @@ class SubContractor extends Component {
               label="Sub-Contractor Code"
               name="subCode"
               id="subCode"
+              onChange={e => this.props.handleChangeSubCode(e.target.value)}
+              value={subprop.subContractorCode}
             />
           </FormRow>
           <FormRow>
@@ -42,11 +44,21 @@ class SubContractor extends Component {
               label="Contact Person"
               name="subContactPerson"
               id="subContactPerson"
+              onChange={e =>
+                this.props.handleChangesubContractorContactPerson(
+                  e.target.value
+                )
+              }
+              value={subprop.subContractorContactPerson}
             />
             <TextInput
               label="Contact Address"
               name="subContactAddress"
               id="subContactAddress"
+              onChange={e =>
+                this.props.handleChangesubContactAddress(e.target.value)
+              }
+              value={subprop.subContactAddress}
             />
           </FormRow>
           <FormRow>
@@ -54,14 +66,22 @@ class SubContractor extends Component {
               label="Sub-Contractor Phone"
               name="subPhone"
               id="subPhone"
+              onChange={e => this.props.handleChangesubPhone(e.target.value)}
+              value={subprop.subPhone}
             />
             <TextInput
               label="Sub-Contractor Email"
               name="subEmail"
               id="subEmail"
+              onChange={e => this.props.handleChangesubEmail(e.target.value)}
+              value={subprop.subEmail}
             />
           </FormRow>
-          <Button btnText="Save" btnType="primary" />
+          <Button
+            btnText="Save"
+            onClick={this.props.saveSubContractorData}
+            btnType="primary"
+          />
           <Button btnText="Cancel" btnType="cancel" />
         </FormContainer>
       </ContentLoader>
