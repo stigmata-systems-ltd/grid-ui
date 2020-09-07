@@ -8,14 +8,18 @@ import {
   GRID_ADD,
   GRID_NO,
   GRID_LATLONG_REMOVE,
+  RFI_APPROVAL,
+  RFI_NO,
+  RFI_APPROVAL_DATE,
+  RFI_INSPECTION_DATE,
 } from '../actions/types';
 
 const initialState = {
   gridNoData: [],
   gridLatLong: [],
   approvalOptions: [
-    { id: 'yes', gridNo: 'yes' },
-    { id: 'no', gridNo: 'no' },
+    { id: 'New', gridNo: 'New' },
+    { id: 'Completed', gridNo: 'Completed' },
   ],
 };
 
@@ -35,6 +39,12 @@ export default function(state = initialState, action) {
         ...state,
         gridNumber: action.payload,
       };
+    case RFI_NO:
+      console.log(action.payload);
+      return {
+        ...state,
+        RFINumber: action.payload,
+      };
     case GRID_AREA:
       console.log(action.payload);
       return {
@@ -46,6 +56,24 @@ export default function(state = initialState, action) {
       return {
         ...state,
         gridNo: action.payload,
+      };
+    case RFI_APPROVAL:
+      console.log(action.payload);
+      return {
+        ...state,
+        rfiApproval: action.payload,
+      };
+    case RFI_APPROVAL_DATE:
+      console.log(action.payload);
+      return {
+        ...state,
+        rfiApprovalDate: action.payload,
+      };
+    case RFI_INSPECTION_DATE:
+      console.log(action.payload);
+      return {
+        ...state,
+        rfiInspectionDate: action.payload,
       };
     case GRID_LATLANG:
       console.log(`In Grid latlang reducer: ${action.payload}`);

@@ -25,6 +25,26 @@ export const createGrid = () => {
   };
 };
 
+export const addCGData = () => {
+  const grid = store.getState().grid;
+  const postData = {
+    grid_id: parseInt(grid.gridNo),
+    cG_RFIno: grid.RFINumber,
+    cG_inspection_date: grid.rfiInspectionDate,
+    cG_approval_date: grid.rfiApprovalDate,
+    cG_RFI_status: grid.rfiApproval,
+    user_id: 1,
+  };
+  console.log(`Create Grid: ${JSON.stringify(postData)}`);
+  return {
+    type: GRID_ADD,
+    payload: axios.post(
+      config.BASE_URL + '/api/Grid/CreateCG/' + grid.gridNo,
+      postData
+    ),
+  };
+};
+
 export const addLatLang = () => {
   const grid = store.getState().grid;
   let gridLatLong = grid.gridLatLong;

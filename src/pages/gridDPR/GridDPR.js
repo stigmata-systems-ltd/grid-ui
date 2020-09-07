@@ -82,7 +82,22 @@ class GridDPR extends Component {
               <Cleaning
                 gridNoData={this.props.grid.gridNoData}
                 approvalOptions={this.props.grid.approvalOptions}
-                onChange={e => this.props.handleGridNoChange(e.target.value)}
+                onGridNoChange={e =>
+                  this.props.handleGridNoChange(e.target.value)
+                }
+                onapprovalChange={e =>
+                  this.props.handleApprovalChange(e.target.value)
+                }
+                onRFINoChange={e =>
+                  this.props.handleRFINoChange(e.target.value)
+                }
+                onInspectionDateChange={e =>
+                  this.props.handleInspectionDateChange(e.target.value)
+                }
+                onApprovalDateChange={e =>
+                  this.props.handleApprovalDateChange(e.target.value)
+                }
+                addCGData={this.props.addCGData}
               />
             </TabPane>
             <TabPane isActive={this.state.tabPaneStatus[1].isActive}>

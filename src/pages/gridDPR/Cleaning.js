@@ -27,7 +27,7 @@ class Cleaning extends Component {
             <SimpleDropDown
               label="Select Grid"
               selectOptions={this.props.gridNoData}
-              onChange={e => this.props.onChange(e)}
+              onChange={e => this.props.onGridNoChange(e)}
               // value={this.state.selectedGrid}
             />
           </FormRow>
@@ -36,14 +36,18 @@ class Cleaning extends Component {
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">RFI Number</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" />
+                  <input
+                    type="text"
+                    class="form-control"
+                    onChange={e => this.props.onRFINoChange(e)}
+                  />
                 </div>
               </div>
             </div>
             <SimpleDropDown
               label="RFI Status (Approval)"
               selectOptions={this.props.approvalOptions}
-              // onChange={this.handleGridSelection}
+              onChange={e => this.props.onapprovalChange(e)}
               // value={this.state.selectedGrid}
             />
           </div>
@@ -52,7 +56,11 @@ class Cleaning extends Component {
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Inspection Date</label>
                 <div class="col-sm-9">
-                  <input type="date" class="form-control" />
+                  <input
+                    type="date"
+                    class="form-control"
+                    onChange={e => this.props.onInspectionDateChange(e)}
+                  />
                 </div>
               </div>
             </div>
@@ -60,12 +68,20 @@ class Cleaning extends Component {
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Approval Date</label>
                 <div class="col-sm-9">
-                  <input type="date" class="form-control" />
+                  <input
+                    type="date"
+                    class="form-control"
+                    onChange={e => this.props.onApprovalDateChange(e)}
+                  />
                 </div>
               </div>
             </div>
           </div>
-          <Button btnText="Save" btnType="primary" />
+          <Button
+            btnText="Save"
+            btnType="primary"
+            onClick={this.props.addCGData}
+          />
           <Button btnText="Cancel" btnType="cancel" />
         </div>
       </div>
