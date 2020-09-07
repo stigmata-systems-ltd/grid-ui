@@ -7,8 +7,8 @@ import './assets/css/styles.css';
 //Pages Import
 import Login from './pages/Login';
 import Dashboard from './pages/dashboard/Dashoard';
-import GridDPR from './pages/gridDPR/GridDPR';
-import CreateGrid from './container/grid/addGrid';
+import GridDPR from './container/grid/gridDPRContainer';
+import CreateGrid from './container/grid/addGridContainer';
 import ViewGrid from './container/grid/viewGrid';
 import ViewGridDpr from './pages/viewGridDPR/ViewGridDpr';
 import GridDetails from './pages/gridDetails/GridDetails';

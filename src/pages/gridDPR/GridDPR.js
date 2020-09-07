@@ -7,7 +7,7 @@ import TabContent from '../../common/tabs/TabContent';
 import TabPane from '../../common/tabs/TabPane';
 import TabNavs from '../../common/tabs/TabNavs';
 
-import { gridNumber, layers, tabMetaData, layerStsMeta , status} from './utils';
+import { gridNumber, layers, tabMetaData, layerStsMeta, status } from './utils';
 import Cleaning from './Cleaning';
 import TextInput from '../../common/forms/TextInput';
 import DateInput from '../../common/forms/DateInput';
@@ -65,6 +65,10 @@ class GridDPR extends Component {
     });
   };
 
+  componentDidMount() {
+    this.props.fetchGridNoData();
+  }
+
   render() {
     return (
       <ContentLoader>
@@ -75,21 +79,25 @@ class GridDPR extends Component {
           />
           <TabContent>
             <TabPane isActive={this.state.tabPaneStatus[0].isActive}>
-              <Cleaning />
+              <Cleaning
+                gridNoData={this.props.grid.gridNoData}
+                approvalOptions={this.props.grid.approvalOptions}
+                onChange={e => this.props.handleGridNoChange(e.target.value)}
+              />
             </TabPane>
             <TabPane isActive={this.state.tabPaneStatus[1].isActive}>
               <FormRow>
                 <SimpleDropDown
                   label="Grid Number"
                   selectOptions={gridNumber}
-                // onChange={this.handleGridSelection}
-                // value={this.state.selectedGrid}
+                  // onChange={this.handleGridSelection}
+                  // value={this.state.selectedGrid}
                 />
                 <SimpleDropDown
                   label="Layer Number"
                   selectOptions={layers}
-                // onChange={this.handleLayerSelection}
-                // value={this.state.selectedLayer}
+                  // onChange={this.handleLayerSelection}
+                  // value={this.state.selectedLayer}
                 />
               </FormRow>
               <FormRow>
@@ -135,14 +143,14 @@ class GridDPR extends Component {
                 <SimpleDropDown
                   label="RFI Status (Approval)"
                   selectOptions={status}
-                // onChange={this.handleGridSelection}
-                // value={this.state.selectedGrid}
+                  // onChange={this.handleGridSelection}
+                  // value={this.state.selectedGrid}
                 />
                 <SimpleDropDown
                   label="RFI Status (Approval)"
                   selectOptions={status}
-                // onChange={this.handleGridSelection}
-                // value={this.state.selectedGrid}
+                  // onChange={this.handleGridSelection}
+                  // value={this.state.selectedGrid}
                 />
               </FormRow>
               <FormRow>
@@ -157,8 +165,8 @@ class GridDPR extends Component {
                 <SimpleDropDown
                   label="Layer Status"
                   selectOptions={layerStsMeta}
-                // onChange={this.handleLayerSelection}
-                // value={this.state.selectedLayer}
+                  // onChange={this.handleLayerSelection}
+                  // value={this.state.selectedLayer}
                 />
               </FormRow>
               <Button btnText="Save" btnType="primary" />

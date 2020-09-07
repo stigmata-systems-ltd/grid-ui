@@ -15,11 +15,12 @@ class CreateGrid extends Component {
     };
   }
 
-  handleLocationRows = () => {
-    let { locationRows } = this.state;
-    locationRows.push(locationRows.length);
-    this.setState({ locationRows });
-  };
+  // handleLocationRows = () => {
+  //   let { locationRows } = this.state;
+  //   locationRows.push(locationRows.length);
+  //   console.log(locationRows);
+  //   this.setState({ locationRows });
+  // };
   handleDeleteLocationRow = () => {
     let { locationRows } = this.state;
     locationRows.pop();
@@ -48,14 +49,30 @@ class CreateGrid extends Component {
                 <div class="col-sm-8">
                   <IconTextButton
                     btnText="Add Location"
-                    onClick={this.handleLocationRows}
+                    onClick={this.props.addLatLang}
                   />
                 </div>
               </div>
               <div class="form-group row location-row">
-                {this.state.locationRows.map(() => (
-                  <AddLatLng onClick={this.handleDeleteLocationRow} onChange />
-                ))}
+                {this.props.grid.gridLatLong.map((e, i) => {
+                  console.log(`Index in Create Grid: ${e} ${i}`);
+
+                  return (
+                    <AddLatLng
+                      // onClick={this.handleDeleteLocationRow}
+                      onLatChange={e =>
+                        this.props.handleChangeLat(e.target.value, i)
+                      }
+                      onLongChange={e =>
+                        this.props.handleChangeLong(e.target.value, i)
+                      }
+                      onLatLongRemove={i => this.props.handleLatLongRemove(i)}
+                      index={i}
+                      latValue={this.props.grid.gridLatLong[i].latitude}
+                      longValue={this.props.grid.gridLatLong[i].longitude}
+                    />
+                  );
+                })}
               </div>
               <div class="form-group row">
                 <div class="col-sm-12">
@@ -71,7 +88,11 @@ class CreateGrid extends Component {
               </div>
             </div>
           </FormRow>
-          <Button btnText="Save" btnType="primary" />
+          <Button
+            btnText="Save"
+            btnType="primary"
+            onClick={this.props.createGrid}
+          />
           <Button btnText="Cancel" btnType="cancel" />
         </FormContainer>
       </ContentLoader>

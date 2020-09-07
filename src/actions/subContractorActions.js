@@ -1,6 +1,7 @@
 import { ADD_SUBCONTRACTOR } from './types';
 import store from '../store';
 import axios from 'axios';
+import config from '../config';
 
 export const addSubContractor = () => {
   const {
@@ -19,12 +20,12 @@ export const addSubContractor = () => {
     contact_address: subContractorContactAddres,
     phone: subContractorPhone,
     email: subContractorEmail,
-    userId: 0,
+    userId: 1,
   };
   return {
     type: ADD_SUBCONTRACTOR,
     payload: axios.post(
-      'http://127.0.0.1:4010/api/SubCont/AddSubcontractor',
+      config.BASE_URL + '/api/SubCont/AddSubcontractor',
       subContractorData
     ),
   };
