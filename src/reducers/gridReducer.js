@@ -1,5 +1,6 @@
 import {
   GRID_NO_LIST,
+  LAYER_NO_LIST,
   GRID_NUMBER,
   GRID_AREA,
   GRID_LAT,
@@ -12,15 +13,42 @@ import {
   RFI_NO,
   RFI_APPROVAL_DATE,
   RFI_INSPECTION_DATE,
+  DATE_OF_FILING,
+  AREA_OF_LAYER,
+  FILL_MATERIAL,
+  FILL_TYPE,
+  RFI_NO_LV,
+  RFI_NO_CT,
+  RFI_INSPECTIONDATE_LV,
+  RFI_INSPECTIONDATE_CT,
+  RFI_APROVALDATE_LV,
+  RFI_APROVALDATE_CT,
+  RFI_LV_APPROVAL_STATUS,
+  RFI_CT_APPROVAL_STATUS,
+  RFI_MATERIAL_DESCRIPTION,
+  RFI_REMARKS,
+  RFI_FILE_UPLOAD,
+  RFI_LAYER_STATUS,
+  SUBCONTRACTOR_LIST,
+  SUBCONTRACTOR_CHANGE,
+  QUANTITY_CHANGE,
+  ADD_QUANTITY,
+  LAYER_NO,
 } from '../actions/types';
 
 const initialState = {
   gridNoData: [],
   gridLatLong: [],
+  subContractorList: [],
   approvalOptions: [
-    { id: 'New', gridNo: 'New' },
-    { id: 'Completed', gridNo: 'Completed' },
+    { id: 'New', gridName: 'New' },
+    { id: 'Completed', gridName: 'Completed' },
   ],
+  layerNoList: [],
+  quantitySelected: [],
+  addedQuantity: [],
+  totalQuantity: 0,
+  totalSubContractor: 0,
 };
 
 export default function(state = initialState, action) {
@@ -32,6 +60,23 @@ export default function(state = initialState, action) {
       return {
         ...state,
         gridNoData: action.payload.data,
+      };
+
+    case `${LAYER_NO_LIST}_FULFILLED`:
+      console.log(`LAYER NO LIST : ${action.payload}`);
+      const layerNoList = [];
+      action.payload.data.map(a => {
+        const data = {
+          id: '',
+          gridName: '',
+        };
+        data.id = a.id;
+        data.gridName = a.layerName;
+        layerNoList.push(data);
+      });
+      return {
+        ...state,
+        LayerNoData: layerNoList,
       };
     case GRID_NUMBER:
       console.log(action.payload);
@@ -93,6 +138,126 @@ export default function(state = initialState, action) {
         ...state,
         gridLatLong: action.payload,
       };
+    case DATE_OF_FILING:
+      console.log(`In Grid date of filing reducer: ${action.payload}`);
+      return {
+        ...state,
+        dateOfFiling: action.payload,
+      };
+    case AREA_OF_LAYER:
+      console.log(`In Grid area of layer reducer: ${action.payload}`);
+      return {
+        ...state,
+        areaOfLayer: action.payload,
+      };
+    case FILL_TYPE:
+      console.log(`In Grid area of layer reducer: ${action.payload}`);
+      return {
+        ...state,
+        fillType: action.payload,
+      };
+    case FILL_MATERIAL:
+      console.log(`In Grid area of layer reducer: ${action.payload}`);
+      return {
+        ...state,
+        fillMaterial: action.payload,
+      };
+    case RFI_NO_LV:
+      return {
+        ...state,
+        rfiNoLV: action.payload,
+      };
+    case RFI_NO_CT:
+      return {
+        ...state,
+        rfiNoCT: action.payload,
+      };
+    case RFI_INSPECTIONDATE_LV:
+      return {
+        ...state,
+        rfiInspectionDateLV: action.payload,
+      };
+    case RFI_INSPECTIONDATE_CT:
+      return {
+        ...state,
+        rfiInspectionDateCT: action.payload,
+      };
+    case RFI_APROVALDATE_LV:
+      return {
+        ...state,
+        rfiApprovalDateLV: action.payload,
+      };
+    case RFI_APROVALDATE_CT:
+      return {
+        ...state,
+        rfiApprovalDateCT: action.payload,
+      };
+    case RFI_LV_APPROVAL_STATUS:
+      return {
+        ...state,
+        rfiLVApprovalStatus: action.payload,
+      };
+    case RFI_CT_APPROVAL_STATUS:
+      return {
+        ...state,
+        rfiCTApprovalStatus: action.payload,
+      };
+    case RFI_MATERIAL_DESCRIPTION:
+      return {
+        ...state,
+        rfiMaterialDescription: action.payload,
+      };
+    case RFI_REMARKS:
+      return {
+        ...state,
+        rfiRemarks: action.payload,
+      };
+    case RFI_FILE_UPLOAD:
+      return {
+        ...state,
+        rfiFileUpload: action.payload,
+      };
+    case RFI_LAYER_STATUS:
+      return {
+        ...state,
+        rfiLayerStatus: action.payload,
+      };
+    case `${SUBCONTRACTOR_LIST}_FULFILLED`:
+      const subContractorList = [];
+      action.payload.data.map(a => {
+        const data = {
+          id: '',
+          gridName: '',
+        };
+        data.id = a.subContrtactorId;
+        data.gridName = a.name;
+        subContractorList.push(data);
+      });
+      return {
+        ...state,
+        subContractorList,
+      };
+    case SUBCONTRACTOR_CHANGE:
+      return {
+        ...state,
+        subContractorName: action.payload,
+      };
+    case QUANTITY_CHANGE:
+      return {
+        ...state,
+        quantity: action.payload,
+      };
+    case ADD_QUANTITY:
+      return {
+        ...state,
+        addedQuantity: action.payload,
+      };
+    case LAYER_NO:
+      return {
+        ...state,
+        layerNo: action.payload,
+      };
+
     default:
       return state;
   }

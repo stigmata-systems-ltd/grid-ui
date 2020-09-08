@@ -1,17 +1,16 @@
-import React, { Component } from "react";
-import DataTable from "../../common/DataTable";
-import IconTextButton from "../../common/forms/IconTextButton";
-import FormRow from "../../common/forms/FormRow";
-import Modal from "../../common/Modal";
-import TextInput from "../../common/forms/TextInput";
-import SimpleDropDown from "../../common/forms/SimpleDropDown";
-import Button from "../../common/forms/Button";
+import React, { Component } from 'react';
+import DataTable from '../../common/DataTable';
+import IconTextButton from '../../common/forms/IconTextButton';
+import FormRow from '../../common/forms/FormRow';
+import Modal from '../../common/Modal';
+import TextInput from '../../common/forms/TextInput';
+import SimpleDropDown from '../../common/forms/SimpleDropDown';
+import Button from '../../common/forms/Button';
 import {
   subContractorTableMetaData,
   subContractorTableBodyData,
   subContractorMeta,
-  
-} from "./utils";
+} from './utils';
 
 class AddQuantity extends Component {
   constructor() {
@@ -41,10 +40,10 @@ class AddQuantity extends Component {
                 />
               </div>
               <div class="col-sm-3">
-                <h5>Total Quantity: 100</h5>
+                <h5>Total Quantity: {this.props.totalQuantity}</h5>
               </div>
               <div class="col-sm-4">
-                <h5>Num Of Sub-Contractors: 5</h5>
+                <h5>Num Of Sub-Contractors: {this.props.totalSubContractor}</h5>
               </div>
             </div>
           </div>
@@ -56,25 +55,28 @@ class AddQuantity extends Component {
           title="Add Sub-Contractor"
         >
           <FormRow>
-            <TextInput label="Quantity" />
+            <TextInput
+              label="Quantity"
+              onChange={e => this.props.quantityChange(e)}
+            />
             <SimpleDropDown
               label="SubContractor"
-              selectOptions={subContractorMeta}
-              onChange={this.handleLayerSelection}
+              selectOptions={this.props.subContractorList}
+              onChange={e => this.props.onSubContractorChange(e)}
               value={this.state.selectedLayer}
             />
           </FormRow>
-          <Button btnText="Add Sub-Contractor" btnType="primary" />
+          <Button
+            btnText="Add Sub-Contractor"
+            btnType="primary"
+            onClick={this.props.addQuantity}
+          />
           <FormRow>
             <DataTable
               metaData={subContractorTableMetaData}
-              bodyData={subContractorTableBodyData}
-             
+              bodyData={this.props.quantityData}
             />
-            
-            
           </FormRow>
-          
         </Modal>
       </>
     );

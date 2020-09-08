@@ -15,7 +15,9 @@ class SimpleDropDown extends Component {
               <option value="choose..">Choose..</option>
               {this.props.selectOptions &&
                 this.props.selectOptions.map(option => (
-                  <option value={option.id}>{option.gridNo}</option>
+                  <option value={option.id} name={option.gridName}>
+                    {option.gridName}
+                  </option>
                 ))}
             </select>
           </div>
