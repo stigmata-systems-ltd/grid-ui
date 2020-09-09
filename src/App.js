@@ -15,6 +15,7 @@ import GridDetails from './pages/gridDetails/GridDetails';
 import EditDridDetails from './pages/editGridDetails/EditGridDetails';
 import ClientBilling from './pages/clientBilling/ClientBilling';
 import SubContractor from './container/subContractor/SubContractorContainer';
+import CreateUser from './container/userManagement/createUserContainer';
 
 function App() {
   return (
@@ -25,6 +26,9 @@ function App() {
         </Route>
         <Route exact path="/login">
           <Login />
+        </Route>
+        <Route exact path="/createuser">
+          <CreateUser />
         </Route>
         <Route path="/dashboard">
           <Dashboard />
