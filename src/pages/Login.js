@@ -39,6 +39,8 @@ class Login extends Component {
                         onChange={(e) => this.props.handlePasswordChange(e.target)}
                       />
                     </div>
+                    {this.props.auth.isLoginError &&
+                    <p className="text-danger">{this.props.auth.loginMessage}</p>}
                     <div class="mt-3">
                       <Button
                         onClick={(e) => this.props.authenticateUser(e)}

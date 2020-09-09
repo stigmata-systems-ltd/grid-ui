@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import Login from "../../pages/Login";
 import { withRouter } from "react-router-dom";
 import { authenticateUser } from "../../actions/authActions";
-import { SET_USERNAME, SET_PASSWORD, SET_TOKEN } from "../../actions/types";
+import { SET_USERNAME, SET_PASSWORD, SET_TOKEN, RESET_LOGIN_DETAILS } from "../../actions/types";
 import { setAuthTokens } from "../../utils/auth";
 
 const mapDispatchToProps = (dispatch, ownProps) => {
@@ -10,6 +10,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     authenticateUser(e) {
       e.preventDefault();
       dispatch(authenticateUser()).then((res) => {
+          dispatch({ type: RESET_LOGIN_DETAILS })
           dispatch({
               type: SET_TOKEN,
               payload: res.value.data.response

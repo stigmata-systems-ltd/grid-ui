@@ -3,11 +3,13 @@ import {
   SET_PASSWORD,
   AUTHENTICATE_USER,
   SET_TOKEN,
+  RESET_LOGIN_DETAILS,
 } from "../actions/types";
 
 const initialState = {
-  subContractorAdd: {},
-  subContractorName: "",
+  username: "",
+  password: "",
+  isLoginError: false,
 };
 
 export default function (state = initialState, action) {
@@ -32,19 +34,27 @@ export default function (state = initialState, action) {
       return {
         ...state,
         loginMessage: action.payload,
-        isLoginLoading: false
+        isLoginLoading: false,
       };
     case `${AUTHENTICATE_USER}_REJECTED`:
       return {
         ...state,
-        loginMessage: action.payload.response.data.errors,
+        isLoginError: true,
+        loginMessage: action.payload.response.data.errors.Password[0],
         isLoginLoading: false,
       };
-      case SET_TOKEN:
-        return {
-          ...state,
-          token: action.payload
-        };
+    case SET_TOKEN:
+      return {
+        ...state,
+        token: action.payload,
+      };
+    case RESET_LOGIN_DETAILS:
+      return {
+        ...state,
+        username: "",
+        password: "",
+        isLoginError: false,
+      };
     default:
       return state;
   }
