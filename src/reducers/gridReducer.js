@@ -1,3 +1,4 @@
+
 import {
   GRID_NO_LIST,
   LAYER_NO_LIST,
@@ -32,28 +33,30 @@ import {
   SUBCONTRACTOR_LIST,
   SUBCONTRACTOR_CHANGE,
   QUANTITY_CHANGE,
-  ADD_QUANTITY,
+  CHANGE_QUANTITY,
   LAYER_NO,
-} from '../actions/types';
+  RESET_QUANTITY_FORM,
+} from "../actions/types";
 
 const initialState = {
   gridNoData: [],
   gridLatLong: [],
   subContractorList: [],
   approvalOptions: [
-    { id: 'New', gridName: 'New' },
-    { id: 'Completed', gridName: 'Completed' },
+    { id: "New", gridName: "New" },
+    { id: "Completed", gridName: "Completed" },
   ],
   layerNoList: [],
   quantitySelected: [],
   addedQuantity: [],
   totalQuantity: 0,
   totalSubContractor: 0,
+  quantity: "",
+  subContractorName: "0",
+  isSubContractorEdit: false,
 };
 
-export default function(state = initialState, action) {
-  console.log(`Grid reducer : ${action.type}`);
-  console.log(`Grid reducer : ${JSON.stringify(action.payload)}`);
+export default function (state = initialState, action) {
   switch (action.type) {
     case `${GRID_NO_LIST}_FULFILLED`:
       console.log(`GRID NO LIST : ${action.payload}`);
@@ -65,10 +68,10 @@ export default function(state = initialState, action) {
     case `${LAYER_NO_LIST}_FULFILLED`:
       console.log(`LAYER NO LIST : ${action.payload}`);
       const layerNoList = [];
-      action.payload.data.map(a => {
+      action.payload.data.map((a) => {
         const data = {
-          id: '',
-          gridName: '',
+          id: "",
+          gridName: "",
         };
         data.id = a.id;
         data.gridName = a.layerName;
@@ -224,10 +227,10 @@ export default function(state = initialState, action) {
       };
     case `${SUBCONTRACTOR_LIST}_FULFILLED`:
       const subContractorList = [];
-      action.payload.data.map(a => {
+      action.payload.data.map((a) => {
         const data = {
-          id: '',
-          gridName: '',
+          id: "",
+          gridName: "",
         };
         data.id = a.subContrtactorId;
         data.gridName = a.name;
@@ -247,7 +250,13 @@ export default function(state = initialState, action) {
         ...state,
         quantity: action.payload,
       };
-    case ADD_QUANTITY:
+    case RESET_QUANTITY_FORM:
+      return {
+        ...state,
+        quantity: "",
+        subContractorName: "0",
+      };
+    case CHANGE_QUANTITY:
       return {
         ...state,
         addedQuantity: action.payload,

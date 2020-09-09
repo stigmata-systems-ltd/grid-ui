@@ -33,8 +33,10 @@ import {
   RFI_LAYER_STATUS,
   QUANTITY_CHANGE,
   SUBCONTRACTOR_CHANGE,
-  ADD_QUANTITY,
+  CHANGE_QUANTITY,
+  RESET_QUANTITY_FORM,
   LAYER_NO,
+  SET_EDIT_QUANTITY_DETAILS,
 } from '../../actions/types';
 
 const mapDispatchToProps = dispatch => {
@@ -206,13 +208,34 @@ const mapDispatchToProps = dispatch => {
     addQuantity() {
       const grid = store.getState().grid;
       const data = { quantity: '', subContractorId: '' };
-      data.quantity = grid.quantity;
+      let changedQty = parseInt(grid.quantity);
+      let isNewSubCont = true;
+      grid.addedQuantity.map((subCont, index) => {
+        if(subCont.subContractorId === grid.subContractorName) {
+          changedQty = parseInt(grid.quantity) + parseInt(subCont.quantity);
+          isNewSubCont = false;
+          grid.addedQuantity[index].quantity = changedQty;
+        }
+      })
+      data.quantity = changedQty;
       data.subContractorId = grid.subContractorName;
-      grid.addedQuantity.push(data);
       grid.totalQuantity += parseInt(grid.quantity);
       grid.totalSubContractor += 1;
+      isNewSubCont && grid.addedQuantity.push(data);
+
       dispatch({
-        type: ADD_QUANTITY,
+        type: CHANGE_QUANTITY,
+        payload: grid.addedQuantity,
+      });
+      dispatch({type: RESET_QUANTITY_FORM });
+    },
+    deleteQuantity(index) {
+      const grid = store.getState().grid;
+      grid.addedQuantity.splice(index, 1);
+      grid.totalQuantity -= parseInt(grid.quantity);
+      grid.totalSubContractor -= 1;
+      dispatch({
+        type: CHANGE_QUANTITY,
         payload: grid.addedQuantity,
       });
     },
@@ -227,8 +250,6 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
   const grid = store.getState().grid;
-  console.log(`Grid DPR State: ${JSON.stringify(grid)}`);
-
   return {
     grid,
   };

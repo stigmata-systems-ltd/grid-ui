@@ -58,12 +58,13 @@ class AddQuantity extends Component {
             <TextInput
               label="Quantity"
               onChange={e => this.props.quantityChange(e)}
+              value={this.props.quantity}
             />
             <SimpleDropDown
               label="SubContractor"
               selectOptions={this.props.subContractorList}
               onChange={e => this.props.onSubContractorChange(e)}
-              value={this.state.selectedLayer}
+              value={this.props.subContractorName}
             />
           </FormRow>
           <Button
@@ -75,6 +76,9 @@ class AddQuantity extends Component {
             <DataTable
               metaData={subContractorTableMetaData}
               bodyData={this.props.quantityData}
+              onClickDelete={(rowIndex) => this.props.deleteQuantity(rowIndex)}
+              onClickEdit={(rowIndex) => this.props.editQuantity(rowIndex)}
+              isShowEdit={false}
             />
           </FormRow>
         </Modal>

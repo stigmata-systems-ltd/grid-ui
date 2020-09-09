@@ -157,8 +157,11 @@ class GridDPR extends Component {
                 }}
                 quantityData={this.props.grid.addedQuantity}
                 addQuantity={this.props.addQuantity}
+                deleteQuantity={(index) => this.props.deleteQuantity(index)}
+                editQuantity={(index) => this.props.editQuantity(index)}
                 totalQuantity={this.props.grid.totalQuantity}
                 totalSubContractor={this.props.grid.totalSubContractor}
+                {...this.props.grid}
               />
               <FormRow>
                 <TextInput
