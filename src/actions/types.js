@@ -42,3 +42,9 @@ export const CHANGE_QUANTITY = 'CHANGE_QUANTITY';
 export const LAYER_NO = 'LAYER_NO';
 export const LAYER_PROGRESS = 'LAYER_PROGRESS';
 export const RESET_QUANTITY_FORM = 'RESET_QUANTITY_FORM';
+//Auth
+export const SET_USERNAME = "SET_USERNAME";
+export const SET_PASSWORD = "SET_PASSWORD";
+export const AUTHENTICATE_USER = "AUTHENTICATE_USER";
+export const SET_TOKEN = "SET_TOKEN";
+
