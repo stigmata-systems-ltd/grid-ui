@@ -3,6 +3,7 @@ import { metaDataHeaderDropDowNav } from "./utils";
 import DropDownNavItem from "./DropDownNavItem";
 import { PROFILE_TEMP } from "../../assets/images/index";
 import FaIcon from "../FaIcon";
+import { logout, getUserDetails } from "../../utils/auth";
 
 class DropDownNav extends Component {
 
@@ -32,7 +33,8 @@ class DropDownNav extends Component {
                             iconName="faUser"
                             className="navIcons drop-down-icon"
                         />
-                        <span class="nav-profile-name">Ananth Prasad</span>
+                        {console.log(getUserDetails())}
+                        <span class="nav-profile-name">{getUserDetails().username}</span>
                         <FaIcon
                             iconName="faAngleDown"
                             className="navIcons drop-down-icon"

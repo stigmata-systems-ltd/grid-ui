@@ -17,7 +17,7 @@ class DataTable extends Component {
             <tr>{this.renderTableHeaders()}</tr>
           </thead>
           <tbody>
-            {this.props.bodyData.map((data) => {
+            {this.props.bodyData.map((data, rowIndex) => {
               return (
                 <tr>
                   {this.props.showRowDelete && (
@@ -35,8 +35,19 @@ class DataTable extends Component {
                   ))}
 
                   <td>
-                  <Button btnText="Edit" btnType="primary" />&nbsp;
-                  <Button btnText="Delete" btnType="secondary" />
+                  {this.props.isShowEdit &&
+                  <Button 
+                    btnText="Edit" 
+                    btnType="primary" 
+                    onClick={() => this.props.onClickEdit(rowIndex)}
+                  />
+                  }
+                  &nbsp;
+                  <Button 
+                    btnText="Delete" 
+                    btnType="btn-danger"
+                    onClick={() => this.props.onClickDelete(rowIndex)}
+                  />
                   </td>
                 </tr>
               );

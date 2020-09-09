@@ -1,11 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import './assets/css/styles.css';
 
 //Pages Import
-import Login from './pages/Login';
+import Login from './container/auth/loginContainer';
 import Dashboard from './pages/dashboard/Dashoard';
 import GridDPR from './container/grid/gridDPRContainer';
 import CreateGrid from './container/grid/addGridContainer';
