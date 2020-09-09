@@ -45,7 +45,8 @@ export const _clientBillingMetaData = [
     "#",
     "S.No",
     "Grid Number",
-    "Grid Layers"
+    "Grid Layers",
+    "Actions"
 ]
 
 export const _bodyData = [
@@ -70,3 +71,4 @@ export const _bodyData = [
         layerNum: "Layer-1, Layer-2, Layer-3, Layer-4"
     },
 ]
+

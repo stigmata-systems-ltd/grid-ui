@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Button from "./forms/Button";
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 class ActionDataTable extends Component {
   renderTableHeaders = () => {
@@ -9,7 +10,7 @@ class ActionDataTable extends Component {
   render() {
     return (
       <div class="table-responsive pt-3 data-table">
-        <table class="table table-bordered">
+        <table class="table table-bordered table-striped table-hover">
           <thead>
             <tr>{this.renderTableHeaders()}</tr>
           </thead>
@@ -23,8 +24,11 @@ class ActionDataTable extends Component {
                     </>
                   ))}
                   <td class="action-btns">
-                    <Button btnText="View" btnType="btn-link" onClick={this.props.onClick} />
-                    <Button btnText="Delete" btnType="btn-secondary" onClick={this.props.onClick} />
+                    
+                    <Link to="/viewgriddpr" className="btn btn-secondary">View</Link>
+
+                    {/* <Button btnText="View" btnType="btn-secondary" onClick={this.props.onClick} /> */}
+                    {/* <Button btnText="Delete" btnType="btn-secondary" onClick={this.props.onClick} /> */}
                   </td>
                 </tr>
               );

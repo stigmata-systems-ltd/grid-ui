@@ -1,18 +1,21 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import './assets/css/styles.css';
 
 //Pages Import
-import Login from './pages/Login';
+import Login from './container/auth/loginContainer';
 import Dashboard from './pages/dashboard/Dashoard';
-import GridDPR from './pages/gridDPR/GridDPR';
-import CreateGrid from './pages/createGrid/CreateGrid';
-import ViewGrid from './pages/viewGrid/ViewGrid';
+import GridDPR from './container/grid/gridDPRContainer';
+import CreateGrid from './container/grid/addGridContainer';
+import ViewGrid from './container/grid/viewGrid';
+import ViewGridDpr from './pages/viewGridDPR/ViewGridDpr';
 import GridDetails from './pages/gridDetails/GridDetails';
+import EditDridDetails from './pages/editGridDetails/EditGridDetails';
 import ClientBilling from './pages/clientBilling/ClientBilling';
-import SubContractor from './pages/subContractor/SubContractor';
+import SubContractor from './container/subContractor/SubContractorContainer';
+import CreateUser from './container/userManagement/createUserContainer';
 
 function App() {
   return (
@@ -23,6 +26,9 @@ function App() {
         </Route>
         <Route exact path="/login">
           <Login />
+        </Route>
+        <Route exact path="/createuser">
+          <CreateUser />
         </Route>
         <Route path="/dashboard">
           <Dashboard />
@@ -36,8 +42,14 @@ function App() {
         <Route path="/viewgrid">
           <ViewGrid />
         </Route>
+        <Route path="/viewgriddpr">
+          <ViewGridDpr />
+        </Route>
         <Route path="/griddetails">
           <GridDetails />
+        </Route>
+        <Route path="/editgriddetails">
+          <EditDridDetails />
         </Route>
         <Route path="/clientbilling">
           <ClientBilling />

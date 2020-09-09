@@ -20,19 +20,19 @@ class Cleaning extends Component {
     return (
       <div class="card">
         <div class="card-body">
-          <h5>Layer Photographs</h5>
+          <h5>Layer Photographs</h5><br/>
           <FormRow>
             <SimpleDropDown
               label="Grid Number"
               selectOptions={gridNumber}
-              onChange={this.handleGridSelection}
-              value={this.state.selectedGrid}
+              // onChange={this.handleGridSelection}
+              // value={this.state.selectedGrid}
             />
             <SimpleDropDown
               label="Layer Number"
               selectOptions={layers}
-              onChange={this.handleLayerSelection}
-              value={this.state.selectedLayer}
+              // onChange={this.handleLayerSelection}
+              // value={this.state.selectedLayer}
             />
           </FormRow>
           <ImageGroup>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Button from './forms/Button';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 class GridDetailsDataTable extends Component {
   renderTableHeaders = () => {
@@ -23,11 +24,13 @@ class GridDetailsDataTable extends Component {
                     </>
                   ))}
                   <td class="action-btns">
-                    <Button
+                    {/* <Button
                       btnText="Edit"
                       btnType="btn-secondary"
                       onClick={this.props.onClick}
-                    />
+                    /> */}
+
+                    <Link to="/griddpr" className="btn btn-secondary">Edit</Link>
                   </td>
                 </tr>
               );
