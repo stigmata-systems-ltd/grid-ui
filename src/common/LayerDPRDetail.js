@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import Button from './forms/Button';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import LayerViewModel from '../pages/viewGridDPR/LayerViewModel';
 import IconTextButton from './forms/IconTextButton';
 import LayerDPRViewModel from './LayerDPRViewModel';
 import FormRow from './forms/FormRow';
 import LayerDPRViewDataTable from './LayerDPRViewDataTable';
 import TextInput from './forms/TextInput';
+import IconButton from './forms/IconButton';
 
 class LayerDPRDetail extends Component {
   constructor() {
@@ -26,6 +27,9 @@ class LayerDPRDetail extends Component {
   showLayerViewModal = () => {
     this.setState({ showLayerViewModal: true });
   };
+  redirectToEditGrid = () => {
+    this.props.history.push('griddpr')
+  }
 
   render() {
     return (
@@ -44,8 +48,8 @@ class LayerDPRDetail extends Component {
                     </>
                   ))}
                   <td class="action-btns">
-                    <IconTextButton btnText="View" onClick={this.showLayerViewModal} />
-                    <Link to="/griddpr" className="btn btn-secondary">Edit</Link>
+                    <Button btnText="View" btnType="primary" onClick={this.showLayerViewModal} />
+                    <IconButton  iconName="faEdit" onClick={this.redirectToEditGrid} />
                   </td>
 
                 </tr>
@@ -86,4 +90,4 @@ class LayerDPRDetail extends Component {
   }
 }
 
-export default LayerDPRDetail;
+export default withRouter(LayerDPRDetail);
