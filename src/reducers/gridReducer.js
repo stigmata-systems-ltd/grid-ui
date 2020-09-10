@@ -1,4 +1,3 @@
-
 import {
   GRID_NO_LIST,
   LAYER_NO_LIST,
@@ -36,27 +35,29 @@ import {
   CHANGE_QUANTITY,
   LAYER_NO,
   RESET_QUANTITY_FORM,
-} from "../actions/types";
+  RESET_CREATE_GRID_FORM,
+} from '../actions/types';
 
 const initialState = {
   gridNoData: [],
   gridLatLong: [],
   subContractorList: [],
   approvalOptions: [
-    { id: "New", gridName: "New" },
-    { id: "Completed", gridName: "Completed" },
+    { id: 'New', gridName: 'New' },
+    { id: 'Completed', gridName: 'Completed' },
   ],
   layerNoList: [],
   quantitySelected: [],
   addedQuantity: [],
   totalQuantity: 0,
   totalSubContractor: 0,
-  quantity: "",
-  subContractorName: "0",
+  quantity: '',
+  subContractorName: '0',
   isSubContractorEdit: false,
+  gridAdd: { message: '' },
 };
 
-export default function (state = initialState, action) {
+export default function(state = initialState, action) {
   switch (action.type) {
     case `${GRID_NO_LIST}_FULFILLED`:
       console.log(`GRID NO LIST : ${action.payload}`);
@@ -68,10 +69,10 @@ export default function (state = initialState, action) {
     case `${LAYER_NO_LIST}_FULFILLED`:
       console.log(`LAYER NO LIST : ${action.payload}`);
       const layerNoList = [];
-      action.payload.data.map((a) => {
+      action.payload.data.map(a => {
         const data = {
-          id: "",
-          gridName: "",
+          id: '',
+          gridName: '',
         };
         data.id = a.id;
         data.gridName = a.layerName;
@@ -133,7 +134,22 @@ export default function (state = initialState, action) {
       console.log(action.payload);
       return {
         ...state,
-        gridAdd: action.payload,
+        gridAdd: { message: 'Grid Added Successfully' },
+        variant: 'success',
+      };
+    case `${GRID_ADD}_REJECTED`:
+      console.log(action.payload);
+      return {
+        ...state,
+        gridAdd: { message: 'Error Occurred' },
+        variant: 'danger',
+      };
+    case RESET_CREATE_GRID_FORM:
+      return {
+        ...state,
+        gridNumber: '',
+        gridLatLong: [],
+        gridArea: '',
       };
     case GRID_LATLONG_REMOVE:
       console.log(`In Grid latlang remove reducer: ${action.payload}`);
@@ -227,10 +243,10 @@ export default function (state = initialState, action) {
       };
     case `${SUBCONTRACTOR_LIST}_FULFILLED`:
       const subContractorList = [];
-      action.payload.data.map((a) => {
+      action.payload.data.map(a => {
         const data = {
-          id: "",
-          gridName: "",
+          id: '',
+          gridName: '',
         };
         data.id = a.subContrtactorId;
         data.gridName = a.name;
@@ -253,8 +269,8 @@ export default function (state = initialState, action) {
     case RESET_QUANTITY_FORM:
       return {
         ...state,
-        quantity: "",
-        subContractorName: "0",
+        quantity: '',
+        subContractorName: '0',
       };
     case CHANGE_QUANTITY:
       return {

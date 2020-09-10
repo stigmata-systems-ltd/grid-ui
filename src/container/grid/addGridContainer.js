@@ -10,6 +10,7 @@ import {
   GRID_LANG,
   GRID_LATLANG,
   GRID_LATLONG_REMOVE,
+  RESET_CREATE_GRID_FORM,
 } from '../../actions/types';
 
 const mapDispatchToProps = dispatch => {
@@ -17,6 +18,7 @@ const mapDispatchToProps = dispatch => {
   return {
     createGrid() {
       dispatch(createGrid());
+      dispatch({ type: RESET_CREATE_GRID_FORM });
     },
     addLatLang() {
       dispatch(addLatLang());

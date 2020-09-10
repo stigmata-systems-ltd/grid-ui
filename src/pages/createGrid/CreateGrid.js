@@ -6,7 +6,7 @@ import TextInput from '../../common/forms/TextInput';
 import AddLatLng from './AddLatLng';
 import IconTextButton from '../../common/forms/IconTextButton';
 import Button from '../../common/forms/Button';
-
+import CustomAlert from '../../common/forms/customAlert';
 class CreateGrid extends Component {
   constructor(props) {
     super(props);
@@ -15,12 +15,6 @@ class CreateGrid extends Component {
     };
   }
 
-  // handleLocationRows = () => {
-  //   let { locationRows } = this.state;
-  //   locationRows.push(locationRows.length);
-  //   console.log(locationRows);
-  //   this.setState({ locationRows });
-  // };
   handleDeleteLocationRow = () => {
     let { locationRows } = this.state;
     locationRows.pop();
@@ -30,6 +24,14 @@ class CreateGrid extends Component {
   render() {
     return (
       <ContentLoader>
+        <div>
+          {this.props.grid.gridAdd.message ? (
+            <CustomAlert
+              variant={this.props.grid.variant}
+              message={this.props.grid.gridAdd.message}
+            />
+          ) : null}
+        </div>
         <FormContainer formTitle={'Create Grid'}>
           <FormRow>
             <TextInput
