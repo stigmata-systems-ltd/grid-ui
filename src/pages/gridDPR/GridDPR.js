@@ -67,6 +67,8 @@ class GridDPR extends Component {
 
   componentDidMount() {
     this.props.fetchGridNoData();
+    this.props.fetchLayerNoData();
+    this.props.fetchSubContractorData();
   }
 
   render() {
@@ -104,43 +106,31 @@ class GridDPR extends Component {
               <FormRow>
                 <SimpleDropDown size="col-md-4"
                   label="Grid Number"
-                  selectOptions={gridNumber}
-                // onChange={this.handleGridSelection}
-                // value={this.state.selectedGrid}
+                  selectOptions={this.props.grid.gridNoData}
+                  onChange={e => this.props.handleGridNoChange(e.target.value)}
+                  // value={this.state.selectedGrid}
                 />
                 <SimpleDropDown size="col-md-4"
                   label="Layer Number"
-                  selectOptions={layers}
-                // onChange={this.handleLayerSelection}
-                // value={this.state.selectedLayer}
+                  selectOptions={this.props.grid.LayerNoData}
+                  onChange={e => this.props.handleLayerNoChange(e.target.value)}
+                  // value={this.state.selectedLayer}
                 />
                 <DateInput size="col-md-4" label="Date of Filing" />
               </FormRow>
               <FormRow>
-
-                <TextInput size="col-md-4" label="Area Of Layer (Sqm)" />
-                <SimpleDropDown size="col-md-4"
-                  label="Fill Type"
-                  selectOptions={fillType}
-                // onChange={this.handleGridSelection}
-                // value={this.state.selectedGrid}
+                <DateInput
+                  label="Date of Filing"
+                  onChange={e =>
+                    this.props.handleDateOfFilingChange(e.target.value)
+                  }
                 />
-                <SimpleDropDown size="col-md-4" 
-                label="Material Descrip.." 
-                selectOptions={materialDescription} />
-              </FormRow>
-
-              <FormRow>
-
-                <TextInput size="col-md-4" label="Top Level Fill Material" />
-                <FileInput size="col-md-4" label="Select Documents" />
-                <SimpleDropDown size="col-md-4"
-                  label="Layer Status"
-                  selectOptions={layerStsMeta}
-                  // onChange={this.handleLayerSelection}
-                  // value={this.state.selectedLayer}
+                <TextInput
+                  label="Area Of Layer (Sqm)"
+                  onChange={e =>
+                    this.props.handleAreaOfLayerChange(e.target.value)
+                  }
                 />
-
               </FormRow>
 
               <FormRow>
@@ -156,44 +146,133 @@ class GridDPR extends Component {
                 </div>
               </FormRow>
               {/* ADD QUANTITY COMPONENT */}
-              <AddQuantity />
-
+              <AddQuantity
+                subContractorList={this.props.grid.subContractorList}
+                quantityChange={e =>
+                  this.props.handleQuantityChange(e.target.value)
+                }
+                onSubContractorChange={e => {
+                  console.log('SubContractor Change');
+                  console.dir(e.target.options[e.target.selectedIndex].value);
+                  this.props.handleSubContractorChange(e.target.value);
+                }}
+                quantityData={this.props.grid.addedQuantity}
+                addQuantity={this.props.addQuantity}
+                deleteQuantity={(index) => this.props.deleteQuantity(index)}
+                editQuantity={(index) => this.props.editQuantity(index)}
+                totalQuantity={this.props.grid.totalQuantity}
+                totalSubContractor={this.props.grid.totalSubContractor}
+                {...this.props.grid}
+              />
+              <FormRow>
+                <TextInput
+                  label="Fill Type"
+                  onChange={e =>
+                    this.props.handleFillTypeChange(e.target.value)
+                  }
+                />
+                <TextInput
+                  label="Top Level Fill Material"
+                  onChange={e =>
+                    this.props.handleTopLevelFillMaterialChange(e.target.value)
+                  }
+                />
+              </FormRow>
               <FormRow>
                 <CheckBox label="RFI Level Verification" />
                 <CheckBox label="RFI Compaction Testing" />
               </FormRow>
               <FormRow>
-                <TextInput label="RFI Number" />
-                <TextInput label="RFI Number" />
+                <TextInput
+                  label="RFI Number"
+                  onChange={e => this.props.handleRFILVChange(e.target.value)}
+                />
+                <TextInput
+                  label="RFI Number"
+                  onChange={e => this.props.handleRFICTChange(e.target.value)}
+                />
               </FormRow>
               <FormRow>
-                <DateInput label="Inspection Date" />
-                <DateInput label="Inspection Date" />
+                <DateInput
+                  label="Inspection Date"
+                  onChange={e =>
+                    this.props.handleRFILVInspectionDateChange(e.target.value)
+                  }
+                />
+                <DateInput
+                  label="Inspection Date"
+                  onChange={e =>
+                    this.props.handleRFICTInspectionDateChange(e.target.value)
+                  }
+                />
               </FormRow>
               <FormRow>
-                <DateInput label="Approval Date" />
-                <DateInput label="Approval Date" />
+                <DateInput
+                  label="Approval Date"
+                  onChange={e =>
+                    this.props.handleRFILVApprovalDateChange(e.target.value)
+                  }
+                />
+                <DateInput
+                  label="Approval Date"
+                  onChange={e =>
+                    this.props.handleRFICTApprovalDateChange(e.target.value)
+                  }
+                />
               </FormRow>
               <FormRow>
                 <SimpleDropDown
                   label="RFI Status (Approval)"
-                  selectOptions={status}
-                // onChange={this.handleGridSelection}
-                // value={this.state.selectedGrid}
+                  selectOptions={this.props.grid.approvalOptions}
+                  onChange={e =>
+                    this.props.handleRFILVApprovalStatusChange(e.target.value)
+                  }
+                  // value={this.state.selectedGrid}
                 />
                 <SimpleDropDown
                   label="RFI Status (Approval)"
-                  selectOptions={status}
-                // onChange={this.handleGridSelection}
-                // value={this.state.selectedGrid}
+                  selectOptions={this.props.grid.approvalOptions}
+                  onChange={e =>
+                    this.props.handleRFICTApprovalStatusChange(e.target.value)
+                  }
+                  // value={this.state.selectedGrid}
+                />
+              </FormRow>
+              <FormRow>
+                <TextArea
+                  label="Material Description"
+                  size="col-md-6"
+                  onChange={e =>
+                    this.props.handleMaterialDescriptionChange(e.target.value)
+                  }
+                />
+                <FileInput
+                  label="Select Documents"
+                  onChange={e => this.props.handleFileUpload(e.target.files[0])}
+                />
+              </FormRow>
+              <FormRow>
+                <TextArea
+                  label="Remarks"
+                  size="col-md-12"
+                  onChange={e => this.props.handleRemarksChange(e.target.value)}
                 />
               </FormRow>
 
               <FormRow>
-                <TextArea label="Remarks" size="col-md-12" />
+                <SimpleDropDown
+                  label="Layer Status"
+                  selectOptions={this.props.grid.approvalOptions}
+                  onChange={e =>
+                    this.props.handleLayerStatusChange(e.target.value)
+                  }
+                />
               </FormRow>
-
-              <Button btnText="Save" btnType="primary" />
+              <Button
+                btnText="Save"
+                btnType="primary"
+                onClick={this.props.updateLayerProgress}
+              />
               <Button btnText="Cancel" btnType="cancel" />
             </TabPane>
             {/* Cleaning Tab */}
