@@ -13,7 +13,7 @@ const rootReducer = combineReducers({
   userSignin : userSigninReducer,
   clientBilling :clientBillingReducer,
   user: userManagementReducer,
-
+  auth: authReducer,
 });
 
 export default rootReducer;
