@@ -7,6 +7,7 @@ import {
   PASSWORD,
   ROLENAME,
   ADD_USER,
+  RESET_CREATE_USER_FORM,
 } from '../actions/types';
 
 const initialState = {
@@ -56,10 +57,30 @@ export default function(state = initialState, action) {
         ...state,
         roleName: action.payload,
       };
-    case ADD_USER:
+    case `${ADD_USER}_FULFILLED`:
+      console.log(JSON.stringify(action.payload));
       return {
         ...state,
         addUser: action.payload,
+        variant: 'success',
+      };
+    case `${ADD_USER}_REJECTED`:
+      console.log(JSON.stringify(action.payload));
+      return {
+        ...state,
+        addUser: action.payload,
+        variant: 'danger',
+      };
+    case RESET_CREATE_USER_FORM:
+      return {
+        ...state,
+        firstName: '',
+        lastName: '',
+        mobileNo: '',
+        email: '',
+        userName: '',
+        password: '',
+        roleName: '',
       };
     default:
       return state;

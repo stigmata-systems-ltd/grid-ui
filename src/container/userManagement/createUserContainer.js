@@ -10,6 +10,7 @@ import {
   USERNAME,
   PASSWORD,
   ROLENAME,
+  RESET_CREATE_USER_FORM,
 } from '../../actions/types';
 
 const mapDispatchToProps = dispatch => {
@@ -17,6 +18,7 @@ const mapDispatchToProps = dispatch => {
   return {
     createUser() {
       dispatch(createUser());
+      dispatch({ type: RESET_CREATE_USER_FORM });
     },
 
     handleFirstNameChange(value) {
