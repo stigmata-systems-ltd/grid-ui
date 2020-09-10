@@ -1,6 +1,8 @@
 /*Custom Styles
 ***************/
-
+body {
+  font-family: sans-serif !important;
+}
 /*Common Styles
 **************/
 .no-margin-bottom {
