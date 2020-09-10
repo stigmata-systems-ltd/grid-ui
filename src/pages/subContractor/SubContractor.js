@@ -25,14 +25,14 @@ class SubContractor extends Component {
         <FormContainer formTitle={'Add Sub Contractor'}>
           <FormRow>
             <TextInput
-              label="SubContractorName"
+              label="SubContractor Name"
               name="subName"
               id="subName"
               onChange={e => this.props.handleChangeSubName(e.target.value)}
               value={subprop.subContractorName}
             />
             <TextInput
-              label="Sub-Contractor Code"
+              label="Vendor Code"
               name="subCode"
               id="subCode"
               onChange={e => this.props.handleChangeSubCode(e.target.value)}

@@ -8,7 +8,7 @@ export const tabMetaData = [
   },
   {
     id: 2,
-    navText: 'Daily Progress',
+    navText: 'Layer Progress',
     isActive: false,
   },
   {
