@@ -10,6 +10,7 @@ class DataTable extends Component {
   };
 
   render() {
+    
     return (
       <div class="table-responsive pt-3 data-table">
         <table class="table table-bordered">
@@ -30,7 +31,7 @@ class DataTable extends Component {
                   )}
                   {Object.keys(data).map((key) => (
                     <>
-                      <td> {data[key].toString()}</td>
+                      <td> <input type="text" name value={data[key].toString()} className="form-control"/></td>
                     </>
                   ))}
 

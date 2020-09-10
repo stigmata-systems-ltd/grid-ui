@@ -1,7 +1,53 @@
+
+export const tabMetaData = [
+  {
+    id: 1,
+    navText: 'Grid Details',
+    isActive: true,
+  },
+  {
+    id: 2,
+    navText: 'Layer DPR Details',
+    isActive: false,
+  },
+
+];
+
+//layer DPR
+export const _layerMetaData = [
+  'Layer No',
+  'RFI Level Approval Date',
+  'RFI Level Approval Status',
+  'RFI Testing Approval Date',
+  'RFI Testing Approval status',
+  'Layer Status',
+  'Actions',
+];
+
+export const _layerBodyData = [
+  {
+    sno: '1',
+    RFIAppDate: '1/9/2020',
+    RFIAppStatus: 'Complete',
+    RFITestingDate: '1/9/2020',
+    RFITestingStatus: 'Complete',
+    LayerStatus : "New"
+ 
+  },
+];
+
+
+//end Layer Dpr
+
+
+
+
+
+
 export const _cGMetaData = [
   'S.No',
-  'Grid Area',
-  'GEO-Location',
+  // 'Grid Area',
+  // 'GEO-Location',
   'RFI No',
   'Inspection Date',
   'Approval Date',
@@ -34,8 +80,8 @@ export const _RFICompactionTestMetaData = [
 export const _CGbodyData = [
   {
     sno: '1',
-    gridArea: '1000',
-    GEOLocation: '',
+    // gridArea: '1000',
+    // GEOLocation: '',
     RFINo: '100',
     InspectionDate: '1/9/2020',
     ApprovalDate: '2/9/2020',

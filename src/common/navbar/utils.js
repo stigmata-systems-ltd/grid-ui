@@ -34,6 +34,7 @@ export const metaDataNavbar = [
         navText: 'Grid Details',
         route: 'griddetails',
       },
+      
     ],
   },
   {

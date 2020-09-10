@@ -7,7 +7,7 @@ import TabContent from '../../common/tabs/TabContent';
 import TabPane from '../../common/tabs/TabPane';
 import TabNavs from '../../common/tabs/TabNavs';
 
-import { gridNumber, layers, tabMetaData, layerStsMeta, status } from './utils';
+import { gridNumber, layers, tabMetaData, layerStsMeta, status, fillType, materialDescription } from './utils';
 import Cleaning from './Cleaning';
 import TextInput from '../../common/forms/TextInput';
 import DateInput from '../../common/forms/DateInput';
@@ -102,22 +102,45 @@ class GridDPR extends Component {
             </TabPane>
             <TabPane isActive={this.state.tabPaneStatus[1].isActive}>
               <FormRow>
-                <SimpleDropDown
+                <SimpleDropDown size="col-md-4"
                   label="Grid Number"
                   selectOptions={gridNumber}
-                  // onChange={this.handleGridSelection}
-                  // value={this.state.selectedGrid}
+                // onChange={this.handleGridSelection}
+                // value={this.state.selectedGrid}
                 />
-                <SimpleDropDown
+                <SimpleDropDown size="col-md-4"
                   label="Layer Number"
                   selectOptions={layers}
+                // onChange={this.handleLayerSelection}
+                // value={this.state.selectedLayer}
+                />
+                <DateInput size="col-md-4" label="Date of Filing" />
+              </FormRow>
+              <FormRow>
+
+                <TextInput size="col-md-4" label="Area Of Layer (Sqm)" />
+                <SimpleDropDown size="col-md-4"
+                  label="Fill Type"
+                  selectOptions={fillType}
+                // onChange={this.handleGridSelection}
+                // value={this.state.selectedGrid}
+                />
+                <SimpleDropDown size="col-md-4" 
+                label="Material Descrip.." 
+                selectOptions={materialDescription} />
+              </FormRow>
+
+              <FormRow>
+
+                <TextInput size="col-md-4" label="Top Level Fill Material" />
+                <FileInput size="col-md-4" label="Select Documents" />
+                <SimpleDropDown size="col-md-4"
+                  label="Layer Status"
+                  selectOptions={layerStsMeta}
                   // onChange={this.handleLayerSelection}
                   // value={this.state.selectedLayer}
                 />
-              </FormRow>
-              <FormRow>
-                <DateInput label="Date of Filing" />
-                <TextInput label="Area Of Layer (Sqm)" />
+
               </FormRow>
 
               <FormRow>
@@ -134,10 +157,7 @@ class GridDPR extends Component {
               </FormRow>
               {/* ADD QUANTITY COMPONENT */}
               <AddQuantity />
-              <FormRow>
-                <TextInput label="Fill Type" />
-                <TextInput label="Top Level Fill Material" />
-              </FormRow>
+
               <FormRow>
                 <CheckBox label="RFI Level Verification" />
                 <CheckBox label="RFI Compaction Testing" />
@@ -158,32 +178,21 @@ class GridDPR extends Component {
                 <SimpleDropDown
                   label="RFI Status (Approval)"
                   selectOptions={status}
-                  // onChange={this.handleGridSelection}
-                  // value={this.state.selectedGrid}
+                // onChange={this.handleGridSelection}
+                // value={this.state.selectedGrid}
                 />
                 <SimpleDropDown
                   label="RFI Status (Approval)"
                   selectOptions={status}
-                  // onChange={this.handleGridSelection}
-                  // value={this.state.selectedGrid}
+                // onChange={this.handleGridSelection}
+                // value={this.state.selectedGrid}
                 />
               </FormRow>
-              <FormRow>
-                <TextArea label="Material Description" size="col-md-6" />
-                <FileInput label="Select Documents" />
-              </FormRow>
+
               <FormRow>
                 <TextArea label="Remarks" size="col-md-12" />
               </FormRow>
 
-              <FormRow>
-                <SimpleDropDown
-                  label="Layer Status"
-                  selectOptions={layerStsMeta}
-                  // onChange={this.handleLayerSelection}
-                  // value={this.state.selectedLayer}
-                />
-              </FormRow>
               <Button btnText="Save" btnType="primary" />
               <Button btnText="Cancel" btnType="cancel" />
             </TabPane>

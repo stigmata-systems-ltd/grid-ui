@@ -7,7 +7,7 @@ class TextArea extends Component {
             <div class={this.props.size}>
                 <div class="form-group">
                     <label for="exampleTextarea1">{this.props.label}</label>
-                    <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
+                    <textarea class="form-control" id="exampleTextarea1" rows="4" style={{marginLeft:"60px"}}></textarea>
                 </div>
             </div>
         )

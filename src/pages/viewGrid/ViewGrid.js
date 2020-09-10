@@ -4,8 +4,8 @@ import ActionDataTable from '../../common/ActionDataTable';
 import FormContainer from '../../common/forms/FormContainer';
 import FormRow from '../../common/forms/FormRow';
 import SearchBox from '../../common/forms/SearchBox';
-
 import { _viewGridMetaData, _bodyData } from './utils';
+import DownloadToExcelButton from '../../common/forms/DownloadToExcelButton';
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -17,6 +17,7 @@ class Dashboard extends Component {
         <FormContainer formTitle={'Grid List'}>
           <FormRow>
             <SearchBox />
+            <DownloadToExcelButton />
             <ActionDataTable
               metaData={_viewGridMetaData}
               bodyData={this.props.grid.gridNoData}

@@ -3,6 +3,7 @@ import FormRow from '../../common/forms/FormRow';
 import SimpleDropDown from '../../common/forms/SimpleDropDown';
 import { gridNumber, status } from './utils';
 import Button from '../../common/forms/Button';
+import FileInput from '../../common/forms/FileInput';
 
 class Cleaning extends Component {
   // constructor() {
@@ -28,8 +29,9 @@ class Cleaning extends Component {
               label="Select Grid"
               selectOptions={this.props.gridNoData}
               onChange={e => this.props.onGridNoChange(e)}
-              // value={this.state.selectedGrid}
+            // value={this.state.selectedGrid}
             />
+
           </FormRow>
           <div class="row">
             <div class="col-md-6">
@@ -41,14 +43,16 @@ class Cleaning extends Component {
                     class="form-control"
                     onChange={e => this.props.onRFINoChange(e)}
                   />
+
                 </div>
+
               </div>
             </div>
             <SimpleDropDown
               label="RFI Status (Approval)"
               selectOptions={this.props.approvalOptions}
               onChange={e => this.props.onapprovalChange(e)}
-              // value={this.state.selectedGrid}
+            // value={this.state.selectedGrid}
             />
           </div>
           <div class="row">
@@ -76,7 +80,25 @@ class Cleaning extends Component {
                 </div>
               </div>
             </div>
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Upload Document</label>
+                <div class="col-sm-9">
+
+                  <input type="file" name="img[]" class="file-upload-default" />
+                  <div class="input-group col-xs-12">
+                    <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image" />
+                    <span class="input-group-append">
+                      <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
+
+
           <Button
             btnText="Save"
             btnType="primary"

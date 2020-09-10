@@ -18665,6 +18665,7 @@ html {
 
 .container-scroller {
   overflow: hidden;
+  
 }
 
 pre {
@@ -21109,6 +21110,13 @@ dl li {
 
 .content-wrapper {
   background: #f3f3f3;
+  padding: 2.1rem 1.04rem;
+  width: 100%;
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
+}
+.imgg{
+  background-image: url(./assets/images/lt.jpg);
   padding: 2.1rem 1.04rem;
   width: 100%;
   -webkit-flex-grow: 1;

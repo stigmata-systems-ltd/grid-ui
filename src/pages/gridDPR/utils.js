@@ -8,7 +8,7 @@ export const tabMetaData = [
   },
   {
     id: 2,
-    navText: 'Daily Progress',
+    navText: 'Layer Progress',
     isActive: false,
   },
   {
@@ -141,4 +141,29 @@ export const status = [
   },
   
 ];
+export const fillType = [
+  {
+    text: 'Reclamation fill 100mm down',
+    value: 1,
+  },
+  {
+    text: 'selected fill 100mm down',
+    value: 2,
+  },
+  
+];
+export const materialDescription = [
+  {
+    text: 'Reclamation fill 100mm down',
+    value: 1,
+  },
+  {
+    text: 'selected fill 100mm down',
+    value: 2,
+  },
+  
+];
+
+
+
 

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import ContentLoader from '../../common/ContentLoader';
 import GridDetailsDataTable from '../../common/GridDetailsDataTable';
+
 import FormContainer from '../../common/forms/FormContainer';
 import FormRow from '../../common/forms/FormRow';
-
+import { getGridRFILevelVerificationDetails ,getGridRFICompactionTestingDetails} from "../../container/grid/dataTransformer";
 import {
   _cGMetaData,
   _RFILevelVerificationMetaData,
@@ -13,7 +14,13 @@ import {
   _RFICompactionTestbodyData,
 } from './utils';
 
-class Dashboard extends Component {
+
+class GridDetails extends Component {
+
+  componentDidMount() {
+    this.props.fetchRfiLevelVerificationData();
+  }
+
   render() {
     return (
       <ContentLoader>
@@ -29,9 +36,11 @@ class Dashboard extends Component {
           <FormRow>
             <br />
             <h5> RFI Level Verification</h5>
+            {console.log("log",this.props.gridDetails.gridRfiLevelData)}
             <GridDetailsDataTable
               metaData={_RFILevelVerificationMetaData}
-              bodyData={_RFILevelVerificationbodyData}
+              bodyData={getGridRFILevelVerificationDetails(this.props.gridDetails.gridRfiLevelData)}
+              // bodyData={_RFILevelVerificationbodyData}
             />
           </FormRow>
           <FormRow>
@@ -39,7 +48,7 @@ class Dashboard extends Component {
             <h5> RFI Compaction Testing</h5>
             <GridDetailsDataTable
               metaData={_RFICompactionTestMetaData}
-              bodyData={_RFICompactionTestbodyData}
+              bodyData={getGridRFICompactionTestingDetails(this.props.gridDetails.gridRfiLevelData)}
             />
           </FormRow>
         </FormContainer>
@@ -48,4 +57,4 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+export default GridDetails;

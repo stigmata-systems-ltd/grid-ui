@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import ViewGrid from '../../pages/viewGrid/ViewGrid';
 import store from '../../store';
 import { gridNoList } from '../../actions/gridActions';
-import { GRID_NO_LIST } from '../../actions/types';
+
 
 const mapDispatchToProps = dispatch => {
   console.log('dispatcher');

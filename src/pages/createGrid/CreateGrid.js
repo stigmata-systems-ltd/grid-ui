@@ -6,6 +6,7 @@ import TextInput from '../../common/forms/TextInput';
 import AddLatLng from './AddLatLng';
 import IconTextButton from '../../common/forms/IconTextButton';
 import Button from '../../common/forms/Button';
+import Col6 from '../../common/forms/Col6';
 
 class CreateGrid extends Component {
   constructor(props) {
@@ -44,7 +45,7 @@ class CreateGrid extends Component {
             />
           </FormRow>
           <FormRow>
-            <div class="col-md-6">
+            <Col6 size={this.props.size}>
               <div class="form-group row">
                 <div class="col-sm-8">
                   <IconTextButton
@@ -79,7 +80,7 @@ class CreateGrid extends Component {
                   <Button btnText="Preview In Map" btnType="primary" />
                 </div>
               </div>
-            </div>
+            </Col6>
             <div class="col-md-6 stretch-card">
               <div class="card">
                 <div class="card-body">
