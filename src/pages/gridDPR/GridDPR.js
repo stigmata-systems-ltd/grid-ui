@@ -100,23 +100,31 @@ class GridDPR extends Component {
                   this.props.handleApprovalDateChange(e.target.value)
                 }
                 addCGData={this.props.addCGData}
+                message={this.props.grid.cgAdd.message}
+                variant={this.props.grid.variant}
+                RFINumber={this.props.grid.RFINumber}
+                rfiInspectionDate={this.props.grid.rfiInspectionDate}
+                rfiApprovalDate={this.props.grid.rfiApprovalDate}
               />
             </TabPane>
             <TabPane isActive={this.state.tabPaneStatus[1].isActive}>
               <FormRow>
-                <SimpleDropDown size="col-md-4"
+                <SimpleDropDown
+                  size="col-md-4"
                   label="Grid Number"
                   selectOptions={this.props.grid.gridNoData}
                   onChange={e => this.props.handleGridNoChange(e.target.value)}
-                // value={this.state.selectedGrid}
+                  // value={this.state.selectedGrid}
                 />
                 <SimpleDropDown
-                  label="Layer Number" size="col-md-4"
+                  label="Layer Number"
+                  size="col-md-4"
                   selectOptions={this.props.grid.LayerNoData}
                   onChange={e => this.props.handleLayerNoChange(e.target.value)}
-                // value={this.state.selectedLayer}
+                  // value={this.state.selectedLayer}
                 />
-                <DateInput size="col-md-4"
+                <DateInput
+                  size="col-md-4"
                   label="Date of Filing"
                   onChange={e =>
                     this.props.handleDateOfFilingChange(e.target.value)
@@ -124,41 +132,45 @@ class GridDPR extends Component {
                 />
               </FormRow>
               <FormRow>
-
-                <TextInput size="col-md-4"
+                <TextInput
+                  size="col-md-4"
                   label="Area Of Layer (Sqm)"
                   onChange={e =>
                     this.props.handleAreaOfLayerChange(e.target.value)
                   }
                 />
 
-                <SimpleDropDown size="col-md-4"
+                <SimpleDropDown
+                  size="col-md-4"
                   label="Fill Type"
                   onChange={e =>
                     this.props.handleFillTypeChange(e.target.value)
                   }
                 />
-                <SimpleDropDown size="col-md-4"
+                <SimpleDropDown
+                  size="col-md-4"
                   label="Material Descrip.."
                   onChange={e =>
                     this.props.handleMaterialDescriptionChange(e.target.value)
                   }
                 />
-
               </FormRow>
               <FormRow>
-                <TextInput size="col-md-4"
+                <TextInput
+                  size="col-md-4"
                   label="Top Level Fill Material"
                   onChange={e =>
                     this.props.handleTopLevelFillMaterialChange(e.target.value)
                   }
                 />
-                <FileInput size="col-md-4"
+                <FileInput
+                  size="col-md-4"
                   label="Select Documents"
                   onChange={e => this.props.handleFileUpload(e.target.files[0])}
                 />
 
-                <SimpleDropDown size="col-md-4"
+                <SimpleDropDown
+                  size="col-md-4"
                   label="Layer Status"
                   selectOptions={this.props.grid.approvalOptions}
                   onChange={e =>
@@ -166,8 +178,6 @@ class GridDPR extends Component {
                   }
                 />
               </FormRow>
-
-
 
               <FormRow>
                 <div class="col-md-12">
@@ -194,8 +204,8 @@ class GridDPR extends Component {
                 }}
                 quantityData={this.props.grid.addedQuantity}
                 addQuantity={this.props.addQuantity}
-                deleteQuantity={(index) => this.props.deleteQuantity(index)}
-                editQuantity={(index) => this.props.editQuantity(index)}
+                deleteQuantity={index => this.props.deleteQuantity(index)}
+                editQuantity={index => this.props.editQuantity(index)}
                 totalQuantity={this.props.grid.totalQuantity}
                 totalSubContractor={this.props.grid.totalSubContractor}
                 {...this.props.grid}
@@ -250,7 +260,7 @@ class GridDPR extends Component {
                   onChange={e =>
                     this.props.handleRFILVApprovalStatusChange(e.target.value)
                   }
-                // value={this.state.selectedGrid}
+                  // value={this.state.selectedGrid}
                 />
                 <SimpleDropDown
                   label="RFI Status (Approval)"
@@ -258,7 +268,7 @@ class GridDPR extends Component {
                   onChange={e =>
                     this.props.handleRFICTApprovalStatusChange(e.target.value)
                   }
-                // value={this.state.selectedGrid}
+                  // value={this.state.selectedGrid}
                 />
               </FormRow>
 
@@ -269,7 +279,6 @@ class GridDPR extends Component {
                   onChange={e => this.props.handleRemarksChange(e.target.value)}
                 />
               </FormRow>
-
 
               <Button
                 btnText="Save"
