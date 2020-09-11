@@ -57,7 +57,6 @@ class CreateGrid extends Component {
               </div>
               <div class="form-group row location-row">
                 {this.props.grid.gridLatLong.map((e, i) => {
-                  console.log(`Index in Create Grid: ${e} ${i}`);
 
                   return (
                     <AddLatLng

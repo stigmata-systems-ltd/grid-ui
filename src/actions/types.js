@@ -50,6 +50,7 @@ export const PASSWORD = 'PASSWORD';
 export const ROLENAME = 'ROLENAME';
 export const ADD_USER = 'ADD_USER';
 export const RESET_QUANTITY_FORM = 'RESET_QUANTITY_FORM';
+export const SET_LAYER_DETAILS = "SET_LAYER_DETAILS";
 //Auth
 export const SET_USERNAME = 'SET_USERNAME';
 export const SET_PASSWORD = 'SET_PASSWORD';

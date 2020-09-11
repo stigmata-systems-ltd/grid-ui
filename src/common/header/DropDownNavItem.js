@@ -7,7 +7,6 @@ import { withRouter } from "react-router-dom";
 class DropDownNavItem extends Component {
 
     getOnClickFunc = ({navText}) => {
-        console.log("called",navText);
         if(navText === 'Logout') {
             logout(this.props);
         }

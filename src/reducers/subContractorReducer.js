@@ -14,10 +14,8 @@ const initialState = {
 };
 
 export default function(state = initialState, action) {
-  console.log(action.type);
   switch (action.type) {
     case ADD_SUBCONTRACTOR:
-      console.log(action);
       return {
         ...state,
         subContractorAdd: action.payload,

@@ -19,10 +19,8 @@ const initialState = {
 };
 
 export default function(state = initialState, action) {
-  console.log(action.type);
   switch (action.type) {
     case FIRST_NAME:
-      console.log(action);
       return {
         ...state,
         firstName: action.payload,
@@ -58,14 +56,12 @@ export default function(state = initialState, action) {
         roleName: action.payload,
       };
     case `${ADD_USER}_FULFILLED`:
-      console.log(JSON.stringify(action.payload));
       return {
         ...state,
         addUser: action.payload,
         variant: 'success',
       };
     case `${ADD_USER}_REJECTED`:
-      console.log(JSON.stringify(action.payload));
       return {
         ...state,
         addUser: action.payload,

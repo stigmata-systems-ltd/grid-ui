@@ -72,6 +72,7 @@ class GridDPR extends Component {
   }
 
   render() {
+    console.log("this.props.grid",this.props.grid);
     return (
       <ContentLoader>
         <FormContainer formTitle={'Grid Daily Progress'}>
@@ -108,19 +109,20 @@ class GridDPR extends Component {
                   label="Grid Number"
                   selectOptions={this.props.grid.gridNoData}
                   onChange={e => this.props.handleGridNoChange(e.target.value)}
-                // value={this.state.selectedGrid}
+                  value={this.props.grid.gridNumber}
                 />
                 <SimpleDropDown
                   label="Layer Number" size="col-md-4"
                   selectOptions={this.props.grid.LayerNoData}
                   onChange={e => this.props.handleLayerNoChange(e.target.value)}
-                // value={this.state.selectedLayer}
+                  value={this.props.grid.layerNo}
                 />
                 <DateInput size="col-md-4"
                   label="Date of Filing"
                   onChange={e =>
                     this.props.handleDateOfFilingChange(e.target.value)
                   }
+                  value={this.props.grid.dateOfFiling}
                 />
               </FormRow>
               <FormRow>
@@ -130,6 +132,7 @@ class GridDPR extends Component {
                   onChange={e =>
                     this.props.handleAreaOfLayerChange(e.target.value)
                   }
+                  value={this.props.grid.areaOfLayer}
                 />
 
                 <SimpleDropDown size="col-md-4"
@@ -137,12 +140,14 @@ class GridDPR extends Component {
                   onChange={e =>
                     this.props.handleFillTypeChange(e.target.value)
                   }
+                  value={this.props.grid.fillType}
                 />
                 <SimpleDropDown size="col-md-4"
                   label="Material Descrip.."
                   onChange={e =>
                     this.props.handleMaterialDescriptionChange(e.target.value)
                   }
+                  //value={this.props.grid.fillMaterial}
                 />
 
               </FormRow>
@@ -152,6 +157,7 @@ class GridDPR extends Component {
                   onChange={e =>
                     this.props.handleTopLevelFillMaterialChange(e.target.value)
                   }
+                  value={this.props.grid.fillMaterial}
                 />
                 <FileInput size="col-md-4"
                   label="Select Documents"
@@ -164,11 +170,9 @@ class GridDPR extends Component {
                   onChange={e =>
                     this.props.handleLayerStatusChange(e.target.value)
                   }
+                  value={this.props.grid.rfiLayerStatus}
                 />
               </FormRow>
-
-
-
               <FormRow>
                 <div class="col-md-12">
                   <div class="form-group row">
@@ -188,7 +192,6 @@ class GridDPR extends Component {
                   this.props.handleQuantityChange(e.target.value)
                 }
                 onSubContractorChange={e => {
-                  console.log('SubContractor Change');
                   console.dir(e.target.options[e.target.selectedIndex].value);
                   this.props.handleSubContractorChange(e.target.value);
                 }}
@@ -209,10 +212,12 @@ class GridDPR extends Component {
                 <TextInput
                   label="RFI Number"
                   onChange={e => this.props.handleRFILVChange(e.target.value)}
+                  value={this.props.grid.rfiNoLV}
                 />
                 <TextInput
                   label="RFI Number"
                   onChange={e => this.props.handleRFICTChange(e.target.value)}
+                  value={this.props.grid.rfiNoCT}
                 />
               </FormRow>
               <FormRow>
@@ -221,12 +226,14 @@ class GridDPR extends Component {
                   onChange={e =>
                     this.props.handleRFILVInspectionDateChange(e.target.value)
                   }
+                  value={this.props.grid.rfiInspectionDateLV}
                 />
                 <DateInput
                   label="Inspection Date"
                   onChange={e =>
                     this.props.handleRFICTInspectionDateChange(e.target.value)
                   }
+                  value={this.props.grid.rfiInspectionDateCT}
                 />
               </FormRow>
               <FormRow>
@@ -235,12 +242,14 @@ class GridDPR extends Component {
                   onChange={e =>
                     this.props.handleRFILVApprovalDateChange(e.target.value)
                   }
+                  value={this.props.grid.rfiApprovalDateLV}
                 />
                 <DateInput
                   label="Approval Date"
                   onChange={e =>
                     this.props.handleRFICTApprovalDateChange(e.target.value)
                   }
+                  value={this.props.grid.rfiApprovalDateCT}
                 />
               </FormRow>
               <FormRow>
@@ -250,7 +259,7 @@ class GridDPR extends Component {
                   onChange={e =>
                     this.props.handleRFILVApprovalStatusChange(e.target.value)
                   }
-                // value={this.state.selectedGrid}
+                  value={this.props.grid.rfiLVApprovalStatus}
                 />
                 <SimpleDropDown
                   label="RFI Status (Approval)"
@@ -258,7 +267,7 @@ class GridDPR extends Component {
                   onChange={e =>
                     this.props.handleRFICTApprovalStatusChange(e.target.value)
                   }
-                // value={this.state.selectedGrid}
+                  value={this.props.grid.rfiCTApprovalStatus}
                 />
               </FormRow>
 
@@ -267,10 +276,9 @@ class GridDPR extends Component {
                   label="Remarks"
                   size="col-md-12"
                   onChange={e => this.props.handleRemarksChange(e.target.value)}
+                  value={this.props.grid.rfiCTApprovalStatus}
                 />
               </FormRow>
-
-
               <Button
                 btnText="Save"
                 btnType="primary"
