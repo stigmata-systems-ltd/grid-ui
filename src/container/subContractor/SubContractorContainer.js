@@ -10,12 +10,14 @@ import {
   SUBCONTRACTOR_CONTACT_ADDRESS,
   SUBCONTRACTOR_PHONE,
   SUBCONTRACTOR_EMAIL,
+  RESET_SUBCONTRACTOR_FORM,
 } from '../../actions/types';
 
 const mapDispatchToProps = dispatch => {
   return {
     saveSubContractorData() {
       dispatch(addSubContractor());
+      dispatch({ type: RESET_SUBCONTRACTOR_FORM });
     },
 
     handleChangeSubName(value) {
@@ -60,7 +62,7 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   const scr = store.getState().scr;
   return {
-    subContractorName: scr.subContractorName,
+    scr,
   };
 };
 

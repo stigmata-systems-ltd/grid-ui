@@ -36,8 +36,10 @@ import {
   LAYER_NO,
   RESET_QUANTITY_FORM,
   RESET_CREATE_GRID_FORM,
+  ADD_CG,
+  RESET_CG_FORM,
   SET_LAYER_DETAILS,
-} from "../actions/types";
+} from '../actions/types';
 
 const initialState = {
   gridNoData: [],
@@ -55,7 +57,8 @@ const initialState = {
   quantity: "",
   subContractorName: "0",
   isSubContractorEdit: false,
-  gridAdd: { message: "" },
+  gridAdd: { message: '' },
+  cgAdd: { message: '' },
 };
 
 export default function (state = initialState, action) {
@@ -265,6 +268,29 @@ export default function (state = initialState, action) {
       return {
         ...state,
         layerNo: action.payload,
+      };
+      case `${ADD_CG}_FULFILLED`:
+      console.log(action.payload);
+      return {
+        ...state,
+        cgAdd: { message: 'CG updated Successfully' },
+        variant: 'success',
+      };
+    case `${ADD_CG}_REJECTED`:
+      console.log(action.payload);
+      return {
+        ...state,
+        cgAdd: { message: 'Error Occurred' },
+        variant: 'danger',
+      };
+    case RESET_CG_FORM:
+      return {
+        ...state,
+        gridNo: '',
+        RFINumber: '',
+        rfiInspectionDate: '',
+        rfiApprovalDate: '',
+        rfiApproval: '',
       };
     case `${SET_LAYER_DETAILS}_PENDING`:
       return {

@@ -37,6 +37,8 @@ import {
   CHANGE_QUANTITY,
   RESET_QUANTITY_FORM,
   LAYER_NO,
+  SET_EDIT_QUANTITY_DETAILS,
+  RESET_CG_FORM,
 } from '../../actions/types';
 
 const mapDispatchToProps = dispatch => {
@@ -52,6 +54,7 @@ const mapDispatchToProps = dispatch => {
     },
     addCGData() {
       dispatch(addCGData());
+      dispatch({ type: RESET_CG_FORM });
     },
     updateLayerProgress() {
       dispatch(updateLayerProgress());
@@ -201,12 +204,12 @@ const mapDispatchToProps = dispatch => {
       let changedQty = parseInt(grid.quantity);
       let isNewSubCont = true;
       grid.addedQuantity.map((subCont, index) => {
-        if(subCont.subContractorId === grid.subContractorName) {
+        if (subCont.subContractorId === grid.subContractorName) {
           changedQty = parseInt(grid.quantity) + parseInt(subCont.quantity);
           isNewSubCont = false;
           grid.addedQuantity[index].quantity = changedQty;
         }
-      })
+      });
       data.quantity = changedQty;
       data.subContractorId = grid.subContractorName;
       grid.totalQuantity += parseInt(grid.quantity);
@@ -217,7 +220,7 @@ const mapDispatchToProps = dispatch => {
         type: CHANGE_QUANTITY,
         payload: grid.addedQuantity,
       });
-      dispatch({type: RESET_QUANTITY_FORM });
+      dispatch({ type: RESET_QUANTITY_FORM });
     },
     deleteQuantity(index) {
       const grid = store.getState().grid;

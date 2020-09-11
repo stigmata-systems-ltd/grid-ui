@@ -12,16 +12,25 @@ import SimpleDropDown from '../../common/forms/SimpleDropDown';
 import CheckBox from '../../common/forms/CheckBox';
 import DataTable from '../../common/DataTable';
 import { addSubContractor } from '../../actions/subContractorActions';
-
+import CustomAlert from '../../common/forms/customAlert';
 class SubContractor extends Component {
   constructor(props) {
     super(props);
   }
   render() {
-    const subprop = this.props;
+    const subprop = this.props.scr;
+    console.log(this.props);
     return (
       <ContentLoader>
         <FormContainer formTitle={'Add Sub Contractor'}>
+          <div>
+            {this.props.scr.message ? (
+              <CustomAlert
+                variant={this.props.scr.variant}
+                message={this.props.scr.message}
+              />
+            ) : null}
+          </div>
           <FormRow>
             <TextInput
               label="SubContractor Name"
@@ -57,7 +66,7 @@ class SubContractor extends Component {
               onChange={e =>
                 this.props.handleChangesubContactAddress(e.target.value)
               }
-              value={subprop.subContactAddress}
+              value={subprop.subContractorContactAddres}
             />
           </FormRow>
           <FormRow>
@@ -66,14 +75,14 @@ class SubContractor extends Component {
               name="subPhone"
               id="subPhone"
               onChange={e => this.props.handleChangesubPhone(e.target.value)}
-              value={subprop.subPhone}
+              value={subprop.subContractorPhone}
             />
             <TextInput
               label="Sub-Contractor Email"
               name="subEmail"
               id="subEmail"
               onChange={e => this.props.handleChangesubEmail(e.target.value)}
-              value={subprop.subEmail}
+              value={subprop.subContractorEmail}
             />
           </FormRow>
           <Button
