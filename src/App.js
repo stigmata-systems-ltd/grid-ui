@@ -13,9 +13,10 @@ import ViewGrid from './container/grid/viewGrid';
 import ViewGridDpr from './pages/viewGridDPR/ViewGridDpr';
 import GridDetails from './pages/gridDetails/GridDetails';
 import EditDridDetails from './pages/editGridDetails/EditGridDetails';
-import ClientBilling from './pages/clientBilling/ClientBilling';
+// import ClientBilling from './pages/clientBilling/ClientBilling';
 import SubContractor from './container/subContractor/SubContractorContainer';
 import CreateUser from './container/userManagement/createUserContainer';
+import ClientBilling from './container/clientBilling/clientBillingContainer';
 
 function App() {
   return (
