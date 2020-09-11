@@ -14,7 +14,6 @@ import {
 } from '../../actions/types';
 
 const mapDispatchToProps = dispatch => {
-  console.log('dispatcher');
   return {
     createUser() {
       dispatch(createUser());
@@ -68,7 +67,6 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
   const user = store.getState().user;
-  console.log(user);
   return {
     user,
   };

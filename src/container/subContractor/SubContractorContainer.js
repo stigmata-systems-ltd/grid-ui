@@ -14,7 +14,6 @@ import {
 } from '../../actions/types';
 
 const mapDispatchToProps = dispatch => {
-  console.log('dispatcher');
   return {
     saveSubContractorData() {
       dispatch(addSubContractor());
@@ -62,7 +61,6 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
   const scr = store.getState().scr;
-  console.log(scr);
   return {
     scr,
   };
