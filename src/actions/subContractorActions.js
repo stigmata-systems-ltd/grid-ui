@@ -20,7 +20,7 @@ export const addSubContractor = () => {
     contact_address: subContractorContactAddres,
     phone: subContractorPhone,
     email: subContractorEmail,
-    userId: 1,
+    user_id: 1,
   };
   return {
     type: ADD_SUBCONTRACTOR,
