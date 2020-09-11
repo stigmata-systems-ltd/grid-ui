@@ -5,6 +5,7 @@ import {
   LAYER_NO_LIST,
   SUBCONTRACTOR_LIST,
   LAYER_PROGRESS,
+  ADD_CG,
 } from './types';
 import store from '../store';
 import axios from 'axios';
@@ -56,7 +57,7 @@ export const addCGData = () => {
   };
   console.log(`Create Grid: ${JSON.stringify(postData)}`);
   return {
-    type: GRID_ADD,
+    type: ADD_CG,
     payload: axios.post(
       config.BASE_URL + '/api/Grid/CreateCG/' + grid.gridNo,
       postData
