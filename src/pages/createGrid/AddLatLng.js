@@ -8,7 +8,7 @@ class AddLatLng extends Component {
       <>
         <div class="col-sm-5">
           <input
-            type="text"
+            type="number"
             class="form-control"
             placeholder="Latitude"
             name={this.props.index}
@@ -19,7 +19,7 @@ class AddLatLng extends Component {
         </div>
         <div class="col-sm-5">
           <input
-            type="text"
+            type="number"
             class="form-control"
             placeholder="Longitude"
             name={this.props.index}

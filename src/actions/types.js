@@ -64,3 +64,6 @@ export const RESET_CG_FORM = 'RESET_CG_FORM';
 export const ADD_CG = 'ADD_CG';
 export const DELETE_GRID = 'DELETE_GRID';
 export const RESET_DELETE_GRID_FORM = 'RESET_DELETE_GRID_FORM';
+//Client Billing
+export const GET_CLIENT_GRID_LIST = "GET_CLIENT_GRID_LIST";
+export const SET_CLIENT_SELECTED_GRID = "SET_CLIENT_SELECTED_GRID";
