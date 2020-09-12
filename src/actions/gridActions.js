@@ -7,6 +7,7 @@ import {
   LAYER_PROGRESS,
   SET_LAYER_DETAILS,
   ADD_CG,
+  DELETE_GRID,
 } from './types';
 import store from '../store';
 import axios from 'axios';
@@ -41,6 +42,15 @@ export const createGrid = () => {
   return {
     type: GRID_ADD,
     payload: axios.post(config.BASE_URL + '/api/Grid/AddGrid', postData),
+  };
+};
+export const deleteGrid = () => {
+  const grid = store.getState().grid;
+  const gridno = grid.gridNo;
+
+  return {
+    type: DELETE_GRID,
+    payload: axios.delete(config.BASE_URL + '/api/Grid/DeleteGrid/' + gridno),
   };
 };
 
@@ -118,6 +128,6 @@ export const updateLayerProgress = () => {
 export const getLayerDetails = () => {
   return {
     type: SET_LAYER_DETAILS,
-    payload: axios.get(config.BASE_URL + '/api/Layer/LayerList')
-  }
-}
+    payload: axios.get(config.BASE_URL + '/api/Layer/LayerList'),
+  };
+};
