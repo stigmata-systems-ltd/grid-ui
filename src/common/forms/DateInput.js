@@ -12,6 +12,7 @@ class DateInput extends Component {
               type="date"
               class="form-control"
               onChange={e => this.props.onChange(e)}
+              value={this.props.value}
             />
           </div>
         </div>

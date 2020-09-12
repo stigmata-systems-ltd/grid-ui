@@ -7,6 +7,7 @@ import {
   layerNoList,
   subContractorList,
   updateLayerProgress,
+  getLayerDetails,
 } from '../../actions/gridActions';
 import {
   GRID_NO_LIST,
@@ -41,7 +42,6 @@ import {
 } from '../../actions/types';
 
 const mapDispatchToProps = dispatch => {
-  console.log('Grid DPR dispatcher');
   return {
     fetchGridNoData() {
       dispatch(gridNoList());
@@ -61,63 +61,54 @@ const mapDispatchToProps = dispatch => {
     },
 
     handleGridNoChange(value) {
-      console.log(`Grid Container Grid Number change: ${value}`);
       dispatch({
         type: GRID_NO,
         payload: value,
       });
     },
     handleApprovalChange(value) {
-      console.log(`Grid Container Approval change: ${value}`);
       dispatch({
         type: RFI_APPROVAL,
         payload: value,
       });
     },
     handleRFINoChange(value) {
-      console.log(`Grid Container RFINo change: ${value}`);
       dispatch({
         type: RFI_NO,
         payload: value,
       });
     },
     handleInspectionDateChange(value) {
-      console.log(`Grid Container Inspection Date change: ${value}`);
       dispatch({
         type: RFI_INSPECTION_DATE,
         payload: value,
       });
     },
     handleApprovalDateChange(value) {
-      console.log(`Grid Container Approval Date change: ${value}`);
       dispatch({
         type: RFI_APPROVAL_DATE,
         payload: value,
       });
     },
     handleDateOfFilingChange(value) {
-      console.log(`Grid Container Date Of Filing change: ${value}`);
       dispatch({
         type: DATE_OF_FILING,
         payload: value,
       });
     },
     handleAreaOfLayerChange(value) {
-      console.log(`Grid Container Area Of Layer change: ${value}`);
       dispatch({
         type: AREA_OF_LAYER,
         payload: value,
       });
     },
     handleFillTypeChange(value) {
-      console.log(`Grid Container Date Of Filing change: ${value}`);
       dispatch({
         type: FILL_TYPE,
         payload: value,
       });
     },
     handleTopLevelFillMaterialChange(value) {
-      console.log(`Grid Container Area Of Layer change: ${value}`);
       dispatch({
         type: FILL_MATERIAL,
         payload: value,
@@ -246,12 +237,13 @@ const mapDispatchToProps = dispatch => {
         type: LAYER_NO,
         payload: value,
       });
+      dispatch(getLayerDetails());
     },
   };
 };
 
 const mapStateToProps = state => {
-  const grid = store.getState().grid;
+  const grid = state.grid;
   return {
     grid,
   };

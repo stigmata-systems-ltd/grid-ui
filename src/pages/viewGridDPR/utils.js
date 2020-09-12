@@ -26,7 +26,7 @@ export const _layerMetaData = [
 
 export const _layerBodyData = [
   {
-    sno: '1',
+    LayerNo: 'At +4.67m CD',
     RFIAppDate: '1/9/2020',
     RFIAppStatus: 'Complete',
     RFITestingDate: '1/9/2020',

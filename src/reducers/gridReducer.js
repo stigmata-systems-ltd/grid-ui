@@ -38,6 +38,9 @@ import {
   RESET_CREATE_GRID_FORM,
   ADD_CG,
   RESET_CG_FORM,
+  SET_LAYER_DETAILS,
+  DELETE_GRID,
+  RESET_DELETE_GRID_FORM,
 } from '../actions/types';
 
 const initialState = {
@@ -58,6 +61,7 @@ const initialState = {
   isSubContractorEdit: false,
   gridAdd: { message: '' },
   cgAdd: { message: '' },
+  deleteGrid: { message: '' },
 };
 
 export default function(state = initialState, action) {
@@ -70,7 +74,6 @@ export default function(state = initialState, action) {
       };
 
     case `${LAYER_NO_LIST}_FULFILLED`:
-      console.log(`LAYER NO LIST : ${action.payload}`);
       const layerNoList = [];
       action.payload.data.map(a => {
         const data = {
@@ -86,62 +89,52 @@ export default function(state = initialState, action) {
         LayerNoData: layerNoList,
       };
     case GRID_NUMBER:
-      console.log(action.payload);
       return {
         ...state,
         gridNumber: action.payload,
       };
     case RFI_NO:
-      console.log(action.payload);
       return {
         ...state,
         RFINumber: action.payload,
       };
     case GRID_AREA:
-      console.log(action.payload);
       return {
         ...state,
         gridArea: action.payload,
       };
     case GRID_NO:
-      console.log(action.payload);
       return {
         ...state,
         gridNo: action.payload,
       };
     case RFI_APPROVAL:
-      console.log(action.payload);
       return {
         ...state,
         rfiApproval: action.payload,
       };
     case RFI_APPROVAL_DATE:
-      console.log(action.payload);
       return {
         ...state,
         rfiApprovalDate: action.payload,
       };
     case RFI_INSPECTION_DATE:
-      console.log(action.payload);
       return {
         ...state,
         rfiInspectionDate: action.payload,
       };
     case GRID_LATLANG:
-      console.log(`In Grid latlang reducer: ${action.payload}`);
       return {
         ...state,
         gridLatLong: action.payload,
       };
     case `${GRID_ADD}_FULFILLED`:
-      console.log(action.payload);
       return {
         ...state,
         gridAdd: { message: 'Grid Added Successfully' },
         variant: 'success',
       };
     case `${GRID_ADD}_REJECTED`:
-      console.log(action.payload);
       return {
         ...state,
         gridAdd: { message: 'Error Occurred' },
@@ -155,31 +148,26 @@ export default function(state = initialState, action) {
         gridArea: '',
       };
     case GRID_LATLONG_REMOVE:
-      console.log(`In Grid latlang remove reducer: ${action.payload}`);
       return {
         ...state,
         gridLatLong: action.payload,
       };
     case DATE_OF_FILING:
-      console.log(`In Grid date of filing reducer: ${action.payload}`);
       return {
         ...state,
         dateOfFiling: action.payload,
       };
     case AREA_OF_LAYER:
-      console.log(`In Grid area of layer reducer: ${action.payload}`);
       return {
         ...state,
         areaOfLayer: action.payload,
       };
     case FILL_TYPE:
-      console.log(`In Grid area of layer reducer: ${action.payload}`);
       return {
         ...state,
         fillType: action.payload,
       };
     case FILL_MATERIAL:
-      console.log(`In Grid area of layer reducer: ${action.payload}`);
       return {
         ...state,
         fillMaterial: action.payload,
@@ -278,7 +266,7 @@ export default function(state = initialState, action) {
     case CHANGE_QUANTITY:
       return {
         ...state,
-        addedQuantity: action.payload,
+        layerSubContractor: action.payload,
       };
     case LAYER_NO:
       return {
@@ -308,7 +296,64 @@ export default function(state = initialState, action) {
         rfiApprovalDate: '',
         rfiApproval: '',
       };
+    case `${SET_LAYER_DETAILS}_PENDING`:
+      return {
+        ...state,
+        isLayerDtlsLoading: true,
+        isLayerDtlsError: false,
+      };
+    case `${SET_LAYER_DETAILS}_REJECTED`:
+      return {
+        ...state,
+        isLayerDtlsLoading: false,
+        isLayerDtlsError: true,
+      };
+    case `${SET_LAYER_DETAILS}_FULFILLED`:
+      const layerDtls = action.payload.data[0];
+      return {
+        ...state,
+        tes: true,
+        isLayerDtlsLoading: false,
+        isLayerDtlsError: false,
+        dateOfFiling: layerDtls.fillingDate,
+        areaOfLayer: layerDtls.area_layer,
+        fillType: layerDtls.fillType,
+        //rfiMaterialDescription: layerDtls,
+        fillMaterial: layerDtls.topFillMaterial,
+        rfiLayerStatus: layerDtls.cT_RFI_status,
+        layerSubContractor: layerDtls.layerSubContractor,
+        //RFI LV
+        rfiNoLV: layerDtls.lV_RFIno,
+        rfiInspectionDateLV: layerDtls.lV_inspection_date,
+        rfiApprovalDateLV: layerDtls.lV_approval_date,
+        rfiLVApprovalStatus: layerDtls.lV_RFI_status,
+        //RFI CT
+        rfiNoCT: layerDtls.cT_RFIno,
+        rfiInspectionDateCT: layerDtls.cT_inspection_date,
+        rfiApprovalDateCT: layerDtls.cT_approval_date,
+        rfiCTApprovalStatus: layerDtls.cT_RFI_status,
 
+        rfiRemarks: layerDtls.remarks,
+      };
+    case `${DELETE_GRID}_FULFILLED`:
+      console.log(action.payload);
+      return {
+        ...state,
+        deleteGrid: { message: 'Grid Deleted Successfully' },
+        variant: 'success',
+      };
+    case `${DELETE_GRID}_REJECTED`:
+      console.log(action.payload);
+      return {
+        ...state,
+        deleteGrid: { message: 'Error Occurred' },
+        variant: 'danger',
+      };
+    case RESET_DELETE_GRID_FORM:
+      return {
+        ...state,
+        gridNo: '',
+      };
     default:
       return state;
   }

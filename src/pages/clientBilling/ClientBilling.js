@@ -42,6 +42,11 @@ class ClientBilling extends Component {
         }
     }
 
+    componentDidMount() {
+        this.props.fetchGridNoData();
+       
+      }
+
     render() {
         return (
 
@@ -51,7 +56,7 @@ class ClientBilling extends Component {
                     <FormRow>
                         <SimpleDropDown
                             label="Grid Number"
-                            selectOptions={gridNumber}
+                            selectOptions={this.props.grid.gridNoData}
                             onChange={this.handleGridSelection}
                             value={this.state.selectedGrid}
                         />

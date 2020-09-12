@@ -5,12 +5,13 @@ import {
   LAYER_NO_LIST,
   SUBCONTRACTOR_LIST,
   LAYER_PROGRESS,
+  SET_LAYER_DETAILS,
   ADD_CG,
+  DELETE_GRID,
 } from './types';
 import store from '../store';
 import axios from 'axios';
 import config from '../config';
-console.log(`Config value ${JSON.stringify(config)}`);
 export const gridNoList = () => {
   return {
     type: GRID_NO_LIST,
@@ -38,10 +39,18 @@ export const createGrid = () => {
     gridGeoLocation: grid.gridLatLong,
     user_id: 1,
   };
-  console.log(`Create Grid: ${JSON.stringify(postData)}`);
   return {
     type: GRID_ADD,
     payload: axios.post(config.BASE_URL + '/api/Grid/AddGrid', postData),
+  };
+};
+export const deleteGrid = () => {
+  const grid = store.getState().grid;
+  const gridno = grid.gridNo;
+
+  return {
+    type: DELETE_GRID,
+    payload: axios.delete(config.BASE_URL + '/api/Grid/DeleteGrid/' + gridno),
   };
 };
 
@@ -55,7 +64,6 @@ export const addCGData = () => {
     cG_RFI_status: grid.rfiApproval,
     user_id: 1,
   };
-  console.log(`Create Grid: ${JSON.stringify(postData)}`);
   return {
     type: ADD_CG,
     payload: axios.post(
@@ -68,13 +76,11 @@ export const addCGData = () => {
 export const addLatLang = () => {
   const grid = store.getState().grid;
   let gridLatLong = grid.gridLatLong;
-  console.log(gridLatLong);
   const latlangObj = {
     latitude: '',
     longitude: '',
   };
   gridLatLong.push(latlangObj);
-  console.log(`In grid action: ${grid.gridLatLong}`);
   return {
     type: GRID_LATLANG,
     payload: gridLatLong,
@@ -116,5 +122,12 @@ export const updateLayerProgress = () => {
   return {
     type: LAYER_PROGRESS,
     payload: axios.post(config.BASE_URL + '/api/Layer/AddLayer', postData),
+  };
+};
+
+export const getLayerDetails = () => {
+  return {
+    type: SET_LAYER_DETAILS,
+    payload: axios.get(config.BASE_URL + '/api/Layer/LayerList'),
   };
 };

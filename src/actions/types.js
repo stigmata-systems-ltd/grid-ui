@@ -50,6 +50,7 @@ export const PASSWORD = 'PASSWORD';
 export const ROLENAME = 'ROLENAME';
 export const ADD_USER = 'ADD_USER';
 export const RESET_QUANTITY_FORM = 'RESET_QUANTITY_FORM';
+export const SET_LAYER_DETAILS = 'SET_LAYER_DETAILS';
 //Auth
 export const SET_USERNAME = 'SET_USERNAME';
 export const SET_PASSWORD = 'SET_PASSWORD';
@@ -61,3 +62,5 @@ export const RESET_CREATE_GRID_FORM = 'RESET_CREATE_GRID_FORM';
 export const RESET_SUBCONTRACTOR_FORM = 'RESET_SUBCONTRACTOR_FORM';
 export const RESET_CG_FORM = 'RESET_CG_FORM';
 export const ADD_CG = 'ADD_CG';
+export const DELETE_GRID = 'DELETE_GRID';
+export const RESET_DELETE_GRID_FORM = 'RESET_DELETE_GRID_FORM';
