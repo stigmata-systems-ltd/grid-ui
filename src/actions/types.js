@@ -51,6 +51,7 @@ export const ROLENAME = 'ROLENAME';
 export const ADD_USER = 'ADD_USER';
 export const RESET_QUANTITY_FORM = 'RESET_QUANTITY_FORM';
 export const SET_LAYER_DETAILS = 'SET_LAYER_DETAILS';
+export const DPR_GRID_NO_CHANGE = 'DPR_GRID_NO_CHANGE';
 //Auth
 export const SET_USERNAME = 'SET_USERNAME';
 export const SET_PASSWORD = 'SET_PASSWORD';

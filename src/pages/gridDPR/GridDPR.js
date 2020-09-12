@@ -110,9 +110,9 @@ class GridDPR extends Component {
                       label="Grid Number"
                       selectOptions={this.props.grid.gridNoData}
                       onChange={(e) =>
-                        this.props.handleGridNoChange(e.target.value)
+                        this.props.handleGridNoChangeDPR(e.target.value)
                       }
-                      value={this.props.grid.gridNumber}
+                      value={this.props.grid.dprGridNum}
                     />
                     <SimpleDropDown
                       label="Layer Number"
