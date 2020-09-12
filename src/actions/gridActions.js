@@ -11,6 +11,7 @@ import {
 import store from '../store';
 import axios from 'axios';
 import config from '../config';
+
 export const gridNoList = () => {
   return {
     type: GRID_NO_LIST,
@@ -115,9 +116,10 @@ export const updateLayerProgress = () => {
   };
 };
 
-export const getLayerDetails = () => {
+export const getSingleLayerDetails = (selectedLayer, selectedGrid) => {
   return {
     type: SET_LAYER_DETAILS,
-    payload: axios.get(config.BASE_URL + '/api/Layer/LayerList')
+    payload: axios.get(config.BASE_URL + '/api/Layer/LayerList?layerNo='+
+    selectedLayer+'&gridNo='+selectedGrid)
   }
 }

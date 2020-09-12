@@ -7,7 +7,7 @@ import {
   layerNoList,
   subContractorList,
   updateLayerProgress,
-  getLayerDetails,
+  getSingleLayerDetails,
 } from '../../actions/gridActions';
 import {
   GRID_NO_LIST,
@@ -40,6 +40,7 @@ import {
   SET_EDIT_QUANTITY_DETAILS,
   RESET_CG_FORM,
 } from '../../actions/types';
+import { getSelectedGrid, getSelectedLayer } from "./dataTransformer";
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -237,7 +238,12 @@ const mapDispatchToProps = dispatch => {
         type: LAYER_NO,
         payload: value,
       });
-      dispatch(getLayerDetails());
+      const grid = store.getState().grid;
+      const currentLayer = parseInt(grid.layerNo);
+      const currentGrid = parseInt(grid.gridNo);
+      const selectedLayer = getSelectedLayer(grid.LayerNoData, currentLayer);
+      const selectedGrid = getSelectedGrid(grid.gridNoData, currentGrid);
+      dispatch(getSingleLayerDetails(selectedLayer, selectedGrid));
     },
   };
 };
