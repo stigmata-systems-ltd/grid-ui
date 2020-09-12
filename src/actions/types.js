@@ -64,3 +64,6 @@ export const RESET_CG_FORM = 'RESET_CG_FORM';
 export const ADD_CG = 'ADD_CG';
 export const DELETE_GRID = 'DELETE_GRID';
 export const RESET_DELETE_GRID_FORM = 'RESET_DELETE_GRID_FORM';
+export const EDIT_GRID = 'EDIT_GRID';
+export const RESET_EDIT_GRID_FORM = 'RESET_EDIT_GRID_FORM';
+export const GRID_DETAILS = 'GRID_DETAILS';

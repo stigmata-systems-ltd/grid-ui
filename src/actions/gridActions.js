@@ -8,6 +8,7 @@ import {
   SET_LAYER_DETAILS,
   ADD_CG,
   DELETE_GRID,
+  GRID_DETAILS,
 } from './types';
 import store from '../store';
 import axios from 'axios';
@@ -15,6 +16,13 @@ import config from '../config';
 export const gridNoList = () => {
   return {
     type: GRID_NO_LIST,
+    payload: axios.get(config.BASE_URL + '/api/Grid/GridNoList'),
+  };
+};
+
+export const fetchGrid = () => {
+  return {
+    type: GRID_DETAILS,
     payload: axios.get(config.BASE_URL + '/api/Grid/GridNoList'),
   };
 };
@@ -44,6 +52,24 @@ export const createGrid = () => {
     payload: axios.post(config.BASE_URL + '/api/Grid/AddGrid', postData),
   };
 };
+
+export const editGrid = () => {
+  const grid = store.getState().grid;
+  const postData = {
+    gridno: grid.gridNumber,
+    grid_area: parseInt(grid.gridArea),
+    gridGeoLocation: grid.gridLatLong,
+    user_id: 1,
+  };
+  return {
+    type: GRID_ADD,
+    payload: axios.post(
+      config.BASE_URL + '/api​/Grid​/updateGrid​/' + grid.gridNumber,
+      postData
+    ),
+  };
+};
+
 export const deleteGrid = () => {
   const grid = store.getState().grid;
   const gridno = grid.gridNo;

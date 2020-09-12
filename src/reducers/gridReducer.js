@@ -41,6 +41,9 @@ import {
   SET_LAYER_DETAILS,
   DELETE_GRID,
   RESET_DELETE_GRID_FORM,
+  EDIT_GRID,
+  RESET_EDIT_GRID_FORM,
+  GRID_DETAILS,
 } from '../actions/types';
 
 const initialState = {
@@ -62,6 +65,7 @@ const initialState = {
   gridAdd: { message: '' },
   cgAdd: { message: '' },
   deleteGrid: { message: '' },
+  editGrid: { message: '' },
 };
 
 export default function(state = initialState, action) {
@@ -350,6 +354,39 @@ export default function(state = initialState, action) {
         variant: 'danger',
       };
     case RESET_DELETE_GRID_FORM:
+      return {
+        ...state,
+        gridNo: '',
+      };
+    case `${GRID_DETAILS}_FULFILLED`:
+      console.log(action.payload);
+      return {
+        ...state,
+        gridNo: action.payload.data.gridno,
+        gridArea: action.payload.data.grid_area,
+        gridLatLong: action.payload.data.gridGeoLocation,
+      };
+    case `${GRID_DETAILS}_REJECTED`:
+      console.log(action.payload);
+      return {
+        ...state,
+        fetchGrid: { message: 'Error Occurred' },
+      };
+    case `${EDIT_GRID}_FULFILLED`:
+      console.log(action.payload);
+      return {
+        ...state,
+        editGrid: { message: 'Grid Edited Successfully' },
+        variant: 'success',
+      };
+    case `${EDIT_GRID}_REJECTED`:
+      console.log(action.payload);
+      return {
+        ...state,
+        editGrid: { message: 'Error Occurred' },
+        variant: 'danger',
+      };
+    case RESET_EDIT_GRID_FORM:
       return {
         ...state,
         gridNo: '',
