@@ -63,7 +63,7 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case `${GRID_NO_LIST}_FULFILLED`:
-      console.log(`GRID NO LIST : ${action.payload}`);
+      console.log(`GRID NO LIST : ${action.payload.data}`);
       return {
         ...state,
         gridNoData: action.payload.data,
