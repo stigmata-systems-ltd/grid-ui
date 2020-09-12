@@ -7,6 +7,7 @@ import AddLatLng from './AddLatLng';
 import IconTextButton from '../../common/forms/IconTextButton';
 import Button from '../../common/forms/Button';
 import CustomAlert from '../../common/forms/customAlert';
+import NumberInput from "../../common/forms/NumberInput";
 class CreateGrid extends Component {
   constructor(props) {
     super(props);
@@ -39,7 +40,7 @@ class CreateGrid extends Component {
               onChange={e => this.props.handleChangeGridNumber(e.target.value)}
               value={this.props.grid.gridNumber}
             />
-            <TextInput
+            <NumberInput
               label="Grid Area"
               onChange={e => this.props.handleChangeGridArea(e.target.value)}
               value={this.props.grid.gridArea}

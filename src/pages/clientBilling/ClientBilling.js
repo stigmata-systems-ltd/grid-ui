@@ -10,6 +10,7 @@ import DataTable from "../../common/DataTable";
 
 import { gridNumber } from "./utils";
 import { completedLayers, _clientBillingMetaData, _bodyData } from "./utils";
+import Loader from "../../common/Loader";
 
 
 
@@ -20,7 +21,9 @@ class ClientBilling extends Component {
         this.state = {
             selectedGrid: 0,
         }
-
+    }
+    componentDidMount = () => {
+        this.props.getGridList();
     }
 
 
@@ -49,15 +52,14 @@ class ClientBilling extends Component {
 
     render() {
         return (
-
             <ContentLoader>
-
+                {this.props.client.isLoading && <Loader />}
                 <FormContainer formTitle={"Client Billing"}>
                     <FormRow>
                         <SimpleDropDown
                             label="Grid Number"
-                            selectOptions={this.props.grid.gridNoData}
-                            onChange={this.handleGridSelection}
+                            selectOptions={this.props.client.gridList}
+                            onChange={(e) => this.props.handleGridSelection(e.target. value)}
                             value={this.state.selectedGrid}
                         />
                     </FormRow>

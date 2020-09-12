@@ -1,6 +1,6 @@
-import { connect } from 'react-redux';
-import GridDPR from '../../pages/gridDPR/GridDPR';
-import store from '../../store';
+import { connect } from "react-redux";
+import GridDPR from "../../pages/gridDPR/GridDPR";
+import store from "../../store";
 import {
   gridNoList,
   addCGData,
@@ -8,7 +8,7 @@ import {
   subContractorList,
   updateLayerProgress,
   getSingleLayerDetails,
-} from '../../actions/gridActions';
+} from "../../actions/gridActions";
 import {
   GRID_NO_LIST,
   GRID_NO,
@@ -37,12 +37,11 @@ import {
   CHANGE_QUANTITY,
   RESET_QUANTITY_FORM,
   LAYER_NO,
-  SET_EDIT_QUANTITY_DETAILS,
   RESET_CG_FORM,
-} from '../../actions/types';
+} from "../../actions/types";
 import { getSelectedGrid, getSelectedLayer } from "./dataTransformer";
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     fetchGridNoData() {
       dispatch(gridNoList());
@@ -60,12 +59,14 @@ const mapDispatchToProps = dispatch => {
     updateLayerProgress() {
       dispatch(updateLayerProgress());
     },
-
     handleGridNoChange(value) {
       dispatch({
         type: GRID_NO,
         payload: value,
       });
+      const currentLayer = parseInt(store.getState().grid.layerNo);
+      console.log("curr layer",currentLayer);
+      currentLayer !== "" && this.setSingleLayerDetails();
     },
     handleApprovalChange(value) {
       dispatch({
@@ -201,7 +202,7 @@ const mapDispatchToProps = dispatch => {
     },
     addQuantity() {
       const grid = store.getState().grid;
-      const data = { quantity: '', subContractorId: '' };
+      const data = { quantity: "", subContractorId: "" };
       let changedQty = parseInt(grid.quantity);
       let isNewSubCont = true;
       grid.addedQuantity.map((subCont, index) => {
@@ -238,17 +239,20 @@ const mapDispatchToProps = dispatch => {
         type: LAYER_NO,
         payload: value,
       });
+      this.setSingleLayerDetails()
+    },
+    setSingleLayerDetails() {
       const grid = store.getState().grid;
       const currentLayer = parseInt(grid.layerNo);
       const currentGrid = parseInt(grid.gridNo);
       const selectedLayer = getSelectedLayer(grid.LayerNoData, currentLayer);
       const selectedGrid = getSelectedGrid(grid.gridNoData, currentGrid);
       dispatch(getSingleLayerDetails(selectedLayer, selectedGrid));
-    },
+    }
   };
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   const grid = state.grid;
   return {
     grid,

@@ -2,27 +2,32 @@ import { connect } from 'react-redux';
 import ClientBilling from '../../pages/clientBilling/ClientBilling';
 import store from '../../store';
 import {
-    gridNoList,
-
-} from '../../actions/gridActions';
+    getGridList,
+} from '../../actions/clientBillingActions';
+import {
+    SET_CLIENT_SELECTED_GRID
+} from "../../actions/types";
 
 
 
 const mapDispatchToProps = dispatch => {
-    console.log('Grid DPR dispatcher');
     return {
-        fetchGridNoData() {
-            dispatch(gridNoList());
+        getGridList() {
+            dispatch(getGridList());
         },
-
-
+        handleGridSelection(value) {
+            dispatch({
+                type: SET_CLIENT_SELECTED_GRID,
+                payload: value,
+            })
+        }
     };
 };
 
 const mapStateToProps = state => {
-    const grid = store.getState().grid;
+    const client = store.getState().client;
     return {
-        grid,
+        client
     };
 };
 
