@@ -21,7 +21,7 @@ class DataTable extends Component {
               return (
                 <tr>
                   {this.props.showRowDelete && (
-                    <td class="action-btns" style={{width: "1%"}}>
+                    <td class="action-btns" style={{ width: "1%" }}>
                       <IconButton
                         iconName="faTrash"
                         onClick={this.props.onClick}
@@ -35,19 +35,28 @@ class DataTable extends Component {
                   ))}
 
                   <td>
-                  {this.props.isShowEdit &&
-                  <Button 
-                    btnText="Edit" 
-                    btnType="primary" 
-                    onClick={() => this.props.onClickEdit(rowIndex)}
-                  />
-                  }
+                    {this.props.isShowView &&
+                      <Button
+                        btnText="View"
+                        btnType="primary"
+                        onClick={() => this.props.onClickEdit(rowIndex)}
+                      />
+                    }
+                    {this.props.isShowEdit &&
+                      <Button
+                        btnText="Edit"
+                        btnType="btn-secondary"
+                        onClick={() => this.props.onClickEdit(rowIndex)}
+                      />
+                    }
                   &nbsp;
-                  <Button 
-                    btnText="Delete" 
-                    btnType="btn-danger"
-                    onClick={() => this.props.onClickDelete(rowIndex)}
-                  />
+                  {this.props.isShowDelete &&
+                      <Button
+                        btnText="Delete"
+                        btnType="btn-danger"
+                        onClick={() => this.props.onClickDelete(rowIndex)}
+                      />
+                    }
                   </td>
                 </tr>
               );

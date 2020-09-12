@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import SubContractor from '../../pages/subContractor/SubContractor';
+import ViewSubContractor from '../../pages/subContractor/ViewSubContractor';
 import store from '../../store';
 import { addSubContractor } from '../../actions/subContractorActions';
 import {
@@ -66,4 +66,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SubContractor);
+export default connect(mapStateToProps, mapDispatchToProps)(ViewSubContractor);
