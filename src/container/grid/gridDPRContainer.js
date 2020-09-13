@@ -38,6 +38,7 @@ import {
   RESET_QUANTITY_FORM,
   LAYER_NO,
   RESET_CG_FORM,
+  DPR_GRID_NO_CHANGE,
 } from "../../actions/types";
 import { getSelectedGrid, getSelectedLayer } from "./dataTransformer";
 
@@ -64,8 +65,13 @@ const mapDispatchToProps = (dispatch) => {
         type: GRID_NO,
         payload: value,
       });
-      const currentLayer = parseInt(store.getState().grid.layerNo);
-      console.log("curr layer",currentLayer);
+    },
+    handleGridNoChangeDPR(value) {
+      dispatch({
+        type: DPR_GRID_NO_CHANGE,
+        payload: value,
+      });
+      const currentLayer = store.getState().grid.layerNo;
       currentLayer !== "" && this.setSingleLayerDetails();
     },
     handleApprovalChange(value) {

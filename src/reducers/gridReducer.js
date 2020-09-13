@@ -44,11 +44,14 @@ import {
   EDIT_GRID,
   RESET_EDIT_GRID_FORM,
   GRID_DETAILS,
+  DPR_GRID_NO_CHANGE,
 } from '../actions/types';
 
 const initialState = {
   gridNoData: [],
   gridLatLong: [],
+  layerNo: '',
+  dprGridNum: '',
   subContractorList: [],
   approvalOptions: [
     { id: 'New', gridName: 'New' },
@@ -281,24 +284,24 @@ export default function(state = initialState, action) {
       console.log(action.payload);
       return {
         ...state,
-        cgAdd: { message: "CG updated Successfully" },
-        variant: "success",
+        cgAdd: { message: 'CG updated Successfully' },
+        variant: 'success',
       };
     case `${ADD_CG}_REJECTED`:
       console.log(action.payload);
       return {
         ...state,
-        cgAdd: { message: "Error Occurred" },
-        variant: "danger",
+        cgAdd: { message: 'Error Occurred' },
+        variant: 'danger',
       };
     case RESET_CG_FORM:
       return {
         ...state,
-        gridNo: "",
-        RFINumber: "",
-        rfiInspectionDate: "",
-        rfiApprovalDate: "",
-        rfiApproval: "",
+        gridNo: '',
+        RFINumber: '',
+        rfiInspectionDate: '',
+        rfiApprovalDate: '',
+        rfiApproval: '',
       };
     case `${SET_LAYER_DETAILS}_PENDING`:
       return {
@@ -340,24 +343,24 @@ export default function(state = initialState, action) {
         };
       } else {
         singleLayerDtls = {
-          dateOfFiling: "",
-          areaOfLayer: "",
-          fillType: "",
+          dateOfFiling: '',
+          areaOfLayer: '',
+          fillType: '',
           //rfiMaterialDescription: layerDtls,
-          fillMaterial: "",
-          rfiLayerStatus: "",
-          layerSubContractor: "",
+          fillMaterial: '',
+          rfiLayerStatus: '',
+          layerSubContractor: '',
           //RFI LV
-          rfiNoLV: "",
-          rfiInspectionDateLV: "",
-          rfiApprovalDateLV: "",
-          rfiLVApprovalStatus: "",
+          rfiNoLV: '',
+          rfiInspectionDateLV: '',
+          rfiApprovalDateLV: '',
+          rfiLVApprovalStatus: '',
           //RFI CT
-          rfiNoCT: "",
-          rfiInspectionDateCT: "",
-          rfiApprovalDateCT: "",
-          rfiCTApprovalStatus: "",
-          rfiRemarks: "",
+          rfiNoCT: '',
+          rfiInspectionDateCT: '',
+          rfiApprovalDateCT: '',
+          rfiCTApprovalStatus: '',
+          rfiRemarks: '',
         };
       }
       return {
@@ -384,6 +387,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         gridNo: '',
+      };
+    case DPR_GRID_NO_CHANGE:
+      return {
+        ...state,
+        dprGridNum: action.payload,
       };
     case `${GRID_DETAILS}_FULFILLED`:
       console.log(action.payload);
