@@ -10,35 +10,36 @@ import {
   DELETE_GRID,
   GRID_DETAILS,
   EDIT_GRID,
-} from './types';
-import store from '../store';
-import axios from 'axios';
-import config from '../config';
+  SET_COMPLETED_LAYERS_BY_GRID,
+} from "./types";
+import store from "../store";
+import axios from "axios";
+import config from "../config";
 
 export const gridNoList = () => {
   return {
     type: GRID_NO_LIST,
-    payload: axios.get(config.BASE_URL + '/api/Grid/GridNoList'),
+    payload: axios.get(config.BASE_URL + "/api/Grid/GridNoList"),
   };
 };
 
-export const fetchGrid = gridNo => {
+export const fetchGrid = (gridNo) => {
   return {
     type: GRID_DETAILS,
-    payload: axios.get(config.BASE_URL + '/api/Grid/GridList?gridId=' + gridNo),
+    payload: axios.get(config.BASE_URL + "/api/Grid/GridList?gridId=" + gridNo),
   };
 };
 
 export const layerNoList = () => {
   return {
     type: LAYER_NO_LIST,
-    payload: axios.get(config.BASE_URL + '/api/Layer/LayerNoList'),
+    payload: axios.get(config.BASE_URL + "/api/Layer/LayerNoList"),
   };
 };
 export const subContractorList = () => {
   return {
     type: SUBCONTRACTOR_LIST,
-    payload: axios.get(config.BASE_URL + '/api/SubCont/GetSubContractorList'),
+    payload: axios.get(config.BASE_URL + "/api/SubCont/GetSubContractorList"),
   };
 };
 export const createGrid = () => {
@@ -51,7 +52,7 @@ export const createGrid = () => {
   };
   return {
     type: GRID_ADD,
-    payload: axios.post(config.BASE_URL + '/api/Grid/AddGrid', postData),
+    payload: axios.post(config.BASE_URL + "/api/Grid/AddGrid", postData),
   };
 };
 
@@ -66,7 +67,7 @@ export const editGrid = () => {
   return {
     type: EDIT_GRID,
     payload: axios.put(
-      config.BASE_URL + '/api/Grid/UpdateGrid/' + grid.gridNumber,
+      config.BASE_URL + "/api/Grid/UpdateGrid/" + grid.gridNumber,
       postData
     ),
   };
@@ -78,7 +79,7 @@ export const deleteGrid = () => {
 
   return {
     type: DELETE_GRID,
-    payload: axios.delete(config.BASE_URL + '/api/Grid/DeleteGrid/' + gridno),
+    payload: axios.delete(config.BASE_URL + "/api/Grid/DeleteGrid/" + gridno),
   };
 };
 
@@ -95,7 +96,7 @@ export const addCGData = () => {
   return {
     type: ADD_CG,
     payload: axios.post(
-      config.BASE_URL + '/api/Grid/CreateCG/' + grid.gridNo,
+      config.BASE_URL + "/api/Grid/CreateCG/" + grid.gridNo,
       postData
     ),
   };
@@ -105,8 +106,8 @@ export const addLatLang = () => {
   const grid = store.getState().grid;
   let gridLatLong = grid.gridLatLong;
   const latlangObj = {
-    latitude: '',
-    longitude: '',
+    latitude: "",
+    longitude: "",
   };
   gridLatLong.push(latlangObj);
   return {
@@ -118,11 +119,12 @@ export const addLatLang = () => {
 export const updateLayerProgress = () => {
   const grid = store.getState().grid;
   const postData = {
-    gridId: parseInt(grid.gridNo),
+    gridId: parseInt(grid.dprGridNum),
     layerId: parseInt(grid.layerNo),
     fillingDate: grid.dateOfFiling,
     fillingMaterial: grid.dateOfFiling,
     area_layer: parseInt(grid.areaOfLayer),
+    status: grid.rfiLayerStatus,
     totalQuantity: 20,
     fillType: grid.fillType,
     topFillMaterial: grid.fillMaterial,
@@ -149,7 +151,7 @@ export const updateLayerProgress = () => {
 
   return {
     type: LAYER_PROGRESS,
-    payload: axios.post(config.BASE_URL + '/api/Layer/AddLayer', postData),
+    payload: axios.post(config.BASE_URL + "/api/Layer/AddLayer", postData),
   };
 };
 
@@ -158,10 +160,17 @@ export const getSingleLayerDetails = (selectedLayer, selectedGrid) => {
     type: SET_LAYER_DETAILS,
     payload: axios.get(
       config.BASE_URL +
-        '/api/Layer/LayerList?layerNo=' +
+        "/api/Layer/LayerList?layerNo=" +
         selectedLayer +
-        '&gridNo=' +
+        "&gridNo=" +
         selectedGrid
     ),
+  };
+};
+
+export const getCompletedLayersByGrid = (gridId) => {
+  return {
+    type: SET_COMPLETED_LAYERS_BY_GRID,
+    payload: axios.get(config.BASE_URL + "/api/Grid/LayerCmplCountByGrid?id="+gridId),
   };
 };

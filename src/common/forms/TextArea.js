@@ -11,6 +11,7 @@ class TextArea extends Component {
             id="exampleTextarea1"
             rows="4"
             onChange={e => this.props.onChange(e)}
+            value={this.props.value}
           ></textarea>
         </div>
       </div>

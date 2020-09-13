@@ -21235,8 +21235,8 @@ dl li {
 .sidebar .nav .nav-item .nav-link .menu-title {
   color: inherit;
   display: inline-block;
-  font-size: 0.875rem;
-  line-height: 1;
+  font-size: 15px;
+  /* line-height: 1; */
   vertical-align: middle;
 }
 
