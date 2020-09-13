@@ -1,3 +1,4 @@
+import store from "../../store";
 import { connect } from "react-redux";
 import Login from "../../pages/Login";
 import { withRouter } from "react-router-dom";
@@ -13,9 +14,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
           dispatch({ type: RESET_LOGIN_DETAILS })
           dispatch({
               type: SET_TOKEN,
-              payload: res.value.data.response
+              payload: res.value.data
           })
-          setAuthTokens(res.value.data.response);
+          setAuthTokens(res.value.data);
           ownProps.history.push('dashboard');
       });
     },
@@ -35,8 +36,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 };
 
 const mapStateToProps = (state) => {
+  const auth = store.getState().auth;
   return {
-    auth: state.auth,
+    auth,
   };
 };
 
