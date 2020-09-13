@@ -7,6 +7,7 @@ import {
   SUBCONTRACTOR_PHONE,
   SUBCONTRACTOR_EMAIL,
   RESET_SUBCONTRACTOR_FORM,
+  LIST_SUBCONTRACTOR,
 } from '../actions/types';
 
 const initialState = {
@@ -72,6 +73,12 @@ export default function(state = initialState, action) {
         subContractorContactAddres: '',
         subContractorPhone: '',
         subContractorEmail: '',
+      };
+
+    case LIST_SUBCONTRACTOR:
+      return {
+        ...state,
+        listSCR: action.payload.data,
       };
     default:
       return state;

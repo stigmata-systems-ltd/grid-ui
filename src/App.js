@@ -17,6 +17,7 @@ import DeleteGrid from './container/grid/deleteGridContainer';
 import EditGrid from './container/grid/editGridContainer';
 // import ClientBilling from './pages/clientBilling/ClientBilling';
 import SubContractor from './container/subContractor/SubContractorContainer';
+import ListSubContractor from './container/subContractor/ListSubContractorContainer';
 import CreateUser from './container/userManagement/createUserContainer';
 import ClientBilling from './container/clientBilling/clientBillingContainer';
 

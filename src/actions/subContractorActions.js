@@ -1,4 +1,4 @@
-import { ADD_SUBCONTRACTOR } from './types';
+import { ADD_SUBCONTRACTOR, LIST_SUBCONTRACTOR } from './types';
 import store from '../store';
 import axios from 'axios';
 import config from '../config';
@@ -28,5 +28,12 @@ export const addSubContractor = () => {
       config.BASE_URL + '/api/SubCont/AddSubcontractor',
       subContractorData
     ),
+  };
+};
+
+export const fetchSubContractor = () => {
+  return {
+    type: LIST_SUBCONTRACTOR,
+    payload: axios.get(config.BASE_URL + '/api/SubCont/GetSubContractorList'),
   };
 };
