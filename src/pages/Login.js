@@ -30,6 +30,7 @@ class Login extends Component {
                         id="exampleInputEmail1"
                         placeholder="Username"
                         onChange={(e) => this.props.handleUsernameChange(e.target)}
+                        value={this.props.auth.username}
                       />
                     </div>
                     <div class="form-group">
@@ -40,6 +41,7 @@ class Login extends Component {
                         id="exampleInputPassword1"
                         placeholder="Password"
                         onChange={(e) => this.props.handlePasswordChange(e.target)}
+                        value={this.props.auth.password}
                       />
                     </div>
                     {this.props.auth.isLoginError &&
