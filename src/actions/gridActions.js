@@ -8,6 +8,8 @@ import {
   SET_LAYER_DETAILS,
   ADD_CG,
   DELETE_GRID,
+  GRID_DETAILS,
+  EDIT_GRID,
 } from './types';
 import store from '../store';
 import axios from 'axios';
@@ -17,6 +19,13 @@ export const gridNoList = () => {
   return {
     type: GRID_NO_LIST,
     payload: axios.get(config.BASE_URL + '/api/Grid/GridNoList'),
+  };
+};
+
+export const fetchGrid = gridNo => {
+  return {
+    type: GRID_DETAILS,
+    payload: axios.get(config.BASE_URL + '/api/Grid/GridList?gridId=' + gridNo),
   };
 };
 
@@ -45,6 +54,24 @@ export const createGrid = () => {
     payload: axios.post(config.BASE_URL + '/api/Grid/AddGrid', postData),
   };
 };
+
+export const editGrid = () => {
+  const grid = store.getState().grid;
+  const postData = {
+    gridno: grid.gridNumber,
+    grid_area: parseInt(grid.gridArea),
+    gridGeoLocation: grid.gridLatLong,
+    user_id: 1,
+  };
+  return {
+    type: EDIT_GRID,
+    payload: axios.put(
+      config.BASE_URL + '/api/Grid/UpdateGrid/' + grid.gridNumber,
+      postData
+    ),
+  };
+};
+
 export const deleteGrid = () => {
   const grid = store.getState().grid;
   const gridno = grid.gridNo;
@@ -129,7 +156,12 @@ export const updateLayerProgress = () => {
 export const getSingleLayerDetails = (selectedLayer, selectedGrid) => {
   return {
     type: SET_LAYER_DETAILS,
-    payload: axios.get(config.BASE_URL + '/api/Layer/LayerList?layerNo='+
-    selectedLayer+'&gridNo='+selectedGrid)
-  }
-}
+    payload: axios.get(
+      config.BASE_URL +
+        '/api/Layer/LayerList?layerNo=' +
+        selectedLayer +
+        '&gridNo=' +
+        selectedGrid
+    ),
+  };
+};

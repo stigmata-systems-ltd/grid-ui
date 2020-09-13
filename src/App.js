@@ -14,6 +14,7 @@ import ViewGridDpr from './pages/viewGridDPR/ViewGridDpr';
 import GridDetails from './pages/gridDetails/GridDetails';
 import EditDridDetails from './pages/editGridDetails/EditGridDetails';
 import DeleteGrid from './container/grid/deleteGridContainer';
+import EditGrid from './container/grid/editGridContainer';
 // import ClientBilling from './pages/clientBilling/ClientBilling';
 import SubContractor from './container/subContractor/SubContractorContainer';
 import CreateUser from './container/userManagement/createUserContainer';
@@ -43,6 +44,9 @@ function App() {
         </Route>
         <Route path="/deletegrid">
           <DeleteGrid />
+        </Route>
+        <Route path="/editgrid">
+          <EditGrid />
         </Route>
         <Route path="/viewgrid">
           <ViewGrid />
