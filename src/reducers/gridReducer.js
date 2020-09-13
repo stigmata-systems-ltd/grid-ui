@@ -395,11 +395,12 @@ export default function(state = initialState, action) {
       };
     case `${GRID_DETAILS}_FULFILLED`:
       console.log(action.payload);
+      const singleGrid = action.payload.data[0];
       return {
         ...state,
-        gridNo: action.payload.data.gridno,
-        gridArea: action.payload.data.grid_area,
-        gridLatLong: action.payload.data.gridGeoLocation,
+        gridNo: singleGrid.gridno,
+        gridArea: singleGrid.grid_area,
+        gridLatLong: singleGrid.gridGeoLocation,
       };
     case `${GRID_DETAILS}_REJECTED`:
       console.log(action.payload);

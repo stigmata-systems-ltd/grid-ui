@@ -23,7 +23,7 @@ const mapDispatchToProps = dispatch => {
     fetchGridNoData() {
       dispatch(gridNoList());
     },
-    createGrid() {
+    editGrid() {
       dispatch(editGrid());
       dispatch({ type: RESET_EDIT_GRID_FORM });
     },
@@ -35,7 +35,7 @@ const mapDispatchToProps = dispatch => {
         type: GRID_NUMBER,
         payload: value,
       });
-      dispatch(fetchGrid());
+      this.setSingleGridDetails();
     },
     handleChangeGridArea(value) {
       dispatch({
@@ -70,6 +70,11 @@ const mapDispatchToProps = dispatch => {
         type: GRID_LATLONG_REMOVE,
         payload: gridLatLong,
       });
+    },
+    setSingleGridDetails() {
+      const grid = store.getState().grid;
+      console.log(`setSingleGridDetails: ${grid.gridNumber}`);
+      dispatch(fetchGrid(grid.gridNumber));
     },
   };
 };

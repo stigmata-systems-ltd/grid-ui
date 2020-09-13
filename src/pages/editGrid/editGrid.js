@@ -30,10 +30,10 @@ class CreateGrid extends Component {
     return (
       <ContentLoader>
         <div>
-          {this.props.grid.gridAdd.message ? (
+          {this.props.grid.editGrid.message ? (
             <CustomAlert
               variant={this.props.grid.variant}
-              message={this.props.grid.gridAdd.message}
+              message={this.props.grid.editGrid.message}
             />
           ) : null}
         </div>
@@ -96,7 +96,7 @@ class CreateGrid extends Component {
           <Button
             btnText="Save"
             btnType="primary"
-            onClick={this.props.createGrid}
+            onClick={this.props.editGrid}
           />
           <Button btnText="Cancel" btnType="cancel" />
         </FormContainer>
