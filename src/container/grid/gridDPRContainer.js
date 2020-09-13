@@ -1,6 +1,6 @@
-import { connect } from 'react-redux';
-import GridDPR from '../../pages/gridDPR/GridDPR';
-import store from '../../store';
+import { connect } from "react-redux";
+import GridDPR from "../../pages/gridDPR/GridDPR";
+import store from "../../store";
 import {
   gridNoList,
   addCGData,
@@ -8,7 +8,8 @@ import {
   subContractorList,
   updateLayerProgress,
   getSingleLayerDetails,
-} from '../../actions/gridActions';
+  getCompletedLayersByGrid,
+} from "../../actions/gridActions";
 import {
   GRID_NO_LIST,
   GRID_NO,
@@ -39,26 +40,27 @@ import {
   LAYER_NO,
   RESET_CG_FORM,
   DPR_GRID_NO_CHANGE,
-} from '../../actions/types';
-import { getSelectedGrid, getSelectedLayer } from './dataTransformer';
+  RESET_DPR_FORM,
+  SET_ADD_SUBCONT_ERROR,
+} from "../../actions/types";
+import { getSelectedGrid, getSelectedLayer } from "./dataTransformer";
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    fetchGridNoData() {
+    setInitialData() {
       dispatch(gridNoList());
-    },
-    fetchLayerNoData() {
-      dispatch(layerNoList());
-    },
-    fetchSubContractorData() {
       dispatch(subContractorList());
+      dispatch(layerNoList());
+      dispatch({ type: RESET_DPR_FORM });
     },
     addCGData() {
       dispatch(addCGData());
       dispatch({ type: RESET_CG_FORM });
     },
     updateLayerProgress() {
-      dispatch(updateLayerProgress());
+      dispatch(updateLayerProgress()).then(() => {
+        dispatch({ type: RESET_DPR_FORM });
+      });
     },
     handleGridNoChange(value) {
       dispatch({
@@ -72,7 +74,9 @@ const mapDispatchToProps = dispatch => {
         payload: value,
       });
       const currentLayer = store.getState().grid.layerNo;
-      currentLayer !== '' && this.setSingleLayerDetails();
+      const currentGrid = store.getState().grid.dprGridNum;
+      currentLayer !== "" && this.setSingleLayerDetails();
+      currentGrid !== "" && dispatch(getCompletedLayersByGrid(value));
     },
     handleApprovalChange(value) {
       dispatch({
@@ -201,6 +205,7 @@ const mapDispatchToProps = dispatch => {
       });
     },
     handleSubContractorChange(value) {
+      console.log("change value",value);
       dispatch({
         type: SUBCONTRACTOR_CHANGE,
         payload: value,
@@ -208,27 +213,35 @@ const mapDispatchToProps = dispatch => {
     },
     addQuantity() {
       const grid = store.getState().grid;
-      const data = { quantity: '', subContractorId: '' };
-      let changedQty = parseInt(grid.quantity);
-      let isNewSubCont = true;
-      grid.addedQuantity.map((subCont, index) => {
-        if (subCont.subContractorId === grid.subContractorName) {
-          changedQty = parseInt(grid.quantity) + parseInt(subCont.quantity);
-          isNewSubCont = false;
-          grid.addedQuantity[index].quantity = changedQty;
-        }
-      });
-      data.quantity = changedQty;
-      data.subContractorId = grid.subContractorName;
-      grid.totalQuantity += parseInt(grid.quantity);
-      grid.totalSubContractor += 1;
-      isNewSubCont && grid.addedQuantity.push(data);
+      console.log("add qty",store.getState().grid.subContractorId)
+      if (grid.quantity !== "" && grid.subContractorId !== "0") {
+        const data = { quantity: "", subContractorId: "" };
+        let changedQty = parseInt(grid.quantity);
+        let isNewSubCont = true;
+        grid.addedQuantity.map((subCont, index) => {
+          if (subCont.subContractorId === grid.subContractorName) {
+            changedQty = parseInt(grid.quantity) + parseInt(subCont.quantity);
+            isNewSubCont = false;
+            grid.addedQuantity[index].quantity = changedQty;
+          }
+        });
+        data.quantity = changedQty;
+        data.subContractorId = grid.subContractorName;
+        grid.totalQuantity += parseInt(grid.quantity);
+        grid.totalSubContractor += 1;
+        isNewSubCont && grid.addedQuantity.push(data);
 
-      dispatch({
-        type: CHANGE_QUANTITY,
-        payload: grid.addedQuantity,
-      });
-      dispatch({ type: RESET_QUANTITY_FORM });
+        dispatch({
+          type: CHANGE_QUANTITY,
+          payload: grid.addedQuantity,
+        });
+        dispatch({ type: RESET_QUANTITY_FORM });
+      } else {
+        dispatch({ 
+          type: SET_ADD_SUBCONT_ERROR,
+          payload: "Please Enter Both Quantity and Subcontractor"
+        });
+      }
     },
     deleteQuantity(index) {
       const grid = store.getState().grid;
@@ -250,7 +263,7 @@ const mapDispatchToProps = dispatch => {
     setSingleLayerDetails() {
       const grid = store.getState().grid;
       const currentLayer = parseInt(grid.layerNo);
-      const currentGrid = parseInt(grid.gridNo);
+      const currentGrid = parseInt(grid.dprGridNum);
       const selectedLayer = getSelectedLayer(grid.LayerNoData, currentLayer);
       const selectedGrid = getSelectedGrid(grid.gridNoData, currentGrid);
       dispatch(getSingleLayerDetails(selectedLayer, selectedGrid));
@@ -258,7 +271,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   const grid = state.grid;
   return {
     grid,
