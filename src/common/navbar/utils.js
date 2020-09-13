@@ -57,8 +57,20 @@ export const metaDataNavbar = [
     id: '4',
     navText: 'Sub-Contractor',
     iconName: 'faUser',
-    hasSubNav: false,
+    hasSubNav: true,
     route: 'subcontractor',
+    subNavs: [
+      {
+        id: 'SCRSub' + 1,
+        navText: 'Create SubContractor',
+        route: 'subcontractor',
+      },
+      {
+        id: 'SCRSub' + 2,
+        navText: 'List - SubContractor',
+        route: 'listsubcontractor',
+      },
+    ],
   },
   {
     id: '5',

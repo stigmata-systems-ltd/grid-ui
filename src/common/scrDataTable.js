@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Button from './forms/Button';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
-class ActionDataTable extends Component {
+class SCRDataTable extends Component {
   renderTableHeaders = () => {
     return this.props.metaData.map(header => <th>{header}</th>);
   };
@@ -15,7 +15,7 @@ class ActionDataTable extends Component {
             <tr>{this.renderTableHeaders()}</tr>
           </thead>
           <tbody>
-            {this.props.bodyData.map(data => {
+            {this.props.bodyData.map((data, i) => {
               return (
                 <tr>
                   {Object.keys(data).map(key => (
@@ -24,12 +24,18 @@ class ActionDataTable extends Component {
                     </>
                   ))}
                   <td class="action-btns">
-                    <Link to="/viewgriddpr" className="btn btn-secondary">
-                      View
+                    <Link to="/editSubContractor">
+                      <Button
+                        btnText="Edit"
+                        btnType="btn-secondary"
+                        onClick={() => this.props.onEditClick(i)}
+                      />
                     </Link>
-
-                    {/* <Button btnText="View" btnType="btn-secondary" onClick={this.props.onClick} /> */}
-                    {/* <Button btnText="Delete" btnType="btn-secondary" onClick={this.props.onClick} /> */}
+                    <Button
+                      btnText="Delete"
+                      btnType="btn-secondary"
+                      onClick={() => this.props.onDeleteClick(i)}
+                    />
                   </td>
                 </tr>
               );
@@ -41,4 +47,4 @@ class ActionDataTable extends Component {
   }
 }
 
-export default ActionDataTable;
+export default SCRDataTable;

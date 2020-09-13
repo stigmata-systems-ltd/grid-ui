@@ -1,11 +1,9 @@
 import { connect } from 'react-redux';
-import ListSubContractor from '../../pages/subContractor/ListSubContractor';
+import EditSubContractor from '../../pages/subContractor/EditSubContractor';
 import store from '../../store';
 import {
   addSubContractor,
-  fetchSubContractor,
-  deleteSCR,
-  editSCR,
+  updateSubContractor,
 } from '../../actions/subContractorActions';
 import {
   ADD_SUBCONTRACTOR,
@@ -20,19 +18,11 @@ import {
 
 const mapDispatchToProps = dispatch => {
   return {
-    saveSubContractorData() {
-      dispatch(addSubContractor());
+    updateSubContractor() {
+      dispatch(updateSubContractor());
       dispatch({ type: RESET_SUBCONTRACTOR_FORM });
     },
-    fetchSCRData() {
-      dispatch(fetchSubContractor());
-    },
-    deleteSCR(i) {
-      dispatch(deleteSCR(i));
-    },
-    editSCR(i) {
-      dispatch(editSCR(i));
-    },
+
     handleChangeSubName(value) {
       dispatch({
         type: SUBCONTRACTOR_NAME,
@@ -79,4 +69,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ListSubContractor);
+export default connect(mapStateToProps, mapDispatchToProps)(EditSubContractor);

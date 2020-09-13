@@ -17,6 +17,7 @@ import DeleteGrid from './container/grid/deleteGridContainer';
 import EditGrid from './container/grid/editGridContainer';
 // import ClientBilling from './pages/clientBilling/ClientBilling';
 import SubContractor from './container/subContractor/SubContractorContainer';
+import EditSubContractor from './container/subContractor/editSubContractorContainer';
 import ListSubContractor from './container/subContractor/ListSubContractorContainer';
 import CreateUser from './container/userManagement/createUserContainer';
 import ClientBilling from './container/clientBilling/clientBillingContainer';
@@ -34,6 +35,13 @@ function App() {
         <Route exact path="/createuser">
           <CreateUser />
         </Route>
+        <Route exact path="/listsubcontractor">
+          <ListSubContractor />
+        </Route>
+        <Route exact path="/editsubcontractor">
+          <EditSubContractor />
+        </Route>
+
         <Route path="/dashboard">
           <Dashboard />
         </Route>
