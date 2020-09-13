@@ -45,7 +45,11 @@ class NavItem extends Component {
     }
     setActiveMenu = (navItem) => {
         const path = this.props.history.location.pathname.split("/")[1];
-        navItem.map(nav => path === navItem.route && this.setState({activeId: navItem.id}))
+        navItem.map(nav => {
+            if(nav.route === path) {
+                this.setState({activeId: nav.id})
+            }
+        })
     }
     render() {
         return (

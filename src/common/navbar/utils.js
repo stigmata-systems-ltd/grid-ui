@@ -11,7 +11,7 @@ export const metaDataNavbar = [
     navText: 'Grid',
     iconName: 'faThLarge',
     hasSubNav: true,
-    route: 'dashboard',
+    route: 'grid',
     subNavs: [
       {
         id: 'gridSub' + 1,
@@ -65,14 +65,14 @@ export const metaDataNavbar = [
     navText: 'Reports',
     iconName: 'faChartPie',
     hasSubNav: false,
-    route: 'dashboard',
+    route: 'login',
   },
   {
     id: '6',
     navText: 'Help',
     iconName: 'faQuestionCircle',
     hasSubNav: false,
-    route: 'dashboard',
+    route: 'login',
   },
   {
     id: '7',
