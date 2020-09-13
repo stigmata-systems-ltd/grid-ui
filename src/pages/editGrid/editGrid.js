@@ -3,11 +3,11 @@ import ContentLoader from '../../common/ContentLoader';
 import FormContainer from '../../common/forms/FormContainer';
 import FormRow from '../../common/forms/FormRow';
 import TextInput from '../../common/forms/TextInput';
-import AddLatLng from './AddLatLng';
+import AddLatLng from '../createGrid/AddLatLng';
 import IconTextButton from '../../common/forms/IconTextButton';
 import Button from '../../common/forms/Button';
 import CustomAlert from '../../common/forms/customAlert';
-import NumberInput from "../../common/forms/NumberInput";
+import SimpleDropDown from '../../common/forms/SimpleDropDown';
 class CreateGrid extends Component {
   constructor(props) {
     super(props);
@@ -22,6 +22,10 @@ class CreateGrid extends Component {
     this.setState({ locationRows });
   };
 
+  componentDidMount() {
+    this.props.fetchGridNoData();
+  }
+
   render() {
     return (
       <ContentLoader>
@@ -35,12 +39,12 @@ class CreateGrid extends Component {
         </div>
         <FormContainer formTitle={'Create Grid'}>
           <FormRow>
-            <TextInput
-              label="Grid Number"
-              onChange={e => this.props.handleChangeGridNumber(e.target.value)}
-              value={this.props.grid.gridNumber}
+            <SimpleDropDown
+              label="Select Grid"
+              selectOptions={this.props.grid.gridNoData}
+              onChange={e => this.props.onGridNoChange(e.target.value)}
             />
-            <NumberInput
+            <TextInput
               label="Grid Area"
               onChange={e => this.props.handleChangeGridArea(e.target.value)}
               value={this.props.grid.gridArea}
@@ -58,7 +62,6 @@ class CreateGrid extends Component {
               </div>
               <div class="form-group row location-row">
                 {this.props.grid.gridLatLong.map((e, i) => {
-
                   return (
                     <AddLatLng
                       // onClick={this.handleDeleteLocationRow}

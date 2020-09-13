@@ -281,24 +281,24 @@ export default function(state = initialState, action) {
       console.log(action.payload);
       return {
         ...state,
-        cgAdd: { message: 'CG updated Successfully' },
-        variant: 'success',
+        cgAdd: { message: "CG updated Successfully" },
+        variant: "success",
       };
     case `${ADD_CG}_REJECTED`:
       console.log(action.payload);
       return {
         ...state,
-        cgAdd: { message: 'Error Occurred' },
-        variant: 'danger',
+        cgAdd: { message: "Error Occurred" },
+        variant: "danger",
       };
     case RESET_CG_FORM:
       return {
         ...state,
-        gridNo: '',
-        RFINumber: '',
-        rfiInspectionDate: '',
-        rfiApprovalDate: '',
-        rfiApproval: '',
+        gridNo: "",
+        RFINumber: "",
+        rfiInspectionDate: "",
+        rfiApprovalDate: "",
+        rfiApproval: "",
       };
     case `${SET_LAYER_DETAILS}_PENDING`:
       return {
@@ -313,31 +313,58 @@ export default function(state = initialState, action) {
         isLayerDtlsError: true,
       };
     case `${SET_LAYER_DETAILS}_FULFILLED`:
-      const layerDtls = action.payload.data[0];
+      let singleLayerDtls = {};
+
+      if (action.payload.data.length > 0) {
+        const layerDtls = action.payload.data[0];
+        singleLayerDtls = {
+          dateOfFiling: layerDtls.fillingDate,
+          areaOfLayer: layerDtls.area_layer,
+          fillType: layerDtls.fillType,
+          //rfiMaterialDescription: layerDtls,
+          fillMaterial: layerDtls.topFillMaterial,
+          rfiLayerStatus: layerDtls.cT_RFI_status,
+          layerSubContractor: layerDtls.layerSubContractor,
+          //RFI LV
+          rfiNoLV: layerDtls.lV_RFIno,
+          rfiInspectionDateLV: layerDtls.lV_inspection_date,
+          rfiApprovalDateLV: layerDtls.lV_approval_date,
+          rfiLVApprovalStatus: layerDtls.lV_RFI_status,
+          //RFI CT
+          rfiNoCT: layerDtls.cT_RFIno,
+          rfiInspectionDateCT: layerDtls.cT_inspection_date,
+          rfiApprovalDateCT: layerDtls.cT_approval_date,
+          rfiCTApprovalStatus: layerDtls.cT_RFI_status,
+
+          rfiRemarks: layerDtls.remarks,
+        };
+      } else {
+        singleLayerDtls = {
+          dateOfFiling: "",
+          areaOfLayer: "",
+          fillType: "",
+          //rfiMaterialDescription: layerDtls,
+          fillMaterial: "",
+          rfiLayerStatus: "",
+          layerSubContractor: "",
+          //RFI LV
+          rfiNoLV: "",
+          rfiInspectionDateLV: "",
+          rfiApprovalDateLV: "",
+          rfiLVApprovalStatus: "",
+          //RFI CT
+          rfiNoCT: "",
+          rfiInspectionDateCT: "",
+          rfiApprovalDateCT: "",
+          rfiCTApprovalStatus: "",
+          rfiRemarks: "",
+        };
+      }
       return {
         ...state,
-        tes: true,
         isLayerDtlsLoading: false,
         isLayerDtlsError: false,
-        dateOfFiling: layerDtls.fillingDate,
-        areaOfLayer: layerDtls.area_layer,
-        fillType: layerDtls.fillType,
-        //rfiMaterialDescription: layerDtls,
-        fillMaterial: layerDtls.topFillMaterial,
-        rfiLayerStatus: layerDtls.cT_RFI_status,
-        layerSubContractor: layerDtls.layerSubContractor,
-        //RFI LV
-        rfiNoLV: layerDtls.lV_RFIno,
-        rfiInspectionDateLV: layerDtls.lV_inspection_date,
-        rfiApprovalDateLV: layerDtls.lV_approval_date,
-        rfiLVApprovalStatus: layerDtls.lV_RFI_status,
-        //RFI CT
-        rfiNoCT: layerDtls.cT_RFIno,
-        rfiInspectionDateCT: layerDtls.cT_inspection_date,
-        rfiApprovalDateCT: layerDtls.cT_approval_date,
-        rfiCTApprovalStatus: layerDtls.cT_RFI_status,
-
-        rfiRemarks: layerDtls.remarks,
+        ...singleLayerDtls,
       };
     case `${DELETE_GRID}_FULFILLED`:
       console.log(action.payload);
