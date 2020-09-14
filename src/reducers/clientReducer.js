@@ -1,7 +1,8 @@
-import { 
-    GET_CLIENT_GRID_LIST,
-    SET_CLIENT_SELECTED_GRID,
- } from "../actions/types";
+import {
+  GET_CLIENT_GRID_LIST,
+  SET_CLIENT_SELECTED_GRID,
+  GET_LAYERS_FOR_BILLING,
+} from "../actions/types";
 
 const initialState = {
   gridList: [],
@@ -34,7 +35,28 @@ export default function (state = initialState, action) {
         ...state,
         selectedGrid: action.payload,
       };
-
+      case `${GET_LAYERS_FOR_BILLING}_PENDING`:
+      return {
+        ...state,
+        isLoading: true,
+        isError: false,
+        isSuccess: false,
+      };
+      case `${GET_LAYERS_FOR_BILLING}_REJECTED`:
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+        isSuccess: false,
+        message: action.payload.data,
+      };
+    case `${GET_LAYERS_FOR_BILLING}_FULFILLED`:
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        billableLayers: action.payload.data,
+      };
     default:
       return state;
   }

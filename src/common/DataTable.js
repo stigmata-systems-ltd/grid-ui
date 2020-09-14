@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import IconButton from "../common/forms/IconButton";
-import Button from '../common/forms/Button';
-
-
+import Button from "../common/forms/Button";
 
 class DataTable extends Component {
   renderTableHeaders = () => {
@@ -12,7 +10,7 @@ class DataTable extends Component {
   render() {
     return (
       <div class="table-responsive pt-3 data-table">
-        <table class="table table-bordered">
+        <table class="table dataTable no-footer">
           <thead>
             <tr>{this.renderTableHeaders()}</tr>
           </thead>
@@ -20,14 +18,6 @@ class DataTable extends Component {
             {this.props.bodyData.map((data, rowIndex) => {
               return (
                 <tr>
-                  {this.props.showRowDelete && (
-                    <td class="action-btns" style={{width: "1%"}}>
-                      <IconButton
-                        iconName="faTrash"
-                        onClick={this.props.onClick}
-                      />
-                    </td>
-                  )}
                   {Object.keys(data).map((key) => (
                     <>
                       <td> {data[key].toString()}</td>
@@ -35,19 +25,21 @@ class DataTable extends Component {
                   ))}
 
                   <td>
-                  {this.props.isShowEdit &&
-                  <Button 
-                    btnText="Edit" 
-                    btnType="primary" 
-                    onClick={() => this.props.onClickEdit(rowIndex)}
-                  />
-                  }
-                  &nbsp;
-                  <Button 
-                    btnText="Delete" 
-                    btnType="btn-danger"
-                    onClick={() => this.props.onClickDelete(rowIndex)}
-                  />
+                    {this.props.showEdit && (
+                      <Button
+                        btnText="Edit"
+                        btnType="primary"
+                        onClick={() => this.props.onClickEdit(rowIndex)}
+                      />
+                    )}
+                    {this.props.showDelete && (
+                    <td class="action-btns" style={{ width: "1%" }}>
+                      <IconButton
+                        iconName="faTrash"
+                        onClick={this.props.onClickDelete}
+                      />
+                    </td>
+                  )}
                   </td>
                 </tr>
               );
