@@ -8,6 +8,7 @@ import {
   editGridDetails,
   viewGrid,
   fetchGrid,
+  fetchLayerDetails,
 } from '../../actions/gridActions';
 import { GRID_NO_LIST } from '../../actions/types';
 
@@ -27,6 +28,7 @@ const mapDispatchToProps = dispatch => {
     },
     onViewClick(i) {
       dispatch(editGridDetails(i));
+      dispatch(fetchLayerDetails(i));
     },
   };
 };

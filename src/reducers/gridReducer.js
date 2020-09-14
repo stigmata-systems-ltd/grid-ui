@@ -78,6 +78,7 @@ const initialState = {
   editGrid: { message: '' },
   listGrid: [],
   cgBodyData: [],
+  layerData: [],
 };
 
 export default function(state = initialState, action) {
@@ -552,10 +553,19 @@ export default function(state = initialState, action) {
         layerData: [],
       };
     case `${LAYER_DETAILS}_FULFILLED`:
-      const layerData = action.payload.data;
+      const layerDataDetails = action.payload.data;
+      const layerData = action.payload.data.map(e => ({
+        layerNo: e.layerNo,
+        lvApprovalDate: e.lV_approval_date,
+        lvApprovalStatus: e.lV_RFI_status,
+        ctApprovalDate: e.ADD_CGcT_approval_date,
+        ctApprovalStatus: e.cT_RFI_status,
+        layerStatus: e.status,
+      }));
       return {
         ...state,
         layerData,
+        layerDataDetails,
       };
     default:
       return state;
