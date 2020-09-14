@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import OverviewItems from "./OverviewItems";
-import { overviewMetadata } from "./utils";
+import { overviewLayerMetadata, overviewMetadata } from "./utils";
 
 class TabContent extends Component {
 
@@ -19,6 +19,21 @@ class TabContent extends Component {
                                 <div class="tab-pane fade active show" id="overview" role="tabpanel" aria-labelledby="overview-tab">
                                     <div class="d-flex flex-wrap justify-content-xl-between">
                                         {overviewMetadata.map(item => <OverviewItems 
+                                            title={item.title}
+                                            number={item.number}
+                                            iconName={item.iconName}
+                                            color={item.color}
+                                        />)}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body dashboard-tabs p-0">
+                            <ul class="nav nav-tabs px-4" role="tablist"></ul>
+                            <div class="tab-content py-0 px-0">
+                                <div class="tab-pane fade active show" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+                                    <div class="d-flex flex-wrap justify-content-xl-between">
+                                        {overviewLayerMetadata.map(item => <OverviewItems 
                                             title={item.title}
                                             number={item.number}
                                             iconName={item.iconName}
