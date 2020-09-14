@@ -35,6 +35,7 @@ class Dashboard extends Component {
               bodyData={this.props.grid.listGrid}
               onDeleteClick={i => this.props.onDeleteClick(i)}
               onEditClick={i => this.props.onEditClick(i)}
+              onViewClick={i => this.props.onViewClick(i)}
             />
           </FormRow>
         </FormContainer>

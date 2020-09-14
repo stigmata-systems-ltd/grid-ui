@@ -10,7 +10,7 @@ import Dashboard from './pages/dashboard/Dashoard';
 import GridDPR from './container/grid/gridDPRContainer';
 import CreateGrid from './container/grid/addGridContainer';
 import ViewGrid from './container/grid/viewGrid';
-import ViewGridDpr from './pages/viewGridDPR/ViewGridDpr';
+import ViewGridDpr from './container/grid/viewGridDprContainer';
 import GridDetails from './pages/gridDetails/GridDetails';
 import EditDridDetails from './pages/editGridDetails/EditGridDetails';
 import DeleteGrid from './container/grid/deleteGridContainer';

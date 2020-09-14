@@ -1,21 +1,20 @@
-import React, { Component } from "react";
-import ContentLoader from "../../common/ContentLoader";
-import FormContainer from "../../common/forms/FormContainer";
-import FormRow from "../../common/forms/FormRow";
-import TextInput from "../../common/forms/TextInput";
-import AddLatLng from "../createGrid/AddLatLng";
-import IconTextButton from "../../common/forms/IconTextButton";
-import Button from "../../common/forms/Button";
-import SimpleDropDown from "../../common/forms/SimpleDropDown";
-import CheckBox from "../../common/forms/CheckBox";
-import DataTable from "../../common/DataTable";
+import React, { Component } from 'react';
+import ContentLoader from '../../common/ContentLoader';
+import FormContainer from '../../common/forms/FormContainer';
+import FormRow from '../../common/forms/FormRow';
+import TextInput from '../../common/forms/TextInput';
+import Label from '../../common/forms/Label';
+import AddLatLng from '../createGrid/AddLatLng';
+import IconTextButton from '../../common/forms/IconTextButton';
+import Button from '../../common/forms/Button';
+import SimpleDropDown from '../../common/forms/SimpleDropDown';
+import CheckBox from '../../common/forms/CheckBox';
+import DataTable from '../../common/DataTable';
 import GridDetailsDataTable from '../../common/GridDetailsDataTable';
 import TabContent from '../../common/tabs/TabContent';
 import TabPane from '../../common/tabs/TabPane';
-import TabNavs from "../../common/tabs/TabNavs";
-
-
-
+import TabNavs from '../../common/tabs/TabNavs';
+import LatLongReadOnlyTable from '../../common/LatLongReadOnlyTable';
 
 import {
   _cGMetaData,
@@ -24,16 +23,15 @@ import {
   _CGbodyData,
   _RFILevelVerificationbodyData,
   _RFICompactionTestbodyData,
-  tabMetaData
+  tabMetaData,
+  _latLongMetaData,
 } from './utils';
-import LayerDPRDetails from "./LayerDPRDetails";
-import ViewGridLocationTable from "../../common/ViewGridLocationTable";
-
+import LayerDPRDetails from './LayerDPRDetails';
+import ViewGridLocationTable from '../../common/ViewGridLocationTable';
 
 class ViewGridDpr extends Component {
-
   constructor() {
-    super()
+    super();
     this.state = {
       selectedGrid: 0,
       selectedLayer: 0,
@@ -47,7 +45,6 @@ class ViewGridDpr extends Component {
           id: 2,
           isActive: false,
         },
-
       ],
     };
   }
@@ -73,11 +70,13 @@ class ViewGridDpr extends Component {
       }),
     });
   };
-
+  componentDidMount() {
+    this.props.fetchGridNoData();
+  }
   render() {
     return (
       <ContentLoader>
-        <FormContainer formTitle={"View Grid DPR"}>
+        <FormContainer formTitle={'View Grid DPR'}>
           <TabNavs
             navItems={this.state.navData}
             onClick={id => this.handleTabs(id)}
@@ -85,16 +84,22 @@ class ViewGridDpr extends Component {
           <TabContent>
             <TabPane isActive={this.state.tabPaneStatus[0].isActive}>
               <FormRow>
-                <TextInput
+                <Label
                   label="Grid Number"
+                  readOnly="test"
+                  value={this.props.grid.gridNumber}
                 />
-                <TextInput
+                <Label
                   label="Grid Area"
+                  readOnly="test"
+                  value={this.props.grid.gridArea}
                 />
               </FormRow>
               <FormRow>
-                <ViewGridLocationTable />
-
+                <LatLongReadOnlyTable
+                  metaData={_latLongMetaData}
+                  bodyData={this.props.grid.gridLatLong}
+                />
               </FormRow>
 
               {/* Grid Details */}
@@ -104,7 +109,7 @@ class ViewGridDpr extends Component {
                 <h5> Cleaning and Grubbing Details</h5>
                 <GridDetailsDataTable
                   metaData={_cGMetaData}
-                  bodyData={_CGbodyData}
+                  bodyData={this.props.grid.cgBodyData}
                 />
               </FormRow>
               {/* <FormRow>
@@ -127,16 +132,13 @@ class ViewGridDpr extends Component {
 
             {/* Layer DPR Details */}
 
-
             <TabPane isActive={this.state.tabPaneStatus[1].isActive}>
               <LayerDPRDetails />
-
             </TabPane>
-
           </TabContent>
         </FormContainer>
       </ContentLoader>
-    )
+    );
   }
 }
 

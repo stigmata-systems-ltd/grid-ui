@@ -1,4 +1,3 @@
-
 export const tabMetaData = [
   {
     id: 1,
@@ -10,8 +9,9 @@ export const tabMetaData = [
     navText: 'Layer DPR Details',
     isActive: false,
   },
-
 ];
+
+export const _latLongMetaData = ['latitude', 'longitude'];
 
 //layer DPR
 export const _layerMetaData = [
@@ -31,21 +31,13 @@ export const _layerBodyData = [
     RFIAppStatus: 'Complete',
     RFITestingDate: '1/9/2020',
     RFITestingStatus: 'Complete',
-    LayerStatus : "New"
- 
+    LayerStatus: 'New',
   },
 ];
 
-
 //end Layer Dpr
 
-
-
-
-
-
 export const _cGMetaData = [
-  'S.No',
   // 'Grid Area',
   // 'GEO-Location',
   'RFI No',
@@ -131,34 +123,34 @@ export const _RFICompactionTestbodyData = [
   },
 ];
 
-export const getGridRFILevelVerificationDetails = (data) => {
-  let transData = []
-  data.map( item => {
-      transData.push ({
-          layerDtlsId: item.layerDtlsId,
-          layerNo: item.layerNo,
-          cT_RFI_status: item.cT_RFI_status,
-          lV_RFIno: item.lV_RFIno,
-          lV_inspection_date: item.lV_inspection_date,
-          lV_approval_date: item.lV_approval_date,
-          lV_RFI_status: item.lV_RFI_status,
-      })
-  })
+export const getGridRFILevelVerificationDetails = data => {
+  let transData = [];
+  data.map(item => {
+    transData.push({
+      layerDtlsId: item.layerDtlsId,
+      layerNo: item.layerNo,
+      cT_RFI_status: item.cT_RFI_status,
+      lV_RFIno: item.lV_RFIno,
+      lV_inspection_date: item.lV_inspection_date,
+      lV_approval_date: item.lV_approval_date,
+      lV_RFI_status: item.lV_RFI_status,
+    });
+  });
   return transData;
-}
+};
 
-export const getGridRFICompactionTestingDetails = (data) => {
-  let transData = []
-  data.map( item => {
-      transData.push ({
-          layerDtlsId: item.layerDtlsId,
-          layerNo: item.layerNo,
-          cT_RFI_status: item.cT_RFI_status,
-          cT_RFIno: item.cT_RFIno,
-          cT_inspection_date: item.cT_inspection_date,
-          cT_approval_date: item.cT_approval_date,
-          lV_RFI_status: item.lV_RFI_status,
-      })
-  })
+export const getGridRFICompactionTestingDetails = data => {
+  let transData = [];
+  data.map(item => {
+    transData.push({
+      layerDtlsId: item.layerDtlsId,
+      layerNo: item.layerNo,
+      cT_RFI_status: item.cT_RFI_status,
+      cT_RFIno: item.cT_RFIno,
+      cT_inspection_date: item.cT_inspection_date,
+      cT_approval_date: item.cT_approval_date,
+      lV_RFI_status: item.lV_RFI_status,
+    });
+  });
   return transData;
-}
+};

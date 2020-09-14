@@ -213,7 +213,6 @@ const mapDispatchToProps = (dispatch) => {
     },
     addQuantity() {
       const grid = store.getState().grid;
-      console.log("add qty",store.getState().grid.subContractorId)
       if (grid.quantity !== "" && grid.subContractorId !== "0") {
         const data = { quantity: "", subContractorId: "" };
         let changedQty = parseInt(grid.quantity);
@@ -228,8 +227,10 @@ const mapDispatchToProps = (dispatch) => {
         data.quantity = changedQty;
         data.subContractorId = grid.subContractorName;
         grid.totalQuantity += parseInt(grid.quantity);
-        grid.totalSubContractor += 1;
-        isNewSubCont && grid.addedQuantity.push(data);
+        if(isNewSubCont) {
+          grid.totalSubContractor += 1;
+          grid.addedQuantity.push(data);
+        }
 
         dispatch({
           type: CHANGE_QUANTITY,
