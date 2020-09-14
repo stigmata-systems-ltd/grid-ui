@@ -1,13 +1,27 @@
 import { connect } from 'react-redux';
 import ViewGrid from '../../pages/viewGrid/ViewGrid';
 import store from '../../store';
-import { gridNoList } from '../../actions/gridActions';
+import {
+  gridNoList,
+  gridList,
+  deleteGrid,
+  editGridDetails,
+} from '../../actions/gridActions';
 import { GRID_NO_LIST } from '../../actions/types';
 
 const mapDispatchToProps = dispatch => {
   return {
     fetchGridNoData() {
       dispatch(gridNoList());
+    },
+    fetchGridData() {
+      dispatch(gridList());
+    },
+    onEditClick(i) {
+      dispatch(editGridDetails(i));
+    },
+    onDeleteClick(i) {
+      dispatch(deleteGrid(i));
     },
   };
 };

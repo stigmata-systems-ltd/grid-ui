@@ -37,13 +37,18 @@ class CreateGrid extends Component {
             />
           ) : null}
         </div>
-        <FormContainer formTitle={'Create Grid'}>
+        <FormContainer formTitle={'Edit Grid'}>
           <FormRow>
-            <SimpleDropDown
+            <TextInput
+              label="Grid Number"
+              onChange={e => this.props.onGridNoChange(e.target.value)}
+              value={this.props.grid.gridNumber}
+            />
+            {/* <SimpleDropDown
               label="Select Grid"
               selectOptions={this.props.grid.gridNoData}
               onChange={e => this.props.onGridNoChange(e.target.value)}
-            />
+            /> */}
             <TextInput
               label="Grid Area"
               onChange={e => this.props.handleChangeGridArea(e.target.value)}

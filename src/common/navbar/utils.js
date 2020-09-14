@@ -34,16 +34,6 @@ export const metaDataNavbar = [
         navText: 'Grid Details',
         route: 'griddetails',
       },
-      {
-        id: 'gridSub' + 5,
-        navText: 'Edit Grid',
-        route: 'editgrid',
-      },
-      {
-        id: 'gridSub' + 6,
-        navText: 'Delete Grid',
-        route: 'deletegrid',
-      },
     ],
   },
   {
@@ -57,8 +47,20 @@ export const metaDataNavbar = [
     id: '4',
     navText: 'Sub-Contractor',
     iconName: 'faUser',
-    hasSubNav: false,
+    hasSubNav: true,
     route: 'subcontractor',
+    subNavs: [
+      {
+        id: 'SCRSub' + 1,
+        navText: 'Create SubContractor',
+        route: 'subcontractor',
+      },
+      {
+        id: 'SCRSub' + 2,
+        navText: 'List - SubContractor',
+        route: 'listsubcontractor',
+      },
+    ],
   },
   {
     id: '5',
