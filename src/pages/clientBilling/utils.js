@@ -31,12 +31,10 @@ export const completedLayers = {
 };
 
 export const _clientBillingMetaData = [
-  '#',
-  'S.No',
-  'Grid Number',
-  'Grid Layers',
-  'Actions',
-];
+    "Grid Number",
+    "Grid Layers",
+    "Actions"
+]
 
 export const _bodyData = [
   {
