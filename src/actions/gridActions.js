@@ -57,6 +57,8 @@ export const createGrid = () => {
     grid_area: parseInt(grid.gridArea),
     gridGeoLocation: grid.gridLatLong,
     user_id: 1,
+    marker_latitide: 10,
+    marker_longitude: 10,
   };
   return {
     type: GRID_ADD,

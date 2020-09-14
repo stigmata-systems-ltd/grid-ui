@@ -25,7 +25,11 @@ class ActionDataTable extends Component {
                   ))}
                   <td class="action-btns">
                     <Link to="/viewgriddpr">
-                      <Button btnText="View" btnType="btn-secondary" />
+                      <Button
+                        btnText="View"
+                        btnType="btn-secondary"
+                        onClick={() => this.props.onViewClick(i)}
+                      />
                     </Link>
                     <Link to="/editgrid">
                       <Button
