@@ -81,13 +81,13 @@ class GridDPR extends Component {
         <ContentLoader>
           {(this.props.grid.isLayerUpdateSuccess ||
             this.props.grid.isLayerUpdateError) && (
-            <CustomAlert
-              variant={
-                this.props.grid.isLayerUpdateSuccess ? "success" : "danger"
-              }
-              message={this.props.grid.gridAdd.layerUpdateMsg}
-            />
-          )}
+              <CustomAlert
+                variant={
+                  this.props.grid.isLayerUpdateSuccess ? "success" : "danger"
+                }
+                message={this.props.grid.gridAdd.layerUpdateMsg}
+              />
+            )}
           <FormContainer formTitle={"Grid Daily Progress"}>
             <TabNavs
               navItems={this.state.navData}
@@ -186,22 +186,14 @@ class GridDPR extends Component {
                     value={this.props.grid.fillMaterial}
                   />
                   <FileInput
-                    size="col-md-4"
+                    size="col-md-8"
                     label="Select Documents"
                     onChange={(e) =>
                       this.props.handleFileUpload(e.target.files[0])
                     }
                   />
 
-                  <SimpleDropDown
-                    size="col-md-4"
-                    label="Layer Status"
-                    selectOptions={this.props.grid.approvalOptions}
-                    onChange={(e) =>
-                      this.props.handleLayerStatusChange(e.target.value)
-                    }
-                    value={this.props.grid.rfiLayerStatus}
-                  />
+
                 </FormRow>
                 <FormRow>
                   <div class="col-md-12">
@@ -320,6 +312,17 @@ class GridDPR extends Component {
                       this.props.handleRemarksChange(e.target.value)
                     }
                     value={this.props.grid.rfiRemarks}
+                  />
+                </FormRow>
+                <FormRow>
+                  <SimpleDropDown
+                    size="col-md-6"
+                    label="Layer Status"
+                    selectOptions={this.props.grid.approvalOptions}
+                    onChange={(e) =>
+                      this.props.handleLayerStatusChange(e.target.value)
+                    }
+                    value={this.props.grid.rfiLayerStatus}
                   />
                 </FormRow>
                 <Button
