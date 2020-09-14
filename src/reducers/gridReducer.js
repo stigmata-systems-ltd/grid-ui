@@ -333,6 +333,10 @@ export default function(state = initialState, action) {
           dateOfFiling: layerDtls.fillingDate,
           areaOfLayer: layerDtls.area_layer,
           fillType: layerDtls.fillType,
+          totalQuantity: layerDtls.totalQuantity,
+          addedQuantity: layerDtls.layerSubContractor,
+          totalSubContractor:
+            layerDtls.layerSubContractor && layerDtls.layerSubContractor.length,
           //rfiMaterialDescription: layerDtls,
           fillMaterial: layerDtls.topFillMaterial,
           rfiLayerStatus: layerDtls.status,
@@ -359,6 +363,9 @@ export default function(state = initialState, action) {
           fillMaterial: '',
           rfiLayerStatus: '',
           layerSubContractor: '',
+          totalQuantity: 0,
+          addedQuantity: [],
+          totalSubContractor: 0,
           //RFI LV
           rfiNoLV: '',
           rfiInspectionDateLV: '',
@@ -449,7 +456,6 @@ export default function(state = initialState, action) {
         gridno: e.gridno,
         status: e.status,
       }));
-      console.log(`List Grid: ${listGrid}`);
       return {
         ...state,
         listGrid,
@@ -483,7 +489,7 @@ export default function(state = initialState, action) {
     case `${LAYER_PROGRESS}_REJECTED`:
       return {
         ...state,
-        isLayerDtlsLoading: true,
+        isLayerDtlsLoading: false,
         isLayerDtlsError: true,
         isLayerUpdateSuccess: false,
         layerUpdateMsg: 'Internal Server Error',
@@ -508,6 +514,9 @@ export default function(state = initialState, action) {
         dateOfFiling: '',
         areaOfLayer: '',
         fillType: '',
+        totalQuantity: 0,
+        addedQuantity: [],
+        totalSubContractor: 0,
         //rfiMaterialDescription: layerDtls,
         fillMaterial: '',
         rfiLayerStatus: '',
@@ -523,7 +532,6 @@ export default function(state = initialState, action) {
         rfiApprovalDateCT: '',
         rfiCTApprovalStatus: '',
         rfiRemarks: '',
-        addedQuantity: [],
         dprCompletedLayers: ' (Please Select a grid to see completed layers)',
         isShowComplLayerDefaultMsg: true,
       };

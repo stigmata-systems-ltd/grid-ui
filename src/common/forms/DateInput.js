@@ -9,7 +9,7 @@ class DateInput extends Component {
           <label class="col-sm-3 col-form-label">{this.props.label}</label>
           <div class="col-sm-9">
             <input
-              type="date"
+              type={`${this.props.type ? this.props.type : "date"}`}
               class="form-control"
               onChange={e => this.props.onChange(e)}
               value={this.props.value}

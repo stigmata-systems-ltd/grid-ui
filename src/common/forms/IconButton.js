@@ -5,7 +5,7 @@ class IconButton extends Component {
     return (
       <button
         type="button"
-        class="btn btn-icon-text"
+        class={`btn btn-icon-text ${this.props.className}`}
         onClick={this.props.onClick}
       >
         <FaIcon iconName={this.props.iconName} size="lg" />
