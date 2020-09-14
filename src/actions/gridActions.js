@@ -12,11 +12,11 @@ import {
   EDIT_GRID,
   GRID_LIST,
   EDIT_GRID_DETAILS,
+  SET_COMPLETED_LAYERS_BY_GRID,
 } from './types';
 import store from '../store';
 import axios from 'axios';
 import config from '../config';
-
 export const gridNoList = () => {
   return {
     type: GRID_NO_LIST,
@@ -129,11 +129,12 @@ export const addLatLang = () => {
 export const updateLayerProgress = () => {
   const grid = store.getState().grid;
   const postData = {
-    gridId: parseInt(grid.gridNo),
+    gridId: parseInt(grid.dprGridNum),
     layerId: parseInt(grid.layerNo),
     fillingDate: grid.dateOfFiling,
     fillingMaterial: grid.dateOfFiling,
     area_layer: parseInt(grid.areaOfLayer),
+    status: grid.rfiLayerStatus,
     totalQuantity: 20,
     fillType: grid.fillType,
     topFillMaterial: grid.fillMaterial,
@@ -184,5 +185,13 @@ export const editGridDetails = i => {
   return {
     type: EDIT_GRID_DETAILS,
     payload: selectedGrid,
+  };
+};
+export const getCompletedLayersByGrid = gridId => {
+  return {
+    type: SET_COMPLETED_LAYERS_BY_GRID,
+    payload: axios.get(
+      config.BASE_URL + '/api/Grid/LayerCmplCountByGrid?id=' + gridId
+    ),
   };
 };

@@ -91,7 +91,7 @@ export default function(state = initialState, action) {
     case `${LIST_SUBCONTRACTOR}_FULFILLED`:
       console.log(`List SCR: ${action.payload.data}`);
       const listSCR = action.payload.data.map(e => ({
-        subContrtactorId: e.subContrtactorId,
+        subContractorId: e.subContractorId,
         name: e.name,
       }));
       console.log(`List SCR: ${listSCR}`);
@@ -136,7 +136,7 @@ export default function(state = initialState, action) {
       console.log(`Edit SubContractor Details: ${JSON.stringify(selectedSCR)}`);
       return {
         ...state,
-        subContractorId: selectedSCR.subContrtactorId,
+        subContractorId: selectedSCR.subContractorId,
         subContractorName: selectedSCR.name,
         subContractorCode: selectedSCR.code,
         subContractorContactPerson: selectedSCR.contact_person,

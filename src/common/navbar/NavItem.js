@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as fa from '@fortawesome/free-solid-svg-icons';
 import { withRouter } from "react-router-dom";
+import store from "../../store";
 
 class NavItem extends Component {
 
@@ -9,20 +10,23 @@ class NavItem extends Component {
         super(props);
         this.state = {
             isSubNavOpen: false,
-
+            activeId: '1',
         }
+    }
+    componentDidMount = () => {
+        this.setActiveMenu(this.props.navData);
     }
     renderSubNavs = (subNavs) => {
         return (subNavs.map((subNav) =>
             <div class={`collapse ${this.state.isSubNavOpen && "show"}`} id="ui-basic">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item sub-nav">
-                        <a
+                        <button
                             class="nav-link"
                             onClick={() => this.handleSubMenuRedirect(subNav.route)}
                         >
                             {subNav.navText}
-                        </a>
+                        </button>
                     </li>
                 </ul>
             </div>
@@ -39,9 +43,18 @@ class NavItem extends Component {
             this.props.history.push(navItem.route)
         }
     }
+    setActiveMenu = (navItem) => {
+        const path = this.props.history.location.pathname.split("/")[1];
+        navItem.map(nav => {
+            if(nav.route === path) {
+                this.setState({activeId: nav.id})
+            }
+        })
+    }
     render() {
         return (
-            this.props.navData.map((navItem) => (<li class="nav-item">
+            this.props.navData.map((navItem) => (
+            <li class={`nav-item ${this.state.activeId === navItem.id && "active"}`}>
                 <button
                     key={navItem.id}
                     class={`nav-link ${this.state.isSubNavOpen && "show"}`}

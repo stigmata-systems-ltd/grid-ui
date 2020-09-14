@@ -47,6 +47,10 @@ import {
   DPR_GRID_NO_CHANGE,
   GRID_LIST,
   EDIT_GRID_DETAILS,
+  LAYER_PROGRESS,
+  RESET_DPR_FORM,
+  SET_ADD_SUBCONT_ERROR,
+  SET_COMPLETED_LAYERS_BY_GRID,
 } from '../actions/types';
 
 const initialState = {
@@ -249,7 +253,7 @@ export default function(state = initialState, action) {
           id: '',
           gridName: '',
         };
-        data.id = a.subContrtactorId;
+        data.id = a.subContractorId;
         data.gridName = a.name;
         subContractorList.push(data);
       });
@@ -329,7 +333,7 @@ export default function(state = initialState, action) {
           fillType: layerDtls.fillType,
           //rfiMaterialDescription: layerDtls,
           fillMaterial: layerDtls.topFillMaterial,
-          rfiLayerStatus: layerDtls.cT_RFI_status,
+          rfiLayerStatus: layerDtls.status,
           layerSubContractor: layerDtls.layerSubContractor,
           //RFI LV
           rfiNoLV: layerDtls.lV_RFIno,
@@ -453,6 +457,72 @@ export default function(state = initialState, action) {
         gridNumber: editGridDetails.gridno,
         gridArea: editGridDetails.grid_area,
         gridLatLong: editGridDetails.gridGeoLocation,
+        gridNo: '',
+      };
+    case `${LAYER_PROGRESS}_PENDING`:
+      return {
+        ...state,
+        isLayerDtlsLoading: true,
+        isLayerDtlsError: false,
+        isLayerUpdateSuccess: false,
+      };
+    case `${LAYER_PROGRESS}_REJECTED`:
+      return {
+        ...state,
+        isLayerDtlsLoading: true,
+        isLayerDtlsError: true,
+        isLayerUpdateSuccess: false,
+        layerUpdateMsg: 'Internal Server Error',
+      };
+    case `${LAYER_PROGRESS}_FULFILLED`:
+      return {
+        ...state,
+        isLayerDtlsLoading: false,
+        isLayerDtlsError: false,
+        isLayerUpdateSuccess: true,
+        layerUpdateMsg: action.payload.data.message,
+      };
+    case RESET_DPR_FORM:
+      return {
+        ...state,
+        isLayerDtlsLoading: false,
+        isLayerUpdateError: false,
+        isLayerUpdateSuccess: false,
+        layerUpdateMsg: '',
+        dprGridNum: '',
+        layerNo: '',
+        dateOfFiling: '',
+        areaOfLayer: '',
+        fillType: '',
+        //rfiMaterialDescription: layerDtls,
+        fillMaterial: '',
+        rfiLayerStatus: '',
+        layerSubContractor: '',
+        //RFI LV
+        rfiNoLV: '',
+        rfiInspectionDateLV: '',
+        rfiApprovalDateLV: '',
+        rfiLVApprovalStatus: '',
+        //RFI CT
+        rfiNoCT: '',
+        rfiInspectionDateCT: '',
+        rfiApprovalDateCT: '',
+        rfiCTApprovalStatus: '',
+        rfiRemarks: '',
+        addedQuantity: [],
+        dprCompletedLayers: ' (Please Select a grid to see completed layers)',
+        isShowComplLayerDefaultMsg: true,
+      };
+    case SET_ADD_SUBCONT_ERROR:
+      return {
+        ...state,
+        isAddSubContError: true,
+        addSubContErrorMsg: action.payload,
+      };
+    case `${SET_COMPLETED_LAYERS_BY_GRID}_FULFILLED`:
+      return {
+        ...state,
+        dprCompletedLayers: action.payload.data,
       };
     default:
       return state;
