@@ -51,6 +51,7 @@ import {
   RESET_DPR_FORM,
   SET_ADD_SUBCONT_ERROR,
   SET_COMPLETED_LAYERS_BY_GRID,
+  LAYER_DETAILS,
 } from '../actions/types';
 
 const initialState = {
@@ -536,6 +537,17 @@ export default function(state = initialState, action) {
       return {
         ...state,
         dprCompletedLayers: action.payload.data,
+      };
+    case `${LAYER_DETAILS}_REJECTED`:
+      return {
+        ...state,
+        layerData: [],
+      };
+    case `${LAYER_DETAILS}_FULFILLED`:
+      const layerData = action.payload.data;
+      return {
+        ...state,
+        layerData,
       };
     default:
       return state;

@@ -12,6 +12,7 @@ import {
   EDIT_GRID,
   GRID_LIST,
   EDIT_GRID_DETAILS,
+  LAYER_DETAILS,
   SET_COMPLETED_LAYERS_BY_GRID,
 } from './types';
 import store from '../store';
@@ -194,6 +195,17 @@ export const getCompletedLayersByGrid = gridId => {
     type: SET_COMPLETED_LAYERS_BY_GRID,
     payload: axios.get(
       config.BASE_URL + '/api/Grid/LayerCmplCountByGrid?id=' + gridId
+    ),
+  };
+};
+export const fetchLayerDetails = i => {
+  const grid = store.getState().grid;
+  const gridNo = grid.listGridDetails[i].gridno;
+
+  return {
+    type: LAYER_DETAILS,
+    payload: axios.get(
+      config.BASE_URL + '/api/Layer/LayerList?gridNo=' + gridNo
     ),
   };
 };

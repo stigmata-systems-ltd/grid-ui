@@ -133,7 +133,7 @@ class ViewGridDpr extends Component {
             {/* Layer DPR Details */}
 
             <TabPane isActive={this.state.tabPaneStatus[1].isActive}>
-              <LayerDPRDetails />
+              <LayerDPRDetails layerData={this.props.grid.layerData} />
             </TabPane>
           </TabContent>
         </FormContainer>
