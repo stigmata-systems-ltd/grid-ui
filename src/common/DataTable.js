@@ -15,35 +15,43 @@ class DataTable extends Component {
             <tr>{this.renderTableHeaders()}</tr>
           </thead>
           <tbody>
-            {this.props.bodyData.map((data, rowIndex) => {
-              return (
-                <tr>
-                  {Object.keys(data).map((key) => (
-                    <>
-                      <td> {data[key].toString()}</td>
-                    </>
-                  ))}
+            {this.props.bodyData.length > 0 ? (
+              this.props.bodyData.map((data, rowIndex) => {
+                return (
+                  <tr>
+                    {Object.keys(data).map((key) => (
+                      <>
+                        <td> {data[key].toString()}</td>
+                      </>
+                    ))}
 
-                  <td>
-                    {this.props.showEdit && (
-                      <Button
-                        btnText="Edit"
-                        btnType="primary"
-                        onClick={() => this.props.onClickEdit(rowIndex)}
-                      />
-                    )}
-                    {this.props.showDelete && (
-                    <td class="action-btns" style={{ width: "1%" }}>
-                      <IconButton
-                        iconName="faTrash"
-                        onClick={this.props.onClickDelete}
-                      />
+                    <td>
+                      {this.props.showEdit && (
+                        <Button
+                          btnText="Edit"
+                          btnType="primary"
+                          onClick={() => this.props.onClickEdit(rowIndex)}
+                        />
+                      )}
+                      {this.props.showDelete && (
+                        <td class="action-btns" style={{ width: "1%" }}>
+                          <IconButton
+                            iconName="faTrash"
+                            onClick={() => this.props.onClickDelete(data.id)}
+                          />
+                        </td>
+                      )}
                     </td>
-                  )}
-                  </td>
-                </tr>
-              );
-            })}
+                  </tr>
+                );
+              })
+            ) : (
+              <tr>
+                <td>
+                  <h6 className="text-info">No Records Found</h6>
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>

@@ -9,6 +9,7 @@ class CheckBox extends Component {
             <label class="form-check-label">
               <input
                 type="checkbox"
+                key={this.props.key}
                 class="form-check-input"
                 checked={this.props.checked}
                 onChange={this.props.onChange}

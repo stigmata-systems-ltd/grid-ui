@@ -39,7 +39,8 @@ export default function (state = initialState, action) {
       return {
         ...state,
         isLoginError: true,
-        loginMessage: action.payload.response.data.errors.Password[0],
+        loginMessage: action.payload.response.data.errors ?
+          action.payload.response.data.errors.Password[0] : action.payload.response.data.message,
         isLoginLoading: false,
       };
     case SET_TOKEN:

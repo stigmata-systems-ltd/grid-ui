@@ -7,10 +7,12 @@ import Button from "../../common/forms/Button";
 import SimpleDropDown from "../../common/forms/SimpleDropDown";
 import CheckBox from "../../common/forms/CheckBox";
 import DataTable from "../../common/DataTable";
+import DateInput from "../../common/forms/DateInput";
 
 import { gridNumber } from "./utils";
 import { completedLayers, _clientBillingMetaData, _bodyData } from "./utils";
 import Loader from "../../common/Loader";
+import { getTranformedBillableTable } from "./dataTransformer";
 
 class ClientBilling extends Component {
   constructor() {
@@ -28,8 +30,9 @@ class ClientBilling extends Component {
     if (billableLayers && billableLayers.length > 0) {
       return billableLayers.map((layer) => (
         <CheckBox 
-          label={layer.layerName} 
-          onChange={this.props.onChangeBillableCheckBox}
+          label={layer.layerName}
+          key={layer.id}
+          onChange={(e) => this.props.onChangeBillableCheckBox(e.target.checked, layer.id)}
           checked={this.props.checked}
         />
       ));
@@ -69,28 +72,43 @@ class ClientBilling extends Component {
             />
           </FormRow>
           <p>Select Layers For Billing</p>
-          <FormRow>
+          {/* <FormRow>
             <CheckBox label="Select All" />
-          </FormRow>
+          </FormRow> */}
           <FormRow>{this.renderCompletedLayers()}</FormRow>
           <FormRow>
             <div class="col-sm-12">
-              <Button btnText="Add" btnType="primary" />
+              <Button btnText="Add" btnType="primary" onClick={this.props.onAddBillableLayers} />
             </div>
+            <p class="text-danger">{this.props.client.billabelAddError}</p>
           </FormRow>
           <FormRow>
             <DataTable
               metaData={_clientBillingMetaData}
-              bodyData={_bodyData}
+              bodyData={getTranformedBillableTable(this.props.client.billableTableData)}
               showDelete={true}
+              onClickDelete={(id) => this.props.deleteGridBillableTable(id)}
             />
           </FormRow>
 
           <FormRow>
-            <TextInput label="Select Billing Month" />
-            <TextInput label="Enter IPC Number" />
+            <DateInput 
+              label="Select Billing Month" 
+              onChange={(e) => this.props.handleBillingMonthChange(e.target.value)}
+              value={this.props.client.billingMonth}
+              type={"month"}
+            />
+            <TextInput 
+              label="Enter IPC Number" 
+              onChange={(e) => this.props.handleIpcChange(e.target.value)}
+              value={this.props.client.ipcNum}
+            />
           </FormRow>
-          <Button btnText="Save" btnType="primary" />
+          <Button 
+            btnText="Save" 
+            btnType="primary" 
+            onClick={this.props.saveClientBilling}
+          />
           <Button btnText="Cancel" btnType="cancel" />
         </FormContainer>
       </ContentLoader>

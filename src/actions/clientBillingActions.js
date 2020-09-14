@@ -21,3 +21,11 @@
       ),
     };
   };
+  export const saveClientBilling = (data) => {
+    return {
+      type: GET_LAYERS_FOR_BILLING,
+      payload: axios.post(config.BASE_URL + '/api/Client/CreateClientBilling',
+        data
+      ),
+    };
+  };
