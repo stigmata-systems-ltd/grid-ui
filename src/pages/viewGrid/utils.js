@@ -1,4 +1,9 @@
-export const _viewGridMetaData = ['S.No', 'Grid Number', 'Actions'];
+export const _viewGridMetaData = [
+  'Grid ID',
+  'Grid Number',
+  'Status',
+  'Actions',
+];
 
 export const _bodyData = [
   {

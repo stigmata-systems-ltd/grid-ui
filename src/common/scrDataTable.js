@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Button from './forms/Button';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
-class ActionDataTable extends Component {
+class SCRDataTable extends Component {
   renderTableHeaders = () => {
     return this.props.metaData.map(header => <th>{header}</th>);
   };
@@ -24,17 +24,13 @@ class ActionDataTable extends Component {
                     </>
                   ))}
                   <td class="action-btns">
-                    <Link to="/viewgriddpr">
-                      <Button btnText="View" btnType="btn-secondary" />
-                    </Link>
-                    <Link to="/editgrid">
+                    <Link to="/editSubContractor">
                       <Button
                         btnText="Edit"
                         btnType="btn-secondary"
                         onClick={() => this.props.onEditClick(i)}
                       />
                     </Link>
-
                     <Button
                       btnText="Delete"
                       btnType="btn-secondary"
@@ -51,4 +47,4 @@ class ActionDataTable extends Component {
   }
 }
 
-export default ActionDataTable;
+export default SCRDataTable;

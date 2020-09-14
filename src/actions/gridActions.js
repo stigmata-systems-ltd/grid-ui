@@ -10,36 +10,44 @@ import {
   DELETE_GRID,
   GRID_DETAILS,
   EDIT_GRID,
+  GRID_LIST,
+  EDIT_GRID_DETAILS,
   SET_COMPLETED_LAYERS_BY_GRID,
-} from "./types";
-import store from "../store";
-import axios from "axios";
-import config from "../config";
-
+} from './types';
+import store from '../store';
+import axios from 'axios';
+import config from '../config';
 export const gridNoList = () => {
   return {
     type: GRID_NO_LIST,
-    payload: axios.get(config.BASE_URL + "/api/Grid/GridNoList"),
+    payload: axios.get(config.BASE_URL + '/api/Grid/GridNoList'),
   };
 };
 
-export const fetchGrid = (gridNo) => {
+export const gridList = () => {
+  return {
+    type: GRID_LIST,
+    payload: axios.get(config.BASE_URL + '/api/Grid/GridList'),
+  };
+};
+
+export const fetchGrid = gridNo => {
   return {
     type: GRID_DETAILS,
-    payload: axios.get(config.BASE_URL + "/api/Grid/GridList?gridId=" + gridNo),
+    payload: axios.get(config.BASE_URL + '/api/Grid/GridList?gridId=' + gridNo),
   };
 };
 
 export const layerNoList = () => {
   return {
     type: LAYER_NO_LIST,
-    payload: axios.get(config.BASE_URL + "/api/Layer/LayerNoList"),
+    payload: axios.get(config.BASE_URL + '/api/Layer/LayerNoList'),
   };
 };
 export const subContractorList = () => {
   return {
     type: SUBCONTRACTOR_LIST,
-    payload: axios.get(config.BASE_URL + "/api/SubCont/GetSubContractorList"),
+    payload: axios.get(config.BASE_URL + '/api/SubCont/GetSubContractorList'),
   };
 };
 export const createGrid = () => {
@@ -52,7 +60,7 @@ export const createGrid = () => {
   };
   return {
     type: GRID_ADD,
-    payload: axios.post(config.BASE_URL + "/api/Grid/AddGrid", postData),
+    payload: axios.post(config.BASE_URL + '/api/Grid/AddGrid', postData),
   };
 };
 
@@ -63,23 +71,25 @@ export const editGrid = () => {
     grid_area: parseInt(grid.gridArea),
     gridGeoLocation: grid.gridLatLong,
     user_id: 1,
+    marker_latitide: 10,
+    marker_longitude: 10,
   };
   return {
     type: EDIT_GRID,
     payload: axios.put(
-      config.BASE_URL + "/api/Grid/UpdateGrid/" + grid.gridNumber,
+      config.BASE_URL + '/api/Grid/UpdateGrid/' + grid.gridId,
       postData
     ),
   };
 };
 
-export const deleteGrid = () => {
+export const deleteGrid = i => {
   const grid = store.getState().grid;
-  const gridno = grid.gridNo;
-
+  console.log(`Selected Grid ID: ${grid.listGrid[i].gridId}`);
+  const id = grid.listGrid[i].gridId;
   return {
     type: DELETE_GRID,
-    payload: axios.delete(config.BASE_URL + "/api/Grid/DeleteGrid/" + gridno),
+    payload: axios.delete(config.BASE_URL + '/api/Grid/DeleteGrid/' + id),
   };
 };
 
@@ -96,7 +106,7 @@ export const addCGData = () => {
   return {
     type: ADD_CG,
     payload: axios.post(
-      config.BASE_URL + "/api/Grid/CreateCG/" + grid.gridNo,
+      config.BASE_URL + '/api/Grid/CreateCG/' + grid.gridNo,
       postData
     ),
   };
@@ -106,8 +116,8 @@ export const addLatLang = () => {
   const grid = store.getState().grid;
   let gridLatLong = grid.gridLatLong;
   const latlangObj = {
-    latitude: "",
-    longitude: "",
+    latitude: '',
+    longitude: '',
   };
   gridLatLong.push(latlangObj);
   return {
@@ -151,7 +161,7 @@ export const updateLayerProgress = () => {
 
   return {
     type: LAYER_PROGRESS,
-    payload: axios.post(config.BASE_URL + "/api/Layer/AddLayer", postData),
+    payload: axios.post(config.BASE_URL + '/api/Layer/AddLayer', postData),
   };
 };
 
@@ -160,17 +170,28 @@ export const getSingleLayerDetails = (selectedLayer, selectedGrid) => {
     type: SET_LAYER_DETAILS,
     payload: axios.get(
       config.BASE_URL +
-        "/api/Layer/LayerList?layerNo=" +
+        '/api/Layer/LayerList?layerNo=' +
         selectedLayer +
-        "&gridNo=" +
+        '&gridNo=' +
         selectedGrid
     ),
   };
 };
+export const editGridDetails = i => {
+  const grid = store.getState().grid;
+  console.log(`Selected SCR ID: ${grid.listGridDetails[i]}`);
+  const selectedGrid = grid.listGridDetails[i];
 
-export const getCompletedLayersByGrid = (gridId) => {
+  return {
+    type: EDIT_GRID_DETAILS,
+    payload: selectedGrid,
+  };
+};
+export const getCompletedLayersByGrid = gridId => {
   return {
     type: SET_COMPLETED_LAYERS_BY_GRID,
-    payload: axios.get(config.BASE_URL + "/api/Grid/LayerCmplCountByGrid?id="+gridId),
+    payload: axios.get(
+      config.BASE_URL + '/api/Grid/LayerCmplCountByGrid?id=' + gridId
+    ),
   };
 };
