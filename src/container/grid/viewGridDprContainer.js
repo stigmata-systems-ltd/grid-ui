@@ -1,13 +1,11 @@
 import { connect } from 'react-redux';
-import ViewGrid from '../../pages/viewGrid/ViewGrid';
+import ViewGridDpr from '../../pages/viewGridDPR/ViewGridDpr';
 import store from '../../store';
 import {
   gridNoList,
   gridList,
   deleteGrid,
   editGridDetails,
-  viewGrid,
-  fetchGrid,
 } from '../../actions/gridActions';
 import { GRID_NO_LIST } from '../../actions/types';
 
@@ -25,9 +23,6 @@ const mapDispatchToProps = dispatch => {
     onDeleteClick(i) {
       dispatch(deleteGrid(i));
     },
-    onViewClick(i) {
-      dispatch(editGridDetails(i));
-    },
   };
 };
 
@@ -41,4 +36,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ViewGrid);
+export default connect(mapStateToProps, mapDispatchToProps)(ViewGridDpr);
