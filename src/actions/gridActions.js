@@ -10,6 +10,8 @@ import {
   DELETE_GRID,
   GRID_DETAILS,
   EDIT_GRID,
+  GRID_LIST,
+  EDIT_GRID_DETAILS,
 } from './types';
 import store from '../store';
 import axios from 'axios';
@@ -19,6 +21,13 @@ export const gridNoList = () => {
   return {
     type: GRID_NO_LIST,
     payload: axios.get(config.BASE_URL + '/api/Grid/GridNoList'),
+  };
+};
+
+export const gridList = () => {
+  return {
+    type: GRID_LIST,
+    payload: axios.get(config.BASE_URL + '/api/Grid/GridList'),
   };
 };
 
@@ -62,23 +71,25 @@ export const editGrid = () => {
     grid_area: parseInt(grid.gridArea),
     gridGeoLocation: grid.gridLatLong,
     user_id: 1,
+    marker_latitide: 10,
+    marker_longitude: 10,
   };
   return {
     type: EDIT_GRID,
     payload: axios.put(
-      config.BASE_URL + '/api/Grid/UpdateGrid/' + grid.gridNumber,
+      config.BASE_URL + '/api/Grid/UpdateGrid/' + grid.gridId,
       postData
     ),
   };
 };
 
-export const deleteGrid = () => {
+export const deleteGrid = i => {
   const grid = store.getState().grid;
-  const gridno = grid.gridNo;
-
+  console.log(`Selected Grid ID: ${grid.listGrid[i].gridId}`);
+  const id = grid.listGrid[i].gridId;
   return {
     type: DELETE_GRID,
-    payload: axios.delete(config.BASE_URL + '/api/Grid/DeleteGrid/' + gridno),
+    payload: axios.delete(config.BASE_URL + '/api/Grid/DeleteGrid/' + id),
   };
 };
 
@@ -163,5 +174,15 @@ export const getSingleLayerDetails = (selectedLayer, selectedGrid) => {
         '&gridNo=' +
         selectedGrid
     ),
+  };
+};
+export const editGridDetails = i => {
+  const grid = store.getState().grid;
+  console.log(`Selected SCR ID: ${grid.listGridDetails[i]}`);
+  const selectedGrid = grid.listGridDetails[i];
+
+  return {
+    type: EDIT_GRID_DETAILS,
+    payload: selectedGrid,
   };
 };

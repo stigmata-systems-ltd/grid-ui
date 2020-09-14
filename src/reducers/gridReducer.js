@@ -45,6 +45,8 @@ import {
   RESET_EDIT_GRID_FORM,
   GRID_DETAILS,
   DPR_GRID_NO_CHANGE,
+  GRID_LIST,
+  EDIT_GRID_DETAILS,
 } from '../actions/types';
 
 const initialState = {
@@ -69,6 +71,7 @@ const initialState = {
   cgAdd: { message: '' },
   deleteGrid: { message: '' },
   editGrid: { message: '' },
+  listGrid: [],
 };
 
 export default function(state = initialState, action) {
@@ -425,7 +428,31 @@ export default function(state = initialState, action) {
     case RESET_EDIT_GRID_FORM:
       return {
         ...state,
-        gridNo: '',
+        gridId: '',
+        gridNumber: '',
+        gridArea: '',
+        gridLatLong: [],
+      };
+    case `${GRID_LIST}_FULFILLED`:
+      const listGrid = action.payload.data.map(e => ({
+        gridId: e.gridId,
+        gridno: e.gridno,
+        status: e.status,
+      }));
+      console.log(`List Grid: ${listGrid}`);
+      return {
+        ...state,
+        listGrid,
+        listGridDetails: action.payload.data,
+      };
+    case EDIT_GRID_DETAILS:
+      const editGridDetails = action.payload;
+      return {
+        ...state,
+        gridId: editGridDetails.gridId,
+        gridNumber: editGridDetails.gridno,
+        gridArea: editGridDetails.grid_area,
+        gridLatLong: editGridDetails.gridGeoLocation,
       };
     default:
       return state;

@@ -15,7 +15,7 @@ class ActionDataTable extends Component {
             <tr>{this.renderTableHeaders()}</tr>
           </thead>
           <tbody>
-            {this.props.bodyData.map(data => {
+            {this.props.bodyData.map((data, i) => {
               return (
                 <tr>
                   {Object.keys(data).map(key => (
@@ -24,12 +24,22 @@ class ActionDataTable extends Component {
                     </>
                   ))}
                   <td class="action-btns">
-                    <Link to="/viewgriddpr" className="btn btn-secondary">
-                      View
+                    <Link to="/viewgriddpr">
+                      <Button btnText="View" btnType="btn-secondary" />
+                    </Link>
+                    <Link to="/editgrid">
+                      <Button
+                        btnText="Edit"
+                        btnType="btn-secondary"
+                        onClick={() => this.props.onEditClick(i)}
+                      />
                     </Link>
 
-                    {/* <Button btnText="View" btnType="btn-secondary" onClick={this.props.onClick} /> */}
-                    {/* <Button btnText="Delete" btnType="btn-secondary" onClick={this.props.onClick} /> */}
+                    <Button
+                      btnText="Delete"
+                      btnType="btn-secondary"
+                      onClick={() => this.props.onDeleteClick(i)}
+                    />
                   </td>
                 </tr>
               );

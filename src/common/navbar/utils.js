@@ -34,16 +34,6 @@ export const metaDataNavbar = [
         navText: 'Grid Details',
         route: 'griddetails',
       },
-      {
-        id: 'gridSub' + 5,
-        navText: 'Edit Grid',
-        route: 'editgrid',
-      },
-      {
-        id: 'gridSub' + 6,
-        navText: 'Delete Grid',
-        route: 'deletegrid',
-      },
     ],
   },
   {
