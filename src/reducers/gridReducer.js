@@ -76,6 +76,7 @@ const initialState = {
   deleteGrid: { message: '' },
   editGrid: { message: '' },
   listGrid: [],
+  cgBodyData: [],
 };
 
 export default function(state = initialState, action) {
@@ -408,6 +409,10 @@ export default function(state = initialState, action) {
         gridNo: singleGrid.gridno,
         gridArea: singleGrid.grid_area,
         gridLatLong: singleGrid.gridGeoLocation,
+        RFINumber: singleGrid.cG_RFIno,
+        rfiInspectionDate: singleGrid.cG_inspection_date,
+        rfiApprovalDate: singleGrid.cG_approval_date,
+        status: singleGrid.status,
       };
     case `${GRID_DETAILS}_REJECTED`:
       console.log(action.payload);
@@ -458,6 +463,14 @@ export default function(state = initialState, action) {
         gridArea: editGridDetails.grid_area,
         gridLatLong: editGridDetails.gridGeoLocation,
         gridNo: '',
+        cgBodyData: [
+          {
+            RFINumber: editGridDetails.cG_RFIno,
+            rfiInspectionDate: editGridDetails.cG_inspection_date,
+            rfiApprovalDate: editGridDetails.cG_approval_date,
+            status: editGridDetails.status,
+          },
+        ],
       };
     case `${LAYER_PROGRESS}_PENDING`:
       return {
