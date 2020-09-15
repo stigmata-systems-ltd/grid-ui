@@ -20,6 +20,14 @@ class LayerDPRDetails extends Component {
           <LayerDPRDetail
             metaData={_layerMetaData}
             bodyData={this.props.layerData}
+            gridNo={this.props.gridNo}
+            layerNo={this.props.layerNo}
+            fillingDate={this.props.fillingDate}
+            area_layer={this.props.area_layer}
+            topFillMaterial={this.props.topFillMaterial}
+            fillingMaterial={this.props.fillingMaterial}
+            layerSubContractor={this.props.layerSubContractor}
+            fetchLayerInfo={i => this.props.fetchLayerInfo(i)}
           />
         </FormRow>
       </FormContainer>

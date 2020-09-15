@@ -52,6 +52,7 @@ import {
   SET_ADD_SUBCONT_ERROR,
   SET_COMPLETED_LAYERS_BY_GRID,
   LAYER_DETAILS,
+  SINGLE_LAYER_DETAILS,
 } from '../actions/types';
 
 const initialState = {
@@ -79,6 +80,15 @@ const initialState = {
   listGrid: [],
   cgBodyData: [],
   layerData: [],
+  cgBodyData: [
+    {
+      RFINumber: '',
+      rfiInspectionDate: '',
+      rfiApprovalDate: '',
+      status: '',
+    },
+  ],
+  layerDataDetails: [{}],
 };
 
 export default function(state = initialState, action) {
@@ -467,18 +477,21 @@ export default function(state = initialState, action) {
       return {
         ...state,
         gridId: editGridDetails.gridId,
-        gridNumber: editGridDetails.gridno,
+        gridNo: editGridDetails.gridno,
         gridArea: editGridDetails.grid_area,
         gridLatLong: editGridDetails.gridGeoLocation,
-        gridNo: '',
-        cgBodyData: [
-          {
-            RFINumber: editGridDetails.cG_RFIno,
-            rfiInspectionDate: editGridDetails.cG_inspection_date,
-            rfiApprovalDate: editGridDetails.cG_approval_date,
-            status: editGridDetails.status,
-          },
-        ],
+        RFINumber: editGridDetails.cG_RFIno,
+        rfiInspectionDate: editGridDetails.cG_inspection_date,
+        rfiApprovalDate: editGridDetails.cG_approval_date,
+        rfiApproval: editGridDetails.status,
+        // cgBodyData: [
+        //   {
+        //     RFINumber: editGridDetails.cG_RFIno,
+        //     rfiInspectionDate: editGridDetails.cG_inspection_date,
+        //     rfiApprovalDate: editGridDetails.cG_approval_date,
+        //     status: editGridDetails.status,
+        //   },
+        // ],
       };
     case `${LAYER_PROGRESS}_PENDING`:
       return {
@@ -558,7 +571,7 @@ export default function(state = initialState, action) {
         layerNo: e.layerNo,
         lvApprovalDate: e.lV_approval_date,
         lvApprovalStatus: e.lV_RFI_status,
-        ctApprovalDate: e.ADD_CGcT_approval_date,
+        ctApprovalDate: e.cT_approval_date,
         ctApprovalStatus: e.cT_RFI_status,
         layerStatus: e.status,
       }));
@@ -567,6 +580,18 @@ export default function(state = initialState, action) {
         layerData,
         layerDataDetails,
       };
+    case SINGLE_LAYER_DETAILS:
+      return {
+        ...state,
+        view_gridNo: action.payload.gridNo,
+        view_layerNo: action.payload.layerNo,
+        view_fillingDate: action.payload.fillingDate,
+        view_materialDescription: action.payload.materialDescription,
+        view_area_layer: action.payload.area_layer,
+        view_topFillMaterial: action.payload.topFillMaterial,
+        view_layerSubContractor: action.payload.layerSubContractor,
+      };
+
     default:
       return state;
   }

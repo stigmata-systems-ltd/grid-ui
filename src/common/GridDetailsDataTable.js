@@ -15,7 +15,7 @@ class GridDetailsDataTable extends Component {
             <tr>{this.renderTableHeaders()}</tr>
           </thead>
           <tbody>
-            {this.props.bodyData.map(data => {
+            {this.props.bodyData.map((data, i) => {
               return (
                 <tr>
                   {Object.keys(data).map(key => (
@@ -31,7 +31,11 @@ class GridDetailsDataTable extends Component {
                     /> */}
 
                     <Link to="/griddpr" className="btn btn-secondary">
-                      Edit
+                      <Button
+                        btnText="Edit"
+                        btnType="btn-secondary"
+                        // onClick={() => this.props.onEditClick(i)}
+                      />
                     </Link>
                   </td>
                 </tr>

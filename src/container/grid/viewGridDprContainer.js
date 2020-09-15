@@ -6,6 +6,7 @@ import {
   gridList,
   deleteGrid,
   editGridDetails,
+  fetchLayerInfo,
 } from '../../actions/gridActions';
 import { GRID_NO_LIST } from '../../actions/types';
 
@@ -23,6 +24,9 @@ const mapDispatchToProps = dispatch => {
     onDeleteClick(i) {
       dispatch(deleteGrid(i));
     },
+    fetchLayerInfo(i) {
+      dispatch(fetchLayerInfo(i));
+    },
   };
 };
 
@@ -31,6 +35,14 @@ const mapStateToProps = state => {
   grid.gridNoData.map(function(e, i) {
     e.id = i + 1;
   });
+  grid.cgBodyData = [
+    {
+      RFINumber: grid.RFINumber,
+      rfiInspectionDate: grid.rfiInspectionDate,
+      rfiApprovalDate: grid.rfiApprovalDate,
+      status: grid.rfiApproval,
+    },
+  ];
   return {
     grid,
   };
