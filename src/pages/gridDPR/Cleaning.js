@@ -36,6 +36,7 @@ class Cleaning extends Component {
               label="Select Grid"
               selectOptions={this.props.gridNoData}
               onChange={e => this.props.onGridNoChange(e)}
+              value={this.props.gridNumber}
             />
           </FormRow>
           <div class="row">
@@ -56,6 +57,7 @@ class Cleaning extends Component {
               label="RFI Status (Approval)"
               selectOptions={this.props.approvalOptions}
               onChange={e => this.props.onapprovalChange(e)}
+              value={this.props.RFIApproval}
             />
           </div>
           <div class="row">

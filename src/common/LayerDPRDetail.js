@@ -8,7 +8,9 @@ import FormRow from './forms/FormRow';
 import LayerDPRViewDataTable from './LayerDPRViewDataTable';
 import TextInput from './forms/TextInput';
 import IconButton from './forms/IconButton';
-
+import Label from './forms/Label';
+import LatLongReadOnlyTable from './LatLongReadOnlyTable';
+import { _subContractorQuantityMetaData } from '../pages/viewGridDPR/utils';
 class LayerDPRDetail extends Component {
   constructor() {
     super();
@@ -17,29 +19,33 @@ class LayerDPRDetail extends Component {
     };
   }
   renderTableHeaders = () => {
-    return this.props.metaData.map(header => <th><p>{header}</p></th>);
+    return this.props.metaData.map(header => (
+      <th>
+        <p>{header}</p>
+      </th>
+    ));
   };
-
 
   handleLayerViewModalClose = () => {
     this.setState({ showLayerViewModal: false });
   };
-  showLayerViewModal = () => {
+  showLayerViewModal = i => {
+    this.props.fetchLayerInfo(i);
     this.setState({ showLayerViewModal: true });
   };
   redirectToEditGrid = () => {
-    this.props.history.push('griddpr')
-  }
+    this.props.history.push('griddpr');
+  };
 
   render() {
     return (
       <div class="table-responsive pt-4 data-table ">
         <table class="table table-bordered ">
-          <thead >
+          <thead>
             <tr>{this.renderTableHeaders()}</tr>
           </thead>
           <tbody>
-            {this.props.bodyData.map(data => {
+            {this.props.bodyData.map((data, i) => {
               return (
                 <tr>
                   {Object.keys(data).map(key => (
@@ -48,10 +54,16 @@ class LayerDPRDetail extends Component {
                     </>
                   ))}
                   <td class="action-btns">
-                    <Button btnText="View" btnType="primary" onClick={this.showLayerViewModal} />
-                    <IconButton  iconName="faEdit" onClick={this.redirectToEditGrid} />
+                    <Button
+                      btnText="View"
+                      btnType="primary"
+                      onClick={() => this.showLayerViewModal(i)}
+                    />
+                    <IconButton
+                      iconName="faEdit"
+                      onClick={this.redirectToEditGrid}
+                    />
                   </td>
-
                 </tr>
               );
             })}
@@ -66,26 +78,50 @@ class LayerDPRDetail extends Component {
           size="lg"
           title="View Layer DPR Details"
         >
-
           <FormRow>
-            <TextInput label="Grid Number" />
-            <TextInput label="Layer Number" />
+            <Label
+              label="Grid Number"
+              readOnly="test"
+              value={this.props.gridNo}
+            />
+            <Label
+              label="Layer Number"
+              readOnly="test"
+              value={this.props.layerNo}
+            />
           </FormRow>
           <FormRow>
-            <TextInput label="Date of Filing" />
-            <TextInput label="Area Of Layer (Sqm)" />
+            <Label
+              label="Date of Filing"
+              readOnly="test"
+              value={this.props.fillingDate}
+            />
+            <Label
+              label="Area Of Layer (Sqm)"
+              readOnly="test"
+              value={this.props.area_layer}
+            />
           </FormRow>
           <FormRow>
-            <TextInput label="Top Level Fill Metrials" />
-            <TextInput label="Meterial Description" />
+            <Label
+              label="Top Level Fill Metrials"
+              readOnly="test"
+              value={this.props.topFillMaterial}
+            />
+            <Label
+              label="Meterial Description"
+              readOnly="test"
+              value={this.props.fillingMaterial}
+            />
           </FormRow>
           <FormRow>
-            <LayerDPRViewDataTable />
-
+            <LatLongReadOnlyTable
+              metaData={_subContractorQuantityMetaData}
+              bodyData={this.props.layerSubContractor}
+            />
           </FormRow>
         </LayerDPRViewModel>
       </div>
-
     );
   }
 }

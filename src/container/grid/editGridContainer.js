@@ -6,6 +6,7 @@ import {
   addLatLang,
   fetchGrid,
   gridNoList,
+  fetchLayerDetails,
 } from '../../actions/gridActions';
 import {
   ADD_GRID,
@@ -75,6 +76,7 @@ const mapDispatchToProps = dispatch => {
       const grid = store.getState().grid;
       console.log(`setSingleGridDetails: ${grid.gridNumber}`);
       dispatch(fetchGrid(grid.gridNumber));
+      dispatch(fetchLayerDetails(grid.gridNumber));
     },
   };
 };

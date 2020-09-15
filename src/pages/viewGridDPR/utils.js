@@ -24,6 +24,11 @@ export const _layerMetaData = [
   'Actions',
 ];
 
+export const _subContractorQuantityMetaData = [
+  'Quantity',
+  'SubContractor Name',
+];
+
 export const _layerBodyData = [
   {
     LayerNo: 'At +4.67m CD',

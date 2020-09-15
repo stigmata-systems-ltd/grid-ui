@@ -87,7 +87,7 @@ class ViewGridDpr extends Component {
                 <Label
                   label="Grid Number"
                   readOnly="test"
-                  value={this.props.grid.gridNumber}
+                  value={this.props.grid.gridNo}
                 />
                 <Label
                   label="Grid Area"
@@ -133,7 +133,17 @@ class ViewGridDpr extends Component {
             {/* Layer DPR Details */}
 
             <TabPane isActive={this.state.tabPaneStatus[1].isActive}>
-              <LayerDPRDetails />
+              <LayerDPRDetails
+                layerData={this.props.grid.layerData}
+                gridNo={this.props.grid.view_gridNo}
+                layerNo={this.props.grid.view_layerNo}
+                fillingDate={this.props.grid.view_fillingDate}
+                area_layer={this.props.grid.view_area_layer}
+                topFillMaterial={this.props.grid.view_topFillMaterial}
+                fillingMaterial={this.props.grid.view_materialDescription}
+                layerSubContractor={this.props.grid.view_layerSubContractor}
+                fetchLayerInfo={i => this.props.fetchLayerInfo(i)}
+              />
             </TabPane>
           </TabContent>
         </FormContainer>

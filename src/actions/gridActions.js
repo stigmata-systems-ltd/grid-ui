@@ -12,7 +12,9 @@ import {
   EDIT_GRID,
   GRID_LIST,
   EDIT_GRID_DETAILS,
+  LAYER_DETAILS,
   SET_COMPLETED_LAYERS_BY_GRID,
+  SINGLE_LAYER_DETAILS,
 } from './types';
 import store from '../store';
 import axios from 'axios';
@@ -134,7 +136,7 @@ export const updateLayerProgress = () => {
     gridId: parseInt(grid.dprGridNum),
     layerId: parseInt(grid.layerNo),
     fillingDate: grid.dateOfFiling,
-    fillingMaterial: grid.dateOfFiling,
+    fillingMaterial: grid.rfiMaterialDescription,
     area_layer: parseInt(grid.areaOfLayer),
     status: grid.rfiLayerStatus,
     totalQuantity: grid.totalQuantity,
@@ -194,5 +196,39 @@ export const getCompletedLayersByGrid = gridId => {
     payload: axios.get(
       config.BASE_URL + '/api/Grid/LayerCmplCountByGrid?id=' + gridId
     ),
+  };
+};
+export const fetchLayerDetails = i => {
+  const grid = store.getState().grid;
+  console.log(`In Fetch Layer Details: ${grid.listGridDetails[i].gridno}`);
+  const gridNo = grid.listGridDetails[i].gridno;
+
+  return {
+    type: LAYER_DETAILS,
+    payload: axios.get(
+      config.BASE_URL + '/api/Layer/LayerList?gridNo=' + gridNo
+    ),
+  };
+};
+
+export const fetchLayerInfo = i => {
+  const grid = store.getState().grid;
+  console.log(
+    `Layer Data Details for ${i} : ${JSON.stringify(grid.layerDataDetails)}`
+  );
+
+  const singleLayerDetails = {
+    gridNo: grid.layerDataDetails[i].gridNo,
+    layerNo: grid.layerDataDetails[i].layerNo,
+    fillingDate: grid.layerDataDetails[i].fillingDate,
+    materialDescription: grid.layerDataDetails[i].fillingMaterial,
+    area_layer: grid.layerDataDetails[i].area_layer,
+    topFillMaterial: grid.layerDataDetails[i].topFillMaterial,
+    layerSubContractor: grid.layerDataDetails[i].layerSubContractor,
+  };
+
+  return {
+    type: SINGLE_LAYER_DETAILS,
+    payload: singleLayerDetails,
   };
 };
