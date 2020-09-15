@@ -11,6 +11,7 @@ import {
   DELETE_SUBCONTRACTOR,
   EDIT_SUBCONTRACTOR_DETAILS,
   EDIT_SUBCONTRACTOR,
+  SUBCONTRACTOR_VALIDATION_ERROR,
 } from '../actions/types';
 
 const initialState = {
@@ -27,9 +28,11 @@ const initialState = {
   subContractorContactAddres: '',
   subContractorPhone: '',
   subContractorEmail: '',
+  isValidationErr: false,
+  validationMessage: "",
 };
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
     case `${ADD_SUBCONTRACTOR}_FULFILLED`:
       console.log(action);
@@ -86,6 +89,8 @@ export default function(state = initialState, action) {
         subContractorContactAddres: '',
         subContractorPhone: '',
         subContractorEmail: '',
+        isValidationErr: false,
+        validationMessage: "",
       };
 
     case `${LIST_SUBCONTRACTOR}_FULFILLED`:
@@ -144,6 +149,12 @@ export default function(state = initialState, action) {
         subContractorPhone: selectedSCR.phone,
         subContractorEmail: selectedSCR.email,
       };
+    case SUBCONTRACTOR_VALIDATION_ERROR:
+      return {
+        ...state,
+        isValidationErr: action.payload.isError,
+        validationMessage: action.payload.message,
+      }
     default:
       return state;
   }
