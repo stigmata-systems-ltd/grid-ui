@@ -24,6 +24,7 @@ import {
   materialDescMetaData,
   calcProgress,
 } from "./utils";
+import CustomAutocomplete from "../../common/forms/Autocomplete";
 
 class GridDPR extends Component {
   constructor(props) {
@@ -118,7 +119,7 @@ class GridDPR extends Component {
               </TabPane>
               <TabPane isActive={this.state.tabPaneStatus[1].isActive}>
                 <FormRow>
-                  <SimpleDropDown
+                  <CustomAutocomplete
                     size="col-md-4"
                     label="Grid Number"
                     selectOptions={this.props.grid.gridNoData}
