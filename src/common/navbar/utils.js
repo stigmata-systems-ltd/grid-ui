@@ -83,13 +83,20 @@ export const metaDataNavbar = [
   },
   {
     id: '6',
+    navText: 'Planning Manager',
+    iconName: 'faUser',
+    hasSubNav: false,
+    route: 'planingmanager',
+  },
+  {
+    id: '7',
     navText: 'Help',
     iconName: 'faQuestionCircle',
     hasSubNav: false,
     route: 'login',
   },
   {
-    id: '7',
+    id: '8',
     navText: 'Settings',
     iconName: 'faCog',
     hasSubNav: false,

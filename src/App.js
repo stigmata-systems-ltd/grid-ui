@@ -23,6 +23,7 @@ import CreateUser from './container/userManagement/createUserContainer';
 import ClientBilling from './container/clientBilling/clientBillingContainer';
 import MasterReport from './pages/reports/MasterReport';
 import SubContractorReport from './pages/reports/SubContractorReport';
+import PlaningManager from './pages/planingManager/PlaningManager';
 
 function App() {
   return (
@@ -82,6 +83,9 @@ function App() {
         </Route>
         <Route path="/subcontractorreport">
           <SubContractorReport />
+        </Route>
+        <Route path="/planingmanager">
+          <PlaningManager />
         </Route>
       </Switch>
     </Router>
