@@ -8,11 +8,13 @@ import SimpleDropDown from "../../common/forms/SimpleDropDown";
 import CheckBox from "../../common/forms/CheckBox";
 import DataTable from "../../common/DataTable";
 import DateInput from "../../common/forms/DateInput";
-
+import SearchableDropDown from "../../common/forms/SearchableDropDown";
+import Divider from "../../common/Divider";
 import { gridNumber } from "./utils";
 import { completedLayers, _clientBillingMetaData, _bodyData } from "./utils";
 import Loader from "../../common/Loader";
 import { getTranformedBillableTable } from "./dataTransformer";
+import { transformGridList } from "../../utils/dataTransformer";
 
 class ClientBilling extends Component {
   constructor() {
@@ -64,10 +66,10 @@ class ClientBilling extends Component {
         {this.props.client.isLoading && <Loader />}
         <FormContainer formTitle={"Client Billing"}>
           <FormRow>
-            <SimpleDropDown
+            <SearchableDropDown
               label="Grid Number"
-              selectOptions={this.props.client.gridList}
-              onChange={(e) => this.props.handleGridSelection(e.target.value)}
+              selectOptions={transformGridList(this.props.client.gridList)}
+              onChange={(value) => this.props.handleGridSelection(value)}
               value={this.props.client.selectedGrid}
             />
           </FormRow>
@@ -82,6 +84,7 @@ class ClientBilling extends Component {
             </div>
             <p class="text-danger">{this.props.client.billabelAddError}</p>
           </FormRow>
+          <Divider height="3" />
           <FormRow>
             <DataTable
               metaData={_clientBillingMetaData}
@@ -90,7 +93,7 @@ class ClientBilling extends Component {
               onClickDelete={(id) => this.props.deleteGridBillableTable(id)}
             />
           </FormRow>
-
+          <Divider height="5" />
           <FormRow>
             <DateInput 
               label="Select Billing Month" 

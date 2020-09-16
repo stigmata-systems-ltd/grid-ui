@@ -4,30 +4,32 @@ export const metaDataNavbar = [
     navText: 'Dashboard',
     iconName: 'faHome',
     hasSubNav: false,
-    route: 'dashboard',
+    isSubNavOpen: false,
+    route: '/dashboard',
   },
   {
     id: '2',
     navText: 'Grid',
     iconName: 'faThLarge',
     hasSubNav: true,
-    route: 'grid',
+    isSubNavOpen: false,
+    route: '/grid',
     subNavs: [
       {
         id: 'gridSub' + 1,
         navText: 'Create Grid',
-        route: 'creategrid',
+        route: '/grid/create',
       },
       {
         id: 'gridSub' + 2,
         navText: 'Grid Layer - DPR',
-        route: 'griddpr',
+        route: '/grid/dpr',
       },
 
       {
         id: 'gridSub' + 3,
         navText: 'View Grid',
-        route: 'viewgrid',
+        route: '/grid/view',
       },
       // {
       //   id: 'gridSub' + 4,
@@ -41,24 +43,26 @@ export const metaDataNavbar = [
     navText: 'Client Billing',
     iconName: 'faFileInvoiceDollar',
     hasSubNav: false,
-    route: 'clientbilling',
+    isSubNavOpen: false,
+    route: '/clientbilling',
   },
   {
     id: '4',
     navText: 'Sub-Contractor',
     iconName: 'faUser',
     hasSubNav: true,
-    route: 'subcontractor',
+    isSubNavOpen: false,
+    route: '/subcontractor',
     subNavs: [
       {
         id: 'SCRSub' + 1,
         navText: 'Create SubContractor',
-        route: 'subcontractor',
+        route: '/subcontractor/create',
       },
       {
         id: 'SCRSub' + 2,
         navText: 'List - SubContractor',
-        route: 'listsubcontractor',
+        route: '/subcontractor/list',
       },
     ],
   },
@@ -67,7 +71,8 @@ export const metaDataNavbar = [
     navText: 'Reports',
     iconName: 'faChartPie',
     hasSubNav: false,
-    route: 'login',
+    isSubNavOpen: false,
+    route: '/login',
   },
   // {
   //   id: '6',
@@ -88,6 +93,7 @@ export const metaDataNavbar = [
     navText: 'Manage Users',
     iconName: 'faUsers',
     hasSubNav: false,
-    route: 'users',
+    isSubNavOpen: false,
+    route: '/users',
   }
 ];
