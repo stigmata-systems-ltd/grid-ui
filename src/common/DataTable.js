@@ -9,20 +9,18 @@ class DataTable extends Component {
 
   render() {
     return (
-      <div class="table-responsive pt-3 data-table">
-        <table class="table dataTable no-footer">
+      <div class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+        <table class="table dataTable no-footer table-bordered">
           <thead>
             <tr>{this.renderTableHeaders()}</tr>
           </thead>
           <tbody>
-            {this.props.bodyData.length > 0 ? (
+            {this.props.bodyData && this.props.bodyData.length > 0 ? (
               this.props.bodyData.map((data, rowIndex) => {
                 return (
                   <tr>
                     {Object.keys(data).map((key) => (
-                      <>
-                        <td> {data[key].toString()}</td>
-                      </>
+                      <>{key !== "id" && <td> {data[key].toString()}</td>}</>
                     ))}
 
                     <td>
@@ -30,16 +28,18 @@ class DataTable extends Component {
                         <Button
                           btnText="Edit"
                           btnType="primary"
-                          onClick={() => this.props.onClickEdit(rowIndex)}
+                          onClick={() =>
+                            this.props.onClickEdit(data.id, rowIndex)
+                          }
                         />
                       )}
                       {this.props.showDelete && (
-                        <td class="action-btns" style={{ width: "1%" }}>
                           <IconButton
                             iconName="faTrash"
-                            onClick={() => this.props.onClickDelete(data.id)}
+                            onClick={() =>
+                              this.props.onClickDelete(data.id, rowIndex)
+                            }
                           />
-                        </td>
                       )}
                     </td>
                   </tr>
@@ -47,7 +47,7 @@ class DataTable extends Component {
               })
             ) : (
               <tr>
-                <td>
+                <td colSpan={this.props.metaData.length}>
                   <h6 className="text-info">No Records Found</h6>
                 </td>
               </tr>

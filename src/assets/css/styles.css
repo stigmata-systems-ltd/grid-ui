@@ -8,8 +8,11 @@ body {
 .no-margin-bottom {
   margin-bottom: 0px;
 }
-.action-btns button {
+/* .action-btns button {
   margin-right: 2%;
+} */
+.dataTable tbody tr td {
+  padding: 10px;
 }
 /*Bootstrap Overrides
 ********************/

@@ -1,7 +1,7 @@
-import { ADD_USER } from './types';
-import store from '../store';
-import axios from 'axios';
-import config from '../config';
+import store from "../store";
+import axios from "axios";
+import config from "../config";
+import { ADD_USER, GET_USERS, DELETE_USER } from "./types";
 
 export const createUser = () => {
   const {
@@ -20,20 +20,26 @@ export const createUser = () => {
     email,
     mobileNo,
     userName,
-    password,
     roleId: 1,
     isActive: true,
-    createdBy: 1,
-    updatedBy: 1,
+    createdBy: "1",
   };
   return {
     type: ADD_USER,
-    payload: axios.post(config.BASE_URL + '/api/User/adduser', addUser, {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjEiLCJuYmYiOjE1OTk2NDgxNTIsImV4cCI6MTU5OTczNDU1MiwiaWF0IjoxNTk5NjQ4MTUyfQ.JKvWmZizYhXXFLP8XJr4mdSAM4fWZeq0kFE8AdfJ2RQ',
-      },
-    }),
+    payload: axios.post(config.BASE_URL + "/api/User/adduser", addUser),
   };
 };
+
+export const getUsers = () => {
+  return {
+    type: GET_USERS,
+    payload: axios.get(config.BASE_URL + "/api/User/getuser"),
+  };
+};
+
+export const deleteUsers = (userId) => {
+  return {
+    type: DELETE_USER,
+    payload: axios.delete(config.BASE_URL + "/api/User/deleteuser/"+userId),
+  };
+}

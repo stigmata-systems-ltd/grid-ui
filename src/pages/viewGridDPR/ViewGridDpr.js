@@ -9,7 +9,6 @@ import IconTextButton from '../../common/forms/IconTextButton';
 import Button from '../../common/forms/Button';
 import SimpleDropDown from '../../common/forms/SimpleDropDown';
 import CheckBox from '../../common/forms/CheckBox';
-import DataTable from '../../common/DataTable';
 import GridDetailsDataTable from '../../common/GridDetailsDataTable';
 import TabContent from '../../common/tabs/TabContent';
 import TabPane from '../../common/tabs/TabPane';

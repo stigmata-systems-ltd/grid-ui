@@ -69,18 +69,25 @@ export const metaDataNavbar = [
     hasSubNav: false,
     route: 'login',
   },
+  // {
+  //   id: '6',
+  //   navText: 'Help',
+  //   iconName: 'faQuestionCircle',
+  //   hasSubNav: false,
+  //   route: 'login',
+  // },
+  // {
+  //   id: '7',
+  //   navText: 'Settings',
+  //   iconName: 'faCog',
+  //   hasSubNav: false,
+  //   route: 'login',
+  // },
   {
-    id: '6',
-    navText: 'Help',
-    iconName: 'faQuestionCircle',
+    id: '8',
+    navText: 'Manage Users',
+    iconName: 'faUsers',
     hasSubNav: false,
-    route: 'login',
-  },
-  {
-    id: '7',
-    navText: 'Settings',
-    iconName: 'faCog',
-    hasSubNav: false,
-    route: 'login',
-  },
+    route: 'users',
+  }
 ];
