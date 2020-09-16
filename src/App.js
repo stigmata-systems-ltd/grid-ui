@@ -21,6 +21,7 @@ import EditSubContractor from './container/subContractor/editSubContractorContai
 import ListSubContractor from './container/subContractor/ListSubContractorContainer';
 import CreateUser from './container/userManagement/createUserContainer';
 import ClientBilling from './container/clientBilling/clientBillingContainer';
+import ListUser from "./container/userManagement/listUserContainer";
 
 function App() {
   return (
@@ -74,6 +75,9 @@ function App() {
         </Route>
         <Route path="/subcontractor">
           <SubContractor />
+        </Route>
+        <Route path="/users">
+          <ListUser />
         </Route>
       </Switch>
     </Router>

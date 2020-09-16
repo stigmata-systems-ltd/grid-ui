@@ -3,6 +3,7 @@ export const getTranformedBillableTable = (billableTableData) => {
     billableTableData.map(row => {
         let tmpObj = {
             id: row.id,
+            gridName: row.id,
             layers: row.layers
         }
         table.push(tmpObj);
