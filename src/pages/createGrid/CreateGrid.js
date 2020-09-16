@@ -7,7 +7,7 @@ import AddLatLng from './AddLatLng';
 import IconTextButton from '../../common/forms/IconTextButton';
 import Button from '../../common/forms/Button';
 import CustomAlert from '../../common/forms/customAlert';
-import NumberInput from "../../common/forms/NumberInput";
+import NumberInput from '../../common/forms/NumberInput';
 class CreateGrid extends Component {
   constructor(props) {
     super(props);
@@ -25,15 +25,15 @@ class CreateGrid extends Component {
   render() {
     return (
       <ContentLoader>
-        <div>
-          {this.props.grid.gridAdd.message ? (
-            <CustomAlert
-              variant={this.props.grid.variant}
-              message={this.props.grid.gridAdd.message}
-            />
-          ) : null}
-        </div>
         <FormContainer formTitle={'Create Grid'}>
+          <div>
+            {this.props.grid.gridAdd.message ? (
+              <CustomAlert
+                variant={this.props.grid.variant}
+                message={this.props.grid.gridAdd.message}
+              />
+            ) : null}
+          </div>
           <FormRow>
             <TextInput
               label="Grid Number"
@@ -58,7 +58,6 @@ class CreateGrid extends Component {
               </div>
               <div class="form-group row location-row">
                 {this.props.grid.gridLatLong.map((e, i) => {
-
                   return (
                     <AddLatLng
                       // onClick={this.handleDeleteLocationRow}

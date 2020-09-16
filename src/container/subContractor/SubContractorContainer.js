@@ -13,26 +13,29 @@ import {
   RESET_SUBCONTRACTOR_FORM,
   SUBCONTRACTOR_VALIDATION_ERROR,
 } from '../../actions/types';
-import { validate } from "./SubContractorValidation";
+import { validate } from './SubContractorValidation';
 
 const mapDispatchToProps = dispatch => {
   return {
     saveSubContractorData() {
       const scr = store.getState().scr;
       const validation = validate(scr);
-      if( validation.error === null){
+      if (validation.error === null) {
         dispatch(addSubContractor());
         dispatch({ type: RESET_SUBCONTRACTOR_FORM });
       } else {
-        dispatch({ 
+        dispatch({
           type: SUBCONTRACTOR_VALIDATION_ERROR,
           payload: {
             isError: true,
             message: validation.error.details[0].message,
-          }
-         });
+          },
+        });
       }
+    },
 
+    resetSubContractorData() {
+      dispatch({ type: RESET_SUBCONTRACTOR_FORM });
     },
 
     handleChangeSubName(value) {
@@ -40,78 +43,78 @@ const mapDispatchToProps = dispatch => {
         type: SUBCONTRACTOR_NAME,
         payload: value,
       });
-      dispatch({ 
+      dispatch({
         type: SUBCONTRACTOR_VALIDATION_ERROR,
         payload: {
           isError: false,
-          message: "",
-        }
-       });
+          message: '',
+        },
+      });
     },
     handleChangeSubCode(value) {
       dispatch({
         type: SUBCONTRACTOR_CODE,
         payload: value,
       });
-      dispatch({ 
+      dispatch({
         type: SUBCONTRACTOR_VALIDATION_ERROR,
         payload: {
           isError: false,
-          message: "",
-        }
-       });
+          message: '',
+        },
+      });
     },
     handleChangesubContractorContactPerson(value) {
       dispatch({
         type: SUBCONTRACTOR_CONTACT_PERSON,
         payload: value,
       });
-      dispatch({ 
+      dispatch({
         type: SUBCONTRACTOR_VALIDATION_ERROR,
         payload: {
           isError: false,
-          message: "",
-        }
-       });
+          message: '',
+        },
+      });
     },
     handleChangesubContactAddress(value) {
       dispatch({
         type: SUBCONTRACTOR_CONTACT_ADDRESS,
         payload: value,
       });
-      dispatch({ 
+      dispatch({
         type: SUBCONTRACTOR_VALIDATION_ERROR,
         payload: {
           isError: false,
-          message: "",
-        }
-       });
+          message: '',
+        },
+      });
     },
     handleChangesubPhone(value) {
       dispatch({
         type: SUBCONTRACTOR_PHONE,
         payload: value,
       });
-      dispatch({ 
+      dispatch({
         type: SUBCONTRACTOR_VALIDATION_ERROR,
         payload: {
           isError: false,
-          message: "",
-        }
-       });
+          message: '',
+        },
+      });
     },
     handleChangesubEmail(value) {
       dispatch({
         type: SUBCONTRACTOR_EMAIL,
         payload: value,
       });
-      dispatch({ 
+      dispatch({
         type: SUBCONTRACTOR_VALIDATION_ERROR,
         payload: {
           isError: false,
-          message: "",
-        }
-       });
+          message: '',
+        },
+      });
     },
   };
 };
