@@ -16,6 +16,7 @@ class SubContractor extends Component {
   constructor(props) {
     super(props);
   }
+
   render() {
     const subprop = this.props.scr;
     console.log(this.props);
@@ -84,12 +85,19 @@ class SubContractor extends Component {
               value={subprop.subContractorEmail}
             />
           </FormRow>
+          {subprop.isValidationErr && (
+            <p class="text-danger">{subprop.validationMessage}</p>
+          )}
           <Button
             btnText="Save"
             onClick={this.props.saveSubContractorData}
             btnType="primary"
           />
-          <Button btnText="Cancel" btnType="cancel" />
+          <Button
+            btnText="Cancel"
+            btnType="cancel"
+            onClick={this.props.resetSubContractorData}
+          />
         </FormContainer>
       </ContentLoader>
     );

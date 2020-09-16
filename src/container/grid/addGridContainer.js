@@ -37,7 +37,7 @@ const mapDispatchToProps = dispatch => {
     handleChangeLat(value, i) {
       const grid = store.getState().grid;
       const length = grid.gridLatLong.length;
-      grid.gridLatLong[i].latitude = parseInt(value);
+      grid.gridLatLong[i].latitude = parseFloat(value);
       dispatch({
         type: GRID_LATLANG,
         payload: grid.gridLatLong,
@@ -46,7 +46,7 @@ const mapDispatchToProps = dispatch => {
     handleChangeLong(value, i) {
       const grid = store.getState().grid;
       const length = grid.gridLatLong.length;
-      grid.gridLatLong[i].longitude = parseInt(value);
+      grid.gridLatLong[i].longitude = parseFloat(value);
 
       dispatch({
         type: GRID_LATLANG,
