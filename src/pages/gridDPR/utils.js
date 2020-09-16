@@ -1,3 +1,13 @@
+export const transformLayerList = (layerList) => {
+  let tmpArr = [];
+  layerList && layerList.map((layer) => {
+      tmpArr.push({
+        value: layer.id,
+        label: layer.gridName,
+      });
+    });
+    return tmpArr;
+}
 export const calcProgress = (data) => {
   console.log("check", parseInt(data) / 15);
   const convData = (parseInt(data) / 15) * 100;
