@@ -13,6 +13,7 @@ import {
   RESET_CREATE_USER_FORM,
   CHANGE_USER_CONFIRM_MODAL_STATUS,
   SET_SELECTED_USER,
+  CHANGE_ADD_USER_MODAL_STATUS,
 } from '../../actions/types';
 
 const mapDispatchToProps = dispatch => {
@@ -44,6 +45,13 @@ const mapDispatchToProps = dispatch => {
       dispatch({
         type: CHANGE_USER_CONFIRM_MODAL_STATUS,
         payload: false,
+      })
+    },
+    //AddUser
+    showAddUserModal() {
+      dispatch({
+        type: CHANGE_ADD_USER_MODAL_STATUS,
+        payload: true,
       })
     }
   };

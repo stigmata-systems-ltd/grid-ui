@@ -1,7 +1,7 @@
 import store from "../store";
 import axios from "axios";
 import config from "../config";
-import { ADD_USER, GET_USERS, DELETE_USER } from "./types";
+import { ADD_USER, GET_USER_ROLES, GET_USERS, DELETE_USER } from "./types";
 
 export const createUser = () => {
   const {
@@ -10,7 +10,6 @@ export const createUser = () => {
     email,
     mobileNo,
     userName,
-    password,
     roleName,
   } = store.getState().user;
 
@@ -20,13 +19,20 @@ export const createUser = () => {
     email,
     mobileNo,
     userName,
-    roleId: 1,
+    roleId: roleName,
     isActive: true,
     createdBy: "1",
   };
   return {
     type: ADD_USER,
     payload: axios.post(config.BASE_URL + "/api/User/adduser", addUser),
+  };
+};
+
+export const getUserRoles = () => {
+  return {
+    type: GET_USER_ROLES,
+    payload: axios.get(config.BASE_URL + "/api/PageAccess/getroles"),
   };
 };
 

@@ -16,3 +16,15 @@ export const transformUserList = (userList) => {
   });
   return tmpArr;
 };
+
+export const transformUserRoles = (userRoles) => {
+  let tmpArr = [];
+  userRoles.map(role => {
+    let tmpObj = {
+      id: role.id,
+      label: role.name
+    }
+    tmpArr.push(tmpObj);
+  })
+  return tmpArr;
+}
