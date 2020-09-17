@@ -21,6 +21,7 @@ import EditSubContractor from './container/subContractor/editSubContractorContai
 import ListSubContractor from './container/subContractor/ListSubContractorContainer';
 import CreateUser from './container/userManagement/createUserContainer';
 import ClientBilling from './container/clientBilling/clientBillingContainer';
+import ListUser from "./container/userManagement/listUserContainer";
 
 function App() {
   return (
@@ -32,10 +33,7 @@ function App() {
         <Route exact path="/login">
           <Login />
         </Route>
-        <Route exact path="/createuser">
-          <CreateUser />
-        </Route>
-        <Route exact path="/listsubcontractor">
+        <Route exact path="/subcontractor/list">
           <ListSubContractor />
         </Route>
         <Route exact path="/editsubcontractor">
@@ -45,10 +43,10 @@ function App() {
         <Route path="/dashboard">
           <Dashboard />
         </Route>
-        <Route path="/griddpr">
+        <Route path="/grid/dpr">
           <GridDPR />
         </Route>
-        <Route path="/creategrid">
+        <Route path="/grid/create">
           <CreateGrid />
         </Route>
         <Route path="/deletegrid">
@@ -57,7 +55,7 @@ function App() {
         <Route path="/editgrid">
           <EditGrid />
         </Route>
-        <Route path="/viewgrid">
+        <Route path="/grid/view">
           <ViewGrid />
         </Route>
         <Route path="/viewgriddpr">
@@ -74,6 +72,9 @@ function App() {
         </Route>
         <Route path="/subcontractor">
           <SubContractor />
+        </Route>
+        <Route path="/users">
+          <ListUser />
         </Route>
       </Switch>
     </Router>

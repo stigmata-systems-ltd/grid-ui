@@ -18,12 +18,15 @@ import Photographs from './Photographs';
 import AddQuantity from './AddQuantity';
 import Loader from '../../common/Loader';
 import CustomAlert from '../../common/forms/customAlert';
+import SearchableDropDown from "../../common/forms/SearchableDropDown";
 import {
   tabMetaData,
   fillTypeMetaData,
   materialDescMetaData,
   calcProgress,
+  transformLayerList,
 } from './utils';
+import { transformGridList } from "../../utils/dataTransformer";
 
 class GridDPR extends Component {
   constructor(props) {
@@ -125,21 +128,21 @@ class GridDPR extends Component {
               </TabPane>
               <TabPane isActive={this.state.tabPaneStatus[1].isActive}>
                 <FormRow>
-                  <SimpleDropDown
+                  <SearchableDropDown
                     size="col-md-4"
                     label="Grid Number"
-                    selectOptions={this.props.grid.gridNoData}
-                    onChange={e =>
-                      this.props.handleGridNoChangeDPR(e.target.value)
+                    selectOptions={transformGridList(this.props.grid.gridNoData)}
+                    onChange={value =>
+                      this.props.handleGridNoChangeDPR(value)
                     }
                     value={this.props.grid.dprGridNum}
                   />
-                  <SimpleDropDown
+                  <SearchableDropDown
                     label="Layer Number"
                     size="col-md-4"
-                    selectOptions={this.props.grid.LayerNoData}
-                    onChange={e =>
-                      this.props.handleLayerNoChange(e.target.value)
+                    selectOptions={transformLayerList(this.props.grid.LayerNoData)}
+                    onChange={value =>
+                      this.props.handleLayerNoChange(value)
                     }
                     value={this.props.grid.layerNo}
                   />

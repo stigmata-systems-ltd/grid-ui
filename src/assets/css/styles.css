@@ -8,8 +8,24 @@ body {
 .no-margin-bottom {
   margin-bottom: 0px;
 }
-.action-btns button {
+/* .action-btns button {
   margin-right: 2%;
+} */
+.dataTable tbody tr td {
+  padding: 10px;
+}
+.form-control {
+  height: 38px;
+  border-radius: 4px;
+  border: 1px solid hsl(0,0%,80%);
+  font-size: 17px;
+}
+select.form-control {
+  outline: none;
+  border: 1px solid hsl(0,0%,80%);
+}
+.content-wrapper {
+  padding: 1.04rem 1.04rem;
 }
 /*Bootstrap Overrides
 ********************/
@@ -87,6 +103,12 @@ body {
 }
 .nav-profile {
   cursor: pointer;
+}
+
+/*Login Form
+***********/
+.auth-form-light .form-control {
+  height:58px;
 }
 
 /*Grid DPR

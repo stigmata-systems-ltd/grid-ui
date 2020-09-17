@@ -263,8 +263,8 @@ const mapDispatchToProps = (dispatch) => {
     },
     setSingleLayerDetails() {
       const grid = store.getState().grid;
-      const currentLayer = parseInt(grid.layerNo);
-      const currentGrid = parseInt(grid.dprGridNum);
+      const currentLayer = parseInt(grid.layerNo.value);
+      const currentGrid = parseInt(grid.dprGridNum.value);
       const selectedLayer = getSelectedLayer(grid.LayerNoData, currentLayer);
       const selectedGrid = getSelectedGrid(grid.gridNoData, currentGrid);
       dispatch(getSingleLayerDetails(selectedLayer, selectedGrid));

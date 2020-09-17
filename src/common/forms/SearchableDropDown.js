@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Col6 from './Col6';
+import Select from 'react-select';
 
 class SimpleDropDown extends Component {
   render() {
@@ -8,19 +9,13 @@ class SimpleDropDown extends Component {
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">{this.props.label}</label>
           <div class="col-sm-9">
-            <select
-              class="form-control"
+            <Select
+              classNmae="form-control"
               onChange={e => this.props.onChange(e)}
               value={this.props.value}
-            >
-              <option value="choose..">Choose..</option>
-              {this.props.selectOptions &&
-                this.props.selectOptions.map(option => (
-                  <option value={option.id} name={option.gridName ? option.gridName : option.label}>
-                    {option.gridName ? option.gridName : option.label}
-                  </option>
-                ))}
-            </select>
+              options={this.props.selectOptions}
+              isSearchable={true}
+            />
           </div>
         </div>
       </Col6>
