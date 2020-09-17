@@ -29,10 +29,10 @@ const initialState = {
   subContractorPhone: '',
   subContractorEmail: '',
   isValidationErr: false,
-  validationMessage: "",
+  validationMessage: '',
 };
 
-export default function (state = initialState, action) {
+export default function(state = initialState, action) {
   switch (action.type) {
     case `${ADD_SUBCONTRACTOR}_FULFILLED`:
       console.log(action);
@@ -90,13 +90,13 @@ export default function (state = initialState, action) {
         subContractorPhone: '',
         subContractorEmail: '',
         isValidationErr: false,
-        validationMessage: "",
+        validationMessage: '',
       };
 
     case `${LIST_SUBCONTRACTOR}_FULFILLED`:
       console.log(`List SCR: ${action.payload.data}`);
       const listSCR = action.payload.data.map(e => ({
-        subContractorId: e.subContractorId,
+        subContractorCode: e.code,
         name: e.name,
       }));
       console.log(`List SCR: ${listSCR}`);
@@ -154,7 +154,7 @@ export default function (state = initialState, action) {
         ...state,
         isValidationErr: action.payload.isError,
         validationMessage: action.payload.message,
-      }
+      };
     default:
       return state;
   }

@@ -47,7 +47,7 @@ export const fetchSubContractor = () => {
 export const deleteSCR = i => {
   const scr = store.getState().scr;
   console.log(`Selected SCR ID: ${scr.listSCR[i].subContractorId}`);
-  const id = scr.listSCR[i].subContractorId;
+  const id = scr.listSCRDetails[i].subContractorId;
   return {
     type: DELETE_SUBCONTRACTOR,
     payload: axios.delete(config.BASE_URL + '/api/SubCont/DeleteSubCont/' + id),

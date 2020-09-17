@@ -18,7 +18,7 @@ import Photographs from './Photographs';
 import AddQuantity from './AddQuantity';
 import Loader from '../../common/Loader';
 import CustomAlert from '../../common/forms/customAlert';
-import SearchableDropDown from "../../common/forms/SearchableDropDown";
+import SearchableDropDown from '../../common/forms/SearchableDropDown';
 import {
   tabMetaData,
   fillTypeMetaData,
@@ -26,7 +26,7 @@ import {
   calcProgress,
   transformLayerList,
 } from './utils';
-import { transformGridList } from "../../utils/dataTransformer";
+import { transformGridList } from '../../utils/dataTransformer';
 
 class GridDPR extends Component {
   constructor(props) {
@@ -117,6 +117,7 @@ class GridDPR extends Component {
                     this.props.handleApprovalDateChange(e.target.value)
                   }
                   addCGData={this.props.addCGData}
+                  cancelCGData={this.props.cancelCGData}
                   gridNumber={this.props.grid.gridNo}
                   RFINumber={this.props.grid.RFINumber}
                   RFIApproval={this.props.grid.rfiApproval}
@@ -131,19 +132,19 @@ class GridDPR extends Component {
                   <SearchableDropDown
                     size="col-md-4"
                     label="Grid Number"
-                    selectOptions={transformGridList(this.props.grid.gridNoData)}
-                    onChange={value =>
-                      this.props.handleGridNoChangeDPR(value)
-                    }
+                    selectOptions={transformGridList(
+                      this.props.grid.gridNoData
+                    )}
+                    onChange={value => this.props.handleGridNoChangeDPR(value)}
                     value={this.props.grid.dprGridNum}
                   />
                   <SearchableDropDown
                     label="Layer Number"
                     size="col-md-4"
-                    selectOptions={transformLayerList(this.props.grid.LayerNoData)}
-                    onChange={value =>
-                      this.props.handleLayerNoChange(value)
-                    }
+                    selectOptions={transformLayerList(
+                      this.props.grid.LayerNoData
+                    )}
+                    onChange={value => this.props.handleLayerNoChange(value)}
                     value={this.props.grid.layerNo}
                   />
                   <DateInput
@@ -333,7 +334,11 @@ class GridDPR extends Component {
                   btnType="primary"
                   onClick={this.props.updateLayerProgress}
                 />
-                <Button btnText="Cancel" btnType="cancel" />
+                <Button
+                  btnText="Cancel"
+                  btnType="cancel"
+                  onClick={this.props.cancelLayerProgress}
+                />
               </TabPane>
               {/* Cleaning Tab */}
 

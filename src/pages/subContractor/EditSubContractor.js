@@ -12,6 +12,7 @@ import SimpleDropDown from '../../common/forms/SimpleDropDown';
 import CheckBox from '../../common/forms/CheckBox';
 import { addSubContractor } from '../../actions/subContractorActions';
 import CustomAlert from '../../common/forms/customAlert';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 class EditSubContractor extends Component {
   constructor(props) {
     super(props);
@@ -89,7 +90,13 @@ class EditSubContractor extends Component {
             onClick={this.props.updateSubContractor}
             btnType="primary"
           />
-          <Button btnText="Cancel" btnType="cancel" />
+          <Link to="/subcontractor/list">
+            <Button
+              btnText="Cancel"
+              btnType="cancel"
+              onClick={this.props.resetSubContractorData}
+            />
+          </Link>
         </FormContainer>
       </ContentLoader>
     );

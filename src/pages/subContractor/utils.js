@@ -1,5 +1,5 @@
 export const _viewSCRMetaData = [
-  'SubContractor ID',
-  'SubContractor',
+  'SubContractor CODE',
+  'SubContractor Name',
   'Actions',
 ];
