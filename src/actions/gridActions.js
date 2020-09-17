@@ -133,8 +133,8 @@ export const addLatLang = () => {
 export const updateLayerProgress = () => {
   const grid = store.getState().grid;
   const postData = {
-    gridId: parseInt(grid.dprGridNum),
-    layerId: parseInt(grid.layerNo),
+    gridId: parseInt(grid.dprGridNum.value),
+    layerId: parseInt(grid.layerNo.value),
     fillingDate: grid.dateOfFiling,
     fillingMaterial: grid.rfiMaterialDescription,
     area_layer: parseInt(grid.areaOfLayer),
