@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { withRouter } from "react-router-dom";
 import ListSubContractor from '../../pages/subContractor/ListSubContractor';
 import store from '../../store';
 import {
@@ -17,8 +18,9 @@ import {
   SUBCONTRACTOR_EMAIL,
   RESET_SUBCONTRACTOR_FORM,
 } from '../../actions/types';
+import { propTypes } from 'react-bootstrap/esm/Image';
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, props) => {
   return {
     saveSubContractorData() {
       dispatch(addSubContractor());
@@ -28,10 +30,13 @@ const mapDispatchToProps = dispatch => {
       dispatch(fetchSubContractor());
     },
     deleteSCR(i) {
-      dispatch(deleteSCR(i));
+      dispatch(deleteSCR(i)).then(() => {
+        dispatch(fetchSubContractor());
+      });
     },
     editSCR(i) {
       dispatch(editSCR(i));
+      props.history.push("/subcontractor/edit");
     },
     handleChangeSubName(value) {
       dispatch({
@@ -79,4 +84,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ListSubContractor);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ListSubContractor));

@@ -27,7 +27,7 @@ const mapDispatchToProps = (dispatch, props) => {
     },
     onDeleteClick(i) {
       dispatch(deleteGrid(i)).then(() => {
-        dispatch(gridNoList());
+        dispatch(gridList());
       });
     },
     onViewClick(i) {

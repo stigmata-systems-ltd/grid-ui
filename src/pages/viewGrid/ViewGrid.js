@@ -5,8 +5,15 @@ import FormRow from '../../common/forms/FormRow';
 import { _viewGridMetaData, transformGridData } from './utils';
 import CustomAlert from '../../common/forms/customAlert';
 import CustomDataTable from "../../common/CustomDataTable";
-
+import ConfirmModal from "../../common/ConfirmModal";
 class Dashboard extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      activeGridId: null,
+      showDeleteModal: false,
+    }
+  }
   componentDidMount() {
     this.props.fetchGridData();
   }
@@ -26,7 +33,9 @@ class Dashboard extends Component {
           <FormRow>
             <CustomDataTable
               metaData={_viewGridMetaData(
-                (id) => this.props.onDeleteClick(id),
+                (id) => {
+                  this.setState({activeGridId: id, showDeleteModal: true})
+                },
                 (id) => this.props.onEditClick(id),
                 (id) => this.props.onViewClick(id)
               )}
@@ -37,6 +46,19 @@ class Dashboard extends Component {
               noHeader={true}
             />
           </FormRow>
+          <ConfirmModal
+            showModal={this.state.showDeleteModal}
+            handleClose={() => this.setState({showDeleteModal: false, activeGridId: null})}
+            title="Delete Grid"
+            handleConfirm={() => {
+              this.props.onDeleteClick(this.state.activeGridId)
+              this.setState({showDeleteModal: false});
+            }}
+          >
+            <h6 className="text-danger">
+              Are you sure you want to delete this Grid?
+            </h6>
+          </ConfirmModal>
         </FormContainer>
       </ContentLoader>
     );

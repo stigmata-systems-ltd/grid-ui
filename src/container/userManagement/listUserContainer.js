@@ -37,8 +37,8 @@ const mapDispatchToProps = dispatch => {
         payload: false,
       })
     },
-    handleConfirmDelete() {
-      const userId = store.getState().user.selectedUser;
+    handleConfirmDelete(userId) {
+      //const userId = store.getState().user.selectedUser;
       dispatch(deleteUsers(userId)).then(()=>{
         dispatch(getUsers());
       });
