@@ -15,6 +15,9 @@ import {
 
 const mapDispatchToProps = dispatch => {
   return {
+    resetGridForm() {
+      dispatch({ type: RESET_CREATE_GRID_FORM });
+    },
     createGrid() {
       dispatch(createGrid());
       dispatch({ type: RESET_CREATE_GRID_FORM });

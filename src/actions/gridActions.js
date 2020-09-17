@@ -87,10 +87,7 @@ export const editGrid = () => {
   };
 };
 
-export const deleteGrid = i => {
-  const grid = store.getState().grid;
-  console.log(`Selected Grid ID: ${grid.listGrid[i].gridId}`);
-  const id = grid.listGrid[i].gridId;
+export const deleteGrid = id => {
   return {
     type: DELETE_GRID,
     payload: axios.delete(config.BASE_URL + '/api/Grid/DeleteGrid/' + id),
@@ -180,14 +177,14 @@ export const getSingleLayerDetails = (selectedLayer, selectedGrid) => {
     ),
   };
 };
-export const editGridDetails = i => {
-  const grid = store.getState().grid;
-  console.log(`Selected SCR ID: ${grid.listGridDetails[i]}`);
-  const selectedGrid = grid.listGridDetails[i];
+export const editGridDetails = id => {
+  // const grid = store.getState().grid;
+  // console.log(`Selected SCR ID: ${grid.listGridDetails[i]}`);
+  // const selectedGrid = grid.listGridDetails[i];
 
   return {
     type: EDIT_GRID_DETAILS,
-    payload: selectedGrid,
+    payload: axios.get( config.BASE_URL + '/api/Grid/GridDetailsById?id=' + id),
   };
 };
 export const getCompletedLayersByGrid = gridId => {
@@ -198,10 +195,7 @@ export const getCompletedLayersByGrid = gridId => {
     ),
   };
 };
-export const fetchLayerDetails = i => {
-  const grid = store.getState().grid;
-  console.log(`In Fetch Layer Details: ${grid.listGridDetails[i].gridno}`);
-  const gridNo = grid.listGridDetails[i].gridno;
+export const fetchLayerDetails = gridNo => {
 
   return {
     type: LAYER_DETAILS,

@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
 import ContentLoader from '../../common/ContentLoader';
-import ActionDataTable from '../../common/ActionDataTable';
 import FormContainer from '../../common/forms/FormContainer';
 import FormRow from '../../common/forms/FormRow';
-import SearchBox from '../../common/forms/SearchBox';
-
-import { _viewGridMetaData, _bodyData } from './utils';
-import DownloadToExcelButton from '../../common/forms/DownloadToExcelButton';
-
+import { _viewGridMetaData, transformGridData } from './utils';
 import CustomAlert from '../../common/forms/customAlert';
+import CustomDataTable from "../../common/CustomDataTable";
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -28,14 +24,17 @@ class Dashboard extends Component {
             ) : null}
           </div>
           <FormRow>
-            <SearchBox />
-            <DownloadToExcelButton />
-            <ActionDataTable
-              metaData={_viewGridMetaData}
-              bodyData={this.props.grid.listGrid}
-              onDeleteClick={i => this.props.onDeleteClick(i)}
-              onEditClick={i => this.props.onEditClick(i)}
-              onViewClick={i => this.props.onViewClick(i)}
+            <CustomDataTable
+              metaData={_viewGridMetaData(
+                (id) => this.props.onDeleteClick(id),
+                (id) => this.props.onEditClick(id),
+                (id) => this.props.onViewClick(id)
+              )}
+              bodyData={transformGridData(this.props.grid.listGridDetails)}
+              pagination={true}
+              paginationTotalRows={this.props.grid.listGridDetails && this.props.grid.listGridDetails.length}
+              paginationPerPage={5}
+              noHeader={true}
             />
           </FormRow>
         </FormContainer>
