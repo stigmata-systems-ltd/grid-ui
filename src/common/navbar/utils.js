@@ -10,7 +10,8 @@ export const metaDataNavbar = [
     id: '2',
     navText: 'Grid',
     iconName: 'faThLarge',
-    hasSubNav: true,
+    hasSubNavGrid: true,
+
     route: 'grid',
     subNavs: [
       {
@@ -47,7 +48,7 @@ export const metaDataNavbar = [
     id: '4',
     navText: 'Sub-Contractor',
     iconName: 'faUser',
-    hasSubNav: true,
+    hasSubNavSCR: true,
     route: 'subcontractor',
     subNavs: [
       {
