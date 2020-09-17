@@ -19,6 +19,9 @@ const mapDispatchToProps = dispatch => {
       dispatch(createGrid());
       dispatch({ type: RESET_CREATE_GRID_FORM });
     },
+    resetCreateGridData() {
+      dispatch({ type: RESET_CREATE_GRID_FORM });
+    },
     addLatLang() {
       dispatch(addLatLang());
     },
