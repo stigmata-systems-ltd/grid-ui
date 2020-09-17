@@ -67,6 +67,8 @@ class AddQuantity extends Component {
               value={this.props.subContractorName}
             />
           </FormRow>
+          {this.props.isAddSubContError &&
+          <p className="text-danger">{this.props.addSubContErrorMsg}</p>}
           <Button
             btnText="Add Sub-Contractor"
             btnType="primary"

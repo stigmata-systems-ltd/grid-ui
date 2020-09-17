@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import Col6 from './Col6';
 
 class FileInput extends Component {
   render() {
     return (
-      <div class="col-md-6">
+      <Col6 size={this.props.size}>
         <div class="form-group">
           <label>{this.props.label}</label>
           <input
@@ -18,6 +19,7 @@ class FileInput extends Component {
               name="img[]"
               // class="file-upload-default"
               onChange={e => this.props.onChange(e)}
+              class="form-control"
             />
             <span class="input-group-append">
               <button class="file-upload-browse btn btn-primary" type="button">
@@ -26,7 +28,7 @@ class FileInput extends Component {
             </span>
           </div>
         </div>
-      </div>
+      </Col6>
     );
   }
 }

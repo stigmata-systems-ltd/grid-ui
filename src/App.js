@@ -10,12 +10,18 @@ import Dashboard from './pages/dashboard/Dashoard';
 import GridDPR from './container/grid/gridDPRContainer';
 import CreateGrid from './container/grid/addGridContainer';
 import ViewGrid from './container/grid/viewGrid';
-import ViewGridDpr from './pages/viewGridDPR/ViewGridDpr';
+import ViewGridDpr from './container/grid/viewGridDprContainer';
 import GridDetails from './pages/gridDetails/GridDetails';
 import EditDridDetails from './pages/editGridDetails/EditGridDetails';
-import ClientBilling from './pages/clientBilling/ClientBilling';
+import DeleteGrid from './container/grid/deleteGridContainer';
+import EditGrid from './container/grid/editGridContainer';
+// import ClientBilling from './pages/clientBilling/ClientBilling';
 import SubContractor from './container/subContractor/SubContractorContainer';
+import EditSubContractor from './container/subContractor/editSubContractorContainer';
+import ListSubContractor from './container/subContractor/ListSubContractorContainer';
 import CreateUser from './container/userManagement/createUserContainer';
+import ClientBilling from './container/clientBilling/clientBillingContainer';
+import ListUser from "./container/userManagement/listUserContainer";
 
 function App() {
   return (
@@ -27,19 +33,29 @@ function App() {
         <Route exact path="/login">
           <Login />
         </Route>
-        <Route exact path="/createuser">
-          <CreateUser />
+        <Route exact path="/subcontractor/list">
+          <ListSubContractor />
         </Route>
+        <Route exact path="/editsubcontractor">
+          <EditSubContractor />
+        </Route>
+
         <Route path="/dashboard">
           <Dashboard />
         </Route>
-        <Route path="/griddpr">
+        <Route path="/grid/dpr">
           <GridDPR />
         </Route>
-        <Route path="/creategrid">
+        <Route path="/grid/create">
           <CreateGrid />
         </Route>
-        <Route path="/viewgrid">
+        <Route path="/deletegrid">
+          <DeleteGrid />
+        </Route>
+        <Route path="/editgrid">
+          <EditGrid />
+        </Route>
+        <Route path="/grid/view">
           <ViewGrid />
         </Route>
         <Route path="/viewgriddpr">
@@ -56,6 +72,9 @@ function App() {
         </Route>
         <Route path="/subcontractor">
           <SubContractor />
+        </Route>
+        <Route path="/users">
+          <ListUser />
         </Route>
       </Switch>
     </Router>

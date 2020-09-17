@@ -33,8 +33,7 @@ class DropDownNav extends Component {
                             iconName="faUser"
                             className="navIcons drop-down-icon"
                         />
-                        {console.log(getUserDetails())}
-                        <span class="nav-profile-name">{getUserDetails().username}</span>
+                        <span class="nav-profile-name">{getUserDetails().username} Username</span>
                         <FaIcon
                             iconName="faAngleDown"
                             className="navIcons drop-down-icon"

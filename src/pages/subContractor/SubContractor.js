@@ -10,29 +10,37 @@ import IconTextButton from '../../common/forms/IconTextButton';
 import Button from '../../common/forms/Button';
 import SimpleDropDown from '../../common/forms/SimpleDropDown';
 import CheckBox from '../../common/forms/CheckBox';
-import DataTable from '../../common/DataTable';
 import { addSubContractor } from '../../actions/subContractorActions';
-
+import CustomAlert from '../../common/forms/customAlert';
 class SubContractor extends Component {
   constructor(props) {
     super(props);
   }
+
   render() {
-    const subprop = this.props;
+    const subprop = this.props.scr;
     console.log(this.props);
     return (
       <ContentLoader>
         <FormContainer formTitle={'Add Sub Contractor'}>
+          <div>
+            {this.props.scr.message ? (
+              <CustomAlert
+                variant={this.props.scr.variant}
+                message={this.props.scr.message}
+              />
+            ) : null}
+          </div>
           <FormRow>
             <TextInput
-              label="SubContractorName"
+              label="SubContractor Name"
               name="subName"
               id="subName"
               onChange={e => this.props.handleChangeSubName(e.target.value)}
               value={subprop.subContractorName}
             />
             <TextInput
-              label="Sub-Contractor Code"
+              label="Vendor Code"
               name="subCode"
               id="subCode"
               onChange={e => this.props.handleChangeSubCode(e.target.value)}
@@ -58,7 +66,7 @@ class SubContractor extends Component {
               onChange={e =>
                 this.props.handleChangesubContactAddress(e.target.value)
               }
-              value={subprop.subContactAddress}
+              value={subprop.subContractorContactAddres}
             />
           </FormRow>
           <FormRow>
@@ -67,22 +75,29 @@ class SubContractor extends Component {
               name="subPhone"
               id="subPhone"
               onChange={e => this.props.handleChangesubPhone(e.target.value)}
-              value={subprop.subPhone}
+              value={subprop.subContractorPhone}
             />
             <TextInput
               label="Sub-Contractor Email"
               name="subEmail"
               id="subEmail"
               onChange={e => this.props.handleChangesubEmail(e.target.value)}
-              value={subprop.subEmail}
+              value={subprop.subContractorEmail}
             />
           </FormRow>
+          {subprop.isValidationErr && (
+            <p class="text-danger">{subprop.validationMessage}</p>
+          )}
           <Button
             btnText="Save"
             onClick={this.props.saveSubContractorData}
             btnType="primary"
           />
-          <Button btnText="Cancel" btnType="cancel" />
+          <Button
+            btnText="Cancel"
+            btnType="cancel"
+            onClick={this.props.resetSubContractorData}
+          />
         </FormContainer>
       </ContentLoader>
     );

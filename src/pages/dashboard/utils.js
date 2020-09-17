@@ -5,12 +5,12 @@ export const overviewMetadata = [
         iconName: "faBorderAll",
         color: "text-primary",
     },
-    {
-        title: "Total Sub-Contractors",
-        number: "30",
-        iconName: "faIdBadge",
-        color: "text-info",
-    },
+    // {
+    //     title: "Total Sub-Contractors",
+    //     number: "30",
+    //     iconName: "faIdBadge",
+    //     color: "text-info",
+    // },
     {
         title: "Completed Grids",
         number: "25",

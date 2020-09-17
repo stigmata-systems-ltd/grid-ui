@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Form, Button } from 'react-bootstrap';
+import Col6 from './Col6';
 class TextInput extends Component {
   render() {
     return (
-      <div class="col-md-6">
+      <Col6 size={this.props.size}>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">{this.props.label}</label>
           <div class="col-sm-9">
@@ -17,7 +18,7 @@ class TextInput extends Component {
             />
           </div>
         </div>
-      </div>
+      </Col6>
     );
   }
 }

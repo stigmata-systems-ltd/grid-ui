@@ -34,7 +34,6 @@ class GridMap extends Component {
     }
   };
   handleGridView = () => {
-    console.log("click")
     this.props.history.push("griddetails");
   };
 

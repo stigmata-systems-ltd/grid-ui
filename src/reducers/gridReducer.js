@@ -1,4 +1,3 @@
-
 import {
   GRID_NO_LIST,
   LAYER_NO_LIST,
@@ -36,42 +35,77 @@ import {
   CHANGE_QUANTITY,
   LAYER_NO,
   RESET_QUANTITY_FORM,
-} from "../actions/types";
+  RESET_CREATE_GRID_FORM,
+  ADD_CG,
+  RESET_CG_FORM,
+  SET_LAYER_DETAILS,
+  DELETE_GRID,
+  RESET_DELETE_GRID_FORM,
+  EDIT_GRID,
+  RESET_EDIT_GRID_FORM,
+  GRID_DETAILS,
+  DPR_GRID_NO_CHANGE,
+  GRID_LIST,
+  EDIT_GRID_DETAILS,
+  LAYER_PROGRESS,
+  RESET_DPR_FORM,
+  SET_ADD_SUBCONT_ERROR,
+  SET_COMPLETED_LAYERS_BY_GRID,
+  LAYER_DETAILS,
+  SINGLE_LAYER_DETAILS,
+} from '../actions/types';
 
 const initialState = {
   gridNoData: [],
   gridLatLong: [],
+  layerNo: '',
+  dprGridNum: '',
   subContractorList: [],
   approvalOptions: [
-    { id: "New", gridName: "New" },
-    { id: "Completed", gridName: "Completed" },
+    { id: 'New', gridName: 'New' },
+    { id: 'Completed', gridName: 'Completed' },
   ],
   layerNoList: [],
   quantitySelected: [],
   addedQuantity: [],
   totalQuantity: 0,
   totalSubContractor: 0,
-  quantity: "",
-  subContractorName: "0",
+  quantity: '',
+  subContractorName: '0',
   isSubContractorEdit: false,
+  gridAdd: { message: '' },
+  cgAdd: { message: '' },
+  deleteGrid: { message: '' },
+  editGrid: { message: '' },
+  listGrid: [],
+  cgBodyData: [],
+  layerData: [],
+  cgBodyData: [
+    {
+      RFINumber: '',
+      rfiInspectionDate: '',
+      rfiApprovalDate: '',
+      status: '',
+    },
+  ],
+  layerDataDetails: [{}],
 };
 
-export default function (state = initialState, action) {
+export default function(state = initialState, action) {
   switch (action.type) {
     case `${GRID_NO_LIST}_FULFILLED`:
-      console.log(`GRID NO LIST : ${action.payload}`);
+      console.log(`GRID NO LIST : ${action.payload.data}`);
       return {
         ...state,
         gridNoData: action.payload.data,
       };
 
     case `${LAYER_NO_LIST}_FULFILLED`:
-      console.log(`LAYER NO LIST : ${action.payload}`);
       const layerNoList = [];
-      action.payload.data.map((a) => {
+      action.payload.data.map(a => {
         const data = {
-          id: "",
-          gridName: "",
+          id: '',
+          gridName: '',
         };
         data.id = a.id;
         data.gridName = a.layerName;
@@ -82,85 +116,85 @@ export default function (state = initialState, action) {
         LayerNoData: layerNoList,
       };
     case GRID_NUMBER:
-      console.log(action.payload);
       return {
         ...state,
         gridNumber: action.payload,
       };
     case RFI_NO:
-      console.log(action.payload);
       return {
         ...state,
         RFINumber: action.payload,
       };
     case GRID_AREA:
-      console.log(action.payload);
       return {
         ...state,
         gridArea: action.payload,
       };
     case GRID_NO:
-      console.log(action.payload);
       return {
         ...state,
         gridNo: action.payload,
       };
     case RFI_APPROVAL:
-      console.log(action.payload);
       return {
         ...state,
         rfiApproval: action.payload,
       };
     case RFI_APPROVAL_DATE:
-      console.log(action.payload);
       return {
         ...state,
         rfiApprovalDate: action.payload,
       };
     case RFI_INSPECTION_DATE:
-      console.log(action.payload);
       return {
         ...state,
         rfiInspectionDate: action.payload,
       };
     case GRID_LATLANG:
-      console.log(`In Grid latlang reducer: ${action.payload}`);
       return {
         ...state,
         gridLatLong: action.payload,
       };
     case `${GRID_ADD}_FULFILLED`:
-      console.log(action.payload);
       return {
         ...state,
-        gridAdd: action.payload,
+        gridAdd: { message: 'Grid Added Successfully' },
+        variant: 'success',
+      };
+    case `${GRID_ADD}_REJECTED`:
+      return {
+        ...state,
+        gridAdd: { message: 'Error Occurred' },
+        variant: 'danger',
+      };
+    case RESET_CREATE_GRID_FORM:
+      return {
+        ...state,
+        gridNumber: '',
+        gridLatLong: [],
+        gridArea: '',
       };
     case GRID_LATLONG_REMOVE:
-      console.log(`In Grid latlang remove reducer: ${action.payload}`);
       return {
         ...state,
         gridLatLong: action.payload,
       };
     case DATE_OF_FILING:
-      console.log(`In Grid date of filing reducer: ${action.payload}`);
       return {
         ...state,
         dateOfFiling: action.payload,
       };
     case AREA_OF_LAYER:
-      console.log(`In Grid area of layer reducer: ${action.payload}`);
       return {
         ...state,
         areaOfLayer: action.payload,
       };
     case FILL_TYPE:
-      console.log(`In Grid area of layer reducer: ${action.payload}`);
       return {
         ...state,
         fillType: action.payload,
       };
     case FILL_MATERIAL:
-      console.log(`In Grid area of layer reducer: ${action.payload}`);
       return {
         ...state,
         fillMaterial: action.payload,
@@ -227,12 +261,12 @@ export default function (state = initialState, action) {
       };
     case `${SUBCONTRACTOR_LIST}_FULFILLED`:
       const subContractorList = [];
-      action.payload.data.map((a) => {
+      action.payload.data.map(a => {
         const data = {
-          id: "",
-          gridName: "",
+          id: '',
+          gridName: '',
         };
-        data.id = a.subContrtactorId;
+        data.id = a.subContractorId;
         data.gridName = a.name;
         subContractorList.push(data);
       });
@@ -253,18 +287,309 @@ export default function (state = initialState, action) {
     case RESET_QUANTITY_FORM:
       return {
         ...state,
-        quantity: "",
-        subContractorName: "0",
+        quantity: '',
+        subContractorName: '0',
       };
     case CHANGE_QUANTITY:
       return {
         ...state,
-        addedQuantity: action.payload,
+        layerSubContractor: action.payload,
       };
     case LAYER_NO:
       return {
         ...state,
         layerNo: action.payload,
+      };
+    case `${ADD_CG}_FULFILLED`:
+      console.log(action.payload);
+      return {
+        ...state,
+        cgAdd: { message: 'CG updated Successfully' },
+        variant: 'success',
+      };
+    case `${ADD_CG}_REJECTED`:
+      console.log(action.payload);
+      return {
+        ...state,
+        cgAdd: { message: 'Error Occurred' },
+        variant: 'danger',
+      };
+    case RESET_CG_FORM:
+      return {
+        ...state,
+        gridNo: '',
+        RFINumber: '',
+        rfiInspectionDate: '',
+        rfiApprovalDate: '',
+        rfiApproval: '',
+      };
+    case `${SET_LAYER_DETAILS}_PENDING`:
+      return {
+        ...state,
+        isLayerDtlsLoading: true,
+        isLayerDtlsError: false,
+      };
+    case `${SET_LAYER_DETAILS}_REJECTED`:
+      return {
+        ...state,
+        isLayerDtlsLoading: false,
+        isLayerDtlsError: true,
+      };
+    case `${SET_LAYER_DETAILS}_FULFILLED`:
+      let singleLayerDtls = {};
+
+      if (action.payload.data.length > 0) {
+        const layerDtls = action.payload.data[0];
+        singleLayerDtls = {
+          dateOfFiling: layerDtls.fillingDate,
+          areaOfLayer: layerDtls.area_layer,
+          fillType: layerDtls.fillType,
+          totalQuantity: layerDtls.totalQuantity,
+          addedQuantity: layerDtls.layerSubContractor,
+          totalSubContractor:
+            layerDtls.layerSubContractor && layerDtls.layerSubContractor.length,
+          //rfiMaterialDescription: layerDtls,
+          fillMaterial: layerDtls.topFillMaterial,
+          rfiLayerStatus: layerDtls.status,
+          layerSubContractor: layerDtls.layerSubContractor,
+          //RFI LV
+          rfiNoLV: layerDtls.lV_RFIno,
+          rfiInspectionDateLV: layerDtls.lV_inspection_date,
+          rfiApprovalDateLV: layerDtls.lV_approval_date,
+          rfiLVApprovalStatus: layerDtls.lV_RFI_status,
+          //RFI CT
+          rfiNoCT: layerDtls.cT_RFIno,
+          rfiInspectionDateCT: layerDtls.cT_inspection_date,
+          rfiApprovalDateCT: layerDtls.cT_approval_date,
+          rfiCTApprovalStatus: layerDtls.cT_RFI_status,
+
+          rfiRemarks: layerDtls.remarks,
+        };
+      } else {
+        singleLayerDtls = {
+          dateOfFiling: '',
+          areaOfLayer: '',
+          fillType: '',
+          //rfiMaterialDescription: layerDtls,
+          fillMaterial: '',
+          rfiLayerStatus: '',
+          layerSubContractor: '',
+          totalQuantity: 0,
+          addedQuantity: [],
+          totalSubContractor: 0,
+          //RFI LV
+          rfiNoLV: '',
+          rfiInspectionDateLV: '',
+          rfiApprovalDateLV: '',
+          rfiLVApprovalStatus: '',
+          //RFI CT
+          rfiNoCT: '',
+          rfiInspectionDateCT: '',
+          rfiApprovalDateCT: '',
+          rfiCTApprovalStatus: '',
+          rfiRemarks: '',
+        };
+      }
+      return {
+        ...state,
+        isLayerDtlsLoading: false,
+        isLayerDtlsError: false,
+        ...singleLayerDtls,
+      };
+    case `${DELETE_GRID}_FULFILLED`:
+      console.log(action.payload);
+      return {
+        ...state,
+        deleteGrid: { message: 'Grid Deleted Successfully' },
+        variant: 'success',
+      };
+    case `${DELETE_GRID}_REJECTED`:
+      console.log(action.payload);
+      return {
+        ...state,
+        deleteGrid: { message: 'Error Occurred' },
+        variant: 'danger',
+      };
+    case RESET_DELETE_GRID_FORM:
+      return {
+        ...state,
+        gridNo: '',
+      };
+    case DPR_GRID_NO_CHANGE:
+      return {
+        ...state,
+        dprGridNum: action.payload,
+      };
+    case `${GRID_DETAILS}_FULFILLED`:
+      console.log(action.payload);
+      const singleGrid = action.payload.data[0];
+      return {
+        ...state,
+        gridNo: singleGrid.gridno,
+        gridArea: singleGrid.grid_area,
+        gridLatLong: singleGrid.gridGeoLocation,
+        RFINumber: singleGrid.cG_RFIno,
+        rfiInspectionDate: singleGrid.cG_inspection_date,
+        rfiApprovalDate: singleGrid.cG_approval_date,
+        status: singleGrid.status,
+      };
+    case `${GRID_DETAILS}_REJECTED`:
+      console.log(action.payload);
+      return {
+        ...state,
+        fetchGrid: { message: 'Error Occurred' },
+      };
+    case `${EDIT_GRID}_FULFILLED`:
+      console.log(action.payload);
+      return {
+        ...state,
+        editGrid: { message: 'Grid Edited Successfully' },
+        variant: 'success',
+      };
+    case `${EDIT_GRID}_REJECTED`:
+      console.log(action.payload);
+      return {
+        ...state,
+        editGrid: { message: 'Error Occurred' },
+        variant: 'danger',
+      };
+    case RESET_EDIT_GRID_FORM:
+      return {
+        ...state,
+        gridId: '',
+        gridNumber: '',
+        gridArea: '',
+        gridLatLong: [],
+      };
+    case `${GRID_LIST}_FULFILLED`:
+      const listGrid = action.payload.data.map(e => ({
+        gridId: e.gridId,
+        gridno: e.gridno,
+        status: e.status,
+      }));
+      return {
+        ...state,
+        listGrid,
+        listGridDetails: action.payload.data,
+      };
+    case EDIT_GRID_DETAILS:
+      const editGridDetails = action.payload;
+      return {
+        ...state,
+        gridId: editGridDetails.gridId,
+        gridNo: editGridDetails.gridno,
+        gridArea: editGridDetails.grid_area,
+        gridLatLong: editGridDetails.gridGeoLocation,
+        RFINumber: editGridDetails.cG_RFIno,
+        rfiInspectionDate: editGridDetails.cG_inspection_date,
+        rfiApprovalDate: editGridDetails.cG_approval_date,
+        rfiApproval: editGridDetails.status,
+        // cgBodyData: [
+        //   {
+        //     RFINumber: editGridDetails.cG_RFIno,
+        //     rfiInspectionDate: editGridDetails.cG_inspection_date,
+        //     rfiApprovalDate: editGridDetails.cG_approval_date,
+        //     status: editGridDetails.status,
+        //   },
+        // ],
+      };
+    case `${LAYER_PROGRESS}_PENDING`:
+      return {
+        ...state,
+        isLayerDtlsLoading: true,
+        isLayerDtlsError: false,
+        isLayerUpdateSuccess: false,
+      };
+    case `${LAYER_PROGRESS}_REJECTED`:
+      return {
+        ...state,
+        isLayerDtlsLoading: false,
+        isLayerDtlsError: true,
+        isLayerUpdateSuccess: false,
+        layerUpdateMsg: 'Internal Server Error',
+      };
+    case `${LAYER_PROGRESS}_FULFILLED`:
+      return {
+        ...state,
+        isLayerDtlsLoading: false,
+        isLayerDtlsError: false,
+        isLayerUpdateSuccess: true,
+        layerUpdateMsg: action.payload.data.message,
+      };
+    case RESET_DPR_FORM:
+      return {
+        ...state,
+        isLayerDtlsLoading: false,
+        isLayerUpdateError: false,
+        isLayerUpdateSuccess: false,
+        layerUpdateMsg: '',
+        dprGridNum: '',
+        layerNo: '',
+        dateOfFiling: '',
+        areaOfLayer: '',
+        fillType: '',
+        totalQuantity: 0,
+        addedQuantity: [],
+        totalSubContractor: 0,
+        //rfiMaterialDescription: layerDtls,
+        fillMaterial: '',
+        rfiLayerStatus: '',
+        layerSubContractor: '',
+        //RFI LV
+        rfiNoLV: '',
+        rfiInspectionDateLV: '',
+        rfiApprovalDateLV: '',
+        rfiLVApprovalStatus: '',
+        //RFI CT
+        rfiNoCT: '',
+        rfiInspectionDateCT: '',
+        rfiApprovalDateCT: '',
+        rfiCTApprovalStatus: '',
+        rfiRemarks: '',
+        dprCompletedLayers: ' (Please Select a grid to see completed layers)',
+        isShowComplLayerDefaultMsg: true,
+      };
+    case SET_ADD_SUBCONT_ERROR:
+      return {
+        ...state,
+        isAddSubContError: true,
+        addSubContErrorMsg: action.payload,
+      };
+    case `${SET_COMPLETED_LAYERS_BY_GRID}_FULFILLED`:
+      return {
+        ...state,
+        dprCompletedLayers: action.payload.data,
+      };
+    case `${LAYER_DETAILS}_REJECTED`:
+      return {
+        ...state,
+        layerData: [],
+      };
+    case `${LAYER_DETAILS}_FULFILLED`:
+      const layerDataDetails = action.payload.data;
+      const layerData = action.payload.data.map(e => ({
+        layerNo: e.layerNo,
+        lvApprovalDate: e.lV_approval_date,
+        lvApprovalStatus: e.lV_RFI_status,
+        ctApprovalDate: e.cT_approval_date,
+        ctApprovalStatus: e.cT_RFI_status,
+        layerStatus: e.status,
+      }));
+      return {
+        ...state,
+        layerData,
+        layerDataDetails,
+      };
+    case SINGLE_LAYER_DETAILS:
+      return {
+        ...state,
+        view_gridNo: action.payload.gridNo,
+        view_layerNo: action.payload.layerNo,
+        view_fillingDate: action.payload.fillingDate,
+        view_materialDescription: action.payload.materialDescription,
+        view_area_layer: action.payload.area_layer,
+        view_topFillMaterial: action.payload.topFillMaterial,
+        view_layerSubContractor: action.payload.layerSubContractor,
       };
 
     default:

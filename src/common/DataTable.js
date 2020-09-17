@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import IconButton from "../common/forms/IconButton";
-import Button from '../common/forms/Button';
-
-
+import Button from "../common/forms/Button";
 
 class DataTable extends Component {
   renderTableHeaders = () => {
@@ -11,47 +9,49 @@ class DataTable extends Component {
 
   render() {
     return (
-      <div class="table-responsive pt-3 data-table">
-        <table class="table table-bordered">
+      <div class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+        <table class="table dataTable no-footer table-bordered">
           <thead>
             <tr>{this.renderTableHeaders()}</tr>
           </thead>
           <tbody>
-            {this.props.bodyData.map((data, rowIndex) => {
-              return (
-                <tr>
-                  {this.props.showRowDelete && (
-                    <td class="action-btns" style={{width: "1%"}}>
-                      <IconButton
-                        iconName="faTrash"
-                        onClick={this.props.onClick}
-                      />
-                    </td>
-                  )}
-                  {Object.keys(data).map((key) => (
-                    <>
-                      <td> {data[key].toString()}</td>
-                    </>
-                  ))}
+            {this.props.bodyData && this.props.bodyData.length > 0 ? (
+              this.props.bodyData.map((data, rowIndex) => {
+                return (
+                  <tr>
+                    {Object.keys(data).map((key) => (
+                      <>{key !== "id" && <td> {data[key].toString()}</td>}</>
+                    ))}
 
-                  <td>
-                  {this.props.isShowEdit &&
-                  <Button 
-                    btnText="Edit" 
-                    btnType="primary" 
-                    onClick={() => this.props.onClickEdit(rowIndex)}
-                  />
-                  }
-                  &nbsp;
-                  <Button 
-                    btnText="Delete" 
-                    btnType="btn-danger"
-                    onClick={() => this.props.onClickDelete(rowIndex)}
-                  />
-                  </td>
-                </tr>
-              );
-            })}
+                    <td>
+                      {this.props.showEdit && (
+                        <Button
+                          btnText="Edit"
+                          btnType="primary"
+                          onClick={() =>
+                            this.props.onClickEdit(data.id, rowIndex)
+                          }
+                        />
+                      )}
+                      {this.props.showDelete && (
+                          <IconButton
+                            iconName="faTrash"
+                            onClick={() =>
+                              this.props.onClickDelete(data.id, rowIndex)
+                            }
+                          />
+                      )}
+                    </td>
+                  </tr>
+                );
+              })
+            ) : (
+              <tr>
+                <td colSpan={this.props.metaData.length}>
+                  <h6 className="text-info">No Records Found</h6>
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import Modal from "react-bootstrap/Modal";
 import Button from "./forms/Button";
 
@@ -18,8 +17,8 @@ class CustomModal extends Component {
                 </Modal.Header>
                 <Modal.Body>{this.props.children}</Modal.Body>
                 <Modal.Footer>
-                    <Button type="primary" onClick={this.props.handleClose} btnText="Save" />
-                    <Button variant="secondary" onClick={this.props.handleClose} btnText="Cancel" />
+                    <Button btnType="primary" onClick={this.props.handleSave} btnText="Save" />
+                    <Button btnType="btn-secondary" onClick={this.props.handleClose} btnText="Cancel" />
                 </Modal.Footer>
             </Modal>
         )

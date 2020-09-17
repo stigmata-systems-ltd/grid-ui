@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import Button from "./forms/Button";
+import React, { Component } from 'react';
+import Button from './forms/Button';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 class ActionDataTable extends Component {
   renderTableHeaders = () => {
-    return this.props.metaData.map((header) => <th>{header}</th>);
+    return this.props.metaData.map(header => <th>{header}</th>);
   };
 
   render() {
@@ -15,20 +15,35 @@ class ActionDataTable extends Component {
             <tr>{this.renderTableHeaders()}</tr>
           </thead>
           <tbody>
-            {this.props.bodyData.map((data) => {
+            {this.props.bodyData.map((data, i) => {
               return (
                 <tr>
-                  {Object.keys(data).map((key) => (
+                  {Object.keys(data).map(key => (
                     <>
                       <td> {data[key].toString()}</td>
                     </>
                   ))}
                   <td class="action-btns">
-                    
-                    <Link to="/viewgriddpr" className="btn btn-secondary">View</Link>
+                    <Link to="/viewgriddpr">
+                      <Button
+                        btnText="View"
+                        btnType="btn-secondary"
+                        onClick={() => this.props.onViewClick(i)}
+                      />
+                    </Link>
+                    <Link to="/editgrid">
+                      <Button
+                        btnText="Edit"
+                        btnType="btn-secondary"
+                        onClick={() => this.props.onEditClick(i)}
+                      />
+                    </Link>
 
-                    {/* <Button btnText="View" btnType="btn-secondary" onClick={this.props.onClick} /> */}
-                    {/* <Button btnText="Delete" btnType="btn-secondary" onClick={this.props.onClick} /> */}
+                    <Button
+                      btnText="Delete"
+                      btnType="btn-secondary"
+                      onClick={() => this.props.onDeleteClick(i)}
+                    />
                   </td>
                 </tr>
               );

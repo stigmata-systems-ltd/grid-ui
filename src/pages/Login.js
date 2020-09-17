@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Button from "../common/forms/Button";
+import { LOGO } from "../assets/images/index.js";
+
 
 class Login extends Component {
   redirectToDashboard = (e) => {
@@ -11,36 +13,39 @@ class Login extends Component {
     return (
       <div class="container-scroller">
         <div class="container-fluid page-body-wrapper full-page-wrapper">
-          <div class="content-wrapper d-flex align-items-center auth px-0">
+          <div class="imgg d-flex align-items-center auth px-0">
             <div class="row w-100 mx-0">
               <div class="col-lg-4 mx-auto">
                 <div class="auth-form-light text-left py-5 px-4 px-sm-5">
-                  {/* <div class="brand-logo">
-                                        <img src="../../images/logo.svg" alt="logo" />
-                                    </div> */}
-                  {/* <h4>Hello! let's get started</h4> */}
-                  <h6 class="font-weight-light">Sign in to continue.</h6>
+                  <div class="brand-logo">
+                    <img src={LOGO} alt="logo" />
+                  </div>
+                  
                   <form class="pt-3">
                     <div class="form-group">
+                    <i class="fa fa-user icon"></i>
                       <input
                         type="email"
                         class="form-control form-control-lg"
                         id="exampleInputEmail1"
                         placeholder="Username"
                         onChange={(e) => this.props.handleUsernameChange(e.target)}
+                        value={this.props.auth.username}
                       />
                     </div>
                     <div class="form-group">
+                    <i class="fa fa-key icon"></i>
                       <input
                         type="password"
                         class="form-control form-control-lg"
                         id="exampleInputPassword1"
                         placeholder="Password"
                         onChange={(e) => this.props.handlePasswordChange(e.target)}
+                        value={this.props.auth.password}
                       />
                     </div>
                     {this.props.auth.isLoginError &&
-                    <p className="text-danger">{this.props.auth.loginMessage}</p>}
+                      <p className="text-danger">{this.props.auth.loginMessage}</p>}
                     <div class="mt-3">
                       <Button
                         onClick={(e) => this.props.authenticateUser(e)}
@@ -65,12 +70,12 @@ class Login extends Component {
                                                 <i class="mdi mdi-facebook mr-2"></i>Connect using facebook
                   </button>
                                         </div> */}
-                    <div class="text-center mt-4 font-weight-light">
+                    {/* <div class="text-center mt-4 font-weight-light">
                       Don't have an account?
                       <a href="register.html" class="text-primary">
                         Create
                       </a>
-                    </div>
+                    </div> */}
                   </form>
                 </div>
               </div>

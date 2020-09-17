@@ -10,13 +10,14 @@ import {
   GRID_LANG,
   GRID_LATLANG,
   GRID_LATLONG_REMOVE,
+  RESET_CREATE_GRID_FORM,
 } from '../../actions/types';
 
 const mapDispatchToProps = dispatch => {
-  console.log('dispatcher');
   return {
     createGrid() {
       dispatch(createGrid());
+      dispatch({ type: RESET_CREATE_GRID_FORM });
     },
     addLatLang() {
       dispatch(addLatLang());
@@ -36,8 +37,7 @@ const mapDispatchToProps = dispatch => {
     handleChangeLat(value, i) {
       const grid = store.getState().grid;
       const length = grid.gridLatLong.length;
-      console.log(length);
-      grid.gridLatLong[i].latitude = parseInt(value);
+      grid.gridLatLong[i].latitude = parseFloat(value);
       dispatch({
         type: GRID_LATLANG,
         payload: grid.gridLatLong,
@@ -46,8 +46,7 @@ const mapDispatchToProps = dispatch => {
     handleChangeLong(value, i) {
       const grid = store.getState().grid;
       const length = grid.gridLatLong.length;
-      console.log(length);
-      grid.gridLatLong[i].longitude = parseInt(value);
+      grid.gridLatLong[i].longitude = parseFloat(value);
 
       dispatch({
         type: GRID_LATLANG,
@@ -55,11 +54,9 @@ const mapDispatchToProps = dispatch => {
       });
     },
     handleLatLongRemove(i) {
-      console.log(`In Latlong Remove: ${i}`);
       const grid = store.getState().grid;
       const gridLatLong = [...grid.gridLatLong];
       gridLatLong.splice(i, 1);
-      console.log(`In Latlong After Remove: ${gridLatLong}`);
       dispatch({
         type: GRID_LATLONG_REMOVE,
         payload: gridLatLong,
@@ -70,7 +67,6 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
   const grid = store.getState().grid;
-  console.log(`Grid State: ${JSON.stringify(grid)}`);
   return {
     grid,
   };

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import CreateUser from '../../pages/userManagement/createUser';
 import store from '../../store';
-import { createUser } from '../../actions/userManagementActions';
+import { createUser, getUserRoles } from '../../actions/userManagementActions';
 import {
   FIRST_NAME,
   LAST_NAME,
@@ -10,15 +10,21 @@ import {
   USERNAME,
   PASSWORD,
   ROLENAME,
+  RESET_CREATE_USER_FORM,
+  CHANGE_ADD_USER_MODAL_STATUS,
 } from '../../actions/types';
 
 const mapDispatchToProps = dispatch => {
-  console.log('dispatcher');
   return {
     createUser() {
-      dispatch(createUser());
+      dispatch(createUser()).then(() => {
+        dispatch({ type: RESET_CREATE_USER_FORM });
+        this.closeAddUserModal();
+      });
     },
-
+    getUserRoles() {
+      dispatch(getUserRoles());
+    },
     handleFirstNameChange(value) {
       dispatch({
         type: FIRST_NAME,
@@ -61,12 +67,17 @@ const mapDispatchToProps = dispatch => {
         payload: value,
       });
     },
+    closeAddUserModal() {
+      dispatch({
+        type: CHANGE_ADD_USER_MODAL_STATUS,
+        payload: false,
+      })
+    }
   };
 };
 
 const mapStateToProps = state => {
   const user = store.getState().user;
-  console.log(user);
   return {
     user,
   };
