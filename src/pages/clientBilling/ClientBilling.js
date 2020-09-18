@@ -32,6 +32,7 @@ class ClientBilling extends Component {
     if (billableLayers && billableLayers.length > 0) {
       return billableLayers.map((layer) => (
         <CheckBox 
+          size={"col-md-2"}
           label={layer.layerName}
           key={layer.id}
           onChange={(e) => this.props.onChangeBillableCheckBox(e.target.checked, layer.id)}
@@ -112,7 +113,7 @@ class ClientBilling extends Component {
             btnType="primary" 
             onClick={this.props.saveClientBilling}
           />
-          <Button btnText="Cancel" btnType="cancel" />
+          <Button btnText="Cancel" btnType="cancel" onClick={this.props.resetForm} />
         </FormContainer>
       </ContentLoader>
     );

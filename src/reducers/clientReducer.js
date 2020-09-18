@@ -103,7 +103,6 @@ export default function (state = initialState, action) {
         isSuccess: false,
         isError: false,
         message: "",
-        gridList: [],
         selectedGrid: "",
         billableLayers: [],
         billableTableData: [],

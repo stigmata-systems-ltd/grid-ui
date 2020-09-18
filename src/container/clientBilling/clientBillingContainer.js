@@ -55,7 +55,7 @@ const mapDispatchToProps = (dispatch) => {
     },
     onAddBillableLayers() {
       const client = store.getState().client;
-      const gridName = getGridNameFromId(client.selectedGrid, client.gridList)
+      const gridName = client.selectedGrid.label;
       const checkedLayersCount = getCheckedLayersCount(client.billableLayers)
       if (client.billableLayers.length > 0 && checkedLayersCount > 0) {
         let billableLayers = [...client.billableLayers];
@@ -109,7 +109,12 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(saveClientBilling(data)).then(() => {
         dispatch({ 
           type: RESET_BILLING_FORM
-        })
+        });
+      });
+    },
+    resetForm() {
+      dispatch({ 
+        type: RESET_BILLING_FORM
       });
     }
   };
