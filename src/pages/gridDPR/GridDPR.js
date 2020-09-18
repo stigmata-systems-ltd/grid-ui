@@ -239,9 +239,8 @@ class GridDPR extends Component {
                   quantityChange={e =>
                     this.props.handleQuantityChange(e.target.value)
                   }
-                  onSubContractorChange={e => {
-                    console.dir(e.target.options[e.target.selectedIndex].value);
-                    this.props.handleSubContractorChange(e.target.value);
+                  onSubContractorChange={obj => {
+                    this.props.handleSubContractorChange(obj);
                   }}
                   quantityData={this.props.grid.addedQuantity}
                   addQuantity={this.props.addQuantity}
@@ -323,6 +322,9 @@ class GridDPR extends Component {
                   <TextArea
                     label="Remarks"
                     size="col-md-12"
+                    labelSize="col-sm-1"
+                    fieldSize="col-sm-11"
+                    placeholder="Add Remarks"
                     onChange={e =>
                       this.props.handleRemarksChange(e.target.value)
                     }

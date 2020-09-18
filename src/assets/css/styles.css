@@ -11,6 +11,9 @@ body {
 /* .action-btns button {
   margin-right: 2%;
 } */
+.input-group-append {
+  height: fit-content;
+}
 .dataTable tbody tr td {
   padding: 10px;
 }

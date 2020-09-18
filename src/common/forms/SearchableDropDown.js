@@ -7,10 +7,14 @@ class SimpleDropDown extends Component {
     return (
       <Col6 size={this.props.size}>
         <div class="form-group row">
-          <label class="col-sm-3 col-form-label">{this.props.label}</label>
-          <div class="col-sm-9">
+          <label 
+            class={`${this.props.labelSize ? this.props.labelSize : "col-sm-3"} col-form-label`}
+          >
+              {this.props.label}
+          </label>
+          <div class={`${this.props.fieldSize ? this.props.fieldSize : "col-sm-9"}`}>
             <Select
-              className="form-control"
+              className=""
               onChange={e => this.props.onChange(e)}
               value={this.props.value}
               options={this.props.selectOptions}

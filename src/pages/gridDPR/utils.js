@@ -1,3 +1,24 @@
+export const transformSubCatTable = (data) => {
+  let tmpArr = [];
+  data && data.map((item) => {
+      tmpArr.push({
+        id: item.subContractorId,
+        quantity: item.quantity,
+        name: item.subContractorName,
+      });
+    });
+    return tmpArr;
+}
+export const transformSubCatList = (data) => {
+  let tmpArr = [];
+  data && data.map((item) => {
+      tmpArr.push({
+        value: item.subContractorId,
+        label: item.name,
+      });
+    });
+    return tmpArr;
+}
 export const transformLayerList = (layerList) => {
   let tmpArr = [];
   layerList && layerList.map((layer) => {

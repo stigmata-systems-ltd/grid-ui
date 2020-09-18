@@ -211,7 +211,6 @@ const mapDispatchToProps = dispatch => {
       });
     },
     handleSubContractorChange(value) {
-      console.log('change value', value);
       dispatch({
         type: SUBCONTRACTOR_CHANGE,
         payload: value,
@@ -219,19 +218,20 @@ const mapDispatchToProps = dispatch => {
     },
     addQuantity() {
       const grid = store.getState().grid;
-      if (grid.quantity !== '' && grid.subContractorId !== '0') {
-        const data = { quantity: '', subContractorId: '' };
+      if (grid.quantity !== '' && grid.subContractorName.value !== '0') {
+        const data = { quantity: '', subContractorId: '', subContractorName: ''};
         let changedQty = parseInt(grid.quantity);
         let isNewSubCont = true;
         grid.addedQuantity.map((subCont, index) => {
-          if (subCont.subContractorId === grid.subContractorName) {
+          if (subCont.subContractorId === grid.subContractorName.value) {
             changedQty = parseInt(grid.quantity) + parseInt(subCont.quantity);
             isNewSubCont = false;
             grid.addedQuantity[index].quantity = changedQty;
           }
         });
         data.quantity = changedQty;
-        data.subContractorId = grid.subContractorName;
+        data.subContractorId = grid.subContractorName.value;
+        data.subContractorName = grid.subContractorName.label;
         grid.totalQuantity += parseInt(grid.quantity);
         if (isNewSubCont) {
           grid.totalSubContractor += 1;

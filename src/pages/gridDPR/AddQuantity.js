@@ -4,12 +4,12 @@ import IconTextButton from '../../common/forms/IconTextButton';
 import FormRow from '../../common/forms/FormRow';
 import Modal from '../../common/Modal';
 import TextInput from '../../common/forms/TextInput';
-import SimpleDropDown from '../../common/forms/SimpleDropDown';
+import SearchableDropDown from '../../common/forms/SearchableDropDown';
 import Button from '../../common/forms/Button';
 import {
   subContractorTableMetaData,
-  subContractorTableBodyData,
-  subContractorMeta,
+  transformSubCatList,
+  transformSubCatTable,
 } from './utils';
 
 class AddQuantity extends Component {
@@ -53,17 +53,22 @@ class AddQuantity extends Component {
           handleClose={this.handleQuantityModalClose}
           size="lg"
           title="Add Sub-Contractor"
+          isShowFooter={false}
         >
           <FormRow>
             <TextInput
               label="Quantity"
+              labelSize="col-sm-4"
+              fieldSize="col-sm-8"
               onChange={e => this.props.quantityChange(e)}
               value={this.props.quantity}
             />
-            <SimpleDropDown
+            <SearchableDropDown
               label="SubContractor"
-              selectOptions={this.props.subContractorList}
-              onChange={e => this.props.onSubContractorChange(e)}
+              labelSize="col-sm-4"
+              fieldSize="col-sm-8"
+              selectOptions={transformSubCatList(this.props.subContractorList)}
+              onChange={valueObj => this.props.onSubContractorChange(valueObj)}
               value={this.props.subContractorName}
             />
           </FormRow>
@@ -77,10 +82,9 @@ class AddQuantity extends Component {
           <FormRow>
             <DataTable
               metaData={subContractorTableMetaData}
-              bodyData={this.props.quantityData}
-              onClickDelete={(rowIndex) => this.props.deleteQuantity(rowIndex)}
-              onClickEdit={(rowIndex) => this.props.editQuantity(rowIndex)}
-              isShowEdit={false}
+              bodyData={transformSubCatTable(this.props.quantityData)}
+              onClickDelete={(id, rowIndex) => this.props.deleteQuantity(rowIndex)}
+              showDelete={true}
             />
           </FormRow>
         </Modal>
