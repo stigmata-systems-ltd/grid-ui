@@ -260,19 +260,9 @@ export default function(state = initialState, action) {
         rfiLayerStatus: action.payload,
       };
     case `${SUBCONTRACTOR_LIST}_FULFILLED`:
-      const subContractorList = [];
-      action.payload.data.map(a => {
-        const data = {
-          id: '',
-          gridName: '',
-        };
-        data.id = a.subContractorId;
-        data.gridName = a.name;
-        subContractorList.push(data);
-      });
       return {
         ...state,
-        subContractorList,
+        subContractorList: action.payload.data,
       };
     case SUBCONTRACTOR_CHANGE:
       return {
