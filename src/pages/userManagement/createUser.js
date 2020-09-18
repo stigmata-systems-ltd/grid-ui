@@ -23,6 +23,7 @@ class CreateUser extends Component {
         handleSave={this.props.createUser}
         handleClose={this.props.closeAddUserModal}
         size="lg"
+        isShowFooter={true}
       >
         {this.props.isLoading && <Loader />}
         <FormRow>
