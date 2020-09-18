@@ -1,4 +1,59 @@
-export const _listUserMetaData = ["Name", "Email", "Mobile Number", "Role", "Actions"];
+import React from "react";
+import IconButton from "../../common/forms/IconButton";
+
+export const listUserMetaData = (handleDelete, handleEdit) => {
+  return [
+    {
+      sortable: false,
+      cell: (row) => {
+        return (
+          <IconButton
+            iconName="faTimes"
+            className={"table-delete-icon"}
+            onClick={() => handleDelete(row.id)}
+          />
+        );
+      },
+      width: "2%",
+    },
+    {
+      name: "Name",
+      selector: "name",
+      sortable: false,
+    },
+    {
+      name: "Email",
+      selector: "email",
+      sortable: false,
+    },
+    {
+      name: "Mobile Number",
+      selector: "mobileNo",
+      sortable: false,
+    },
+    {
+      name: "Role",
+      selector: "roleName",
+      sortable: false,
+    },
+    {
+      name: "Actions",
+      sortable: false,
+      cell: (row) => {
+        console.log("row", row.id);
+        return (
+          <>
+            <IconButton
+              iconName="faEdit"
+              onClick={() => handleEdit(row.id)}
+            />
+          </>
+        );
+      }
+    }
+  ];
+}
+
 
 export const transformUserList = (userList) => {
   let tmpArr = [];

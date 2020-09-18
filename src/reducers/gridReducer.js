@@ -472,12 +472,13 @@ export default function(state = initialState, action) {
         listGrid,
         listGridDetails: action.payload.data,
       };
-    case EDIT_GRID_DETAILS:
-      const editGridDetails = action.payload;
+    case `${EDIT_GRID_DETAILS}_FULFILLED`:
+      const editGridDetails = action.payload.data;
+      console.log("edit",editGridDetails.gridno);
       return {
         ...state,
         gridId: editGridDetails.gridId,
-        gridNo: editGridDetails.gridno,
+        gridNumber: editGridDetails.gridno,
         gridArea: editGridDetails.grid_area,
         gridLatLong: editGridDetails.gridGeoLocation,
         RFINumber: editGridDetails.cG_RFIno,

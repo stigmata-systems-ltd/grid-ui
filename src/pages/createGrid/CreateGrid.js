@@ -15,6 +15,9 @@ class CreateGrid extends Component {
       locationRows: [0],
     };
   }
+  componentDidMount() {
+    this.props.resetGridForm()
+  }
 
   handleDeleteLocationRow = () => {
     let { locationRows } = this.state;

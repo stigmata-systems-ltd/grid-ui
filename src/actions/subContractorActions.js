@@ -44,21 +44,24 @@ export const fetchSubContractor = () => {
   };
 };
 
-export const deleteSCR = i => {
-  const scr = store.getState().scr;
-  console.log(`Selected SCR ID: ${scr.listSCR[i].subContractorId}`);
-  const id = scr.listSCRDetails[i].subContractorId;
+export const deleteSCR = id => {
+  // const scr = store.getState().scr;
+  // console.log(`Selected SCR ID: ${scr.listSCR[i].subContractorId}`);
+  // const id = scr.listSCR[i].subContractorId;
   return {
     type: DELETE_SUBCONTRACTOR,
     payload: axios.delete(config.BASE_URL + '/api/SubCont/DeleteSubCont/' + id),
   };
 };
 
-export const editSCR = i => {
+export const editSCR = id => {
   const scr = store.getState().scr;
-  console.log(`Selected SCR ID: ${scr.listSCR[i].subContractorId}`);
-  const selectedSCR = scr.listSCRDetails[i];
-
+  let selectedSCR;
+  scr.listSCRDetails.map((data, index) => {
+    if (data.subContractorId === id) {
+      selectedSCR = scr.listSCRDetails[index]
+    }
+  })
   return {
     type: EDIT_SUBCONTRACTOR_DETAILS,
     payload: selectedSCR,

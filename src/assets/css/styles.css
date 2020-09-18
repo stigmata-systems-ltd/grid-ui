@@ -27,12 +27,25 @@ select.form-control {
 .content-wrapper {
   padding: 1.04rem 1.04rem;
 }
+/*DataTable Styles
+*****************/
+.table-delete-icon {
+  position: relative;
+  left: -30px;
+  color: red;
+  font-size: 17px;
+  font-weight: 100;
+}
+.table-view-link {
+  cursor: pointer;
+}
 /*Bootstrap Overrides
 ********************/
 .alert {
   position: absolute;
   top: -30px;
   width: 70%;
+  z-index: 9999;
 }
 /*Header Styles
 **************/
