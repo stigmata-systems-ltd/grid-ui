@@ -118,7 +118,11 @@ class Cleaning extends Component {
             btnType="primary"
             onClick={this.props.addCGData}
           />
-          <Button btnText="Cancel" btnType="cancel" />
+          <Button
+            btnText="Cancel"
+            btnType="cancel"
+            onClick={this.props.cancelCGData}
+          />
         </div>
       </div>
     );

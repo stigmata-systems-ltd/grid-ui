@@ -59,6 +59,9 @@ const mapDispatchToProps = dispatch => {
         payload: value,
       });
     },
+    resetSubContractorData() {
+      dispatch({ type: RESET_SUBCONTRACTOR_FORM });
+    },
   };
 };
 

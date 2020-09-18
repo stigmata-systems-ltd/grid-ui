@@ -97,7 +97,12 @@ class CreateGrid extends Component {
             btnType="primary"
             onClick={this.props.createGrid}
           />
-          <Button btnText="Cancel" btnType="cancel" />
+
+          <Button
+            btnText="Cancel"
+            btnType="cancel"
+            onClick={this.props.resetCreateGridData}
+          />
         </FormContainer>
       </ContentLoader>
     );

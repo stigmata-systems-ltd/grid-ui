@@ -95,5 +95,5 @@ export const metaDataNavbar = [
     hasSubNav: false,
     isSubNavOpen: false,
     route: '/users',
-  }
+  },
 ];
