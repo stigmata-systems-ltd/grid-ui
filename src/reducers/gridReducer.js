@@ -98,7 +98,6 @@ const initialState = {
 export default function (state = initialState, action) {
   switch (action.type) {
     case `${GRID_NO_LIST}_FULFILLED`:
-      console.log(`GRID NO LIST : ${action.payload.data}`);
       return {
         ...state,
         gridNoData: action.payload.data,
@@ -295,14 +294,12 @@ export default function (state = initialState, action) {
         layerNo: action.payload,
       };
     case `${ADD_CG}_FULFILLED`:
-      console.log(action.payload);
       return {
         ...state,
         cgAdd: { message: "CG updated Successfully" },
         variant: "success",
       };
     case `${ADD_CG}_REJECTED`:
-      console.log(action.payload);
       return {
         ...state,
         cgAdd: { message: "Error Occurred" },
@@ -391,14 +388,12 @@ export default function (state = initialState, action) {
         ...singleLayerDtls,
       };
     case `${DELETE_GRID}_FULFILLED`:
-      console.log(action.payload);
       return {
         ...state,
         deleteGrid: { message: "Grid Deleted Successfully" },
         variant: "success",
       };
     case `${DELETE_GRID}_REJECTED`:
-      console.log(action.payload);
       return {
         ...state,
         deleteGrid: { message: "Error Occurred" },
@@ -415,7 +410,6 @@ export default function (state = initialState, action) {
         dprGridNum: action.payload,
       };
     case `${GRID_DETAILS}_FULFILLED`:
-      console.log(action.payload);
       const singleGrid = action.payload.data[0];
       return {
         ...state,
@@ -428,20 +422,17 @@ export default function (state = initialState, action) {
         status: singleGrid.status,
       };
     case `${GRID_DETAILS}_REJECTED`:
-      console.log(action.payload);
       return {
         ...state,
         fetchGrid: { message: "Error Occurred" },
       };
     case `${EDIT_GRID}_FULFILLED`:
-      console.log(action.payload);
       return {
         ...state,
         editGrid: { message: "Grid Edited Successfully" },
         variant: "success",
       };
     case `${EDIT_GRID}_REJECTED`:
-      console.log(action.payload);
       return {
         ...state,
         editGrid: { message: "Error Occurred" },
@@ -468,7 +459,6 @@ export default function (state = initialState, action) {
       };
     case `${EDIT_GRID_DETAILS}_FULFILLED`:
       const editGridDetails = action.payload.data;
-      console.log("edit", editGridDetails.gridno);
       return {
         ...state,
         gridId: editGridDetails.gridId,
