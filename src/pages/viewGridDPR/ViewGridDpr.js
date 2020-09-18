@@ -86,7 +86,7 @@ class ViewGridDpr extends Component {
                 <Label
                   label="Grid Number"
                   readOnly="test"
-                  value={this.props.grid.gridNo}
+                  value={this.props.grid.gridNumber}
                 />
                 <Label
                   label="Grid Area"

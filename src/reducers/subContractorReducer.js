@@ -35,7 +35,6 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case `${ADD_SUBCONTRACTOR}_FULFILLED`:
-      console.log(action);
       return {
         ...state,
         subContractorAdd: action.payload,
@@ -43,11 +42,11 @@ export default function(state = initialState, action) {
         variant: 'success',
       };
     case `${ADD_SUBCONTRACTOR}_REJECTED`:
-      console.log(action);
       return {
         ...state,
         subContractorAdd: action.payload,
-        message: 'Error Occurred',
+        message: action.payload.response.data.message ?   
+          action.payload.response.data.message: 'Error Occurred',
         variant: 'danger',
       };
     case SUBCONTRACTOR_NAME:
