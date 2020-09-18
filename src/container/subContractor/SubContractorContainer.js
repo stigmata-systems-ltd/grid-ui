@@ -21,8 +21,9 @@ const mapDispatchToProps = dispatch => {
       const scr = store.getState().scr;
       const validation = validate(scr);
       if (validation.error === null) {
-        dispatch(addSubContractor());
-        dispatch({ type: RESET_SUBCONTRACTOR_FORM });
+        dispatch(addSubContractor()).then(() => {
+          dispatch({ type: RESET_SUBCONTRACTOR_FORM });
+        })
       } else {
         dispatch({
           type: SUBCONTRACTOR_VALIDATION_ERROR,
