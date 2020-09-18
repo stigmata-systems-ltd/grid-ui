@@ -3,7 +3,7 @@ import FaIcon from "../FaIcon";
 class CheckBox extends Component {
   render() {
     return (
-      <div class="col-md-6">
+      <div class={`${this.props.size ? this.props.size : "col-md-6"}`}>
         <div class="form-group">
           <div class="form-check">
             <label class="form-check-label">
