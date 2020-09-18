@@ -345,7 +345,9 @@ class GridDPR extends Component {
               {/* Cleaning Tab */}
 
               <TabPane isActive={this.state.tabPaneStatus[2].isActive}>
-                <Photographs />
+                <Photographs
+                  {...this.props}
+                 />
               </TabPane>
             </TabContent>
           </FormContainer>

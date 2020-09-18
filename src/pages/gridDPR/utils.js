@@ -9,6 +9,25 @@ export const transformSubCatTable = (data) => {
     });
     return tmpArr;
 }
+//Tmp Fix For Demo, Get Support from API and Fix it
+export const transformSubCatReducer = (data, subCatList) => {
+  console.log("dt,subcat",data,subCatList)
+  let tmpArr = [];
+  data && data.map((item) => {
+    subCatList && subCatList.map(subCat => {
+      if(item.subContractorId === parseInt(subCat.subContractorId)) {
+        console.log("in if",item.subContractorId,subCat.name)
+        tmpArr.push({
+          subContractorId: item.subContractorId,
+          quantity: item.quantity,
+          subContractorName: subCat.name,
+        });
+      }
+    })
+    });
+    console.log(tmpArr);
+    return tmpArr;
+}
 export const transformSubCatList = (data) => {
   let tmpArr = [];
   data && data.map((item) => {
