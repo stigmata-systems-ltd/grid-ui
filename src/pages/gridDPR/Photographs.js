@@ -1,9 +1,13 @@
-import React, { Component } from 'react';
-import FormRow from '../../common/forms/FormRow';
-import SimpleDropDown from '../../common/forms/SimpleDropDown';
-import { ImageGroup, Image } from 'react-fullscreen-image';
+import React, { Component } from "react";
+import FormRow from "../../common/forms/FormRow";
+import SearchableDropDown from '../../common/forms/SearchableDropDown';
+import { ImageGroup, Image } from "react-fullscreen-image";
+import {
+  transformLayerList,
+} from './utils';
+import { transformGridList } from '../../utils/dataTransformer';
 
-import { gridNumber, layers, images } from './utils';
+import { gridNumber, layers, images } from "./utils";
 
 class Cleaning extends Component {
   constructor() {
@@ -12,7 +16,7 @@ class Cleaning extends Component {
       selectedGrid: 0,
     };
   }
-  handleGridSelection = e => {
+  handleGridSelection = (e) => {
     this.setState({ selectedLayer: e.target.value });
   };
 
@@ -20,37 +24,40 @@ class Cleaning extends Component {
     return (
       <div class="card">
         <div class="card-body">
-          <h5>Layer Photographs</h5><br/>
+          <h5>Layer Photographs</h5>
+          <br />
           <FormRow>
-            <SimpleDropDown
+            <SearchableDropDown
+              size="col-md-6"
               label="Grid Number"
-              selectOptions={gridNumber}
-              // onChange={this.handleGridSelection}
-              // value={this.state.selectedGrid}
+              selectOptions={transformGridList(this.props.grid.gridNoData)}
+              onChange={(value) => this.props.handleGridNoChangePhoto(value)}
+              value={this.props.grid.photoGridNum}
             />
-            <SimpleDropDown
+            <SearchableDropDown
               label="Layer Number"
-              selectOptions={layers}
-              // onChange={this.handleLayerSelection}
-              // value={this.state.selectedLayer}
+              size="col-md-6"
+              selectOptions={transformLayerList(this.props.grid.LayerNoData)}
+              onChange={(value) => this.props.handleLayerNoChangePhoto(value)}
+              value={this.props.grid.photoLayerNum}
             />
           </FormRow>
           <ImageGroup>
             <ul className="images">
-              {images.map(i => (
+              {images.map((i) => (
                 <li key={i}>
                   <Image
                     src={i}
                     alt="nature"
                     style={{
-                      position: 'absolute',
+                      position: "absolute",
                       top: 0,
                       left: 0,
                       right: 0,
                       bottom: 0,
-                      height: '100%',
-                      width: '100%',
-                      objectFit: 'cover',
+                      height: "100%",
+                      width: "100%",
+                      objectFit: "cover",
                     }}
                   />
                 </li>

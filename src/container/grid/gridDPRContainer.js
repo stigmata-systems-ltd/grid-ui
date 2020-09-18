@@ -42,6 +42,8 @@ import {
   DPR_GRID_NO_CHANGE,
   RESET_DPR_FORM,
   SET_ADD_SUBCONT_ERROR,
+  PHOTO_GRID_NO_CHANGE,
+  PHOTO_LAYER_NO_CHANGE,
 } from '../../actions/types';
 import { getSelectedGrid, getSelectedLayer } from './dataTransformer';
 
@@ -252,8 +254,9 @@ const mapDispatchToProps = dispatch => {
     },
     deleteQuantity(index) {
       const grid = store.getState().grid;
+      const activeQty = grid.addedQuantity[index].quantity;
       grid.addedQuantity.splice(index, 1);
-      grid.totalQuantity -= parseInt(grid.quantity);
+      grid.totalQuantity -= parseInt(activeQty);
       grid.totalSubContractor -= 1;
       dispatch({
         type: CHANGE_QUANTITY,
@@ -274,6 +277,18 @@ const mapDispatchToProps = dispatch => {
       const selectedLayer = getSelectedLayer(grid.LayerNoData, currentLayer);
       const selectedGrid = getSelectedGrid(grid.gridNoData, currentGrid);
       dispatch(getSingleLayerDetails(selectedLayer, selectedGrid));
+    },
+    handleGridNoChangePhoto(value) {
+      dispatch({
+        type: PHOTO_GRID_NO_CHANGE,
+        payload: value,
+      });
+    },
+    handleLayerNoChangePhoto(value) {
+      dispatch({
+        type: PHOTO_LAYER_NO_CHANGE,
+        payload: value,
+      });
     },
   };
 };
