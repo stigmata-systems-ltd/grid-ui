@@ -170,9 +170,9 @@ export const getSingleLayerDetails = (selectedLayer, selectedGrid) => {
     type: SET_LAYER_DETAILS,
     payload: axios.get(
       config.BASE_URL +
-        '/api/Layer/LayerList?layerNo=' +
+        '/api/Layer/LayerList?layerId=' +
         selectedLayer +
-        '&gridNo=' +
+        '&gridId=' +
         selectedGrid
     ),
   };

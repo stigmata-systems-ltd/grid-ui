@@ -274,9 +274,9 @@ const mapDispatchToProps = dispatch => {
       const grid = store.getState().grid;
       const currentLayer = parseInt(grid.layerNo.value);
       const currentGrid = parseInt(grid.dprGridNum.value);
-      const selectedLayer = getSelectedLayer(grid.LayerNoData, currentLayer);
-      const selectedGrid = getSelectedGrid(grid.gridNoData, currentGrid);
-      dispatch(getSingleLayerDetails(selectedLayer, selectedGrid));
+      // const selectedLayer = getSelectedLayer(grid.LayerNoData, currentLayer);
+      // const selectedGrid = getSelectedGrid(grid.gridNoData, currentGrid);
+      dispatch(getSingleLayerDetails(currentLayer, currentGrid));
     },
     handleGridNoChangePhoto(value) {
       dispatch({
