@@ -7,10 +7,11 @@ class TableFilter extends Component {
       <TextInput
         id="search"
         type="text"
-        placeholder="Filter By Name"
-        aria-label="Search Input"
+        placeholder={this.props.placeholder}
         value={this.props.filterText}
-        onChange={this.props.onFilter}
+        onChange={(e) => this.props.onFilter(e)}
+        size={this.props.size}
+        fieldSize={this.props.fieldSize}
       />
     );
   }
