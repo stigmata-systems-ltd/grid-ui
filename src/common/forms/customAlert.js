@@ -18,7 +18,11 @@ class customAlert extends Component {
         scr.message = '';
         scr.editSubContractor.message = '';
         scr.deleteSubContractor.message = '';
-      }, 3000);
+        grid.gridAdd.message = '';
+        grid.deleteGrid.message = '';
+        grid.editGrid.message = '';
+        grid.cgAdd.message = '';
+      }, 5000);
     });
   }
 
