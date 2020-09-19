@@ -92,6 +92,13 @@ export const metaDataNavbar = [
     hasSubNav: false,
     route: '/planingmanager',
   },
+  {
+    id: '7',
+    navText: 'Role Management',
+    iconName: 'faUser',
+    hasSubNav: false,
+    route: '/roles/list',
+  },
   // {
   //   id: '6',
   //   navText: 'Help',

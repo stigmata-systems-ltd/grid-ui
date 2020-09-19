@@ -26,6 +26,7 @@ import ListUser from './container/userManagement/listUserContainer';
 import MasterReport from './pages/reports/MasterReport';
 import SubContractorReport from './pages/reports/SubContractorReport';
 import PlaningManager from './pages/planingManager/PlaningManager';
+import ListRoles from './container/roleManagement/listRoleContainer';
 class App extends Component {
   render() {
     return (
@@ -36,6 +37,9 @@ class App extends Component {
           </Route>
           <Route exact path="/login">
             <Login />
+          </Route>
+          <Route exact path="/roles/list">
+            <ListRoles />
           </Route>
           <Route exact path="/subcontractor/list">
             <ListSubContractor />
