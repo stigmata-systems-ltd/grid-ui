@@ -10,3 +10,11 @@ export const getTranformedBillableTable = (billableTableData) => {
     })
     return table;
 }
+
+export const getTotalLayerCount = (data) => {
+    let count = 0;
+    data && data.map(item => {
+        count += item.layerIds.length;
+    })
+    return count;
+}
