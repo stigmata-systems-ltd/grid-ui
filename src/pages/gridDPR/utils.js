@@ -170,6 +170,21 @@ export const subContractorTableBodyData = [
   },
 ];
 
+export const layerDropDownMeta = [
+  {
+    id: "New",
+    gridName: "New",
+  },
+  {
+    id: "InProgress",
+    gridName: "InProgress",
+  },
+  {
+    id: "Completed",
+    gridName: "Completed",
+  },
+];
+
 export const layerStsMeta = [
   {
     text: "In Progress",

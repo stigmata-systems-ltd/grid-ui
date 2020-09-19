@@ -55,10 +55,9 @@ export const _viewGridMetaData = (handleDelete, handleEdit, handleView) => {
       name: "Actions",
       sortable: false,
       cell: (row) => {
-        console.log("row", row.id);
         return (
           <>
-            <span className="text-primary table-view-link" onClick={() => handleView(row.gridNum)}>View</span>
+            <span className="text-primary table-view-link" onClick={() => handleView(row.id)}>View</span>
             <IconButton
               iconName="faEdit"
               onClick={() => handleEdit(row.id)}

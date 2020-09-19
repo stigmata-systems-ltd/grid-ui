@@ -66,8 +66,8 @@ const initialState = {
   dprGridNum: "",
   subContractorList: [],
   approvalOptions: [
-    { id: "New", gridName: "New" },
-    { id: "Completed", gridName: "Completed" },
+    { id: "Yes", gridName: "Yes" },
+    { id: "No", gridName: "No" },
   ],
   layerNoList: [],
   quantitySelected: [],
@@ -505,8 +505,6 @@ export default function (state = initialState, action) {
       return {
         ...state,
         isLayerDtlsLoading: false,
-        isLayerUpdateError: false,
-        isLayerUpdateSuccess: false,
         layerUpdateMsg: "",
         dprGridNum: "",
         layerNo: "",

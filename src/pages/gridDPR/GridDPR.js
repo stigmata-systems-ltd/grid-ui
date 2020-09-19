@@ -25,6 +25,7 @@ import {
   materialDescMetaData,
   calcProgress,
   transformLayerList,
+  layerDropDownMeta
 } from './utils';
 import { transformGridList } from '../../utils/dataTransformer';
 
@@ -326,7 +327,7 @@ class GridDPR extends Component {
                   <SimpleDropDown
                     size="col-md-6"
                     label="Layer Status"
-                    selectOptions={this.props.grid.approvalOptions}
+                    selectOptions={layerDropDownMeta}
                     onChange={e =>
                       this.props.handleLayerStatusChange(e.target.value)
                     }
