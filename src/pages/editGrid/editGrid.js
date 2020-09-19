@@ -29,15 +29,15 @@ class CreateGrid extends Component {
   render() {
     return (
       <ContentLoader>
-        <div>
-          {this.props.grid.editGrid.message ? (
-            <CustomAlert
-              variant={this.props.grid.variant}
-              message={this.props.grid.editGrid.message}
-            />
-          ) : null}
-        </div>
         <FormContainer formTitle={'Edit Grid'}>
+          <div>
+            {this.props.grid.editGrid.message ? (
+              <CustomAlert
+                variant={this.props.grid.variant}
+                message={this.props.grid.editGrid.message}
+              />
+            ) : null}
+          </div>
           <FormRow>
             <TextInput
               label="Grid Number"
