@@ -70,9 +70,27 @@ export const metaDataNavbar = [
     id: '5',
     navText: 'Reports',
     iconName: 'faChartPie',
+    hasSubNav: true,
+    route: '/report',
+    subNavs: [
+      {
+        id: 'ReportSub' + 1,
+        navText: 'Master Report',
+        route: '/report/master',
+      },
+      {
+        id: 'ReportSub' + 2,
+        navText: 'SubContractor Report',
+        route: '/report/subcontractor',
+      },
+    ],
+  },
+  {
+    id: '6',
+    navText: 'Planning Manager',
+    iconName: 'faUser',
     hasSubNav: false,
-    isSubNavOpen: false,
-    route: '/login',
+    route: 'planingmanager',
   },
   // {
   //   id: '6',
