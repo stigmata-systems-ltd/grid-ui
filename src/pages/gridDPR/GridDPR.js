@@ -25,7 +25,7 @@ import {
   materialDescMetaData,
   calcProgress,
   transformLayerList,
-  layerDropDownMeta
+  layerDropDownMeta,
 } from './utils';
 import { transformGridList } from '../../utils/dataTransformer';
 
@@ -83,18 +83,19 @@ class GridDPR extends Component {
       <>
         {this.props.grid.isLayerDtlsLoading && <Loader />}
         <ContentLoader>
-          <div>
-            {(this.props.grid.isLayerUpdateSuccess ||
-              this.props.grid.isLayerUpdateError) && (
-              <CustomAlert
-                variant={
-                  this.props.grid.isLayerUpdateSuccess ? 'success' : 'danger'
-                }
-                message={this.props.grid.gridAdd.layerUpdateMsg}
-              />
-            )}
-          </div>
           <FormContainer formTitle={'Grid Daily Progress'}>
+            <div>
+              {(this.props.grid.isLayerUpdateSuccess ||
+                this.props.grid.isLayerUpdateError) && (
+                <CustomAlert
+                  variant={
+                    this.props.grid.isLayerUpdateSuccess ? 'success' : 'danger'
+                  }
+                  message={this.props.grid.gridAdd.layerUpdateMsg}
+                />
+              )}
+            </div>
+
             <TabNavs
               navItems={this.state.navData}
               onClick={id => this.handleTabs(id)}

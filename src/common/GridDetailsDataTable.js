@@ -31,11 +31,7 @@ class GridDetailsDataTable extends Component {
                     /> */}
 
                     <Link to="/grid/dpr" className="btn btn-secondary">
-                      <Button
-                        btnText="Edit"
-                        btnType="btn-secondary"
-                        // onClick={() => this.props.onEditClick(i)}
-                      />
+                      Edit
                     </Link>
                   </td>
                 </tr>
