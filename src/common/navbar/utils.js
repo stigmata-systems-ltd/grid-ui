@@ -90,7 +90,7 @@ export const metaDataNavbar = [
     navText: 'Planning Manager',
     iconName: 'faUser',
     hasSubNav: false,
-    route: 'planingmanager',
+    route: '/planingmanager',
   },
   // {
   //   id: '6',
