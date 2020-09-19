@@ -13,8 +13,9 @@ import Divider from "../../common/Divider";
 import { gridNumber } from "./utils";
 import { completedLayers, _clientBillingMetaData, _bodyData } from "./utils";
 import Loader from "../../common/Loader";
-import { getTranformedBillableTable } from "./dataTransformer";
+import { getTranformedBillableTable, getTotalLayerCount } from "./dataTransformer";
 import { transformGridList } from "../../utils/dataTransformer";
+import Col6 from "../../common/forms/Col6";
 
 class ClientBilling extends Component {
   constructor() {
@@ -31,18 +32,18 @@ class ClientBilling extends Component {
     let billableLayers = this.props.client.billableLayers;
     if (billableLayers && billableLayers.length > 0) {
       return billableLayers.map((layer) => (
-        <CheckBox 
+        <CheckBox
           size={"col-md-2"}
           label={layer.layerName}
           key={layer.id}
-          onChange={(e) => this.props.onChangeBillableCheckBox(e.target.checked, layer.id)}
+          onChange={(e) =>
+            this.props.onChangeBillableCheckBox(e.target.checked, layer.id)
+          }
           checked={this.props.checked}
         />
       ));
     } else {
-      return (
-        <p class="text-danger">No Billable Layers found for this Grid</p>
-      );
+      return <p class="text-danger">No Billable Layers found for this Grid</p>;
     }
   };
   handleGridSelection = (e) => {
@@ -81,39 +82,58 @@ class ClientBilling extends Component {
           <FormRow>{this.renderCompletedLayers()}</FormRow>
           <FormRow>
             <div class="col-sm-12">
-              <Button btnText="Add" btnType="primary" onClick={this.props.onAddBillableLayers} />
+              <Button
+                btnText="Add"
+                btnType="primary"
+                onClick={this.props.onAddBillableLayers}
+              />
             </div>
             <p class="text-danger">{this.props.client.billabelAddError}</p>
           </FormRow>
           <Divider height="3" />
           <FormRow>
+            <Col6 size="col-md-12">
+            <h5 class="text-info float-right">
+              Total Added Layers = {getTotalLayerCount(this.props.client.billableTableData)}
+            </h5>
+            </Col6>
+          </FormRow>
+          <FormRow>
             <DataTable
               metaData={_clientBillingMetaData}
-              bodyData={getTranformedBillableTable(this.props.client.billableTableData)}
+              bodyData={getTranformedBillableTable(
+                this.props.client.billableTableData
+              )}
               showDelete={true}
               onClickDelete={(id) => this.props.deleteGridBillableTable(id)}
             />
           </FormRow>
           <Divider height="5" />
           <FormRow>
-            <DateInput 
-              label="Select Billing Month" 
-              onChange={(e) => this.props.handleBillingMonthChange(e.target.value)}
+            <DateInput
+              label="Select Billing Month"
+              onChange={(e) =>
+                this.props.handleBillingMonthChange(e.target.value)
+              }
               value={this.props.client.billingMonth}
               type={"month"}
             />
-            <TextInput 
-              label="Enter IPC Number" 
+            <TextInput
+              label="Enter IPC Number"
               onChange={(e) => this.props.handleIpcChange(e.target.value)}
               value={this.props.client.ipcNum}
             />
           </FormRow>
-          <Button 
-            btnText="Save" 
-            btnType="primary" 
+          <Button
+            btnText="Save"
+            btnType="primary"
             onClick={this.props.saveClientBilling}
           />
-          <Button btnText="Cancel" btnType="cancel" onClick={this.props.resetForm} />
+          <Button
+            btnText="Cancel"
+            btnType="cancel"
+            onClick={this.props.resetForm}
+          />
         </FormContainer>
       </ContentLoader>
     );

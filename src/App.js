@@ -22,12 +22,9 @@ import ListSubContractor from './container/subContractor/ListSubContractorContai
 import CreateUser from './container/userManagement/createUserContainer';
 import ClientBilling from './container/clientBilling/clientBillingContainer';
 import ListUser from "./container/userManagement/listUserContainer";
-import { testData } from "./utils/test";
+//import { setCompletedLayer } from "./utils/test";
 
 class App extends Component {
-  componentDidMount() {
-    testData();
-  }
   render(){
   return (
     <Router>
