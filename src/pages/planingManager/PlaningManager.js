@@ -22,8 +22,6 @@ class PlaningManager extends Component {
                             showView
                             showEdit
                             showApprove
-                            
-
                         />
                     </FormRow>
 
