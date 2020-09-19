@@ -184,7 +184,7 @@ export const editGridDetails = id => {
 
   return {
     type: EDIT_GRID_DETAILS,
-    payload: axios.get( config.BASE_URL + '/api/Grid/GridDetailsById?id=' + id),
+    payload: axios.get(config.BASE_URL + '/api/Grid/GridDetailsById?id=' + id),
   };
 };
 export const getCompletedLayersByGrid = gridId => {
@@ -195,12 +195,11 @@ export const getCompletedLayersByGrid = gridId => {
     ),
   };
 };
-export const fetchLayerDetails = gridNo => {
-
+export const fetchLayerDetails = gridId => {
   return {
     type: LAYER_DETAILS,
     payload: axios.get(
-      config.BASE_URL + '/api/Layer/LayerList?gridNo=' + gridNo
+      config.BASE_URL + '/api/Layer/LayerList?gridId=' + gridId
     ),
   };
 };
