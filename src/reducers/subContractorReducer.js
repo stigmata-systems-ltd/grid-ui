@@ -45,8 +45,9 @@ export default function(state = initialState, action) {
       return {
         ...state,
         subContractorAdd: action.payload,
-        message: action.payload.response.data.message ?   
-          action.payload.response.data.message: 'Error Occurred',
+        message: action.payload.response.data.message
+          ? action.payload.response.data.message
+          : 'Error Occurred',
         variant: 'danger',
       };
     case SUBCONTRACTOR_NAME:
@@ -108,7 +109,9 @@ export default function(state = initialState, action) {
       console.log(action);
       return {
         ...state,
-        deleteSubContractor: { message: 'Sub Contractor Added Successfully' },
+        deleteSubContractor: {
+          message: 'Sub Contractor has been deleted Successfully',
+        },
         variant: 'success',
       };
     case `${DELETE_SUBCONTRACTOR}_REJECTED`:
