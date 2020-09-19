@@ -1,29 +1,45 @@
-import React, { Component } from 'react';
-import ContentLoader from '../../common/ContentLoader';
-import SCRDataTable from '../../common/scrDataTable';
-import FormContainer from '../../common/forms/FormContainer';
-import FormRow from '../../common/forms/FormRow';
-import SearchBox from '../../common/forms/SearchBox';
+import React, { Component } from "react";
+import ContentLoader from "../../common/ContentLoader";
+import SCRDataTable from "../../common/scrDataTable";
+import FormContainer from "../../common/forms/FormContainer";
+import FormRow from "../../common/forms/FormRow";
+import SearchBox from "../../common/forms/SearchBox";
 import CustomDataTable from "../../common/CustomDataTable";
-import CustomAlert from '../../common/forms/customAlert';
+import CustomAlert from "../../common/forms/customAlert";
 import ConfirmModal from "../../common/ConfirmModal";
-import { viewSCRMetaData, transformSubCat } from './utils';
+import { viewSCRMetaData, transformSubCat } from "./utils";
+import TableFilter from "../../common/TableFilter";
 
 class ListSubContractor extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       activeId: null,
       showDeleteModal: false,
-    }
+      filterText: "",
+      resetPaginationToggle: false,
+    };
   }
   componentDidMount() {
     this.props.fetchSCRData();
   }
+  filteredItems = (data) => {
+    return (
+      data &&
+      data.filter(
+        (item) =>
+          item.code &&
+          item.code
+            .toLowerCase()
+            .includes(this.state.filterText.toLowerCase())
+      )
+    );
+  };
+
   render() {
     return (
       <ContentLoader>
-        <FormContainer formTitle={'List SubContractor'}>
+        <FormContainer formTitle={"List SubContractor"}>
           <div>
             {this.props.scr.deleteSubContractor.message ? (
               <CustomAlert
@@ -35,22 +51,44 @@ class ListSubContractor extends Component {
           <FormRow>
             <CustomDataTable
               metaData={viewSCRMetaData(
-                (id) => this.setState({activeId: id, showDeleteModal: true}),
+                (id) => this.setState({ activeId: id, showDeleteModal: true }),
                 (id) => this.props.editSCR(id)
               )}
-              bodyData={transformSubCat(this.props.scr.listSCRDetails)}
+              bodyData={transformSubCat(
+                this.filteredItems(this.props.scr.listSCRDetails)
+              )}
               pagination={true}
-              paginationTotalRows={this.props.scr.listSCRDetails && this.props.scr.listSCRDetails.length}
+              paginationTotalRows={
+                this.props.scr.listSCRDetails &&
+                this.filteredItems(this.props.scr.listSCRDetails).length
+              }
               paginationPerPage={5}
               noHeader={true}
+              subHeader
+              subHeaderComponent={
+                <TableFilter
+                  placeholder="Search By Vendor Code"
+                  onFilter={(e) => {
+                    e.target.value === "" &&
+                      this.setState({
+                        resetPaginationToggle: !this.state
+                          .resetPaginationToggle,
+                      });
+                    this.setState({ filterText: e.target.value });
+                  }}
+                  filterText={this.state.filterText}
+                />
+              }
             />
           </FormRow>
           <ConfirmModal
             showModal={this.state.showDeleteModal}
-            handleClose={() => this.setState({ showDeleteModal: false, activeId: null })}
+            handleClose={() =>
+              this.setState({ showDeleteModal: false, activeId: null })
+            }
             title="Delete SubContractor"
             handleConfirm={() => {
-              this.props.deleteSCR(this.state.activeId)
+              this.props.deleteSCR(this.state.activeId);
               this.setState({ showDeleteModal: false, activeId: null });
             }}
           >

@@ -30,6 +30,8 @@ class CustomDataTable extends Component {
         paginationRowsPerPageOptions={[5, 10, 15, 20, 25, 30]}
         noHeader={this.props.noHeader}
         customStyles={customStyles}
+        subHeaderComponent={this.props.subHeaderComponent}
+        {...this.props}
       />
     );
   }

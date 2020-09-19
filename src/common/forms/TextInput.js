@@ -21,6 +21,7 @@ class TextInput extends Component {
               value={this.props.value}
               class="form-control"
               onChange={(e) => this.props.onChange(e)}
+              placeholder={this.props.placeholder ? this.props.placeholder : ""}
             />
           </div>
         </div>
