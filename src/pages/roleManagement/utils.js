@@ -46,18 +46,39 @@ export const transformRolesID = (data, thi) => {
           <CheckBox
             label="Test"
             checked={item.pageDetail.isAdd ? true : false}
+            onChange={() =>
+              thi.props.handleChange(
+                item.pageDetail.id,
+                item.pageDetail.description,
+                'isAdd'
+              )
+            }
           />
         ),
         update: (
           <CheckBox
             label="Test"
             checked={item.pageDetail.isUpdate ? true : false}
+            onChange={() =>
+              thi.props.handleChange(
+                item.pageDetail.id,
+                item.pageDetail.description,
+                'isUpdate'
+              )
+            }
           />
         ),
         delete: (
           <CheckBox
             label="Test"
             checked={item.pageDetail.isDelete ? true : false}
+            onChange={() =>
+              thi.props.handleChange(
+                item.pageDetail.id,
+                item.pageDetail.description,
+                'isDelete'
+              )
+            }
           />
         ),
       });
