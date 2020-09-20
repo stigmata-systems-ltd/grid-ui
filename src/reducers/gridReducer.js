@@ -56,6 +56,8 @@ import {
   //Photo tab
   PHOTO_GRID_NO_CHANGE,
   PHOTO_LAYER_NO_CHANGE,
+  //Grid
+  SET_MAP_PREVIEW,
 } from '../actions/types';
 import { transformSubCatReducer } from '../pages/gridDPR/utils';
 
@@ -93,6 +95,11 @@ const initialState = {
     },
   ],
   layerDataDetails: [{}],
+  //Create Map
+  createCenter: {
+    lat: 0,
+    lng: 0,
+  }
 };
 
 export default function(state = initialState, action) {
@@ -587,6 +594,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         photoLayerNum: action.payload,
+      };
+      case SET_MAP_PREVIEW:
+      return {
+        ...state,
+        createCenter: action.payload,
       };
 
     default:

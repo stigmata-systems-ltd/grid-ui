@@ -1,18 +1,29 @@
-import React, { Component } from 'react';
-import ContentLoader from '../../common/ContentLoader';
-import FormContainer from '../../common/forms/FormContainer';
-import FormRow from '../../common/forms/FormRow';
-import TextInput from '../../common/forms/TextInput';
-import AddLatLng from './AddLatLng';
-import IconTextButton from '../../common/forms/IconTextButton';
-import Button from '../../common/forms/Button';
-import CustomAlert from '../../common/forms/customAlert';
-import NumberInput from '../../common/forms/NumberInput';
+import React, { Component } from "react";
+import ContentLoader from "../../common/ContentLoader";
+import FormContainer from "../../common/forms/FormContainer";
+import FormRow from "../../common/forms/FormRow";
+import TextInput from "../../common/forms/TextInput";
+import AddLatLng from "./AddLatLng";
+import IconTextButton from "../../common/forms/IconTextButton";
+import Button from "../../common/forms/Button";
+import CustomAlert from "../../common/forms/customAlert";
+import NumberInput from "../../common/forms/NumberInput";
+import {
+  Map,
+  InfoWindow,
+  Marker,
+  GoogleApiWrapper,
+  Polygon,
+} from "google-maps-react";
+import { GMAP_API_KEY } from "../../utils/globalConst";
+import CreateMap from "./CreateMap";
+
 class CreateGrid extends Component {
   constructor(props) {
     super(props);
     this.state = {
       locationRows: [0],
+      bounds: new this.props.google.maps.LatLngBounds(),
     };
   }
   componentDidMount() {
@@ -28,7 +39,7 @@ class CreateGrid extends Component {
   render() {
     return (
       <ContentLoader>
-        <FormContainer formTitle={'Create Grid'}>
+        <FormContainer formTitle={"Create Grid"}>
           <div>
             {this.props.grid.gridAdd.message ? (
               <CustomAlert
@@ -40,12 +51,14 @@ class CreateGrid extends Component {
           <FormRow>
             <TextInput
               label="Grid Number"
-              onChange={e => this.props.handleChangeGridNumber(e.target.value)}
+              onChange={(e) =>
+                this.props.handleChangeGridNumber(e.target.value)
+              }
               value={this.props.grid.gridNumber}
             />
             <NumberInput
               label="Grid Area"
-              onChange={e => this.props.handleChangeGridArea(e.target.value)}
+              onChange={(e) => this.props.handleChangeGridArea(e.target.value)}
               value={this.props.grid.gridArea}
             />
           </FormRow>
@@ -64,13 +77,13 @@ class CreateGrid extends Component {
                   return (
                     <AddLatLng
                       // onClick={this.handleDeleteLocationRow}
-                      onLatChange={e =>
+                      onLatChange={(e) =>
                         this.props.handleChangeLat(e.target.value, i)
                       }
-                      onLongChange={e =>
+                      onLongChange={(e) =>
                         this.props.handleChangeLong(e.target.value, i)
                       }
-                      onLatLongRemove={i => this.props.handleLatLongRemove(i)}
+                      onLatLongRemove={(i) => this.props.handleLatLongRemove(i)}
                       index={i}
                       latValue={this.props.grid.gridLatLong[i].latitude}
                       longValue={this.props.grid.gridLatLong[i].longitude}
@@ -80,14 +93,16 @@ class CreateGrid extends Component {
               </div>
               <div class="form-group row">
                 <div class="col-sm-12">
-                  <Button btnText="Preview In Map" btnType="primary" />
+                  <Button btnText="Preview In Map" btnType="primary" 
+                    onClick={() => this.props.handleMapPreview(this.state.bounds)}
+                  />
                 </div>
               </div>
             </div>
             <div class="col-md-6 stretch-card">
               <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Map</h4>
+                <div class="card-body map-height">
+                  <CreateMap {...this.props} />
                 </div>
               </div>
             </div>
@@ -95,7 +110,7 @@ class CreateGrid extends Component {
           <Button
             btnText="Save"
             btnType="primary"
-            onClick={this.props.createGrid}
+            onClick={() => this.props.createGrid(this.state.bounds)}
           />
 
           <Button
@@ -108,5 +123,6 @@ class CreateGrid extends Component {
     );
   }
 }
-
-export default CreateGrid;
+export default GoogleApiWrapper({
+  apiKey: GMAP_API_KEY,
+})(CreateGrid);

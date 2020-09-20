@@ -52,15 +52,32 @@ export const subContractorList = () => {
     payload: axios.get(config.BASE_URL + '/api/SubCont/GetSubContractorList'),
   };
 };
-export const createGrid = () => {
+export const createGrid = (bounds) => {
   const grid = store.getState().grid;
+  let points = [];
+  grid.gridLatLong.map(item => {
+    points.push({
+      lat: item.latitude,
+      lng: item.longitude
+    })
+  })
+  
+  for (var i = 0; i < points.length; i++) {
+    bounds.extend(points[i]);
+  }
+  const center = bounds.getCenter();
+  let latLng = center.toString().replace("(", "");
+  latLng = latLng.replace(")","");
+  latLng = latLng.replace(" ","");
+  latLng = latLng.replace(" ","");
+  latLng = latLng.split(",");
   const postData = {
     gridno: grid.gridNumber,
     grid_area: parseInt(grid.gridArea),
     gridGeoLocation: grid.gridLatLong,
     user_id: 1,
-    marker_latitide: 10,
-    marker_longitude: 10,
+    marker_latitide: parseFloat(latLng[0]),
+    marker_longitude: parseFloat(latLng[1]),
   };
   return {
     type: GRID_ADD,
@@ -68,15 +85,32 @@ export const createGrid = () => {
   };
 };
 
-export const editGrid = () => {
+export const editGrid = (bounds) => {
   const grid = store.getState().grid;
+  let points = [];
+  grid.gridLatLong.map(item => {
+    points.push({
+      lat: item.latitude,
+      lng: item.longitude
+    })
+  })
+  
+  for (var i = 0; i < points.length; i++) {
+    bounds.extend(points[i]);
+  }
+  const center = bounds.getCenter();
+  let latLng = center.toString().replace("(", "");
+  latLng = latLng.replace(")","");
+  latLng = latLng.replace(" ","");
+  latLng = latLng.replace(" ","");
+  latLng = latLng.split(",");
   const postData = {
     gridno: grid.gridNumber,
     grid_area: parseInt(grid.gridArea),
     gridGeoLocation: grid.gridLatLong,
     user_id: 1,
-    marker_latitide: 10,
-    marker_longitude: 10,
+    marker_latitide: parseFloat(latLng[0]),
+    marker_longitude: parseFloat(latLng[1]),
   };
   return {
     type: EDIT_GRID,

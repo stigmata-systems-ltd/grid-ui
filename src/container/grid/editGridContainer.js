@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import EditGrid from '../../pages/editGrid/editGrid';
 import store from '../../store';
+import { withRouter } from "react-router-dom";
 import {
   editGrid,
   addLatLang,
@@ -19,14 +20,16 @@ import {
   RESET_EDIT_GRID_FORM,
 } from '../../actions/types';
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, props) => {
   return {
     fetchGridNoData() {
       dispatch(gridNoList());
     },
-    editGrid() {
-      dispatch(editGrid());
-      dispatch({ type: RESET_EDIT_GRID_FORM });
+    editGrid(bounds) {
+      dispatch(editGrid(bounds)).then(() => {
+        dispatch({ type: RESET_EDIT_GRID_FORM });
+        props.history.push("/grid/view");
+      });
     },
     addLatLang() {
       dispatch(addLatLang());
@@ -88,4 +91,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditGrid);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EditGrid));
