@@ -78,7 +78,6 @@ class GridDPR extends Component {
   }
 
   render() {
-    console.log('loading', this.props.grid.isLayerUpdateSuccess);
     return (
       <>
         {this.props.grid.isLayerDtlsLoading && <Loader />}

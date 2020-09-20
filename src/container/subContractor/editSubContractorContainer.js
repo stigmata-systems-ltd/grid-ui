@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import EditSubContractor from '../../pages/subContractor/EditSubContractor';
 import store from '../../store';
+import { withRouter } from "react-router-dom";
 import {
   addSubContractor,
   updateSubContractor,
@@ -16,11 +17,13 @@ import {
   RESET_SUBCONTRACTOR_FORM,
 } from '../../actions/types';
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, props) => {
   return {
     updateSubContractor() {
-      dispatch(updateSubContractor());
-      dispatch({ type: RESET_SUBCONTRACTOR_FORM });
+      dispatch(updateSubContractor()).then(() => {
+        dispatch({ type: RESET_SUBCONTRACTOR_FORM });
+        props.history.push("/subcontractor/list");
+      });
     },
 
     handleChangeSubName(value) {
@@ -72,4 +75,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditSubContractor);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EditSubContractor));

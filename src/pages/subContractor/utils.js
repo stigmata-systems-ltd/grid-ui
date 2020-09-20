@@ -14,7 +14,6 @@ export const transformSubCat = (data) => {
         subPhone: item.phone,
       });
     });
-  console.log("tmparr", tmpArr);
   return tmpArr;
 };
 

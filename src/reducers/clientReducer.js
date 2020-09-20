@@ -8,6 +8,7 @@ import {
   SET_BILLING_MONTH,
   SET_IPC_NUM,
   RESET_BILLING_FORM,
+  SAVE_CLIENT_BILLING,
 } from "../actions/types";
 
 const initialState = {
@@ -100,15 +101,38 @@ export default function (state = initialState, action) {
       return {
         ...state,
         isLoading: false,
-        isSuccess: false,
-        isError: false,
-        message: "",
         selectedGrid: "",
         billableLayers: [],
         billableTableData: [],
         billabelAddError: "",
         billingMonth: "",
         ipcNum: "",
+      };
+    case `${SAVE_CLIENT_BILLING}_PENDING`:
+      return {
+        ...state,
+        isLoading: true,
+        isError: false,
+        isSuccess: false,
+      };
+      case `${SAVE_CLIENT_BILLING}_REJECTED`:
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+        isSuccess: false,
+        message: action.payload.response && action.payload.response.data ? 
+          action.payload.response.data.message : 
+          "Can't create billing, please check you form inputs",
+      };
+      case `${SAVE_CLIENT_BILLING}_FULFILLED`:
+        console.log("action",action.payload.data.message)
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        isSuccess: true,
+        message: action.payload.data.message,
       };
     default:
       return state;

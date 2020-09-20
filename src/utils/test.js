@@ -29,7 +29,7 @@ export const testData = () => {
 
 export const setCompletedLayer = () => {
   let i=0;
-  let gridId = 24;
+  let gridId =133;
   for (i = 1; i <= 15; i++) {
   var data = JSON.stringify({
     gridId: gridId,
@@ -46,11 +46,11 @@ export const setCompletedLayer = () => {
     cT_RFIno: "123",
     cT_inspection_date: "2020-09-18",
     cT_approval_date: "2020-09-18",
-    cT_RFI_status: "Completed",
+    cT_RFI_status: "Yes",
     lV_RFIno: "123",
     lV_inspection_date: "2020-09-18",
     lV_approval_date: "2020-09-18",
-    lV_RFI_status: "Completed",
+    lV_RFI_status: "Yes",
     layerSubContractor: [],
   });
 
