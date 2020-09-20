@@ -28,7 +28,7 @@ class ListRoles extends Component {
             <CustomDataTable
               metaData={viewRoleMetaData(
                 id => this.setState({ activeId: id, showDeleteModal: true }),
-                id => this.props.editSCR(id)
+                id => this.props.editRole(id)
               )}
               bodyData={transformRoles(this.props.roles.listRoleDetails)}
               pagination={true}

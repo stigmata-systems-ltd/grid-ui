@@ -1,18 +1,13 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import ListRoles from '../../pages/roleManagement/ListRoles';
+import EditRole from '../../pages/roleManagement/editRole';
 import store from '../../store';
-import { fetchRoleData, editRole } from '../../actions/roleManagementActions';
 import {
-  ADD_SUBCONTRACTOR,
-  SUBCONTRACTOR_NAME,
-  SUBCONTRACTOR_CODE,
-  SUBCONTRACTOR_CONTACT_PERSON,
-  SUBCONTRACTOR_CONTACT_ADDRESS,
-  SUBCONTRACTOR_PHONE,
-  SUBCONTRACTOR_EMAIL,
-  RESET_SUBCONTRACTOR_FORM,
-} from '../../actions/types';
+  fetchRoleData,
+  editRole,
+  updateRoles,
+} from '../../actions/roleManagementActions';
+import { UPDATE_PAGE_ACCESS } from '../../actions/types';
 import { propTypes } from 'react-bootstrap/esm/Image';
 
 const mapDispatchToProps = (dispatch, props) => {
@@ -24,9 +19,22 @@ const mapDispatchToProps = (dispatch, props) => {
     fetchRoleData() {
       dispatch(fetchRoleData());
     },
-    editRole(i) {
-      dispatch(editRole(i));
-      props.history.push('/roles/edit');
+    updateRoles() {
+      dispatch(updateRoles());
+    },
+
+    handleChange(id, description, type) {
+      console.log(`ID: ${id}`);
+      console.log(`Description: ${description}`);
+      console.log(`Type: ${type}`);
+      const listRoleDetailsID = store.getState().roles.listRoleDetailsID;
+      listRoleDetailsID[id - 1].pageDetail[`${type}`] = !listRoleDetailsID[
+        id - 1
+      ].pageDetail[`${type}`];
+      dispatch({
+        type: UPDATE_PAGE_ACCESS,
+        payload: listRoleDetailsID,
+      });
     },
     // deleteSCR(i) {
     //   dispatch(deleteSCR(i)).then(() => {
@@ -84,5 +92,5 @@ const mapStateToProps = state => {
 };
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(ListRoles)
+  connect(mapStateToProps, mapDispatchToProps)(EditRole)
 );

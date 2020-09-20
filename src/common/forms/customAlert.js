@@ -15,6 +15,7 @@ class customAlert extends Component {
         this.setState({ visible: false });
         const scr = store.getState().scr;
         const grid = store.getState().grid;
+        const roles = store.getState().roles;
         scr.message = '';
         scr.editSubContractor.message = '';
         scr.deleteSubContractor.message = '';
@@ -22,6 +23,7 @@ class customAlert extends Component {
         grid.deleteGrid.message = '';
         grid.editGrid.message = '';
         grid.cgAdd.message = '';
+        roles.updatePage.message = '';
       }, 5000);
     });
   }

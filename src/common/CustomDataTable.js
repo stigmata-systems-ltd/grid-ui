@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import DataTable from "react-data-table-component";
+import React, { Component } from 'react';
+import DataTable from 'react-data-table-component';
 
 const customStyles = {
   // table: {
@@ -8,15 +8,15 @@ const customStyles = {
   headCells: {
     style: {
       fontSize: '14px',
-      fontWeight: "bold"
+      fontWeight: 'bold',
     },
   },
   rows: {
     style: {
       fontSize: '14px',
-    }
+    },
   },
-}
+};
 class CustomDataTable extends Component {
   render() {
     return (
@@ -32,6 +32,7 @@ class CustomDataTable extends Component {
         customStyles={customStyles}
         subHeaderComponent={this.props.subHeaderComponent}
         {...this.props}
+        handleChange={this.props.handleChange}
       />
     );
   }
