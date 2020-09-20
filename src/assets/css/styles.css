@@ -45,11 +45,12 @@ select.form-control {
 /*Bootstrap Overrides
 ********************/
 .alert {
-  position: absolute;
-  top: -60px;
+  position: fixed;
+  top: 30px;
   width: 70%;
   z-index: 9999;
   text-align: center;
+  border-radius: 0px;
 }
 /*Header Styles
 **************/
@@ -69,6 +70,11 @@ select.form-control {
 **********/
 .data-table {
   margin-bottom: 3%;
+}
+/* Map Styles
+************/
+.map-height {
+  height: 400px;
 }
 
 /*Navbar Custom Styles

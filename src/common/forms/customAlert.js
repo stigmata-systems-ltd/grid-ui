@@ -28,7 +28,7 @@ class customAlert extends Component {
 
   render() {
     return (
-      <Alert variant={this.props.variant} isOpen={this.state.visible}>
+      <Alert variant={this.props.variant} isOpen={this.state.visible} className="alert">
         {this.props.message}
       </Alert>
     );
