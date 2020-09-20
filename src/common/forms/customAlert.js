@@ -15,6 +15,7 @@ class customAlert extends Component {
         this.setState({ visible: false });
         const scr = store.getState().scr;
         const grid = store.getState().grid;
+        const client = store.getState().client;
         scr.message = '';
         scr.editSubContractor.message = '';
         scr.deleteSubContractor.message = '';
@@ -22,13 +23,16 @@ class customAlert extends Component {
         grid.deleteGrid.message = '';
         grid.editGrid.message = '';
         grid.cgAdd.message = '';
+        client.isSuccess = false;
+        client.isError = false;
+        client.message = "";
       }, 5000);
     });
   }
 
   render() {
     return (
-      <Alert variant={this.props.variant} isOpen={this.state.visible} className="alert">
+      <Alert color={this.props.variant} isOpen={this.state.visible} className="alert">
         {this.props.message}
       </Alert>
     );

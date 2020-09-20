@@ -34,7 +34,7 @@ class LayerDPRDetail extends Component {
     this.setState({ showLayerViewModal: true });
   };
   redirectToEditGrid = () => {
-    this.props.history.push('griddpr');
+    this.props.history.push('grid/dpr');
   };
 
   render() {
