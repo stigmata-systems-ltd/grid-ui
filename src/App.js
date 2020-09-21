@@ -23,7 +23,7 @@ import CreateUser from './container/userManagement/createUserContainer';
 import ClientBilling from './container/clientBilling/clientBillingContainer';
 import ListUser from './container/userManagement/listUserContainer';
 //import { setCompletedLayer } from "./utils/test";
-import MasterReport from './pages/reports/MasterReport';
+import MasterReport from './container/report/masterReportContainer';
 import SubContractorReport from './container/report/subContractorReportContainer';
 import PlaningManager from './pages/planingManager/PlaningManager';
 import ListRoles from './container/roleManagement/listRoleContainer';

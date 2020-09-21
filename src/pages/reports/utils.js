@@ -1,23 +1,3 @@
-export const _masterReportMetaData = [
-  'S.No',
-  'Grid No',
-  'Grid Area',
-  'C&G RFI App Date',
-  'C&G RFI App Status',
-  'Layer No',
-  'Tot Quantity',
-  'Date of Filling',
-  'Fill Type',
-  'Material Descrp',
-  'RFI level App Date',
-  'RFI level Status',
-  'RFI Testing App Date',
-  'RFI Testing Status',
-  'Layer Status',
-  'Client Billed',
-  'Grid Status',
-];
-
 export const _masterReportbodyData = [
   {
     sno: '1',
@@ -96,4 +76,116 @@ export const _subContractorReportMetaData = () => {
       sortable: false,
     },
   ];
+};
+
+export const _masterReportMetaData = () => {
+  return [
+    {
+      name: 'Grid No',
+      selector: 'gridNo',
+      sortable: false,
+    },
+    {
+      name: 'Grid Area',
+      selector: 'gridArea',
+      sortable: false,
+    },
+    {
+      name: 'C&G RFI App Date',
+      selector: 'cgRFIAppDate',
+      sortable: false,
+    },
+    {
+      name: 'C&G RFI App Status',
+      selector: 'cgRFIAppStatus',
+      sortable: false,
+    },
+    {
+      name: 'Layer No',
+      selector: 'layerNo',
+      sortable: false,
+    },
+    {
+      name: 'Tot Quantity',
+      selector: 'totQuantity',
+      sortable: false,
+    },
+    {
+      name: 'Date of Filling',
+      selector: 'dateofFilling',
+      sortable: false,
+    },
+    {
+      name: 'Fill Type',
+      selector: 'fillType',
+      sortable: false,
+    },
+    {
+      name: 'Material Descrp',
+      selector: 'materialDescrp',
+      sortable: false,
+    },
+    {
+      name: 'RFI level App Date',
+      selector: 'rfiLevelAppDate',
+      sortable: false,
+    },
+    {
+      name: 'RFI level Status',
+      selector: 'rfiLevelStatus',
+      sortable: false,
+    },
+    {
+      name: 'RFI Testing App Date',
+      selector: 'rfiTestingAppDate',
+      sortable: false,
+    },
+    {
+      name: 'RFI Testing Status',
+      selector: 'rfiTestingStatus',
+      sortable: false,
+    },
+    {
+      name: 'Layer Status',
+      selector: 'layerStatus',
+      sortable: false,
+    },
+    {
+      name: 'Client Billed',
+      selector: 'clientBilled',
+      sortable: false,
+    },
+    {
+      name: 'Grid Status',
+      selector: 'gridStatus',
+      sortable: false,
+    },
+  ];
+};
+
+export const transformMasterReport = data => {
+  let tmpArr = [];
+  data &&
+    data.map(item => {
+      tmpArr.push({
+        gridNo: item.gridDetails.gridno,
+        gridArea: item.gridDetails.grid_area,
+        cgRFIAppDate: item.gridDetails.cG_approval_date,
+        cgRFIAppStatus: item.gridDetails.cG_RFI_status,
+        layerNo: item.layerDtls.layerNo,
+        totQuantity: item.layerDtls.totalQuantity,
+        dateofFilling: item.layerDtls.fillingDate,
+        fillType: item.layerDtls.fillType,
+        materialDescrp: item.layerDtls.fillingMaterial,
+        rfiLevelAppDate: item.layerDtls.lV_approval_date,
+        rfiLevelStatus: item.layerDtls.lV_RFI_status,
+        rfiTestingAppDate: item.layerDtls.cT_approval_date,
+        rfiTestingStatus: item.layerDtls.cT_RFI_status,
+        layerStatus: item.layerDtls.status,
+        clientBilled: item.layerDtls.isBillGenerated,
+        gridStatus: item.gridDetails.status,
+      });
+    });
+  console.log('tmparr', tmpArr);
+  return tmpArr;
 };
