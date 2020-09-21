@@ -4,6 +4,7 @@ import authReducer from './authReducer';
 import gridReducer from './gridReducer';
 import clientReducer from './clientReducer';
 import roles from './roleManagementReducer';
+import reports from './reportsReducer';
 
 import userManagementReducer from './userManagementReducer';
 const rootReducer = combineReducers({
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   auth: authReducer,
   client: clientReducer,
   roles,
+  reports,
 });
 
 export default rootReducer;

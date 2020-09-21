@@ -4,29 +4,67 @@ import FormContainer from '../../common/forms/FormContainer';
 import FormRow from '../../common/forms/FormRow';
 
 import {
-    _subContractorReportMetaData, _subContractorReportbodyData
+  _subContractorReportMetaData,
+  _subContractorReportbodyData,
+  transformSubConReport,
 } from './utils';
 import DataTable from '../../common/DataTable';
 import DateFilter from './DateFilter';
+import CustomDataTable from '../../common/CustomDataTable';
+import TableFilter from '../../common/TableFilter';
 
 class SubContractorReport extends Component {
-    render() {
-        return (
-            <ContentLoader>
-                <FormContainer formTitle={'Sub-Contractor Report'}>
-                    <DateFilter />
-                    <FormRow>
-                        <DataTable
-                            metaData={_subContractorReportMetaData}
-                            bodyData={_subContractorReportbodyData}
-
-                        />
-                    </FormRow>
-
-                </FormContainer>
-            </ContentLoader>
-        );
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeId: null,
+      showDeleteModal: false,
+      filterText: '',
+      resetPaginationToggle: false,
+    };
+  }
+  componentDidMount() {
+    this.props.fetchSCRReport();
+  }
+  render() {
+    return (
+      <ContentLoader>
+        <FormContainer formTitle={'Sub-Contractor Report'}>
+          <DateFilter />
+          <FormRow>
+            <CustomDataTable
+              metaData={_subContractorReportMetaData()}
+              bodyData={transformSubConReport(
+                this.props.reports.listSubContractorReport
+              )}
+              pagination={true}
+              paginationTotalRows={
+                this.props.reports.listSubContractorReport &&
+                this.props.reports.listSubContractorReport.length
+              }
+              paginationPerPage={10}
+              noHeader={true}
+              // subHeader
+              // subHeaderComponent={
+              //   <TableFilter
+              //     placeholder="Search By Vendor Code"
+              //     onFilter={e => {
+              //       e.target.value === '' &&
+              //         this.setState({
+              //           resetPaginationToggle: !this.state
+              //             .resetPaginationToggle,
+              //         });
+              //       this.setState({ filterText: e.target.value });
+              //     }}
+              //     filterText={this.state.filterText}
+              //   />
+              // }
+            />
+          </FormRow>
+        </FormContainer>
+      </ContentLoader>
+    );
+  }
 }
 
 export default SubContractorReport;
