@@ -32,12 +32,8 @@ class SubContractorReport extends Component {
         <FormContainer formTitle={'Sub-Contractor Report'}>
           <DateFilter />
           <FormRow>
-            {/* <DataTable
-                            metaData={_subContractorReportMetaData}
-                            bodyData={_subContractorReportbodyData}
-                        /> */}
             <CustomDataTable
-              metaData={_subContractorReportMetaData}
+              metaData={_subContractorReportMetaData()}
               bodyData={transformSubConReport(
                 this.props.reports.listSubContractorReport
               )}
@@ -46,9 +42,9 @@ class SubContractorReport extends Component {
                 this.props.reports.listSubContractorReport &&
                 this.props.reports.listSubContractorReport.length
               }
-              paginationPerPage={5}
+              paginationPerPage={10}
               noHeader={true}
-              subHeader
+              // subHeader
               // subHeaderComponent={
               //   <TableFilter
               //     placeholder="Search By Vendor Code"
