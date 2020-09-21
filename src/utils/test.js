@@ -29,7 +29,7 @@ export const testData = () => {
 
 export const setCompletedLayer = () => {
   let i=0;
-  let gridId =133;
+  let gridId =117;
   for (i = 1; i <= 15; i++) {
   var data = JSON.stringify({
     gridId: gridId,
