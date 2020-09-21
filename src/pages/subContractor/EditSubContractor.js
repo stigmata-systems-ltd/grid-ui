@@ -65,7 +65,7 @@ class EditSubContractor extends Component {
               onChange={e =>
                 this.props.handleChangesubContactAddress(e.target.value)
               }
-              value={subprop.subContractorContactAddres}
+              value={subprop.subContractorContactAddress}
             />
           </FormRow>
           <FormRow>
