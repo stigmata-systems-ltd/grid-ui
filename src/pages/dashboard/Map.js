@@ -10,13 +10,17 @@ import { gridData } from "./mapUtils";
 import Button from "../../common/forms/Button";
 import { withRouter } from "react-router-dom";
 import FaIcon from "../../common/FaIcon";
+import {GMAP_API_KEY} from "../../utils/globalConst";
 
 class GridMap extends Component {
-  state = {
-    showingInfoWindow: false,
-    activeMarker: {},
-    selectedPlace: {},
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      showingInfoWindow: false,
+      activeMarker: {},
+      selectedPlace: {},
+    };
+  }
 
   onMarkerClick = (props, marker, e) =>
     this.setState({
@@ -38,15 +42,18 @@ class GridMap extends Component {
   };
 
   getStatusIcon = (sts) => {
-      return sts === "completed" ?
-        <FaIcon iconName="faCheckCircle" className="txt-success" /> :
-        <FaIcon iconName="faPeopleCarry" className="txt-danger" />
-  }
+    return sts === "completed" ? (
+      <FaIcon iconName="faCheckCircle" className="txt-success" />
+    ) : (
+      <FaIcon iconName="faPeopleCarry" className="txt-danger" />
+    );
+  };
 
   render() {
     return (
       <Map
         google={this.props.google}
+        onReady={this.setMaps}
         zoom={16}
         initialCenter={{
           lat: 12.9941172,
@@ -75,7 +82,11 @@ class GridMap extends Component {
             <div className="col-md-12">
               <h5>{this.state.selectedPlace.name}</h5>
               {/* <h6>{grid.description}</h6> */}
-              <h6 className={`${grid.status === "completed" ? "text-success" : "text-warning"}`}>
+              <h6
+                className={`${
+                  grid.status === "completed" ? "text-success" : "text-warning"
+                }`}
+              >
                 {this.getStatusIcon(grid.status)}
                 {` ${grid.status}`}
               </h6>
@@ -108,5 +119,5 @@ const containerStyle = {
 };
 
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyD981UnRbwbMPy4ifleYDzkT5-WH9_rUOY",
+  apiKey: GMAP_API_KEY,
 })(withRouter(GridMap));

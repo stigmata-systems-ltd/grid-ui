@@ -8,11 +8,20 @@ import IconTextButton from '../../common/forms/IconTextButton';
 import Button from '../../common/forms/Button';
 import CustomAlert from '../../common/forms/customAlert';
 import SimpleDropDown from '../../common/forms/SimpleDropDown';
+import {
+  Map,
+  InfoWindow,
+  Marker,
+  GoogleApiWrapper,
+  Polygon,
+} from "google-maps-react";
+import { GMAP_API_KEY } from "../../utils/globalConst";
 class CreateGrid extends Component {
   constructor(props) {
     super(props);
     this.state = {
       locationRows: [0],
+      bounds: new this.props.google.maps.LatLngBounds(),
     };
   }
 
@@ -101,7 +110,7 @@ class CreateGrid extends Component {
           <Button
             btnText="Save"
             btnType="primary"
-            onClick={this.props.editGrid}
+            onClick={() => this.props.editGrid(this.state.bounds)}
           />
           <Button btnText="Cancel" btnType="cancel" />
         </FormContainer>
@@ -110,4 +119,6 @@ class CreateGrid extends Component {
   }
 }
 
-export default CreateGrid;
+export default GoogleApiWrapper({
+  apiKey: GMAP_API_KEY,
+})(CreateGrid);

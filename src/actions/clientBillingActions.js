@@ -1,7 +1,7 @@
 import store from '../store';
 import axios from 'axios';
 import config from '../config';
-import { GET_CLIENT_GRID_LIST, GET_LAYERS_FOR_BILLING } from './types';
+import { GET_CLIENT_GRID_LIST, GET_LAYERS_FOR_BILLING, SAVE_CLIENT_BILLING } from './types';
 
 export const getGridList = () => {
   return {
@@ -22,7 +22,7 @@ export const getLayerListForBilling = () => {
 };
 export const saveClientBilling = data => {
   return {
-    type: GET_LAYERS_FOR_BILLING,
+    type: SAVE_CLIENT_BILLING,
     payload: axios.post(
       config.BASE_URL + '/api/Client/CreateClientBilling',
       data

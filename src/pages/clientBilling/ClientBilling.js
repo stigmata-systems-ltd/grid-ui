@@ -16,6 +16,7 @@ import Loader from "../../common/Loader";
 import { getTranformedBillableTable, getTotalLayerCount } from "./dataTransformer";
 import { transformGridList } from "../../utils/dataTransformer";
 import Col6 from "../../common/forms/Col6";
+import CustomAlert from "../../common/forms/customAlert";
 
 class ClientBilling extends Component {
   constructor() {
@@ -33,7 +34,7 @@ class ClientBilling extends Component {
     if (billableLayers && billableLayers.length > 0) {
       return billableLayers.map((layer) => (
         <CheckBox
-          size={"col-md-2"}
+          size={"col-md-3"}
           label={layer.layerName}
           key={layer.id}
           onChange={(e) =>
@@ -67,6 +68,17 @@ class ClientBilling extends Component {
       <ContentLoader>
         {this.props.client.isLoading && <Loader />}
         <FormContainer formTitle={"Client Billing"}>
+        <div>
+              {(this.props.client.isSuccess ||
+                this.props.client.isError) && (
+                <CustomAlert
+                  variant={
+                    this.props.client.isSuccess ? 'success' : 'danger'
+                  }
+                  message={this.props.client.message}
+                />
+              )}
+            </div>
           <FormRow>
             <SearchableDropDown
               label="Grid Number"
