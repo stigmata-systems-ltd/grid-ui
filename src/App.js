@@ -24,7 +24,7 @@ import ClientBilling from './container/clientBilling/clientBillingContainer';
 import ListUser from './container/userManagement/listUserContainer';
 //import { setCompletedLayer } from "./utils/test";
 import MasterReport from './pages/reports/MasterReport';
-import SubContractorReport from './pages/reports/SubContractorReport';
+import SubContractorReport from './container/report/subContractorReportContainer';
 import PlaningManager from './pages/planingManager/PlaningManager';
 import ListRoles from './container/roleManagement/listRoleContainer';
 import EditRole from './container/roleManagement/editRoleContainer';
