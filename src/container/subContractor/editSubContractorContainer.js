@@ -5,6 +5,7 @@ import { withRouter } from "react-router-dom";
 import {
   addSubContractor,
   updateSubContractor,
+  fetchSubContractor
 } from '../../actions/subContractorActions';
 import {
   ADD_SUBCONTRACTOR,
@@ -22,6 +23,7 @@ const mapDispatchToProps = (dispatch, props) => {
     updateSubContractor() {
       dispatch(updateSubContractor()).then(() => {
         dispatch({ type: RESET_SUBCONTRACTOR_FORM });
+        dispatch(fetchSubContractor());
         props.history.push("/subcontractor/list");
       });
     },

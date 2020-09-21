@@ -94,12 +94,10 @@ export default function(state = initialState, action) {
       };
 
     case `${LIST_SUBCONTRACTOR}_FULFILLED`:
-      console.log(`List SCR: ${action.payload.data}`);
       const listSCR = action.payload.data.map(e => ({
         subContractorCode: e.code,
         name: e.name,
       }));
-      console.log(`List SCR: ${listSCR}`);
       return {
         ...state,
         listSCR,

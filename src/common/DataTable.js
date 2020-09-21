@@ -9,8 +9,8 @@ class DataTable extends Component {
 
   render() {
     return (
-      <div class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
-        <table class="table dataTable no-footer table-bordered table-responsive">
+      <div class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer table-responsive">
+        <table class="table dataTable no-footer table-bordered">
           <thead>
             <tr>{this.renderTableHeaders()}</tr>
           </thead>

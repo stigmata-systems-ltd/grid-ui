@@ -112,6 +112,7 @@ class ClientBilling extends Component {
           </FormRow>
           <FormRow>
             <DataTable
+              isResponsive={true}
               metaData={_clientBillingMetaData}
               bodyData={getTranformedBillableTable(
                 this.props.client.billableTableData

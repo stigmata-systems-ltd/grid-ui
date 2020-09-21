@@ -48,7 +48,7 @@ class App extends Component {
           <Route exact path="/subcontractor/list">
             <ListSubContractor />
           </Route>
-          <Route exact path="/editsubcontractor">
+          <Route exact path="/subcontractor/edit">
             <EditSubContractor />
           </Route>
 
