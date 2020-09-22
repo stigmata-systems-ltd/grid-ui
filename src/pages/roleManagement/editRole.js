@@ -59,9 +59,11 @@ class EditRole extends Component {
             onClick={this.props.updateRoles}
             btnType="primary"
           />
-          <Link to="/roles/list" className="btn btn-secondary">
-            Cancel
-          </Link>
+          <Button
+            btnText="Cancel"
+            onClick={this.props.redirectToViewRoles}
+            btnType="btn-secondary secondary-btn-fix"
+          />
         </FormContainer>
       </ContentLoader>
     );
