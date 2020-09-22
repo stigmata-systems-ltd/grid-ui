@@ -104,14 +104,15 @@ class GridDPR extends Component {
           <FormContainer formTitle={'Grid Daily Progress'}>
             <div>
               {(this.props.grid.isLayerUpdateSuccess ||
-                this.props.grid.isLayerUpdateError) && (
+                this.props.grid.isLayerUpdateError) &&
+              this.props.grid.gridAdd.layerUpdateMsg ? (
                 <CustomAlert
                   variant={
                     this.props.grid.isLayerUpdateSuccess ? 'success' : 'danger'
                   }
                   message={this.props.grid.gridAdd.layerUpdateMsg}
                 />
-              )}
+              ) : null}
             </div>
 
             <TabNavs
