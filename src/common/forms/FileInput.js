@@ -20,6 +20,7 @@ class FileInput extends Component {
               // class="file-upload-default"
               onChange={e => this.props.onChange(e)}
               class="form-control"
+              style={{padding: 7}}
             />
             <span class="input-group-append">
               <button class="file-upload-browse btn btn-primary" type="button">

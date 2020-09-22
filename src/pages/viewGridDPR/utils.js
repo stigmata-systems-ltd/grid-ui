@@ -1,3 +1,13 @@
+export const tranformSubCat = (data) => {
+  let tmpArr = [];
+  data && data.map(item => {
+    tmpArr.push({
+      quantity: item.quantity,
+      subName: item.subContractorName,
+    })
+  });
+  return tmpArr;
+}
 export const tabMetaData = [
   {
     id: 1,
@@ -49,7 +59,7 @@ export const _cGMetaData = [
   'Inspection Date',
   'Approval Date',
   'RFI Status',
-  'Actions',
+  // 'Actions',
 ];
 
 export const _RFILevelVerificationMetaData = [

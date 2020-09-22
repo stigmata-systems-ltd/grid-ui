@@ -10,7 +10,7 @@ import TextInput from './forms/TextInput';
 import IconButton from './forms/IconButton';
 import Label from './forms/Label';
 import LatLongReadOnlyTable from './LatLongReadOnlyTable';
-import { _subContractorQuantityMetaData } from '../pages/viewGridDPR/utils';
+import { _subContractorQuantityMetaData, tranformSubCat } from '../pages/viewGridDPR/utils';
 class LayerDPRDetail extends Component {
   constructor() {
     super();
@@ -59,10 +59,10 @@ class LayerDPRDetail extends Component {
                       btnType="primary"
                       onClick={() => this.showLayerViewModal(i)}
                     />
-                    <IconButton
+                    {/* <IconButton
                       iconName="faEdit"
                       onClick={this.redirectToEditGrid}
-                    />
+                    /> */}
                   </td>
                 </tr>
               );
@@ -117,7 +117,7 @@ class LayerDPRDetail extends Component {
           <FormRow>
             <LatLongReadOnlyTable
               metaData={_subContractorQuantityMetaData}
-              bodyData={this.props.layerSubContractor}
+              bodyData={tranformSubCat(this.props.layerSubContractor)}
             />
           </FormRow>
         </LayerDPRViewModel>
