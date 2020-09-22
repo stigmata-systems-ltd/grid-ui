@@ -52,25 +52,25 @@ export const subContractorList = () => {
     payload: axios.get(config.BASE_URL + '/api/SubCont/GetSubContractorList'),
   };
 };
-export const createGrid = (bounds) => {
+export const createGrid = bounds => {
   const grid = store.getState().grid;
   let points = [];
   grid.gridLatLong.map(item => {
     points.push({
       lat: item.latitude,
-      lng: item.longitude
-    })
-  })
-  
+      lng: item.longitude,
+    });
+  });
+
   for (var i = 0; i < points.length; i++) {
     bounds.extend(points[i]);
   }
   const center = bounds.getCenter();
-  let latLng = center.toString().replace("(", "");
-  latLng = latLng.replace(")","");
-  latLng = latLng.replace(" ","");
-  latLng = latLng.replace(" ","");
-  latLng = latLng.split(",");
+  let latLng = center.toString().replace('(', '');
+  latLng = latLng.replace(')', '');
+  latLng = latLng.replace(' ', '');
+  latLng = latLng.replace(' ', '');
+  latLng = latLng.split(',');
   const postData = {
     gridno: grid.gridNumber,
     grid_area: parseInt(grid.gridArea),
@@ -85,25 +85,25 @@ export const createGrid = (bounds) => {
   };
 };
 
-export const editGrid = (bounds) => {
+export const editGrid = bounds => {
   const grid = store.getState().grid;
   let points = [];
   grid.gridLatLong.map(item => {
     points.push({
       lat: item.latitude,
-      lng: item.longitude
-    })
-  })
-  
+      lng: item.longitude,
+    });
+  });
+
   for (var i = 0; i < points.length; i++) {
     bounds.extend(points[i]);
   }
   const center = bounds.getCenter();
-  let latLng = center.toString().replace("(", "");
-  latLng = latLng.replace(")","");
-  latLng = latLng.replace(" ","");
-  latLng = latLng.replace(" ","");
-  latLng = latLng.split(",");
+  let latLng = center.toString().replace('(', '');
+  latLng = latLng.replace(')', '');
+  latLng = latLng.replace(' ', '');
+  latLng = latLng.replace(' ', '');
+  latLng = latLng.split(',');
   const postData = {
     gridno: grid.gridNumber,
     grid_area: parseInt(grid.gridArea),
@@ -252,6 +252,8 @@ export const fetchLayerInfo = i => {
     area_layer: grid.layerDataDetails[i].area_layer,
     topFillMaterial: grid.layerDataDetails[i].topFillMaterial,
     layerSubContractor: grid.layerDataDetails[i].layerSubContractor,
+    cT_RFIno: grid.layerDataDetails[i].cT_RFIno,
+    lV_RFIno: grid.layerDataDetails[i].lV_RFIno,
   };
 
   return {

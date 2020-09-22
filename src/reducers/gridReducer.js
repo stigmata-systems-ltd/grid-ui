@@ -99,7 +99,7 @@ const initialState = {
   createCenter: {
     lat: 0,
     lng: 0,
-  }
+  },
 };
 
 export default function(state = initialState, action) {
@@ -479,6 +479,7 @@ export default function(state = initialState, action) {
         rfiInspectionDate: editGridDetails.cG_inspection_date,
         rfiApprovalDate: editGridDetails.cG_approval_date,
         rfiApproval: editGridDetails.status,
+
         // cgBodyData: [
         //   {
         //     RFINumber: editGridDetails.cG_RFIno,
@@ -574,6 +575,10 @@ export default function(state = initialState, action) {
         layerDataDetails,
       };
     case SINGLE_LAYER_DETAILS:
+      const layerSubContractor = action.payload.layerSubContractor.map(a => ({
+        quantity: a.quantity,
+        subContractorName: a.subContractorName,
+      }));
       return {
         ...state,
         view_gridNo: action.payload.gridNo,
@@ -582,7 +587,9 @@ export default function(state = initialState, action) {
         view_materialDescription: action.payload.materialDescription,
         view_area_layer: action.payload.area_layer,
         view_topFillMaterial: action.payload.topFillMaterial,
-        view_layerSubContractor: action.payload.layerSubContractor,
+        view_layerSubContractor: layerSubContractor,
+        view_rfiNoCT: action.payload.cT_RFIno,
+        view_rfiNoLV: action.payload.lV_RFIno,
       };
     //Photo Tab
     case PHOTO_GRID_NO_CHANGE:
@@ -595,7 +602,7 @@ export default function(state = initialState, action) {
         ...state,
         photoLayerNum: action.payload,
       };
-      case SET_MAP_PREVIEW:
+    case SET_MAP_PREVIEW:
       return {
         ...state,
         createCenter: action.payload,

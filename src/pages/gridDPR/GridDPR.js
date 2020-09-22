@@ -50,8 +50,27 @@ class GridDPR extends Component {
           isActive: false,
         },
       ],
+      LVCheckBox: false,
+      CTCheckBox: false,
+      enableCT: true,
+      enableLV: true,
     };
   }
+
+  CTChange = () => {
+    console.log(`In CT Change - Before : ${this.state.CTCheckBox}`);
+    this.setState({ CTCheckBox: !this.state.CTCheckBox });
+    this.setState({ enableCT: !this.state.enableCT });
+    console.log(`In CT Change - After : ${this.state.CTCheckBox}`);
+  };
+
+  LVChange = () => {
+    console.log(`In LV Change - Before : ${this.state.LVCheckBox}`);
+    this.setState({ LVCheckBox: !this.state.LVCheckBox });
+    this.setState({ enableLV: !this.state.enableLV });
+    console.log(`In LV Change - After : ${this.state.LVCheckBox}`);
+  };
+
   handleGridSelection = val => {
     this.setState({ selectedGrid: val });
   };
@@ -245,19 +264,29 @@ class GridDPR extends Component {
                 />
 
                 <FormRow>
-                  <CheckBox label="RFI Level Verification" />
-                  <CheckBox label="RFI Compaction Testing" />
+                  <CheckBox
+                    label="RFI Level Verification"
+                    checked={this.state.LVCheckBox}
+                    onChange={() => this.LVChange()}
+                  />
+                  <CheckBox
+                    label="RFI Compaction Testing"
+                    checked={this.state.CTCheckBox}
+                    onChange={() => this.CTChange()}
+                  />
                 </FormRow>
                 <FormRow>
                   <TextInput
                     label="RFI Number"
                     onChange={e => this.props.handleRFILVChange(e.target.value)}
                     value={this.props.grid.rfiNoLV}
+                    disabled={this.state.enableLV}
                   />
                   <TextInput
                     label="RFI Number"
                     onChange={e => this.props.handleRFICTChange(e.target.value)}
                     value={this.props.grid.rfiNoCT}
+                    disabled={this.state.enableCT}
                   />
                 </FormRow>
                 <FormRow>
@@ -267,6 +296,7 @@ class GridDPR extends Component {
                       this.props.handleRFILVInspectionDateChange(e.target.value)
                     }
                     value={this.props.grid.rfiInspectionDateLV}
+                    disabled={this.state.enableLV}
                   />
                   <DateInput
                     label="Inspection Date"
@@ -274,6 +304,7 @@ class GridDPR extends Component {
                       this.props.handleRFICTInspectionDateChange(e.target.value)
                     }
                     value={this.props.grid.rfiInspectionDateCT}
+                    disabled={this.state.enableCT}
                   />
                 </FormRow>
                 <FormRow>
@@ -283,6 +314,7 @@ class GridDPR extends Component {
                       this.props.handleRFILVApprovalDateChange(e.target.value)
                     }
                     value={this.props.grid.rfiApprovalDateLV}
+                    disabled={this.state.enableLV}
                   />
                   <DateInput
                     label="Approval Date"
@@ -290,6 +322,7 @@ class GridDPR extends Component {
                       this.props.handleRFICTApprovalDateChange(e.target.value)
                     }
                     value={this.props.grid.rfiApprovalDateCT}
+                    disabled={this.state.enableCT}
                   />
                 </FormRow>
                 <FormRow>
@@ -300,6 +333,7 @@ class GridDPR extends Component {
                       this.props.handleRFILVApprovalStatusChange(e.target.value)
                     }
                     value={this.props.grid.rfiLVApprovalStatus}
+                    disabled={this.state.enableLV}
                   />
                   <SimpleDropDown
                     label="RFI Status (Approval)"
@@ -308,6 +342,7 @@ class GridDPR extends Component {
                       this.props.handleRFICTApprovalStatusChange(e.target.value)
                     }
                     value={this.props.grid.rfiCTApprovalStatus}
+                    disabled={this.state.enableCT}
                   />
                 </FormRow>
                 <FormRow>
