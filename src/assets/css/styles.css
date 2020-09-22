@@ -42,6 +42,9 @@ select.form-control {
 .table-view-link {
   cursor: pointer;
 }
+.secondary-btn-fix {
+  margin-left: 5%;
+}
 /*Bootstrap Overrides
 ********************/
 .alert {

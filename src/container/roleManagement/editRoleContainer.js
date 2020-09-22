@@ -20,9 +20,13 @@ const mapDispatchToProps = (dispatch, props) => {
       dispatch(fetchRoleData());
     },
     updateRoles() {
-      dispatch(updateRoles());
+      dispatch(updateRoles()).then(() => {
+        props.history.push('/roles/list');
+      });
     },
-
+    redirectToViewRoles() {
+      props.history.push('/roles/list');
+    },
     handleChange(id, description, type) {
       console.log(`ID: ${id}`);
       console.log(`Description: ${description}`);

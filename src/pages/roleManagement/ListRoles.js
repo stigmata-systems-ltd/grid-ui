@@ -31,7 +31,7 @@ class ListRoles extends Component {
                 id => this.props.editRole(id)
               )}
               bodyData={transformRoles(this.props.roles.listRoleDetails)}
-              pagination={true}
+              pagination={false}
               paginationTotalRows={
                 this.props.roles.listRoleDetails &&
                 this.props.roles.listRoleDetails.length
