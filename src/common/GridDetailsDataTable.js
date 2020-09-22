@@ -23,17 +23,11 @@ class GridDetailsDataTable extends Component {
                       <td> {data[key]}</td>
                     </>
                   ))}
-                  <td class="action-btns">
-                    {/* <Button
-                      btnText="Edit"
-                      btnType="btn-secondary"
-                      onClick={this.props.onClick}
-                    /> */}
-
+                  {/* <td class="action-btns">
                     <Link to="/grid/dpr" className="btn btn-secondary">
                       Edit
                     </Link>
-                  </td>
+                  </td> */}
                 </tr>
               );
             })}
