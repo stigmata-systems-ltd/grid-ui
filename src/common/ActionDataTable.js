@@ -20,7 +20,7 @@ class ActionDataTable extends Component {
                 <tr>
                   {Object.keys(data).map(key => (
                     <>
-                      <td> {data[key].toString()}</td>
+                      <td> {data[key]}</td>
                     </>
                   ))}
                   <td class="action-btns">

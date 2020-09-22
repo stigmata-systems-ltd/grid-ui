@@ -24,9 +24,10 @@ class customAlert extends Component {
         grid.deleteGrid.message = '';
         grid.editGrid.message = '';
         grid.cgAdd.message = '';
+        grid.gridAdd.layerUpdateMsg = '';
         client.isSuccess = false;
         client.isError = false;
-        client.message = "";
+        client.message = '';
         roles.updatePage.message = '';
       }, 5000);
     });
@@ -34,7 +35,11 @@ class customAlert extends Component {
 
   render() {
     return (
-      <Alert color={this.props.variant} isOpen={this.state.visible} className="alert">
+      <Alert
+        color={this.props.variant}
+        isOpen={this.state.visible}
+        className="alert"
+      >
         {this.props.message}
       </Alert>
     );

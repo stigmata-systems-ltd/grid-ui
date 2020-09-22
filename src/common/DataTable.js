@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import IconButton from "../common/forms/IconButton";
-import Button from "../common/forms/Button";
+import React, { Component } from 'react';
+import IconButton from '../common/forms/IconButton';
+import Button from '../common/forms/Button';
 
 class DataTable extends Component {
   renderTableHeaders = () => {
-    return this.props.metaData.map((header) => <th>{header}</th>);
+    return this.props.metaData.map(header => <th>{header}</th>);
   };
 
   render() {
@@ -15,13 +15,13 @@ class DataTable extends Component {
             <tr>{this.renderTableHeaders()}</tr>
           </thead>
           <tbody>
-            {console.log("datatable",this.props.bodyData)}
+            {console.log('datatable', this.props.bodyData)}
             {this.props.bodyData && this.props.bodyData.length > 0 ? (
               this.props.bodyData.map((data, rowIndex) => {
                 return (
                   <tr>
-                    {Object.keys(data).map((key) => (
-                      <>{key !== "id" && <td> {data[key].toString()}</td>}</>
+                    {Object.keys(data).map(key => (
+                      <>{key !== 'id' && <td> {data[key]}</td>}</>
                     ))}
 
                     <td>
@@ -35,12 +35,12 @@ class DataTable extends Component {
                         />
                       )}
                       {this.props.showDelete && (
-                          <IconButton
-                            iconName="faTrash"
-                            onClick={() =>
-                              this.props.onClickDelete(data.id, rowIndex)
-                            }
-                          />
+                        <IconButton
+                          iconName="faTrash"
+                          onClick={() =>
+                            this.props.onClickDelete(data.id, rowIndex)
+                          }
+                        />
                       )}
                     </td>
                   </tr>
