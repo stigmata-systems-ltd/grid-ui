@@ -92,6 +92,18 @@ class LayerDPRDetail extends Component {
           </FormRow>
           <FormRow>
             <Label
+              label="RFI No - Level Verification"
+              readOnly="test"
+              value={this.props.rfiNoLV}
+            />
+            <Label
+              label="RFI No - Compaction Testing"
+              readOnly="test"
+              value={this.props.rfiNoCT}
+            />
+          </FormRow>
+          <FormRow>
+            <Label
               label="Date of Filing"
               readOnly="test"
               value={this.props.fillingDate}

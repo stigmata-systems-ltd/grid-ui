@@ -141,6 +141,8 @@ class ViewGridDpr extends Component {
                 topFillMaterial={this.props.grid.view_topFillMaterial}
                 fillingMaterial={this.props.grid.view_materialDescription}
                 layerSubContractor={this.props.grid.view_layerSubContractor}
+                rfiNoCT={this.props.grid.view_rfiNoCT}
+                rfiNoLV={this.props.grid.view_rfiNoLV}
                 fetchLayerInfo={i => this.props.fetchLayerInfo(i)}
               />
             </TabPane>

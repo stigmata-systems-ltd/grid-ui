@@ -28,6 +28,8 @@ class LayerDPRDetails extends Component {
             fillingMaterial={this.props.fillingMaterial}
             layerSubContractor={this.props.layerSubContractor}
             fetchLayerInfo={i => this.props.fetchLayerInfo(i)}
+            rfiNoLV={this.props.rfiNoLV}
+            rfiNoCT={this.props.rfiNoCT}
           />
         </FormRow>
       </FormContainer>
