@@ -5,6 +5,7 @@ import gridReducer from './gridReducer';
 import clientReducer from './clientReducer';
 import roles from './roleManagementReducer';
 import reports from './reportsReducer';
+import planningManager from './planningManagerReducer';
 import userManagementReducer from './userManagementReducer';
 
 const rootReducer = combineReducers({
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   user: userManagementReducer,
   auth: authReducer,
   client: clientReducer,
+  pm: planningManager,
   roles,
   reports,
 });

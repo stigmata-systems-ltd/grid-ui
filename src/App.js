@@ -25,12 +25,12 @@ import ListUser from './container/userManagement/listUserContainer';
 //import { setCompletedLayer } from "./utils/test";
 import MasterReport from './container/report/masterReportContainer';
 import SubContractorReport from './container/report/subContractorReportContainer';
-import PlaningManager from './pages/planingManager/PlaningManager';
+import PlaningManager from './container/planningManager/pmContainer';
 import ListRoles from './container/roleManagement/listRoleContainer';
 import EditRole from './container/roleManagement/editRoleContainer';
 class App extends Component {
   componentDidMount() {
-    console.log("---------------------test----------------")
+    console.log('---------------------test----------------');
   }
   render() {
     return (
