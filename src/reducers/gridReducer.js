@@ -423,13 +423,14 @@ export default function(state = initialState, action) {
       const singleGrid = action.payload.data[0];
       return {
         ...state,
-        gridNo: singleGrid.gridno,
+        gridNo: singleGrid.gridId,
         gridArea: singleGrid.grid_area,
         gridLatLong: singleGrid.gridGeoLocation,
         RFINumber: singleGrid.cG_RFIno,
         rfiInspectionDate: singleGrid.cG_inspection_date,
         rfiApprovalDate: singleGrid.cG_approval_date,
         status: singleGrid.status,
+        rfiApproval: singleGrid.cG_RFI_status,
       };
     case `${GRID_DETAILS}_REJECTED`:
       return {
@@ -482,7 +483,7 @@ export default function(state = initialState, action) {
         createCenter: {
           lat: editGridDetails.marker_latitide,
           lng: editGridDetails.marker_longitude,
-        }
+        },
       };
     case `${LAYER_PROGRESS}_PENDING`:
       return {

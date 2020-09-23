@@ -184,13 +184,6 @@ export const updateLayerProgress = () => {
     lV_approval_date: grid.rfiApprovalDateLV,
     lV_RFI_status: grid.rfiLVApprovalStatus,
     layerSubContractor: grid.addedQuantity,
-    // layeDocument: [
-    //   {
-    //     layerDtlsId: 0,
-    //     file: 0,
-    //     quantity: 0,
-    //   },
-    // ],
   };
 
   return {
