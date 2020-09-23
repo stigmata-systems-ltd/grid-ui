@@ -104,7 +104,6 @@ export default function(state = initialState, action) {
         listSCRDetails: action.payload.data,
       };
     case `${DELETE_SUBCONTRACTOR}_FULFILLED`:
-      console.log(action);
       return {
         ...state,
         deleteSubContractor: {
@@ -113,14 +112,12 @@ export default function(state = initialState, action) {
         variant: 'success',
       };
     case `${DELETE_SUBCONTRACTOR}_REJECTED`:
-      console.log(action);
       return {
         ...state,
         deleteSubContractor: { message: 'Error Occured' },
         variant: 'danger',
       };
     case `${EDIT_SUBCONTRACTOR}_FULFILLED`:
-      console.log(action);
       return {
         ...state,
         editSubContractor: {
@@ -129,7 +126,6 @@ export default function(state = initialState, action) {
         variant: 'success',
       };
     case `${EDIT_SUBCONTRACTOR}_REJECTED`:
-      console.log(action);
       return {
         ...state,
         editSubContractor: { message: 'Error Occured' },
@@ -138,7 +134,6 @@ export default function(state = initialState, action) {
 
     case EDIT_SUBCONTRACTOR_DETAILS:
       const selectedSCR = action.payload;
-      console.log(`Edit SubContractor Details: ${JSON.stringify(selectedSCR)}`);
       return {
         ...state,
         subContractorId: selectedSCR.subContractorId,

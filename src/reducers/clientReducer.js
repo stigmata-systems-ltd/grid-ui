@@ -126,7 +126,6 @@ export default function (state = initialState, action) {
           "Can't create billing, please check you form inputs",
       };
       case `${SAVE_CLIENT_BILLING}_FULFILLED`:
-        console.log("action",action.payload.data.message)
       return {
         ...state,
         isLoading: false,

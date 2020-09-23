@@ -19,7 +19,6 @@ class SubContractor extends Component {
 
   render() {
     const subprop = this.props.scr;
-    console.log(this.props);
     return (
       <ContentLoader>
         <FormContainer formTitle={'Add Sub Contractor'}>

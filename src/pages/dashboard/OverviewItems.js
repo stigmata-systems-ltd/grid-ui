@@ -12,7 +12,6 @@ class OverviewItems extends Component {
                     className={`mr-3 icon-lg ${this.props.color}`}
                 />
                 <div class="d-flex flex-column justify-content-around">
-                    {console.log("both",this.props.both)}
                     {this.props.title.includes("Billed") === true ?
                     <h5 class="mr-2 mb-1">{this.props.title}</h5>:
                     <small class="mb-1 text-muted">{this.props.title}</small>}

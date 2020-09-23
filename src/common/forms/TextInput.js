@@ -6,7 +6,6 @@ class TextInput extends Component {
     let input;
 
     if (this.props.disabled) {
-      console.log(` If Disabled: ${this.props.disabled}`);
       input = (
         <input
           type="text"
@@ -20,7 +19,6 @@ class TextInput extends Component {
         />
       );
     } else {
-      console.log(` Else Disabled: ${this.props.disabled}`);
       input = (
         <input
           type="text"

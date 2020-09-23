@@ -46,7 +46,6 @@ export const fetchSubContractor = () => {
 
 export const deleteSCR = id => {
   // const scr = store.getState().scr;
-  // console.log(`Selected SCR ID: ${scr.listSCR[i].subContractorId}`);
   // const id = scr.listSCR[i].subContractorId;
   return {
     type: DELETE_SUBCONTRACTOR,

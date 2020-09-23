@@ -1,5 +1,4 @@
 export const getSelectedLayer = (layerData, layerNum) => {
-    console.log("dt, lay num",layerData, layerNum, typeof(layerNum));
     let selectedLayer = "";
     layerData.map(layer => {
         if(layer.id === layerNum) {

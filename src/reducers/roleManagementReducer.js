@@ -14,7 +14,6 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case `${LIST_ROLES}_FULFILLED`:
-      console.log(`List SCR: ${action.payload.data}`);
       // const listSCR = action.payload.data.map(e => ({
       //   subContractorCode: e.code,
       //   name: e.name,
@@ -26,13 +25,11 @@ export default function(state = initialState, action) {
       };
 
     case `${LIST_ROLES}_REJECTED`:
-      console.log(action);
       return {
         ...state,
         listRoleDetails: [],
       };
     case `${LIST_ROLES_ID}_FULFILLED`:
-      console.log(`List SCR: ${action.payload.data}`);
       // const listSCR = action.payload.data.map(e => ({
       //   subContractorCode: e.code,
       //   name: e.name,
@@ -43,21 +40,18 @@ export default function(state = initialState, action) {
         listRoleDetailsID: action.payload.data,
       };
     case `${LIST_ROLES_ID}_REJECTED`:
-      console.log(action);
       return {
         ...state,
         listRoleDetailsID: [],
       };
 
     case UPDATE_PAGE_ACCESS:
-      console.log(`UPDATE_PAGE_ACCESS: ${action.payload}`);
 
       return {
         ...state,
         listRoleDetailsID: action.payload,
       };
     case `${UPDATE_PAGE_ACCESS_ROLES}_FULFILLED`:
-      console.log(`UPDATE_PAGE_ACCESS_ROLES: ${action.payload}`);
       return {
         ...state,
         updatePage: {
@@ -66,7 +60,6 @@ export default function(state = initialState, action) {
         },
       };
     case `${UPDATE_PAGE_ACCESS_ROLES}_REJECTED`:
-      console.log(`UPDATE_PAGE_ACCESS_ROLES REJECTED: ${action.payload}`);
       return {
         ...state,
         updatePage: {

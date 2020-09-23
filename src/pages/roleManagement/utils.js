@@ -11,7 +11,6 @@ export const transformRoles = data => {
         roleDescription: item.description,
       });
     });
-  console.log('tmparr', tmpArr);
   return tmpArr;
 };
 
@@ -83,7 +82,6 @@ export const transformRolesID = (data, thi) => {
         ),
       });
     });
-  console.log('tmparr', tmpArr);
   return tmpArr;
 };
 
@@ -108,7 +106,6 @@ export const viewRoleMetaData = (handleDelete, handleEdit) => {
       name: 'Actions',
       sortable: false,
       cell: row => {
-        console.log('row', row.id);
         return (
           <>
             <IconButton iconName="faEdit" onClick={() => handleEdit(row.id)} />
