@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import ContentLoader from '../../common/ContentLoader';
-import FormContainer from '../../common/forms/FormContainer';
-import FormRow from '../../common/forms/FormRow';
-import TextInput from '../../common/forms/TextInput';
-import AddLatLng from '../createGrid/AddLatLng';
-import IconTextButton from '../../common/forms/IconTextButton';
-import Button from '../../common/forms/Button';
-import CustomAlert from '../../common/forms/customAlert';
-import SimpleDropDown from '../../common/forms/SimpleDropDown';
+import React, { Component } from "react";
+import ContentLoader from "../../common/ContentLoader";
+import FormContainer from "../../common/forms/FormContainer";
+import FormRow from "../../common/forms/FormRow";
+import TextInput from "../../common/forms/TextInput";
+import AddLatLng from "../createGrid/AddLatLng";
+import IconTextButton from "../../common/forms/IconTextButton";
+import Button from "../../common/forms/Button";
+import CustomAlert from "../../common/forms/customAlert";
+import SimpleDropDown from "../../common/forms/SimpleDropDown";
 import {
   Map,
   InfoWindow,
@@ -16,6 +16,8 @@ import {
   Polygon,
 } from "google-maps-react";
 import { GMAP_API_KEY } from "../../utils/globalConst";
+import CreateMap from "../../pages/createGrid/CreateMap";
+
 class CreateGrid extends Component {
   constructor(props) {
     super(props);
@@ -33,12 +35,13 @@ class CreateGrid extends Component {
 
   componentDidMount() {
     this.props.fetchGridNoData();
+    this.props.handleMapPreview(this.state.bounds);
   }
 
   render() {
     return (
       <ContentLoader>
-        <FormContainer formTitle={'Edit Grid'}>
+        <FormContainer formTitle={"Edit Grid"}>
           <div>
             {this.props.grid.editGrid.message ? (
               <CustomAlert
@@ -50,7 +53,7 @@ class CreateGrid extends Component {
           <FormRow>
             <TextInput
               label="Grid Number"
-              onChange={e => this.props.onGridNoChange(e.target.value)}
+              onChange={(e) => this.props.onGridNoChange(e.target.value)}
               value={this.props.grid.gridNumber}
             />
             {/* <SimpleDropDown
@@ -60,7 +63,7 @@ class CreateGrid extends Component {
             /> */}
             <TextInput
               label="Grid Area"
-              onChange={e => this.props.handleChangeGridArea(e.target.value)}
+              onChange={(e) => this.props.handleChangeGridArea(e.target.value)}
               value={this.props.grid.gridArea}
             />
           </FormRow>
@@ -79,13 +82,13 @@ class CreateGrid extends Component {
                   return (
                     <AddLatLng
                       // onClick={this.handleDeleteLocationRow}
-                      onLatChange={e =>
+                      onLatChange={(e) =>
                         this.props.handleChangeLat(e.target.value, i)
                       }
-                      onLongChange={e =>
+                      onLongChange={(e) =>
                         this.props.handleChangeLong(e.target.value, i)
                       }
-                      onLatLongRemove={i => this.props.handleLatLongRemove(i)}
+                      onLatLongRemove={(i) => this.props.handleLatLongRemove(i)}
                       index={i}
                       latValue={this.props.grid.gridLatLong[i].latitude}
                       longValue={this.props.grid.gridLatLong[i].longitude}
@@ -95,14 +98,16 @@ class CreateGrid extends Component {
               </div>
               <div class="form-group row">
                 <div class="col-sm-12">
-                  <Button btnText="Preview In Map" btnType="primary" />
+                  <Button btnText="Preview In Map" btnType="primary" 
+                    onClick={() => this.props.handleMapPreview(this.state.bounds)}
+                  />
                 </div>
               </div>
             </div>
             <div class="col-md-6 stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Map</h4>
+                  <CreateMap {...this.props} />
                 </div>
               </div>
             </div>

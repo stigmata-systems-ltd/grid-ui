@@ -18,6 +18,7 @@ import {
   GRID_LATLANG,
   GRID_LATLONG_REMOVE,
   RESET_EDIT_GRID_FORM,
+  SET_MAP_PREVIEW,
 } from '../../actions/types';
 
 const mapDispatchToProps = (dispatch, props) => {
@@ -29,6 +30,33 @@ const mapDispatchToProps = (dispatch, props) => {
       dispatch(editGrid(bounds)).then(() => {
         dispatch({ type: RESET_EDIT_GRID_FORM });
         props.history.push("/grid/view");
+      });
+    },
+    handleMapPreview(bounds, maps) {
+      const grid = store.getState().grid;
+      let points = [];
+      grid.gridLatLong.map((item) => {
+        points.push({
+          lat: item.latitude,
+          lng: item.longitude,
+        });
+      });
+
+      for (var i = 0; i < points.length; i++) {
+        bounds.extend(points[i]);
+      }
+      const center = bounds.getCenter();
+      let latLng = center.toString().replace("(", "");
+      latLng = latLng.replace(")", "");
+      latLng = latLng.replace(" ", "");
+      latLng = latLng.replace(" ", "");
+      latLng = latLng.split(",");
+      dispatch({
+        type: SET_MAP_PREVIEW,
+        payload: {
+          lat: parseFloat(latLng[0]),
+          lng: parseFloat(latLng[1]),
+        },
       });
     },
     addLatLang() {
