@@ -9,6 +9,7 @@ import {
   updateLayerProgress,
   getSingleLayerDetails,
   getCompletedLayersByGrid,
+  fetchGrid,
 } from '../../actions/gridActions';
 import {
   GRID_NO_LIST,
@@ -71,10 +72,12 @@ const mapDispatchToProps = dispatch => {
       dispatch({ type: RESET_DPR_FORM });
     },
     handleGridNoChange(value) {
+      console.log(`GridNumberChange: ${value}`);
       dispatch({
         type: GRID_NO,
         payload: value,
       });
+      dispatch(fetchGrid(value));
     },
     handleGridNoChangeDPR(value) {
       dispatch({
@@ -221,7 +224,11 @@ const mapDispatchToProps = dispatch => {
     addQuantity() {
       const grid = store.getState().grid;
       if (grid.quantity !== '' && grid.subContractorName.value !== '0') {
-        const data = { quantity: '', subContractorId: '', subContractorName: ''};
+        const data = {
+          quantity: '',
+          subContractorId: '',
+          subContractorName: '',
+        };
         let changedQty = parseInt(grid.quantity);
         let isNewSubCont = true;
         grid.addedQuantity.map((subCont, index) => {
