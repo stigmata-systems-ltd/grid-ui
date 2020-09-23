@@ -16,11 +16,27 @@ class CreateMap extends Component {
       bounds: new this.props.google.maps.LatLngBounds(),
     };
   }
-//   componentDidUpdate(prevProps, prevState, snapshot) {
-//       if( prevProps.grid.createCenter !== this.props.grid.createCenter) {
-//         this.props.google.maps.panTo(this.props.grid.createCenter);
-//       }
-//   }
+  componentDidMount() {
+    this.recenterMap();
+  }
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (prevProps.grid.createCenter !== this.props.grid.createCenter) {
+      this.recenterMap();
+    }
+  }
+  recenterMap() {
+    const current = this.props.grid.createCenter;
+    const google = this.props.google;
+    const maps = google.maps;
+
+    if (this.map) {
+      let center = new maps.LatLng(current.lat, current.lng);
+      this.map.panTo(center);
+    }
+  }
+  setMaps = (mapProps, map) => {
+    this.map = map;
+  }
   render() {
     return (
       <Map
@@ -34,6 +50,7 @@ class CreateMap extends Component {
         }}
         containerStyle={containerStyle}
         onClick={this.onMapClicked}
+        onMap
       >
         <Marker
           onClick={this.onMarkerClick}
@@ -41,13 +58,13 @@ class CreateMap extends Component {
           position={this.props.grid.createCenter}
         />
         <Polygon
-            paths={transformPolygon(this.props.grid.gridLatLong)}
-            strokeColor="#0000FF"
-            strokeOpacity={0.8}
-            strokeWeight={2}
-            fillColor="#0000FF"
-            fillOpacity={0.35}
-          />
+          paths={transformPolygon(this.props.grid.gridLatLong)}
+          strokeColor="#0000FF"
+          strokeOpacity={0.8}
+          strokeWeight={2}
+          fillColor="#0000FF"
+          fillOpacity={0.35}
+        />
       </Map>
     );
   }

@@ -43,10 +43,6 @@ const mapDispatchToProps = (dispatch) => {
       latLng = latLng.replace(" ", "");
       latLng = latLng.replace(" ", "");
       latLng = latLng.split(",");
-      // maps.panTo({
-      //   lat: parseFloat(latLng[0]),
-      //   lng: parseFloat(latLng[1]),
-      // });
       dispatch({
         type: SET_MAP_PREVIEW,
         payload: {

@@ -479,15 +479,10 @@ export default function(state = initialState, action) {
         rfiInspectionDate: editGridDetails.cG_inspection_date,
         rfiApprovalDate: editGridDetails.cG_approval_date,
         rfiApproval: editGridDetails.status,
-
-        // cgBodyData: [
-        //   {
-        //     RFINumber: editGridDetails.cG_RFIno,
-        //     rfiInspectionDate: editGridDetails.cG_inspection_date,
-        //     rfiApprovalDate: editGridDetails.cG_approval_date,
-        //     status: editGridDetails.status,
-        //   },
-        // ],
+        createCenter: {
+          lat: editGridDetails.marker_latitide,
+          lng: editGridDetails.marker_longitude,
+        }
       };
     case `${LAYER_PROGRESS}_PENDING`:
       return {
