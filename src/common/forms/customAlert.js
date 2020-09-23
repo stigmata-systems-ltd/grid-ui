@@ -17,6 +17,7 @@ class customAlert extends Component {
         const grid = store.getState().grid;
         const client = store.getState().client;
         const roles = store.getState().roles;
+        const pm = store.getState().pm;
         scr.message = '';
         scr.editSubContractor.message = '';
         scr.deleteSubContractor.message = '';
@@ -29,6 +30,7 @@ class customAlert extends Component {
         client.isError = false;
         client.message = '';
         roles.updatePage.message = '';
+        pm.approveLayer.message = '';
       }, 5000);
     });
   }
