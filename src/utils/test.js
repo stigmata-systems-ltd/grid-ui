@@ -24,7 +24,6 @@ export const testData = () => {
       createdBy: "1",
     });
   }
-  console.log(tmpArr);
 };
 
 export const setCompletedLayer = () => {
@@ -66,10 +65,8 @@ export const setCompletedLayer = () => {
 
   axios(config)
     .then(function (response) {
-      console.log(JSON.stringify(response.data));
     })
     .catch(function (error) {
-      console.log(error);
     });
   }
 };

@@ -51,7 +51,6 @@ class ListUser extends Component {
             <CustomDataTable
               metaData={listUserMetaData(
                 (id) => this.setState({ activeId: id, showDeleteModal: true }),
-                (id) => console.log("edit user")
               )}
               bodyData={transformUserList(
                 this.filteredItems(this.props.user.userList)

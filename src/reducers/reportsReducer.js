@@ -17,7 +17,6 @@ export default function(state = initialState, action) {
       };
 
     case `${LIST_SUBCONTRACTOR_REPORT}_REJECTED`:
-      console.log(action);
       return {
         ...state,
         listSubContractorReport: [],
@@ -30,7 +29,6 @@ export default function(state = initialState, action) {
       };
 
     case `${LIST_MASTER_REPORT}_REJECTED`:
-      console.log(action);
       return {
         ...state,
         listMasterReport: [],

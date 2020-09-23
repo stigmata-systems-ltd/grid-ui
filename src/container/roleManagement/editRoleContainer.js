@@ -28,9 +28,6 @@ const mapDispatchToProps = (dispatch, props) => {
       props.history.push('/roles/list');
     },
     handleChange(id, description, type) {
-      console.log(`ID: ${id}`);
-      console.log(`Description: ${description}`);
-      console.log(`Type: ${type}`);
       const listRoleDetailsID = store.getState().roles.listRoleDetailsID;
       listRoleDetailsID[id - 1].pageDetail[`${type}`] = !listRoleDetailsID[
         id - 1

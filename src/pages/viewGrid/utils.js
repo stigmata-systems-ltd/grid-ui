@@ -13,7 +13,6 @@ export const transformGridData = (gridData) => {
         createdDate: grid.createdAt,
       });
     });
-  console.log("tmparr", tmpArr);
   return tmpArr;
 };
 export const _viewGridMetaData = (handleDelete, handleEdit, handleView) => {

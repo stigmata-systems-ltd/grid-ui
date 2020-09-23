@@ -57,7 +57,6 @@ export const viewSCRMetaData = (handleDelete, handleEdit) => {
       name: "Actions",
       sortable: false,
       cell: (row) => {
-        console.log("row", row.id);
         return (
           <>
             <IconButton

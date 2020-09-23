@@ -11,12 +11,10 @@ export const transformSubCatTable = (data) => {
 }
 //Tmp Fix For Demo, Get Support from API and Fix it
 export const transformSubCatReducer = (data, subCatList) => {
-  console.log("dt,subcat",data,subCatList)
   let tmpArr = [];
   data && data.map((item) => {
     subCatList && subCatList.map(subCat => {
       if(item.subContractorId === parseInt(subCat.subContractorId)) {
-        console.log("in if",item.subContractorId,subCat.name)
         tmpArr.push({
           subContractorId: item.subContractorId,
           quantity: item.quantity,
@@ -25,7 +23,6 @@ export const transformSubCatReducer = (data, subCatList) => {
       }
     })
     });
-    console.log(tmpArr);
     return tmpArr;
 }
 export const transformSubCatList = (data) => {
@@ -49,7 +46,6 @@ export const transformLayerList = (layerList) => {
     return tmpArr;
 }
 export const calcProgress = (data) => {
-  console.log("check", parseInt(data) / 15);
   const convData = (parseInt(data) / 15) * 100;
   if (!isNaN(data)) {
     return convData;

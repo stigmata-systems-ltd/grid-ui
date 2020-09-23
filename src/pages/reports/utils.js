@@ -44,7 +44,6 @@ export const transformSubConReport = data => {
         materialDescription: item.materialDesc,
       });
     });
-  console.log('tmparr', tmpArr);
   return tmpArr;
 };
 
@@ -186,6 +185,5 @@ export const transformMasterReport = data => {
         gridStatus: item.gridDetails.status,
       });
     });
-  console.log('tmparr', tmpArr);
   return tmpArr;
 };

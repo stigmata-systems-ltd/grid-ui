@@ -29,6 +29,9 @@ import PlaningManager from './pages/planingManager/PlaningManager';
 import ListRoles from './container/roleManagement/listRoleContainer';
 import EditRole from './container/roleManagement/editRoleContainer';
 class App extends Component {
+  componentDidMount() {
+    console.log("---------------------test----------------")
+  }
   render() {
     return (
       <Router>

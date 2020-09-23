@@ -62,6 +62,5 @@ export const getGridNameFromId = (gridId, gridList) => {
             gridName = grid.gridName;
         }
     })
-    console.log("grid name",gridName);
     return gridName;
 }

@@ -15,7 +15,6 @@ class DataTable extends Component {
             <tr>{this.renderTableHeaders()}</tr>
           </thead>
           <tbody>
-            {console.log('datatable', this.props.bodyData)}
             {this.props.bodyData && this.props.bodyData.length > 0 ? (
               this.props.bodyData.map((data, rowIndex) => {
                 return (

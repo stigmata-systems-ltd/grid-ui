@@ -77,7 +77,6 @@ const mapDispatchToProps = (dispatch, props) => {
     },
     setSingleGridDetails() {
       const grid = store.getState().grid;
-      console.log(`setSingleGridDetails: ${grid.gridNumber}`);
       dispatch(fetchGrid(grid.gridNumber));
       dispatch(fetchLayerDetails(grid.gridNumber));
     },

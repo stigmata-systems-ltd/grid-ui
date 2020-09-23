@@ -58,17 +58,13 @@ class GridDPR extends Component {
   }
 
   CTChange = () => {
-    console.log(`In CT Change - Before : ${this.state.CTCheckBox}`);
     this.setState({ CTCheckBox: !this.state.CTCheckBox });
     this.setState({ enableCT: !this.state.enableCT });
-    console.log(`In CT Change - After : ${this.state.CTCheckBox}`);
   };
 
   LVChange = () => {
-    console.log(`In LV Change - Before : ${this.state.LVCheckBox}`);
     this.setState({ LVCheckBox: !this.state.LVCheckBox });
     this.setState({ enableLV: !this.state.enableLV });
-    console.log(`In LV Change - After : ${this.state.LVCheckBox}`);
   };
 
   handleGridSelection = val => {

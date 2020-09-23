@@ -213,7 +213,6 @@ export const getSingleLayerDetails = (selectedLayer, selectedGrid) => {
 };
 export const editGridDetails = id => {
   // const grid = store.getState().grid;
-  // console.log(`Selected SCR ID: ${grid.listGridDetails[i]}`);
   // const selectedGrid = grid.listGridDetails[i];
 
   return {
@@ -240,9 +239,6 @@ export const fetchLayerDetails = gridId => {
 
 export const fetchLayerInfo = i => {
   const grid = store.getState().grid;
-  console.log(
-    `Layer Data Details for ${i} : ${JSON.stringify(grid.layerDataDetails)}`
-  );
 
   const singleLayerDetails = {
     gridNo: grid.layerDataDetails[i].gridNo,

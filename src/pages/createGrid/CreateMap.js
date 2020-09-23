@@ -22,7 +22,6 @@ class CreateMap extends Component {
 //       }
 //   }
   render() {
-      console.log("center",this.props.grid.createCenter);
     return (
       <Map
         google={this.props.google}

@@ -33,6 +33,5 @@ export const validate = scr => {
     // subContractorEmail: scr.subContractorEmail,
   };
   const result = Joi.validate(validationData, schema, { abortEarly: false });
-  console.log('result from validation', result);
   return result;
 };
