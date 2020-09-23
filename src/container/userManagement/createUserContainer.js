@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import CreateUser from '../../pages/userManagement/createUser';
 import store from '../../store';
-import { createUser, getUserRoles } from '../../actions/userManagementActions';
+import { createUser, getUserRoles, updateUser } from '../../actions/userManagementActions';
 import {
   FIRST_NAME,
   LAST_NAME,
@@ -12,6 +12,9 @@ import {
   ROLENAME,
   RESET_CREATE_USER_FORM,
   CHANGE_ADD_USER_MODAL_STATUS,
+  SHOW_ADD_USER_MSG,
+  SET_USER_EDIT_MODE,
+  REMOVE_MODAL_ERROR_MSG,
 } from '../../actions/types';
 
 const mapDispatchToProps = dispatch => {
@@ -19,7 +22,32 @@ const mapDispatchToProps = dispatch => {
     createUser() {
       dispatch(createUser()).then(() => {
         dispatch({ type: RESET_CREATE_USER_FORM });
-        this.closeAddUserModal();
+        dispatch({
+          type: CHANGE_ADD_USER_MODAL_STATUS,
+          payload: false,
+        })
+        dispatch({
+          type: SHOW_ADD_USER_MSG,
+          payload: true,
+        })
+      });
+    },
+    updateUser() {
+      dispatch(updateUser()).then(() => {
+        dispatch({
+          type: SET_USER_EDIT_MODE,
+          payload: false,
+        })
+        dispatch({ type: RESET_CREATE_USER_FORM });
+        dispatch({
+          type: CHANGE_ADD_USER_MODAL_STATUS,
+          payload: false,
+        })
+        dispatch({
+          type: SHOW_ADD_USER_MSG,
+          payload: true,
+        })
+        
       });
     },
     getUserRoles() {
@@ -70,6 +98,25 @@ const mapDispatchToProps = dispatch => {
     closeAddUserModal() {
       dispatch({
         type: CHANGE_ADD_USER_MODAL_STATUS,
+        payload: false,
+      })
+      dispatch({
+        type: REMOVE_MODAL_ERROR_MSG,
+        payload: false,
+      })
+    },
+    closeEditUserModal() {
+      dispatch({ type: RESET_CREATE_USER_FORM })
+      dispatch({
+        type: CHANGE_ADD_USER_MODAL_STATUS,
+        payload: false,
+      })
+      dispatch({
+        type: SET_USER_EDIT_MODE,
+        payload: false,
+      })
+      dispatch({
+        type: REMOVE_MODAL_ERROR_MSG,
         payload: false,
       })
     }
