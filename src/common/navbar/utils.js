@@ -88,14 +88,14 @@ export const metaDataNavbar = [
   {
     id: '6',
     navText: 'Planning Manager',
-    iconName: 'faUser',
+    iconName: 'faUserTie',
     hasSubNav: false,
     route: '/planingmanager',
   },
   {
     id: '7',
     navText: 'Role Management',
-    iconName: 'faUser',
+    iconName: 'faUsersCog',
     hasSubNav: false,
     route: '/roles/list',
   },
