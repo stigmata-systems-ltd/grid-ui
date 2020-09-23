@@ -18,6 +18,7 @@ class customAlert extends Component {
         const client = store.getState().client;
         const roles = store.getState().roles;
         const pm = store.getState().pm;
+        const user = store.getState().user;
         scr.message = '';
         scr.editSubContractor.message = '';
         scr.deleteSubContractor.message = '';
@@ -31,6 +32,7 @@ class customAlert extends Component {
         client.message = '';
         roles.updatePage.message = '';
         pm.approveLayer.message = '';
+        user.isAddUserMsg = false;
       }, 5000);
     });
   }

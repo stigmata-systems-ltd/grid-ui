@@ -39,9 +39,9 @@ class ListUser extends Component {
   render() {
     return (
       <ContentLoader>
-        {(this.props.user.isSuccess || this.props.user.isError) && (
+        {this.props.user.isAddUserMsg && (
           <CustomAlert
-            variant={this.props.user.isSuccess ? "success" : "danger"}
+            variant="success"
             message={this.props.user.message}
           />
         )}
@@ -51,6 +51,7 @@ class ListUser extends Component {
             <CustomDataTable
               metaData={listUserMetaData(
                 (id) => this.setState({ activeId: id, showDeleteModal: true }),
+                (id) => this.props.handleEditUser(id),
               )}
               bodyData={transformUserList(
                 this.filteredItems(this.props.user.userList)

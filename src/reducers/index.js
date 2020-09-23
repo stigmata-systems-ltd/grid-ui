@@ -7,6 +7,7 @@ import roles from './roleManagementReducer';
 import reports from './reportsReducer';
 import planningManager from './planningManagerReducer';
 import userManagementReducer from './userManagementReducer';
+
 const rootReducer = combineReducers({
   scr: subContractorReducer,
   grid: gridReducer,
