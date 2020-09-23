@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import CreateGrid from "../../pages/createGrid/CreateGrid";
 import store from "../../store";
+import { withRouter } from "react-router-dom";
 import { addGrid, addLatLang, createGrid } from "../../actions/gridActions";
 import {
   ADD_GRID,
@@ -14,7 +15,7 @@ import {
   SET_MAP_PREVIEW,
 } from "../../actions/types";
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, props) => {
   return {
     resetGridForm() {
       dispatch({ type: RESET_CREATE_GRID_FORM });
@@ -53,6 +54,7 @@ const mapDispatchToProps = (dispatch) => {
     },
     resetCreateGridData() {
       dispatch({ type: RESET_CREATE_GRID_FORM });
+      props.history.push('/grid/view');
     },
     addLatLang() {
       dispatch(addLatLang());
@@ -107,4 +109,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateGrid);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateGrid));

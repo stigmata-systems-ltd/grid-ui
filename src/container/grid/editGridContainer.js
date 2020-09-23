@@ -1,6 +1,6 @@
-import { connect } from 'react-redux';
-import EditGrid from '../../pages/editGrid/editGrid';
-import store from '../../store';
+import { connect } from "react-redux";
+import EditGrid from "../../pages/editGrid/editGrid";
+import store from "../../store";
 import { withRouter } from "react-router-dom";
 import {
   editGrid,
@@ -8,7 +8,7 @@ import {
   fetchGrid,
   gridNoList,
   fetchLayerDetails,
-} from '../../actions/gridActions';
+} from "../../actions/gridActions";
 import {
   ADD_GRID,
   GRID_NUMBER,
@@ -19,7 +19,7 @@ import {
   GRID_LATLONG_REMOVE,
   RESET_EDIT_GRID_FORM,
   SET_MAP_PREVIEW,
-} from '../../actions/types';
+} from "../../actions/types";
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
@@ -31,6 +31,10 @@ const mapDispatchToProps = (dispatch, props) => {
         dispatch({ type: RESET_EDIT_GRID_FORM });
         props.history.push("/grid/view");
       });
+    },
+    resetEditGridData() {
+      dispatch({ type: RESET_EDIT_GRID_FORM });
+      props.history.push("/grid/view");
     },
     handleMapPreview(bounds, maps) {
       const grid = store.getState().grid;
@@ -111,11 +115,13 @@ const mapDispatchToProps = (dispatch, props) => {
   };
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   const grid = store.getState().grid;
   return {
     grid,
   };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EditGrid));
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(EditGrid)
+);

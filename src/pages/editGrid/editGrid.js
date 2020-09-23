@@ -106,7 +106,7 @@ class CreateGrid extends Component {
             </div>
             <div class="col-md-6 stretch-card">
               <div class="card">
-                <div class="card-body">
+                <div class="card-body map-height">
                   <CreateMap {...this.props} />
                 </div>
               </div>
@@ -117,7 +117,9 @@ class CreateGrid extends Component {
             btnType="primary"
             onClick={() => this.props.editGrid(this.state.bounds)}
           />
-          <Button btnText="Cancel" btnType="cancel" />
+          <Button btnText="Cancel" btnType="cancel" 
+          onClick={this.props.resetEditGridData}
+           />
         </FormContainer>
       </ContentLoader>
     );

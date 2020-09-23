@@ -18,10 +18,18 @@ class CreateUser extends Component {
   render() {
     return (
       <Modal
-        title="Create New User"
+        title={`${this.props.user.isEditMode ? "Update" : "Create New"} User`}
         showModal={this.props.showAddUserModal}
-        handleSave={this.props.createUser}
-        handleClose={this.props.closeAddUserModal}
+        handleSave={
+          this.props.user.isEditMode
+            ? this.props.updateUser
+            : this.props.createUser
+        }
+        handleClose={
+          this.props.user.isEditMode
+            ? this.props.closeEditUserModal
+            : this.props.closeAddUserModal
+        }
         size="lg"
         isShowFooter={true}
       >
@@ -73,6 +81,9 @@ class CreateUser extends Component {
             value={this.props.user.roleName}
           />
         </FormRow>
+        {this.props.user.isModalMsg && (
+          <p className="text-danger">{this.props.user.message}</p>
+        )}
       </Modal>
     );
   }
