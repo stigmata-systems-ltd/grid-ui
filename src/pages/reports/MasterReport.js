@@ -26,7 +26,10 @@ class MasterReport extends Component {
     return (
       <ContentLoader>
         <FormContainer formTitle={'Master Report'}>
-          <DateFilter />
+          <DateFilter
+            onChangeFrom={e => this.props.handleFromDateChange(e.target.value)}
+            onChangeTo={e => this.props.handleToDateChange(e.target.value)}
+          />
           <FormRow>
             <CustomDataTable
               metaData={_masterReportMetaData()}

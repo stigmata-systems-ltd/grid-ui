@@ -4,15 +4,30 @@ import axios from 'axios';
 import config from '../config';
 
 export const fetchSCRReport = () => {
+  const reports = store.getState().reports;
   return {
     type: LIST_SUBCONTRACTOR_REPORT,
-    payload: axios.get(config.BASE_URL + '/api/Reports/SubContracorReport'),
+    payload: axios.get(
+      config.BASE_URL +
+        '/api/Reports/SubContracorReport?startDate=' +
+        reports.fromDateSCR +
+        '&endDate=' +
+        reports.toDateSCR
+    ),
   };
 };
 
 export const fetchMasterReport = () => {
+  const reports = store.getState().reports;
+
   return {
     type: LIST_MASTER_REPORT,
-    payload: axios.get(config.BASE_URL + '/api/Reports/MasterReport'),
+    payload: axios.get(
+      config.BASE_URL +
+        '/api/Reports/MasterReport?startDate=' +
+        reports.fromDateMaster +
+        '&endDate=' +
+        reports.toDateMaster
+    ),
   };
 };
