@@ -77,6 +77,73 @@ export const _subContractorReportMetaData = () => {
   ];
 };
 
+export const masterExcelHeaders = [
+    {
+      label: 'Grid No',
+      key: 'gridNo',
+    },
+    {
+      label: 'Grid Area',
+      key: 'gridArea',
+    },
+    {
+      label: 'C&G RFI App Date',
+      key: 'cgRFIAppDate',
+    },
+    {
+      label: 'C&G RFI App Status',
+      key: 'cgRFIAppStatus',
+    },
+    {
+      label: 'Layer No',
+      key: 'layerNo',
+    },
+    {
+      label: 'Tot Quantity',
+      key: 'totQuantity',
+    },
+    {
+      label: 'Date of Filling',
+      key: 'dateofFilling',
+    },
+    {
+      label: 'Fill Type',
+      selector: 'fillType',
+    },
+    {
+      label: 'Material Descrp',
+      key: 'materialDescrp',
+    },
+    {
+      label: 'RFI level App Date',
+      key: 'rfiLevelAppDate',
+    },
+    {
+      label: 'RFI level Status',
+      key: 'rfiLevelStatus',
+    },
+    {
+      label: 'RFI Testing App Date',
+      key: 'rfiTestingAppDate',
+    },
+    {
+      label: 'RFI Testing Status',
+      key: 'rfiTestingStatus',
+    },
+    {
+      label: 'Layer Status',
+      key: 'layerStatus',
+    },
+    {
+      label: 'Client Billed',
+      key: 'clientBilled',
+    },
+    {
+      label: 'Grid Status',
+      key: 'gridStatus',
+    }
+]
+
 export const _masterReportMetaData = () => {
   return [
     {
