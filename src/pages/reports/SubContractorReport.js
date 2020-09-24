@@ -30,7 +30,10 @@ class SubContractorReport extends Component {
     return (
       <ContentLoader>
         <FormContainer formTitle={'Sub-Contractor Report'}>
-          <DateFilter />
+          <DateFilter
+            onChangeFrom={e => this.props.handleFromDateChange(e.target.value)}
+            onChangeTo={e => this.props.handleToDateChange(e.target.value)}
+          />
           <FormRow>
             <CustomDataTable
               metaData={_subContractorReportMetaData()}

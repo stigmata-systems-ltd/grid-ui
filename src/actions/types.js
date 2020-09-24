@@ -125,3 +125,7 @@ export const LIST_MASTER_REPORT = 'LIST_MASTER_REPORT';
 
 export const LIST_LAYER_PM = 'LIST_LAYER_PM';
 export const APPROVE_LAYER_PM = 'APPROVE_LAYER_PM';
+export const FROM_DATE_MASTER = 'FROM_DATE_MASTER';
+export const TO_DATE_MASTER = 'TO_DATE_MASTER';
+export const FROM_DATE_SCR = 'FROM_DATE_SCR';
+export const TO_DATE_SCR = 'TO_DATE_SCR';
