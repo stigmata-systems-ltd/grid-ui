@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import Col6 from '../../common/forms/Col6';
+import React, { Component } from "react";
+import Col6 from "../../common/forms/Col6";
+import ExportExcel from "../../common/ExportExcel";
 
 class DateFilter extends Component {
   render() {
@@ -12,7 +13,7 @@ class DateFilter extends Component {
               <input
                 type="date"
                 class="form-control"
-                onChange={e => this.props.onChangeFrom(e)}
+                onChange={(e) => this.props.onChangeFrom(e)}
                 value={this.props.value}
               />
             </div>
@@ -25,7 +26,7 @@ class DateFilter extends Component {
               <input
                 type="date"
                 class="form-control"
-                onChange={e => this.props.onChangeTo(e)}
+                onChange={(e) => this.props.onChangeTo(e)}
                 value={this.props.value}
               />
             </div>
@@ -35,7 +36,11 @@ class DateFilter extends Component {
         <div class="col-md-3">
           <div class="form-group row">
             <div class="input-group md-form form-sm form-1 pl-0">
-              <button className="btn btn-success ">Download to Excel</button>
+              <ExportExcel
+                data={this.props.bodyData}
+                // header={this.props.headers}
+                filename={this.props.fileName}
+              />
             </div>
           </div>
         </div>

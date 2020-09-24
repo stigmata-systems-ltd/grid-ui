@@ -33,6 +33,10 @@ class SubContractorReport extends Component {
           <DateFilter
             onChangeFrom={e => this.props.handleFromDateChange(e.target.value)}
             onChangeTo={e => this.props.handleToDateChange(e.target.value)}
+            bodyData={transformSubConReport(
+              this.props.reports.listSubContractorReport
+            )}
+            fileName="SubcontractorReport"
           />
           <FormRow>
             <CustomDataTable
