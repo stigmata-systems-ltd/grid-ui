@@ -19,6 +19,7 @@ import {
   SHOW_ADD_USER_MSG,
   SET_USER_EDIT_MODE,
   REMOVE_MODAL_ERROR_MSG,
+  SHOW_PM_VIEW_MODEL,
 } from '../../actions/types';
 
 const mapDispatchToProps = dispatch => {
@@ -123,6 +124,12 @@ const mapDispatchToProps = dispatch => {
         payload: false,
       });
     },
+    hidePmViewModal() {
+      dispatch({
+        type: SHOW_PM_VIEW_MODEL,
+        payload: false,
+      });
+    }
   };
 };
 

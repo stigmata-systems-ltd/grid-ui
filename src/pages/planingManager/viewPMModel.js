@@ -16,8 +16,8 @@ class ViewPMModel extends Component {
     return (
       <Modal
         title={'View Layer'}
-        showModal={true}
-        // handleClose={this.props.closePMViewModal}
+        showModal={this.props.pm.showPMViewModal}
+        handleClose={this.props.hidePmViewModal}
         size="lg"
         isShowFooter={false}
       >
