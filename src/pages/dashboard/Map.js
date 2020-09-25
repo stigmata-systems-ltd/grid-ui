@@ -61,7 +61,7 @@ class GridMap extends Component {
         }}
         style={{
           width: "100%",
-          height: "100%",
+          height: "500px",
         }}
         containerStyle={containerStyle}
         onClick={this.onMapClicked}

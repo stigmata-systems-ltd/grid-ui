@@ -137,6 +137,15 @@ select.form-control {
   height: 58px;
 }
 
+/*Dashboard
+**********/
+#reactgooglegraph-1 {
+  padding: 0px;
+}
+#reactgooglegraph-1 > div:first-child {
+  padding: 0px;
+}
+
 /*Grid DPR
 ************/
 .dpr-remark-fix {
