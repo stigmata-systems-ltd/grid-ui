@@ -137,6 +137,27 @@ select.form-control {
   height: 58px;
 }
 
+/*Dashboard
+**********/
+#reactgooglegraph-1 {
+  padding: 0px;
+}
+#reactgooglegraph-1 > div:first-child {
+  padding: 0px;
+}
+.dashboard-filters .card-body {
+  padding: 15px 0 0 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dashboard-filters .row {
+  width: 100%;
+}
+.dashboard-filters .form-check {
+  margin-right: 5%;
+}
+
 /*Grid DPR
 ************/
 .dpr-remark-fix {
