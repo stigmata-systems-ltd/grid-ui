@@ -3,14 +3,16 @@ import ContentLoader from "../../common/ContentLoader";
 import Overview from "./Overview";
 import LineChart from "../../common/forms/charts/LineChart";
 import Map from "./Map";
+import DashboardFilters from "./DashboardFilters";
 
 class Dashboard extends Component {
   render() {
     return (
       <ContentLoader>
+        <DashboardFilters />
         <Overview />
         <div class="row">
-          <div class="col-lg-12 grid-margin grid-margin-lg-0 stretch-card">
+          <div class="col-lg-7 grid-margin grid-margin-lg-0 stretch-card">
             <div class="card">
               <div class="card-body">
                 <h4 class="card-title">Layers Chart </h4>
@@ -18,9 +20,7 @@ class Dashboard extends Component {
               </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-12 grid-margin grid-margin-lg-0 stretch-card">
+          <div class="col-lg-5 grid-margin grid-margin-lg-0 stretch-card">
             <div class="card">
               <div class="card-body">
                 <h4 class="card-title">Grid Map</h4>
