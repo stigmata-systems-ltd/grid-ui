@@ -1,8 +1,13 @@
-import { LIST_LAYER_PM, APPROVE_LAYER_PM } from '../actions/types';
+import {
+  LIST_LAYER_PM,
+  APPROVE_LAYER_PM,
+  SHOW_PM_VIEW_MODEL,
+} from '../actions/types';
 
 const initialState = {
   layerList: [],
   approveLayer: { message: '' },
+  showPMViewModal: false,
 };
 
 export default function(state = initialState, action) {
@@ -33,6 +38,13 @@ export default function(state = initialState, action) {
       return {
         ...state,
         approveLayer: { message: 'Error Occurred', variant: 'danger' },
+      };
+
+    case SHOW_PM_VIEW_MODEL:
+      console.log(action);
+      return {
+        ...state,
+        showPMViewModal: action.payload,
       };
 
     default:

@@ -6,14 +6,18 @@ import CustomDataTable from '../../common/CustomDataTable';
 import CustomAlert from '../../common/forms/customAlert';
 import { _planningManagerMetaData, transformLayerData } from './utils';
 import PlaningManagerDataTable from './PlaningManagerDataTable';
-
+import Col6 from '../../common/forms/Col6';
+import Button from '../../common/forms/Button';
+import viewPMModel from '../../container/planningManager/viewPMContainer';
 class PlaningManager extends Component {
   componentDidMount() {
     this.props.fetchLayerData();
   }
   render() {
+    console.log(`show view: ${this.props.pm.showPMViewModal}`);
     return (
       <ContentLoader>
+        <viewPMModel showPMViewModal={this.props.pm.showPMViewModal} />
         <FormContainer formTitle={'Planning Manager'}>
           <div>
             {this.props.pm.approveLayer.message ? (
@@ -27,7 +31,8 @@ class PlaningManager extends Component {
             <CustomDataTable
               metaData={_planningManagerMetaData(
                 id => this.props.approveLayer(id),
-                id => this.props.editLayer(id)
+                id => this.props.editLayer(id),
+                id => this.props.viewLayer(id)
               )}
               bodyData={transformLayerData(this.props.pm.layerList)}
               pagination={true}
