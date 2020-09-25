@@ -1,6 +1,7 @@
 import React from 'react';
 import IconButton from '../../common/forms/IconButton';
 import Button from '../../common/forms/Button';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 export const _planningManagerMetaData = (
   approveLayer,
@@ -56,7 +57,10 @@ export const _planningManagerMetaData = (
         return (
           <>
             <IconButton iconName="faEye" onClick={() => viewLayer(row.id)} />
-            <IconButton iconName="faEdit" onClick={() => editLayer(row.id)} />
+            <Link to="/grid/dpr">
+              <IconButton iconName="faEdit" onClick={() => editLayer(row.id)} />
+            </Link>
+
             <IconButton
               iconName="faThumbsUp"
               onClick={() => approveLayer(row.id)}
