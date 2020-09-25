@@ -129,3 +129,4 @@ export const FROM_DATE_MASTER = 'FROM_DATE_MASTER';
 export const TO_DATE_MASTER = 'TO_DATE_MASTER';
 export const FROM_DATE_SCR = 'FROM_DATE_SCR';
 export const TO_DATE_SCR = 'TO_DATE_SCR';
+export const SHOW_PM_VIEW_MODEL = 'SHOW_PM_VIEW_MODEL';

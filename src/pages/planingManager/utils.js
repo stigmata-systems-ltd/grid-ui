@@ -2,7 +2,11 @@ import React from 'react';
 import IconButton from '../../common/forms/IconButton';
 import Button from '../../common/forms/Button';
 
-export const _planningManagerMetaData = (approveLayer, editLayer) => {
+export const _planningManagerMetaData = (
+  approveLayer,
+  editLayer,
+  viewLayer
+) => {
   return [
     {
       name: 'Grid No',
@@ -51,6 +55,7 @@ export const _planningManagerMetaData = (approveLayer, editLayer) => {
         console.log('row', row.id);
         return (
           <>
+            <IconButton iconName="faEye" onClick={() => viewLayer(row.id)} />
             <IconButton iconName="faEdit" onClick={() => editLayer(row.id)} />
             <IconButton
               iconName="faThumbsUp"
