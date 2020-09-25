@@ -8,7 +8,7 @@ import { _planningManagerMetaData, transformLayerData } from './utils';
 import PlaningManagerDataTable from './PlaningManagerDataTable';
 import Col6 from '../../common/forms/Col6';
 import Button from '../../common/forms/Button';
-import viewPMModel from '../../container/planningManager/viewPMContainer';
+import ViewPMContainer from '../../container/planningManager/ViewPMContainer';
 class PlaningManager extends Component {
   componentDidMount() {
     this.props.fetchLayerData();
@@ -17,7 +17,7 @@ class PlaningManager extends Component {
     console.log(`show view: ${this.props.pm.showPMViewModal}`);
     return (
       <ContentLoader>
-        <viewPMModel showPMViewModal={this.props.pm.showPMViewModal} />
+        <ViewPMContainer showPMViewModal={this.props.pm.showPMViewModal} />
         <FormContainer formTitle={'Planning Manager'}>
           <div>
             {this.props.pm.approveLayer.message ? (
