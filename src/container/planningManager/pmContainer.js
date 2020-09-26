@@ -19,6 +19,7 @@ import {
   SHOW_PM_VIEW_MODEL,
   DPR_GRID_NO_CHANGE,
   LAYER_NO,
+  VIEW_MODEL_RESULT,
 } from '../../actions/types';
 import { propTypes } from 'react-bootstrap/esm/Image';
 
@@ -34,7 +35,11 @@ const mapDispatchToProps = (dispatch, props) => {
     viewLayer(id) {
       console.log(`ViewLayer ID is: ${id}`);
       const pm = store.getState().pm;
-
+      const result = pm.layerList.filter(res => res.layerDtlsId === id);
+      dispatch({
+        type: VIEW_MODEL_RESULT,
+        payload: result,
+      });
       dispatch({
         type: SHOW_PM_VIEW_MODEL,
         payload: true,

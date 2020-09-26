@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import FormRow from '../../common/forms/FormRow';
 import TextInput from '../../common/forms/TextInput';
+import Label from '../../common/forms/Label';
 import SimpleDropDown from '../../common/forms/SimpleDropDown';
 import Modal from '../../common/Modal';
 import Loader from '../../common/Loader';
@@ -22,53 +23,53 @@ class ViewPMModel extends Component {
         isShowFooter={false}
       >
         <FormRow>
-          <TextInput
+          <Label
             label="Grid Number"
             name="gridNumber"
             id="gridNumber"
-            value={this.props.grid.gridNumber}
+            value={this.props.pm.viewGridNumber}
           />
-          <TextInput
+          <Label
             label="Layer Number"
             name="layerNumber"
             id="layerNumber"
-            value={this.props.grid.LayerNumber}
+            value={this.props.pm.viewLayerNumber}
           />
         </FormRow>
         <FormRow>
-          <TextInput
+          <Label
             label="RFI Level Approval Date"
             name="rfiLVApprovalDate"
             id="rfiLVApprovalDate"
-            value={this.props.grid.rfiLVApprovalDate}
+            value={this.props.pm.viewRfiLVApprovalDate}
           />
-          <TextInput
+          <Label
             label="RFI Level Approval Status"
             name="rfiLVApprovalDate"
             id="rfiLVApprovalStatus"
-            value={this.props.grid.rfiLVApprovalStatus}
+            value={this.props.pm.viewRfiLVApprovalStatus}
           />
         </FormRow>
         <FormRow>
-          <TextInput
+          <Label
             label="RFI Testing Approval Date"
             name="rfiCTApprovalDate"
             id="rfiCTApprovalDate"
-            value={this.props.grid.rfiCTApprovalDate}
+            value={this.props.pm.viewRfiCTApprovalDate}
           />
-          <TextInput
+          <Label
             label="RFI Testing Approval Status"
             name="rfiCTApprovalDate"
             id="rfiCTApprovalStatus"
-            value={this.props.grid.rfiCTApprovalStatus}
+            value={this.props.pm.viewRfiCTApprovalStatus}
           />
         </FormRow>
         <FormRow>
-          <TextInput
+          <Label
             label="Layer Status"
             name="layerStatus"
             id="layerStatus"
-            value={this.props.grid.layerStatus}
+            value={this.props.pm.viewLayerStatus}
           />
         </FormRow>
       </Modal>

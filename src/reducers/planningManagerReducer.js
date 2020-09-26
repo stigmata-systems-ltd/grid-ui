@@ -2,12 +2,20 @@ import {
   LIST_LAYER_PM,
   APPROVE_LAYER_PM,
   SHOW_PM_VIEW_MODEL,
+  VIEW_MODEL_RESULT,
 } from '../actions/types';
 
 const initialState = {
   layerList: [],
   approveLayer: { message: '' },
   showPMViewModal: false,
+  viewGridNumber: '',
+  viewLayerNumber: '',
+  viewRfiLVApprovalDate: '',
+  viewRfiLVApprovalStatus: '',
+  viewRfiCTApprovalDate: '',
+  viewRfiCTApprovalStatus: '',
+  viewLayerStatus: '',
 };
 
 export default function(state = initialState, action) {
@@ -45,6 +53,18 @@ export default function(state = initialState, action) {
       return {
         ...state,
         showPMViewModal: action.payload,
+      };
+    case VIEW_MODEL_RESULT:
+      const result = action.payload;
+      return {
+        ...state,
+        viewGridNumber: result[0].gridNo,
+        viewLayerNumber: result[0].layerNo,
+        viewRfiLVApprovalDate: result[0].lV_approval_date,
+        viewRfiLVApprovalStatus: result[0].lV_RFI_status,
+        viewRfiCTApprovalDate: result[0].cT_approval_date,
+        viewRfiCTApprovalStatus: result[0].cT_RFI_status,
+        viewLayerStatus: result[0].status,
       };
 
     default:
