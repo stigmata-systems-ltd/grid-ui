@@ -3,7 +3,11 @@ import ContentLoader from '../../common/ContentLoader';
 import FormContainer from '../../common/forms/FormContainer';
 import FormRow from '../../common/forms/FormRow';
 
-import { _masterReportMetaData, transformMasterReport, masterExcelHeaders } from './utils';
+import {
+  _masterReportMetaData,
+  transformMasterReport,
+  masterExcelHeaders,
+} from './utils';
 import DataTable from '../../common/DataTable';
 import DateFilter from './DateFilter';
 import CustomDataTable from '../../common/CustomDataTable';
@@ -20,6 +24,7 @@ class MasterReport extends Component {
     };
   }
   componentDidMount() {
+    this.props.resetDate();
     this.props.fetchMasterReport();
   }
   render() {

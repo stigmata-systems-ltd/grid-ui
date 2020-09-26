@@ -511,6 +511,11 @@ export default function(state = initialState, action) {
     case RESET_DPR_FORM:
       return {
         ...state,
+        gridNo: '',
+        RFINumber: '',
+        rfiInspectionDate: '',
+        rfiApprovalDate: '',
+        rfiApproval: '',
         isLayerDtlsLoading: false,
         layerUpdateMsg: '',
         dprGridNum: '',

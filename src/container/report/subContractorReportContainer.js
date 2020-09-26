@@ -36,6 +36,16 @@ const mapDispatchToProps = (dispatch, props) => {
       });
       dispatch(fetchSCRReport());
     },
+    resetDate() {
+      dispatch({
+        type: FROM_DATE_SCR,
+        payload: '',
+      });
+      dispatch({
+        type: TO_DATE_SCR,
+        payload: '',
+      });
+    },
   };
 };
 

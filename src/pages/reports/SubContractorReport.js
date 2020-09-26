@@ -24,6 +24,7 @@ class SubContractorReport extends Component {
     };
   }
   componentDidMount() {
+    this.props.resetDate();
     this.props.fetchSCRReport();
   }
   render() {

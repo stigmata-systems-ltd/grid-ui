@@ -24,6 +24,16 @@ const mapDispatchToProps = (dispatch, props) => {
       });
       dispatch(fetchMasterReport());
     },
+    resetDate() {
+      dispatch({
+        type: FROM_DATE_MASTER,
+        payload: '',
+      });
+      dispatch({
+        type: TO_DATE_MASTER,
+        payload: '',
+      });
+    },
   };
 };
 
