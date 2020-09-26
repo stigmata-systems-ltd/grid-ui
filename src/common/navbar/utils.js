@@ -1,3 +1,12 @@
+import store from "../../store";
+
+export const getNavbar = () => {
+  const auth = store.getState().auth;
+  let tmpArr = [];
+  auth.pageAccess && auth.pageAccess.map(item => {
+    
+  })
+}
 export const metaDataNavbar = [
   {
     id: '1',

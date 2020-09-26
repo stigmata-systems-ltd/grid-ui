@@ -28,9 +28,10 @@ import SubContractorReport from './container/report/subContractorReportContainer
 import PlaningManager from './container/planningManager/pmContainer';
 import ListRoles from './container/roleManagement/listRoleContainer';
 import EditRole from './container/roleManagement/editRoleContainer';
+import { setPageAccess } from "./actions/authActions";
 class App extends Component {
   componentDidMount() {
-    console.log('---------------------test----------------');
+    setPageAccess();
   }
   render() {
     return (

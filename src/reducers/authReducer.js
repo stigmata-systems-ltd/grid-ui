@@ -4,12 +4,14 @@ import {
   AUTHENTICATE_USER,
   SET_TOKEN,
   RESET_LOGIN_DETAILS,
+  SET_PAGE_ACCESS,
 } from "../actions/types";
 
 const initialState = {
   username: "",
   password: "",
   isLoginError: false,
+  pageAccess: null,
 };
 
 export default function (state = initialState, action) {
@@ -39,8 +41,9 @@ export default function (state = initialState, action) {
       return {
         ...state,
         isLoginError: true,
-        loginMessage: action.payload.response.data.errors ?
-          action.payload.response.data.errors.Password[0] : action.payload.response.data.message,
+        loginMessage: action.payload.response.data.errors
+          ? action.payload.response.data.errors.Password[0]
+          : action.payload.response.data.message,
         isLoginLoading: false,
       };
     case SET_TOKEN:
@@ -54,6 +57,11 @@ export default function (state = initialState, action) {
         username: "",
         password: "",
         isLoginError: false,
+      };
+    case `${SET_PAGE_ACCESS}_FULFILLED`:
+      return {
+        ...state,
+        pageAccess: action.payload.data,
       };
     default:
       return state;
