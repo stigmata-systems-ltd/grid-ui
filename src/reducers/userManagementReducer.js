@@ -74,9 +74,9 @@ export default function (state = initialState, action) {
     case `${ADD_USER}_PENDING`:
       return {
         ...state,
-        isLoading: false,
+        isLoading: true,
         isError: false,
-        isSuccess: true,
+        isSuccess: false,
         isModalMsg: false,
       };
     case `${ADD_USER}_REJECTED`:

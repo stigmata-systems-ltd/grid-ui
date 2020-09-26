@@ -33,6 +33,7 @@ class CreateUser extends Component {
         size="lg"
         isShowFooter={true}
       >
+        {console.log("isLoading",this.props.isLoading)}
         {this.props.isLoading && <Loader />}
         <FormRow>
           <TextInput

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import CreateUser from '../../pages/userManagement/createUser';
 import store from '../../store';
-import { createUser, getUserRoles, updateUser } from '../../actions/userManagementActions';
+import { createUser, getUserRoles, updateUser, getUsers } from '../../actions/userManagementActions';
 import {
   FIRST_NAME,
   LAST_NAME,
@@ -21,6 +21,7 @@ const mapDispatchToProps = dispatch => {
   return {
     createUser() {
       dispatch(createUser()).then(() => {
+        dispatch(getUsers());
         dispatch({ type: RESET_CREATE_USER_FORM });
         dispatch({
           type: CHANGE_ADD_USER_MODAL_STATUS,
@@ -34,6 +35,7 @@ const mapDispatchToProps = dispatch => {
     },
     updateUser() {
       dispatch(updateUser()).then(() => {
+        dispatch(getUsers());
         dispatch({
           type: SET_USER_EDIT_MODE,
           payload: false,
