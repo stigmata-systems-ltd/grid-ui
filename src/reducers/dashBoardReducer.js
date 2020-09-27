@@ -1,7 +1,17 @@
-import { LIST_DASHBOARD_DETAILS } from '../actions/types';
+import {
+  LIST_DASHBOARD_DETAILS,
+  YEAR_CHECK,
+  SIX_MONTH_CHECK,
+  MONTH_CHECK,
+  TILLDATE_CHECK,
+} from '../actions/types';
 
 const initialState = {
   dashboardData: {},
+  yearCheck: false,
+  sixMonthCheck: false,
+  monthCheck: false,
+  tillDateCheck: false,
 };
 
 export default function(state = initialState, action) {
@@ -25,11 +35,55 @@ export default function(state = initialState, action) {
       return {
         ...state,
         dashboardData,
+        isListDashboardDetailsLoading: false,
+      };
+    case `${LIST_DASHBOARD_DETAILS}_PENDING`:
+      console.log(action);
+      return {
+        ...state,
+        isListDashboardDetailsLoading: true,
       };
     case `${LIST_DASHBOARD_DETAILS}_REJECTED`:
       console.log(action);
       return {
         ...state,
+        isListDashboardDetailsLoading: false,
+      };
+    case YEAR_CHECK:
+      console.log(action);
+      return {
+        ...state,
+        yearCheck: true,
+        sixMonthCheck: false,
+        monthCheck: false,
+        tillDateCheck: false,
+      };
+    case SIX_MONTH_CHECK:
+      console.log(action);
+      return {
+        ...state,
+        yearCheck: false,
+        sixMonthCheck: true,
+        monthCheck: false,
+        tillDateCheck: false,
+      };
+    case MONTH_CHECK:
+      console.log(action);
+      return {
+        ...state,
+        yearCheck: false,
+        sixMonthCheck: false,
+        monthCheck: true,
+        tillDateCheck: false,
+      };
+    case TILLDATE_CHECK:
+      console.log(action);
+      return {
+        ...state,
+        yearCheck: false,
+        sixMonthCheck: false,
+        monthCheck: false,
+        tillDateCheck: true,
       };
     default:
       return state;
