@@ -14,6 +14,7 @@ const initialState = {
   isLoginError: false,
   pageAccess: null,
   isRender:false,
+  isAuthenticated: false,
 };
 
 export default function (state = initialState, action) {
@@ -52,6 +53,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         token: action.payload,
+        isAuthenticated: action.payload.isAuthenticated ? action.payload.isAuthenticated : true,
       };
     case RESET_LOGIN_DETAILS:
       return {
