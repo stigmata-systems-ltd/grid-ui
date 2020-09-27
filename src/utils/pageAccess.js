@@ -15,12 +15,10 @@ export const setRoleBasedRoutes = () => {
             }
         })
     })
-    console.log("test",tmpArr);
     return tmpArr;
 }
 
 const setAccessObj = (routes, accessLevel) => {
-    console.log("routes", routes);
     routes && routes!== null && routes.map(route => {
         if(accessLevel === true) {
             tmpArr.push({
@@ -41,7 +39,6 @@ export const getRoutePermission = (route) => {
     let isAllowed = false;
     allowedRoutes && allowedRoutes.map(item => {
         if(item.routeName === route && item.allowed === true) {
-            console.log("in if")
             isAllowed = true;
         }
     })
@@ -51,4 +48,8 @@ export const getRoutePermission = (route) => {
 export const getPageAccess = (pageName) => {
     const pageAccess = store.getState().auth.pageAccess;
     return pageAccess.filter(page => page.pageDetail.description === pageName)
+}
+
+export const getNavAccess = () => {
+    
 }

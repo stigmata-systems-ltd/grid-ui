@@ -42,7 +42,6 @@ const mapDispatchToProps = (dispatch, props) => {
 const mapStateToProps = state => {
   const grid = store.getState().grid;
   const pageAccess = getPageAccess('GridManagement')[0].pageDetail;
-  console.log("gridmgmnt",pageAccess);
   grid.gridNoData.map(function(e, i) {
     e.id = i + 1;
   });

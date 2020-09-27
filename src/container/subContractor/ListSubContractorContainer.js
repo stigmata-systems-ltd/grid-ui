@@ -8,6 +8,7 @@ import {
   deleteSCR,
   editSCR,
 } from '../../actions/subContractorActions';
+import { getPageAccess } from "../../utils/pageAccess";
 import {
   ADD_SUBCONTRACTOR,
   SUBCONTRACTOR_NAME,
@@ -79,8 +80,10 @@ const mapDispatchToProps = (dispatch, props) => {
 
 const mapStateToProps = state => {
   const scr = store.getState().scr;
+  const pageAccess = getPageAccess('SubContractorManagement')[0].pageDetail;
   return {
     scr,
+    pageAccess,
   };
 };
 

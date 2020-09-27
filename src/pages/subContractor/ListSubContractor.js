@@ -52,7 +52,8 @@ class ListSubContractor extends Component {
             <CustomDataTable
               metaData={viewSCRMetaData(
                 (id) => this.setState({ activeId: id, showDeleteModal: true }),
-                (id) => this.props.editSCR(id)
+                (id) => this.props.editSCR(id),
+                this.props.pageAccess
               )}
               bodyData={transformSubCat(
                 this.filteredItems(this.props.scr.listSCRDetails)
