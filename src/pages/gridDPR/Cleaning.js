@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import FormRow from '../../common/forms/FormRow';
 import SimpleDropDown from '../../common/forms/SimpleDropDown';
+import SearchableDropDown from '../../common/forms/SearchableDropDown';
 import { gridNumber, status } from './utils';
 import Button from '../../common/forms/Button';
 import CustomAlert from '../../common/forms/customAlert';
+import { transformCleaning } from "./utils";
 class Cleaning extends Component {
   // constructor() {
   //   super();
@@ -32,9 +34,9 @@ class Cleaning extends Component {
             ) : null}
           </div>
           <FormRow>
-            <SimpleDropDown
+            <SearchableDropDown
               label="Select Grid"
-              selectOptions={this.props.gridNoData}
+              selectOptions={transformCleaning(this.props.gridNoData)}
               onChange={e => this.props.onGridNoChange(e)}
               value={this.props.gridNumber}
             />
