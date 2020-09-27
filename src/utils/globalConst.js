@@ -112,4 +112,13 @@ export const privateRoutes = [
       delete: null,
     },
   },
+  {
+    name: "PlanningManager",
+    routes: {
+      view: ["/planingmanager"],
+      create: null,
+      edit: null,
+      delete: null,
+    },
+  },
 ];

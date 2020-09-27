@@ -423,7 +423,7 @@ export default function(state = initialState, action) {
       const singleGrid = action.payload.data[0];
       return {
         ...state,
-        gridNo: singleGrid.gridId,
+        //gridNo: singleGrid.gridId,
         gridArea: singleGrid.grid_area,
         gridLatLong: singleGrid.gridGeoLocation,
         RFINumber: singleGrid.cG_RFIno,

@@ -131,7 +131,7 @@ export const deleteGrid = id => {
 export const addCGData = () => {
   const grid = store.getState().grid;
   const postData = {
-    grid_id: parseInt(grid.gridNo),
+    grid_id: parseInt(grid.gridNo.value),
     cG_RFIno: grid.RFINumber,
     cG_inspection_date: grid.rfiInspectionDate,
     cG_approval_date: grid.rfiApprovalDate,
@@ -141,7 +141,7 @@ export const addCGData = () => {
   return {
     type: ADD_CG,
     payload: axios.post(
-      config.BASE_URL + '/api/Grid/CreateCG/' + grid.gridNo,
+      config.BASE_URL + '/api/Grid/CreateCG/' + grid.gridNo.value,
       postData
     ),
   };
