@@ -18,17 +18,20 @@ export const transformSubCat = (data) => {
 };
 
 
-export const viewSCRMetaData = (handleDelete, handleEdit) => {
+export const viewSCRMetaData = (handleDelete, handleEdit, pageAccess) => {
   return [
     {
       sortable: false,
       cell: (row) => {
         return (
+          <>
+          {pageAccess.isDelete &&
           <IconButton
             iconName="faTimes"
             className={"table-delete-icon"}
             onClick={() => handleDelete(row.id)}
-          />
+          />}
+          </>
         );
       },
       width: "2%",
@@ -59,10 +62,11 @@ export const viewSCRMetaData = (handleDelete, handleEdit) => {
       cell: (row) => {
         return (
           <>
+          {pageAccess.isEdit &&
             <IconButton
               iconName="faEdit"
               onClick={() => handleEdit(row.id)}
-            />
+            />}
           </>
         );
       }

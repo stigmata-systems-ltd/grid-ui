@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import ListUser from '../../pages/userManagement/ListUser';
 import store from '../../store';
 import { getUsers, deleteUsers, getSingleUser } from '../../actions/userManagementActions';
+import { getPageAccess } from "../../utils/pageAccess";
 import {
   FIRST_NAME,
   LAST_NAME,
@@ -76,8 +77,10 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
   const user = store.getState().user;
+  const pageAccess = getPageAccess('UserManagement')[0].pageDetail;
   return {
     user,
+    pageAccess
   };
 };
 

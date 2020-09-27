@@ -52,7 +52,8 @@ class Dashboard extends Component {
                   this.setState({ activeGridId: id, showDeleteModal: true });
                 },
                 (id) => this.props.onEditClick(id),
-                (id) => this.props.onViewClick(id)
+                (id) => this.props.onViewClick(id),
+                this.props.pageAccess
               )}
               bodyData={transformGridData(
                 this.filteredItems(this.props.grid.listGridDetails)

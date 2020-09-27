@@ -52,6 +52,7 @@ class ListUser extends Component {
               metaData={listUserMetaData(
                 (id) => this.setState({ activeId: id, showDeleteModal: true }),
                 (id) => this.props.handleEditUser(id),
+                this.props.pageAccess
               )}
               bodyData={transformUserList(
                 this.filteredItems(this.props.user.userList)
@@ -81,11 +82,12 @@ class ListUser extends Component {
                     filterText={this.state.filterText}
                   />
                   <Col6>
+                  {this.props.pageAccess.isAdd &&
                   <Button
                     btnText="Create New User"
                     btnType="btn-primary float-right"
                     onClick={this.props.showAddUserModal}
-                  />
+                  />}
                   </Col6>
                 </>
               }

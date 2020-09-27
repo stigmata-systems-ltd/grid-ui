@@ -15,17 +15,20 @@ export const transformGridData = (gridData) => {
     });
   return tmpArr;
 };
-export const _viewGridMetaData = (handleDelete, handleEdit, handleView) => {
+export const _viewGridMetaData = (handleDelete, handleEdit, handleView, pageAccess) => {
   return [
     {
       sortable: false,
       cell: (row) => {
         return (
+          <>
+          {pageAccess.isDelete &&
           <IconButton
             iconName="faTimes"
             className={"table-delete-icon"}
             onClick={() => handleDelete(row.id)}
-          />
+          />}
+          </>
         );
       },
       width: "2%",
@@ -56,11 +59,15 @@ export const _viewGridMetaData = (handleDelete, handleEdit, handleView) => {
       cell: (row) => {
         return (
           <>
+          {pageAccess.isView &&
             <span className="text-primary table-view-link" onClick={() => handleView(row.id)}>View</span>
+          }
+          {pageAccess.isEdit &&
             <IconButton
               iconName="faEdit"
               onClick={() => handleEdit(row.id)}
             />
+          }
           </>
         );
       },
