@@ -47,6 +47,12 @@ class Dashboard extends Component {
                   message={this.props.grid.deleteGrid.message}
                 />
               ) : null}
+              {this.props.grid.editGrid.message ? (
+                <CustomAlert
+                  variant={this.props.grid.variant}
+                  message={this.props.grid.editGrid.message}
+                />
+              ) : null}
             </div>
             <FormRow>
               <CustomDataTable

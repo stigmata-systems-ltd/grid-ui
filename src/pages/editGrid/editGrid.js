@@ -1,22 +1,22 @@
-import React, { Component } from "react";
-import ContentLoader from "../../common/ContentLoader";
-import FormContainer from "../../common/forms/FormContainer";
-import FormRow from "../../common/forms/FormRow";
-import TextInput from "../../common/forms/TextInput";
-import AddLatLng from "../createGrid/AddLatLng";
-import IconTextButton from "../../common/forms/IconTextButton";
-import Button from "../../common/forms/Button";
-import CustomAlert from "../../common/forms/customAlert";
-import SimpleDropDown from "../../common/forms/SimpleDropDown";
+import React, { Component } from 'react';
+import ContentLoader from '../../common/ContentLoader';
+import FormContainer from '../../common/forms/FormContainer';
+import FormRow from '../../common/forms/FormRow';
+import TextInput from '../../common/forms/TextInput';
+import AddLatLng from '../createGrid/AddLatLng';
+import IconTextButton from '../../common/forms/IconTextButton';
+import Button from '../../common/forms/Button';
+import CustomAlert from '../../common/forms/customAlert';
+import SimpleDropDown from '../../common/forms/SimpleDropDown';
 import {
   Map,
   InfoWindow,
   Marker,
   GoogleApiWrapper,
   Polygon,
-} from "google-maps-react";
-import { GMAP_API_KEY } from "../../utils/globalConst";
-import CreateMap from "../../pages/createGrid/CreateMap";
+} from 'google-maps-react';
+import { GMAP_API_KEY } from '../../utils/globalConst';
+import CreateMap from '../../pages/createGrid/CreateMap';
 
 class CreateGrid extends Component {
   constructor(props) {
@@ -41,19 +41,11 @@ class CreateGrid extends Component {
   render() {
     return (
       <ContentLoader>
-        <FormContainer formTitle={"Edit Grid"}>
-          <div>
-            {this.props.grid.editGrid.message ? (
-              <CustomAlert
-                variant={this.props.grid.variant}
-                message={this.props.grid.editGrid.message}
-              />
-            ) : null}
-          </div>
+        <FormContainer formTitle={'Edit Grid'}>
           <FormRow>
             <TextInput
               label="Grid Number"
-              onChange={(e) => this.props.onGridNoChange(e.target.value)}
+              onChange={e => this.props.onGridNoChange(e.target.value)}
               value={this.props.grid.gridNumber}
             />
             {/* <SimpleDropDown
@@ -63,7 +55,7 @@ class CreateGrid extends Component {
             /> */}
             <TextInput
               label="Grid Area"
-              onChange={(e) => this.props.handleChangeGridArea(e.target.value)}
+              onChange={e => this.props.handleChangeGridArea(e.target.value)}
               value={this.props.grid.gridArea}
             />
           </FormRow>
@@ -82,13 +74,13 @@ class CreateGrid extends Component {
                   return (
                     <AddLatLng
                       // onClick={this.handleDeleteLocationRow}
-                      onLatChange={(e) =>
+                      onLatChange={e =>
                         this.props.handleChangeLat(e.target.value, i)
                       }
-                      onLongChange={(e) =>
+                      onLongChange={e =>
                         this.props.handleChangeLong(e.target.value, i)
                       }
-                      onLatLongRemove={(i) => this.props.handleLatLongRemove(i)}
+                      onLatLongRemove={i => this.props.handleLatLongRemove(i)}
                       index={i}
                       latValue={this.props.grid.gridLatLong[i].latitude}
                       longValue={this.props.grid.gridLatLong[i].longitude}
@@ -98,8 +90,12 @@ class CreateGrid extends Component {
               </div>
               <div class="form-group row">
                 <div class="col-sm-12">
-                  <Button btnText="Preview In Map" btnType="primary" 
-                    onClick={() => this.props.handleMapPreview(this.state.bounds)}
+                  <Button
+                    btnText="Preview In Map"
+                    btnType="primary"
+                    onClick={() =>
+                      this.props.handleMapPreview(this.state.bounds)
+                    }
                   />
                 </div>
               </div>
@@ -117,9 +113,11 @@ class CreateGrid extends Component {
             btnType="primary"
             onClick={() => this.props.editGrid(this.state.bounds)}
           />
-          <Button btnText="Cancel" btnType="cancel" 
-          onClick={this.props.resetEditGridData}
-           />
+          <Button
+            btnText="Cancel"
+            btnType="cancel"
+            onClick={this.props.resetEditGridData}
+          />
         </FormContainer>
       </ContentLoader>
     );
