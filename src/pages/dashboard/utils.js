@@ -1,64 +1,56 @@
-export const layerOverviewMetadata = [
+export const layerOverviewMetadata = data => {
+  return [
     {
-        title: "Total Layers",
-        number: "1500",
-        iconName: "faLayerGroup",
-        color: "text-primary",
-    },
-    // {
-    //     title: "Total Sub-Contractors",
-    //     number: "30",
-    //     iconName: "faIdBadge",
-    //     color: "text-info",
-    // },
-    {
-        title: "Completed Layers",
-        number: "25",
-        iconName: "faCheckDouble",
-        color: "text-success",
+      title: 'Total Layers',
+      number: data.totalLayer,
+      iconName: 'faLayerGroup',
+      color: 'text-primary',
     },
     {
-        title: "Billed: 150",
-        number: "Unbilled: 300",
-        iconName: "faFileInvoiceDollar",
-        color: "text-warning",
+      title: 'Completed Layers',
+      number: data.completedLayer,
+      iconName: 'faCheckDouble',
+      color: 'text-success',
     },
     {
-        title: "Yet To Start Layers",
-        number: "1000",
-        iconName: "faExclamationCircle",
-        color: "text-danger",
-    }
-]
-export const overviewMetadata = [
-    {
-        title: "Total Layer",
-        number: "100",
-        iconName: "faBorderAll",
-        color: "text-primary",
-    },
-    // {
-    //     title: "Total Sub-Contractors",
-    //     number: "30",
-    //     iconName: "faIdBadge",
-    //     color: "text-info",
-    // },
-    {
-        title: "Completed Grids",
-        number: "25",
-        iconName: "faCalendarCheck",
-        color: "text-success",
+      title: `Billed: ${data.billedLayer}`,
+      number: `Unbilled: ${data.unBilledLayer}`,
+      iconName: 'faFileInvoiceDollar',
+      color: 'text-warning',
     },
     {
-        title: "In Progress Grids",
-        number: "15",
-        iconName: "faPeopleCarry",
-        color: "text-warning",
+      title: 'Yet To Start Layers',
+      number: data.newLayer,
+      iconName: 'faExclamationCircle',
+      color: 'text-danger',
+    },
+  ];
+};
+export const overviewMetadata = data => {
+  return [
+    {
+      title: 'Total Grid',
+      number: data.totalGrid,
+      iconName: 'faBorderAll',
+      color: 'text-primary',
     },
     {
-        title: "Yet To Start Grids",
-        number: "60",
-        iconName: "faExclamationCircle",
-        color: "text-danger",
-    }
-]
+      title: 'Completed Grids',
+      number: data.completedGrid,
+      iconName: 'faCalendarCheck',
+      color: 'text-success',
+    },
+    {
+      title: 'In Progress Grids',
+      number: data.inProgresssGrid,
+      iconName: 'faPeopleCarry',
+      color: 'text-warning',
+    },
+    {
+      title: 'Yet To Start Grids',
+      number: data.newGrid,
+      iconName: 'faExclamationCircle',
+      color: 'text-danger',
+    },
+  ];
+};

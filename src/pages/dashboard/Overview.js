@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import OverviewItems from "./OverviewItems";
-import { overviewMetadata, layerOverviewMetadata } from "./utils";
+import React, { Component } from 'react';
+import OverviewItems from './OverviewItems';
+import { overviewMetadata, layerOverviewMetadata } from './utils';
 
 class TabContent extends Component {
   render() {
@@ -33,7 +33,7 @@ class TabContent extends Component {
                     aria-labelledby="overview-tab"
                   >
                     <div class="d-flex flex-wrap justify-content-xl-between">
-                      {overviewMetadata.map((item) => (
+                      {overviewMetadata(this.props.dashboardData).map(item => (
                         <OverviewItems
                           title={item.title}
                           number={item.number}
@@ -76,14 +76,16 @@ class TabContent extends Component {
                     aria-labelledby="overview-tab"
                   >
                     <div class="d-flex flex-wrap justify-content-xl-between">
-                      {layerOverviewMetadata.map((item) => (
-                        <OverviewItems
-                          title={item.title}
-                          number={item.number}
-                          iconName={item.iconName}
-                          color={item.color}
-                        />
-                      ))}
+                      {layerOverviewMetadata(this.props.dashboardData).map(
+                        item => (
+                          <OverviewItems
+                            title={item.title}
+                            number={item.number}
+                            iconName={item.iconName}
+                            color={item.color}
+                          />
+                        )
+                      )}
                     </div>
                   </div>
                 </div>

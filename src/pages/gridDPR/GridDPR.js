@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 import ContentLoader from '../../common/ContentLoader';
 import FormContainer from '../../common/forms/FormContainer';
 import FormRow from '../../common/forms/FormRow';
@@ -89,13 +90,19 @@ class GridDPR extends Component {
   };
 
   componentDidMount() {
-    this.props.setInitialData();
+    let reset = true;
+    console.log(`Route Params: ${this.props.match.params.id}`);
+    if (this.props.match.params.id === 'editPM') {
+      reset = false;
+    }
+    this.props.setInitialData(reset);
   }
 
   render() {
     return (
       <>
         {this.props.grid.isLayerDtlsLoading && <Loader />}
+
         <ContentLoader>
           <FormContainer formTitle={'Grid Daily Progress'}>
             <div>
@@ -390,4 +397,4 @@ class GridDPR extends Component {
   }
 }
 
-export default GridDPR;
+export default withRouter(GridDPR);

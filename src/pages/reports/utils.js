@@ -42,6 +42,7 @@ export const transformSubConReport = data => {
         vendorCode: item.code,
         quantity: item.quantity,
         materialDescription: item.materialDesc,
+        createdAt: item.createdAt,
       });
     });
   return tmpArr;
@@ -72,6 +73,11 @@ export const _subContractorReportMetaData = () => {
     {
       name: 'Material Description',
       selector: 'materialDescription',
+      sortable: false,
+    },
+    {
+      name: 'Creation Date',
+      selector: 'createdAt',
       sortable: false,
     },
   ];
