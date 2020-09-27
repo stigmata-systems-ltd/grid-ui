@@ -127,8 +127,8 @@ class GridDPR extends Component {
                 <Cleaning
                   gridNoData={this.props.grid.gridNoData}
                   approvalOptions={this.props.grid.approvalOptions}
-                  onGridNoChange={e =>
-                    this.props.handleGridNoChange(e.target.value)
+                  onGridNoChange={value =>
+                    this.props.handleGridNoChange(value)
                   }
                   onapprovalChange={e =>
                     this.props.handleApprovalChange(e.target.value)

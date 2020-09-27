@@ -1,3 +1,13 @@
+export const transformCleaning = (data) => {
+  let tmpArr = [];
+  data && data.map((item) => {
+      tmpArr.push({
+        value: item.id,
+        label: item.gridName,
+      });
+    });
+    return tmpArr;
+}
 export const transformSubCatTable = (data) => {
   let tmpArr = [];
   data && data.map((item) => {

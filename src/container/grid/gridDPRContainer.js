@@ -73,13 +73,12 @@ const mapDispatchToProps = dispatch => {
     cancelLayerProgress() {
       dispatch({ type: RESET_DPR_FORM });
     },
-    handleGridNoChange(value) {
-      console.log(`GridNumberChange: ${value}`);
+    handleGridNoChange(obj) {
       dispatch({
         type: GRID_NO,
-        payload: value,
+        payload: obj,
       });
-      dispatch(fetchGrid(value));
+      dispatch(fetchGrid(obj.value));
     },
     handleGridNoChangeDPR(value) {
       dispatch({
