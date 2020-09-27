@@ -5,8 +5,8 @@ import SearchableDropDown from '../../common/forms/SearchableDropDown';
 import { gridNumber, status } from './utils';
 import Button from '../../common/forms/Button';
 import CustomAlert from '../../common/forms/customAlert';
+import { transformCleaning } from './utils';
 import Loader from '../../common/Loader';
-import { transformCleaning } from "./utils";
 class Cleaning extends Component {
   // constructor() {
   //   super();
@@ -36,25 +36,26 @@ class Cleaning extends Component {
                 />
               ) : null}
             </div>
-          <FormRow>
-            <SearchableDropDown
-              label="Select Grid"
-              selectOptions={transformCleaning(this.props.gridNoData)}
-              onChange={e => this.props.onGridNoChange(e)}
-              value={this.props.gridNumber}
-            />
-          </FormRow>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">RFI Number</label>
-                <div class="col-sm-9">
-                  <input
-                    type="text"
-                    class="form-control"
-                    onChange={e => this.props.onRFINoChange(e)}
-                    value={this.props.RFINumber}
-                  />
+            <FormRow>
+              <SearchableDropDown
+                label="Select Grid"
+                selectOptions={transformCleaning(this.props.gridNoData)}
+                onChange={e => this.props.onGridNoChange(e)}
+                value={this.props.gridNumber}
+              />
+            </FormRow>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label">RFI Number</label>
+                  <div class="col-sm-9">
+                    <input
+                      type="text"
+                      class="form-control"
+                      onChange={e => this.props.onRFINoChange(e)}
+                      value={this.props.RFINumber}
+                    />
+                  </div>
                 </div>
               </div>
               <SimpleDropDown
