@@ -22,24 +22,37 @@ export default function(state = initialState, action) {
       return {
         ...state,
         listSubContractorReport: action.payload.data,
+        islistSCRReportLoading: false,
       };
-
+    case `${LIST_SUBCONTRACTOR_REPORT}_PENDING`:
+      return {
+        ...state,
+        islistSCRReportLoading: true,
+      };
     case `${LIST_SUBCONTRACTOR_REPORT}_REJECTED`:
       return {
         ...state,
         listSubContractorReport: [],
+        islistSCRReportLoading: false,
       };
 
     case `${LIST_MASTER_REPORT}_FULFILLED`:
       return {
         ...state,
         listMasterReport: action.payload.data,
+        islistMasterReportLoading: false,
       };
+    case `${LIST_MASTER_REPORT}_PENDING`:
+      return {
+        ...state,
 
+        islistMasterReportLoading: true,
+      };
     case `${LIST_MASTER_REPORT}_REJECTED`:
       return {
         ...state,
         listMasterReport: [],
+        islistMasterReportLoading: false,
       };
     case FROM_DATE_MASTER:
       return {

@@ -151,6 +151,7 @@ class GridDPR extends Component {
                   rfiApprovalDate={this.props.grid.rfiApprovalDate}
                   message={this.props.grid.cgAdd.message}
                   variant={this.props.grid.variant}
+                  isGridCGLoading={this.props.grid.isGridCGLoading}
                 />
               </TabPane>
               <TabPane isActive={this.state.tabPaneStatus[1].isActive}>

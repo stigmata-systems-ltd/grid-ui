@@ -12,7 +12,7 @@ import DataTable from '../../common/DataTable';
 import DateFilter from './DateFilter';
 import CustomDataTable from '../../common/CustomDataTable';
 import TableFilter from '../../common/TableFilter';
-
+import Loader from '../../common/Loader';
 class MasterReport extends Component {
   constructor(props) {
     super(props);
@@ -29,34 +29,39 @@ class MasterReport extends Component {
   }
   render() {
     return (
-      <ContentLoader>
-        <FormContainer formTitle={'Master Report'}>
-          <DateFilter
-            onChangeFrom={e => this.props.handleFromDateChange(e.target.value)}
-            onChangeTo={e => this.props.handleToDateChange(e.target.value)}
-            bodyData={transformMasterReport(
-              this.props.reports.listMasterReport
-            )}
-            headers={masterExcelHeaders}
-            fileName="MasterReport"
-          />
-          <FormRow>
-            <CustomDataTable
-              metaData={_masterReportMetaData()}
+      <>
+        {this.props.reports.islistMasterReportLoading && <Loader />}
+        <ContentLoader>
+          <FormContainer formTitle={'Master Report'}>
+            <DateFilter
+              onChangeFrom={e =>
+                this.props.handleFromDateChange(e.target.value)
+              }
+              onChangeTo={e => this.props.handleToDateChange(e.target.value)}
               bodyData={transformMasterReport(
                 this.props.reports.listMasterReport
               )}
-              pagination={true}
-              paginationTotalRows={
-                this.props.reports.listMasterReport &&
-                this.props.reports.listMasterReport.length
-              }
-              paginationPerPage={10}
-              noHeader={true}
+              headers={masterExcelHeaders}
+              fileName="MasterReport"
             />
-          </FormRow>
-        </FormContainer>
-      </ContentLoader>
+            <FormRow>
+              <CustomDataTable
+                metaData={_masterReportMetaData()}
+                bodyData={transformMasterReport(
+                  this.props.reports.listMasterReport
+                )}
+                pagination={true}
+                paginationTotalRows={
+                  this.props.reports.listMasterReport &&
+                  this.props.reports.listMasterReport.length
+                }
+                paginationPerPage={10}
+                noHeader={true}
+              />
+            </FormRow>
+          </FormContainer>
+        </ContentLoader>
+      </>
     );
   }
 }
