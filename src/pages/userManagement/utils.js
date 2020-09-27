@@ -1,17 +1,20 @@
 import React from "react";
 import IconButton from "../../common/forms/IconButton";
 
-export const listUserMetaData = (handleDelete, handleEdit) => {
+export const listUserMetaData = (handleDelete, handleEdit, pageAccess) => {
   return [
     {
       sortable: false,
       cell: (row) => {
         return (
+          <>
+          {pageAccess.isDelete &&
           <IconButton
             iconName="faTimes"
             className={"table-delete-icon"}
             onClick={() => handleDelete(row.id)}
-          />
+          />}
+          </>
         );
       },
       width: "2%",
@@ -42,10 +45,11 @@ export const listUserMetaData = (handleDelete, handleEdit) => {
       cell: (row) => {
         return (
           <>
+          {pageAccess.isEdit &&
             <IconButton
               iconName="faEdit"
               onClick={() => handleEdit(row.id)}
-            />
+            />}
           </>
         );
       }
