@@ -131,3 +131,4 @@ export const FROM_DATE_SCR = 'FROM_DATE_SCR';
 export const TO_DATE_SCR = 'TO_DATE_SCR';
 export const SHOW_PM_VIEW_MODEL = 'SHOW_PM_VIEW_MODEL';
 export const VIEW_MODEL_RESULT = 'VIEW_MODEL_RESULT';
+export const LIST_DASHBOARD_DETAILS = '';

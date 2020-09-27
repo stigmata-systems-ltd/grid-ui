@@ -6,7 +6,7 @@ import './assets/css/styles.css';
 
 //Pages Import
 import Login from './container/auth/loginContainer';
-import Dashboard from './pages/dashboard/Dashoard';
+import Dashboard from './container/dashboard/dashBoardContainer';
 import GridDPR from './container/grid/gridDPRContainer';
 import CreateGrid from './container/grid/addGridContainer';
 import ViewGrid from './container/grid/viewGrid';
@@ -58,7 +58,10 @@ class App extends Component {
           <Route path="/dashboard">
             <Dashboard />
           </Route>
-          <Route path="/grid/dpr">
+          <Route exact path="/grid/dpr">
+            <GridDPR />
+          </Route>
+          <Route path="/grid/dpr/:id">
             <GridDPR />
           </Route>
           <Route path="/grid/create">

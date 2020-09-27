@@ -3,6 +3,8 @@ import {
   APPROVE_LAYER_PM,
   SHOW_PM_VIEW_MODEL,
   VIEW_MODEL_RESULT,
+  // LAYER_NO,
+  // DPR_GRID_NO_CHANGE,
 } from '../actions/types';
 
 const initialState = {
@@ -19,6 +21,7 @@ const initialState = {
 };
 
 export default function(state = initialState, action) {
+  console.log(`PM Actions ${action.type}`);
   switch (action.type) {
     case `${LIST_LAYER_PM}_FULFILLED`:
       console.log(`List SCR: ${action.payload.data}`);
@@ -66,6 +69,19 @@ export default function(state = initialState, action) {
         viewRfiCTApprovalStatus: result[0].cT_RFI_status,
         viewLayerStatus: result[0].status,
       };
+    // case DPR_GRID_NO_CHANGE:
+    //   console.log(action);
+
+    //   return {
+    //     ...state,
+    //     'grid.dprGridNum': action.payload,
+    //   };
+    // case LAYER_NO:
+    //   console.log(action);
+    //   return {
+    //     ...state,
+    //     showPMViewModal: action.payload,
+    //   };
 
     default:
       return state;

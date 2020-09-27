@@ -15,6 +15,8 @@ import {
   LAYER_DETAILS,
   SET_COMPLETED_LAYERS_BY_GRID,
   SINGLE_LAYER_DETAILS,
+  DPR_GRID_NO_CHANGE,
+  LAYER_NO,
 } from './types';
 import store from '../store';
 import axios from 'axios';
@@ -213,6 +215,27 @@ export const editGridDetails = id => {
     payload: axios.get(config.BASE_URL + '/api/Grid/GridDetailsById?id=' + id),
   };
 };
+
+export const gridDprChange = value => {
+  // const grid = store.getState().grid;
+  // const selectedGrid = grid.listGridDetails[i];
+
+  return {
+    type: DPR_GRID_NO_CHANGE,
+    payload: value,
+  };
+};
+
+export const layerDprChange = value => {
+  // const grid = store.getState().grid;
+  // const selectedGrid = grid.listGridDetails[i];
+
+  return {
+    type: LAYER_NO,
+    payload: value,
+  };
+};
+
 export const getCompletedLayersByGrid = gridId => {
   return {
     type: SET_COMPLETED_LAYERS_BY_GRID,

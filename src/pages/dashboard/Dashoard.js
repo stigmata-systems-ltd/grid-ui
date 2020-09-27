@@ -1,16 +1,19 @@
-import React, { Component } from "react";
-import ContentLoader from "../../common/ContentLoader";
-import Overview from "./Overview";
-import LineChart from "../../common/forms/charts/LineChart";
-import Map from "./Map";
-import DashboardFilters from "./DashboardFilters";
+import React, { Component } from 'react';
+import ContentLoader from '../../common/ContentLoader';
+import Overview from './Overview';
+import LineChart from '../../common/forms/charts/LineChart';
+import Map from './Map';
+import DashboardFilters from './DashboardFilters';
 
 class Dashboard extends Component {
+  componentDidMount() {
+    this.props.fetchDashBoardData();
+  }
   render() {
     return (
       <ContentLoader>
         <DashboardFilters />
-        <Overview />
+        <Overview dashboardData={this.props.db.dashboardData} />
         <div class="row">
           <div class="col-lg-7 grid-margin grid-margin-lg-0 stretch-card">
             <div class="card">
@@ -24,7 +27,7 @@ class Dashboard extends Component {
             <div class="card">
               <div class="card-body">
                 <h4 class="card-title">Grid Map</h4>
-                <div className="google-map" style={{height: "600px"}}>
+                <div className="google-map" style={{ height: '600px' }}>
                   <Map />
                 </div>
               </div>

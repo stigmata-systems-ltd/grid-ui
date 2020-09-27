@@ -57,7 +57,7 @@ export const _planningManagerMetaData = (
         return (
           <>
             <IconButton iconName="faEye" onClick={() => viewLayer(row.id)} />
-            <Link to="/grid/dpr">
+            <Link to="/grid/dpr/editPM">
               <IconButton iconName="faEdit" onClick={() => editLayer(row.id)} />
             </Link>
 
