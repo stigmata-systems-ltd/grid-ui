@@ -7,7 +7,7 @@ import roles from './roleManagementReducer';
 import reports from './reportsReducer';
 import planningManager from './planningManagerReducer';
 import userManagementReducer from './userManagementReducer';
-
+import dashBoardReducer from './dashBoardReducer';
 const rootReducer = combineReducers({
   scr: subContractorReducer,
   grid: gridReducer,
@@ -17,6 +17,7 @@ const rootReducer = combineReducers({
   pm: planningManager,
   roles,
   reports,
+  db: dashBoardReducer,
 });
 
 export default rootReducer;

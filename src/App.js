@@ -6,7 +6,7 @@ import './assets/css/styles.css';
 
 //Pages Import
 import Login from './container/auth/loginContainer';
-import Dashboard from './pages/dashboard/Dashoard';
+import Dashboard from './container/dashboard/dashBoardContainer';
 import GridDPR from './container/grid/gridDPRContainer';
 import CreateGrid from './container/grid/addGridContainer';
 import ViewGrid from './container/grid/viewGrid';
@@ -45,14 +45,27 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Login} />
           <Route exact path="/login" component={Login} />
-          <ProtectedRoute exact path="/subcontractor/list" component={ListSubContractor} /><ProtectedRoute exact path="/roles/list" component={ListRoles} />
+          <ProtectedRoute
+            exact
+            path="/subcontractor/list"
+            component={ListSubContractor}
+          />
+          <ProtectedRoute exact path="/roles/list" component={ListRoles} />
 
           <ProtectedRoute exact path="/roles/edit" component={EditRole} />
-          <ProtectedRoute exact path="/subcontractor/list" component={ListSubContractor} />
-          <ProtectedRoute exact path="/subcontractor/edit" component={EditSubContractor} />
-
+          <ProtectedRoute
+            exact
+            path="/subcontractor/list"
+            component={ListSubContractor}
+          />
+          <ProtectedRoute
+            exact
+            path="/subcontractor/edit"
+            component={EditSubContractor}
+          />
           <ProtectedRoute path="/dashboard" component={Dashboard} />
-          <ProtectedRoute path="/grid/dpr" component={GridDPR} />
+          <ProtectedRoute exact path="/grid/dpr" component={GridDPR} />
+          <ProtectedRoute path="/grid/dpr/:id" component={GridDPR} />
           <ProtectedRoute path="/grid/create" component={CreateGrid} />
           <ProtectedRoute path="/deletegrid" component={DeleteGrid} />
           <ProtectedRoute path="/editgrid" component={EditGrid} />
@@ -61,10 +74,21 @@ class App extends Component {
           <ProtectedRoute path="/griddetails" component={GridDetails} />
           <ProtectedRoute path="/editgriddetails" component={EditDridDetails} />
           <ProtectedRoute path="/clientbilling" component={ClientBilling} />
-          <ProtectedRoute path="/subcontractor" component={SubContractor} />
+          <ProtectedRoute
+            path="/subcontractor/create"
+            component={SubContractor}
+          />
           <ProtectedRoute path="/users" component={ListUser} />
-          <ProtectedRoute exact path="/report/master" component={MasterReport} />
-          <ProtectedRoute exact path="/report/subcontractor" component={SubContractorReport} />
+          <ProtectedRoute
+            exact
+            path="/report/master"
+            component={MasterReport}
+          />
+          <ProtectedRoute
+            exact
+            path="/report/subcontractor"
+            component={SubContractorReport}
+          />
           <ProtectedRoute path="/planingmanager" component={PlaningManager} />
           <Route exact path="/unauthorized" component={unauthorized} />
         </Switch>

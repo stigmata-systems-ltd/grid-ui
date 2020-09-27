@@ -50,11 +50,13 @@ import { getSelectedGrid, getSelectedLayer } from './dataTransformer';
 
 const mapDispatchToProps = dispatch => {
   return {
-    setInitialData() {
+    setInitialData(reset) {
       dispatch(gridNoList());
       dispatch(subContractorList());
       dispatch(layerNoList());
-      dispatch({ type: RESET_DPR_FORM });
+      if (reset === true) {
+        dispatch({ type: RESET_DPR_FORM });
+      }
     },
     addCGData() {
       dispatch(addCGData());

@@ -6,7 +6,11 @@ import {
   fetchLayerData,
   approveLayer,
 } from '../../actions/planningManagerActions';
-import { getSingleLayerDetails } from '../../actions/gridActions';
+import {
+  getSingleLayerDetails,
+  gridDprChange,
+  layerDprChange,
+} from '../../actions/gridActions';
 import {
   ADD_SUBCONTRACTOR,
   SUBCONTRACTOR_NAME,
@@ -51,15 +55,20 @@ const mapDispatchToProps = (dispatch, props) => {
       console.log(`ID: ${id}`);
       const result = pm.layerList.filter(res => res.layerDtlsId === id);
       console.log(`Result: ${JSON.stringify(result)}`);
-      dispatch({
-        type: DPR_GRID_NO_CHANGE,
-        payload: { value: result[0].gridId, label: result[0].gridNo },
-      });
+      // dispatch({
+      //   type: DPR_GRID_NO_CHANGE,
+      //   payload: { value: result[0].gridId, label: result[0].gridNo },
+      // });
 
-      dispatch({
-        type: LAYER_NO,
-        payload: { value: result[0].layerId, label: result[0].layerNo },
-      });
+      // dispatch({
+      //   type: LAYER_NO,
+      //   payload: { value: result[0].layerId, label: result[0].layerNo },
+      // });
+      const dataGrid = { value: result[0].gridId, label: result[0].gridNo };
+      const dataLayer = { value: result[0].layerId, label: result[0].layerNo };
+      dispatch(gridDprChange(dataGrid));
+      dispatch(layerDprChange(dataLayer));
+
       const grid = store.getState().grid;
       const currentLayer = parseInt(grid.layerNo.value);
       const currentGrid = parseInt(grid.dprGridNum.value);

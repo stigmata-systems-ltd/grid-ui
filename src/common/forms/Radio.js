@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 class Radio extends Component {
   render() {
+    console.log(`radio checked ${this.props.checked}`);
     return (
       <div class="form-check float-right">
         <label class="form-check-label">
@@ -9,7 +10,8 @@ class Radio extends Component {
             type="radio"
             class="form-check-input"
             value={this.props.value}
-            {...this.props.checked}
+            checked={this.props.checked}
+            onChange={this.props.onChange}
           />
           {this.props.label}
           <i class="input-helper"></i>
