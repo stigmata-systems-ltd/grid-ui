@@ -1,14 +1,38 @@
 //export const GMAP_API_KEY = "AIzaSyD981UnRbwbMPy4ifleYDzkT5-WH9_rUOY";
 export const GMAP_API_KEY = "AIzaSyC-VRHu8WBEreuKlsRop63I-u-jtIPC-HQ";
 
+export const accessLevels = [
+  {
+    static: "view",
+    api: "isView"
+  },
+  {
+    static: "create",
+    api: "isAdd"
+  },
+  {
+    static: "edit",
+    api: "isUpdate"
+  },
+  {
+    static: "delete",
+    api: "isDelete"
+  }
+];
+
 export const privateRoutes = [
   {
-    Dashboard: {
+    name: "Dashboard",
+    routes: {
       view: ["/dashboard"],
+      create: null,
+      edit: null,
+      delete: null,
     },
   },
   {
-    GridManagement: {
+    name: "GridManagement",
+    routes: {
       view: ["/grid/view"],
       create: ["/grid/create"],
       edit: ["/editgrid"],
@@ -16,42 +40,54 @@ export const privateRoutes = [
     },
   },
   {
-    LayerManagement: {
+    name: "LayerManagement",
+    routes: {
       view: ["/viewgriddpr"],
+      create: null,
       edit: ["/grid/dpr"],
+      delete: null,
     },
   },
   {
-    SubContractorManagement: {
+    name: "SubContractorManagement",
+    routes: {
       view: ["/subcontractor/list"],
       create: ["/subcontractor/create"],
       edit: ["/subcontractor/edit"],
+      delete: null,
     },
   },
   {
-    UserManagement: {
-      view: "/users",
+    name: "UserManagement",
+    routes: {
+      view: ["/users"],
       create: null,
       edit: null,
       delete: null,
     },
   },
   {
-    RoleManagement: {
+    name: "RoleManagement",
+    routes: {
       view: ["/roles/list"],
+      create: null,
       edit: ["/roles/edit"],
+      delete: null,
     },
   },
   {
-    ClientBilling: {
+    name: "ClientBilling",
+    routes: {
+      view: null,
       create: ["/clientbilling"],
       edit: null,
       delete: null,
-      view: null,
+
     },
   },
   {
-    Report: {
+    name: "Report",
+    routes: {
       view: ["/report/master", "/report/subcontractor"],
       create: null,
       edit: null,
@@ -59,18 +95,20 @@ export const privateRoutes = [
     },
   },
   {
-    CleaningAndGrubbing: {
+    name: "CleaningAndGrubbing",
+    routes: {
+      view: null,
       create: ["/grid/dpr"],
       edit: ["/grid/dpr"],
-      view: null,
       delete: null,
     },
   },
   {
-    LayerPhotograph: {
+    name: "LayerPhotograph",
+    routes: {
+      view: null,
       create: ["/grid/dpr"],
       edit: ["/grid/dpr"],
-      view: null,
       delete: null,
     },
   },

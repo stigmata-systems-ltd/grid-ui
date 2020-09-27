@@ -28,79 +28,39 @@ import SubContractorReport from './container/report/subContractorReportContainer
 import PlaningManager from './container/planningManager/pmContainer';
 import ListRoles from './container/roleManagement/listRoleContainer';
 import EditRole from './container/roleManagement/editRoleContainer';
-import { setPageAccess } from "./actions/authActions";
+import ProtectedRoute from "./common/ProtectedRoute";
+import unauthorized from "./common/Unauthorized";
+
 class App extends Component {
-  componentDidMount() {
-    setPageAccess();
-  }
+  
   render() {
     return (
       <Router>
         <Switch>
-          <Route exact path="/">
-            <Login />
-          </Route>
-          <Route exact path="/login">
-            <Login />
-          </Route>
-          <Route exact path="/roles/list">
-            <ListRoles />
-          </Route>
-          <Route exact path="/roles/edit">
-            <EditRole />
-          </Route>
-          <Route exact path="/subcontractor/list">
-            <ListSubContractor />
-          </Route>
-          <Route exact path="/subcontractor/edit">
-            <EditSubContractor />
-          </Route>
+          <Route exact path="/" component={Login} />
+          <Route exact path="/login" component={Login} />
+          <ProtectedRoute exact path="/subcontractor/list" component={ListSubContractor} /><ProtectedRoute exact path="/roles/list" component={ListRoles} />
 
-          <Route path="/dashboard">
-            <Dashboard />
-          </Route>
-          <Route path="/grid/dpr">
-            <GridDPR />
-          </Route>
-          <Route path="/grid/create">
-            <CreateGrid />
-          </Route>
-          <Route path="/deletegrid">
-            <DeleteGrid />
-          </Route>
-          <Route path="/editgrid">
-            <EditGrid />
-          </Route>
-          <Route path="/grid/view">
-            <ViewGrid />
-          </Route>
-          <Route path="/viewgriddpr">
-            <ViewGridDpr />
-          </Route>
-          <Route path="/griddetails">
-            <GridDetails />
-          </Route>
-          <Route path="/editgriddetails">
-            <EditDridDetails />
-          </Route>
-          <Route path="/clientbilling">
-            <ClientBilling />
-          </Route>
-          <Route path="/subcontractor">
-            <SubContractor />
-          </Route>
-          <Route path="/users">
-            <ListUser />
-          </Route>
-          <Route exact path="/report/master">
-            <MasterReport />
-          </Route>
-          <Route exact path="/report/subcontractor">
-            <SubContractorReport />
-          </Route>
-          <Route path="/planingmanager">
-            <PlaningManager />
-          </Route>
+          <ProtectedRoute exact path="/roles/edit" component={EditRole} />
+          <ProtectedRoute exact path="/subcontractor/list" component={ListSubContractor} />
+          <ProtectedRoute exact path="/subcontractor/edit" component={EditSubContractor} />
+
+          <ProtectedRoute path="/dashboard" component={Dashboard} />
+          <ProtectedRoute path="/grid/dpr" component={GridDPR} />
+          <ProtectedRoute path="/grid/create" component={CreateGrid} />
+          <ProtectedRoute path="/deletegrid" component={DeleteGrid} />
+          <ProtectedRoute path="/editgrid" component={EditGrid} />
+          <ProtectedRoute path="/grid/view" component={ViewGrid} />
+          <ProtectedRoute path="/viewgriddpr" component={ViewGridDpr} />
+          <ProtectedRoute path="/griddetails" component={GridDetails} />
+          <ProtectedRoute path="/editgriddetails" component={EditDridDetails} />
+          <ProtectedRoute path="/clientbilling" component={ClientBilling} />
+          <ProtectedRoute path="/subcontractor" component={SubContractor} />
+          <ProtectedRoute path="/users" component={ListUser} />
+          <ProtectedRoute exact path="/report/master" component={MasterReport} />
+          <ProtectedRoute exact path="/report/subcontractor" component={SubContractorReport} />
+          <ProtectedRoute path="/planingmanager" component={PlaningManager} />
+          <Route exact path="/unauthorized" component={unauthorized} />
         </Switch>
       </Router>
     );

@@ -5,6 +5,7 @@ import {
   SET_TOKEN,
   RESET_LOGIN_DETAILS,
   SET_PAGE_ACCESS,
+  SET_ROLE_BASED_ROUTE_ACCESS,
 } from "../actions/types";
 
 const initialState = {
@@ -12,6 +13,7 @@ const initialState = {
   password: "",
   isLoginError: false,
   pageAccess: null,
+  isRender:false,
 };
 
 export default function (state = initialState, action) {
@@ -62,6 +64,12 @@ export default function (state = initialState, action) {
       return {
         ...state,
         pageAccess: action.payload.data,
+      };
+    case SET_ROLE_BASED_ROUTE_ACCESS:
+      return {
+        ...state,
+        allowedRoutes: action.payload,
+        isRender: true
       };
     default:
       return state;

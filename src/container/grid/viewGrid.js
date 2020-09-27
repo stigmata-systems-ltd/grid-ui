@@ -12,6 +12,7 @@ import {
   fetchLayerDetails,
 } from '../../actions/gridActions';
 import { GRID_NO_LIST } from '../../actions/types';
+import { getPageAccess } from "../../utils/pageAccess";
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
@@ -40,11 +41,14 @@ const mapDispatchToProps = (dispatch, props) => {
 
 const mapStateToProps = state => {
   const grid = store.getState().grid;
+  const pageAccess = getPageAccess('GridManagement')[0].pageDetail;
+  console.log("gridmgmnt",pageAccess);
   grid.gridNoData.map(function(e, i) {
     e.id = i + 1;
   });
   return {
     grid,
+    pageAccess,
   };
 };
 
