@@ -38,8 +38,17 @@ export default function(state = initialState, action) {
       return {
         ...state,
         subContractorAdd: action.payload,
+        message: action.payload.data.message,
+        variant: 'success',
+        isSubContAddLoading: false,
+      };
+    case `${ADD_SUBCONTRACTOR}_PENDING`:
+      return {
+        ...state,
+        subContractorAdd: action.payload,
         message: 'Sub Contractor Added Successfully',
         variant: 'success',
+        isSubContAddLoading: true,
       };
     case `${ADD_SUBCONTRACTOR}_REJECTED`:
       return {
@@ -49,6 +58,7 @@ export default function(state = initialState, action) {
           ? action.payload.response.data.message
           : 'Error Occurred',
         variant: 'danger',
+        isSubContAddLoading: false,
       };
     case SUBCONTRACTOR_NAME:
       return {
@@ -102,6 +112,12 @@ export default function(state = initialState, action) {
         ...state,
         listSCR,
         listSCRDetails: action.payload.data,
+        isSubContListLoading: false,
+      };
+    case `${LIST_SUBCONTRACTOR}_PENDING`:
+      return {
+        ...state,
+        isSubContListLoading: true,
       };
     case `${DELETE_SUBCONTRACTOR}_FULFILLED`:
       return {

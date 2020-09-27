@@ -1,114 +1,113 @@
 //export const GMAP_API_KEY = "AIzaSyD981UnRbwbMPy4ifleYDzkT5-WH9_rUOY";
-export const GMAP_API_KEY = "AIzaSyC-VRHu8WBEreuKlsRop63I-u-jtIPC-HQ";
+export const GMAP_API_KEY = 'AIzaSyC-VRHu8WBEreuKlsRop63I-u-jtIPC-HQ';
 
 export const accessLevels = [
   {
-    static: "view",
-    api: "isView"
+    static: 'view',
+    api: 'isView',
   },
   {
-    static: "create",
-    api: "isAdd"
+    static: 'create',
+    api: 'isAdd',
   },
   {
-    static: "edit",
-    api: "isUpdate"
+    static: 'edit',
+    api: 'isUpdate',
   },
   {
-    static: "delete",
-    api: "isDelete"
-  }
+    static: 'delete',
+    api: 'isDelete',
+  },
 ];
 
 export const privateRoutes = [
   {
-    name: "Dashboard",
+    name: 'Dashboard',
     routes: {
-      view: ["/dashboard"],
+      view: ['/dashboard'],
       create: null,
       edit: null,
       delete: null,
     },
   },
   {
-    name: "GridManagement",
+    name: 'GridManagement',
     routes: {
-      view: ["/grid/view"],
-      create: ["/grid/create"],
-      edit: ["/editgrid"],
-      delete: ["/deletegrid"],
+      view: ['/grid/view'],
+      create: ['/grid/create'],
+      edit: ['/editgrid'],
+      delete: ['/deletegrid'],
     },
   },
   {
-    name: "LayerManagement",
+    name: 'LayerManagement',
     routes: {
-      view: ["/viewgriddpr"],
+      view: ['/viewgriddpr'],
       create: null,
-      edit: ["/grid/dpr"],
+      edit: ['/grid/dpr'],
       delete: null,
     },
   },
   {
-    name: "SubContractorManagement",
+    name: 'SubContractorManagement',
     routes: {
-      view: ["/subcontractor/list"],
-      create: ["/subcontractor/create"],
-      edit: ["/subcontractor/edit"],
+      view: ['/subcontractor/list'],
+      create: ['/subcontractor/create'],
+      edit: ['/subcontractor/edit'],
       delete: null,
     },
   },
   {
-    name: "UserManagement",
+    name: 'UserManagement',
     routes: {
-      view: ["/users"],
+      view: ['/users'],
       create: null,
       edit: null,
       delete: null,
     },
   },
   {
-    name: "RoleManagement",
+    name: 'RoleManagement',
     routes: {
-      view: ["/roles/list"],
+      view: ['/roles/list'],
       create: null,
-      edit: ["/roles/edit"],
+      edit: ['/roles/edit'],
       delete: null,
     },
   },
   {
-    name: "ClientBilling",
+    name: 'ClientBilling',
     routes: {
       view: null,
-      create: ["/clientbilling"],
+      create: ['/clientbilling'],
       edit: null,
       delete: null,
-
     },
   },
   {
-    name: "Report",
+    name: 'Report',
     routes: {
-      view: ["/report/master", "/report/subcontractor"],
+      view: ['/report/master', '/report/subcontractor'],
       create: null,
       edit: null,
       delete: null,
     },
   },
   {
-    name: "CleaningAndGrubbing",
+    name: 'CleaningAndGrubbing',
     routes: {
       view: null,
-      create: ["/grid/dpr"],
-      edit: ["/grid/dpr"],
+      create: ['/grid/dpr'],
+      edit: ['/grid/dpr'],
       delete: null,
     },
   },
   {
-    name: "LayerPhotograph",
+    name: 'LayerPhotograph',
     routes: {
       view: null,
-      create: ["/grid/dpr"],
-      edit: ["/grid/dpr"],
+      create: ['/grid/dpr'],
+      edit: ['/grid/dpr'],
       delete: null,
     },
   },

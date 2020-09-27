@@ -168,13 +168,26 @@ export default function(state = initialState, action) {
     case `${GRID_ADD}_FULFILLED`:
       return {
         ...state,
-        gridAdd: { message: 'Grid Added Successfully' },
+        gridAdd: { message: action.payload.data.message },
         variant: 'success',
+        isGridAddLoading: false,
       };
-    case `${GRID_ADD}_REJECTED`:
+    case `${GRID_ADD}_PENDING`:
       return {
         ...state,
-        gridAdd: { message: 'Error Occurred' },
+        isGridAddLoading: true,
+      };
+    case `${GRID_ADD}_REJECTED`:
+      console.log(`GRID Reject: ${JSON.stringify(action.payload)}`);
+      return {
+        ...state,
+        isGridAddLoading: false,
+        gridAdd: {
+          message:
+            action.payload.response && action.payload.response.data
+              ? action.payload.response.data.message
+              : 'Error in creating grid',
+        },
         variant: 'danger',
       };
     case RESET_CREATE_GRID_FORM:
@@ -303,13 +316,25 @@ export default function(state = initialState, action) {
     case `${ADD_CG}_FULFILLED`:
       return {
         ...state,
-        cgAdd: { message: 'CG updated Successfully' },
+        isGridCGLoading: false,
+        cgAdd: { message: action.payload.data.message },
         variant: 'success',
+      };
+    case `${ADD_CG}_PENDING`:
+      return {
+        ...state,
+        isGridCGLoading: true,
       };
     case `${ADD_CG}_REJECTED`:
       return {
         ...state,
-        cgAdd: { message: 'Error Occurred' },
+        isGridCGLoading: false,
+        cgAdd: {
+          message:
+            action.payload.response && action.payload.response.data
+              ? action.payload.response.data.message
+              : 'Error in updating cleaning and grubbing details',
+        },
         variant: 'danger',
       };
     case RESET_CG_FORM:
@@ -437,6 +462,11 @@ export default function(state = initialState, action) {
         ...state,
         fetchGrid: { message: 'Error Occurred' },
       };
+    case `${GRID_DETAILS}_REJECTED`:
+      return {
+        ...state,
+        fetchGrid: { message: 'Error Occurred' },
+      };
     case `${EDIT_GRID}_FULFILLED`:
       return {
         ...state,
@@ -465,8 +495,19 @@ export default function(state = initialState, action) {
       }));
       return {
         ...state,
+        isListGridLoading: false,
         listGrid,
         listGridDetails: action.payload.data,
+      };
+    case `${GRID_LIST}_PENDING`:
+      return {
+        ...state,
+        isListGridLoading: true,
+      };
+    case `${GRID_LIST}_REJECTED`:
+      return {
+        ...state,
+        isListGridLoading: false,
       };
     case `${EDIT_GRID_DETAILS}_FULFILLED`:
       const editGridDetails = action.payload.data;

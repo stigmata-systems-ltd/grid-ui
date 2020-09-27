@@ -67,7 +67,10 @@ class App extends Component {
           <ProtectedRoute path="/griddetails" component={GridDetails} />
           <ProtectedRoute path="/editgriddetails" component={EditDridDetails} />
           <ProtectedRoute path="/clientbilling" component={ClientBilling} />
-          <ProtectedRoute path="/subcontractor" component={SubContractor} />
+          <ProtectedRoute
+            path="/subcontractor/create"
+            component={SubContractor}
+          />
           <ProtectedRoute path="/users" component={ListUser} />
           <ProtectedRoute
             exact

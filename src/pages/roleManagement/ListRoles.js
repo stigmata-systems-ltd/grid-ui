@@ -24,6 +24,14 @@ class ListRoles extends Component {
     return (
       <ContentLoader>
         <FormContainer formTitle={'List Roles'}>
+          <div>
+            {this.props.roles.updatePage.message ? (
+              <CustomAlert
+                variant={this.props.roles.updatePage.variant}
+                message={this.props.roles.updatePage.message}
+              />
+            ) : null}
+          </div>
           <FormRow>
             <CustomDataTable
               metaData={viewRoleMetaData(
