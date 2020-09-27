@@ -1,10 +1,10 @@
-import React from "react";
-import IconButton from "../../common/forms/IconButton";
-export const transformGridData = (gridData) => {
+import React from 'react';
+import IconButton from '../../common/forms/IconButton';
+export const transformGridData = gridData => {
   let tmpArr = [];
   gridData &&
-    gridData.map((grid) => {
-      let gridStatus = grid.status === "False" ? "In Progress" : grid.status;
+    gridData.map(grid => {
+      let gridStatus = grid.status === 'False' ? 'In Progress' : grid.status;
       tmpArr.push({
         id: grid.gridId,
         gridNum: grid.gridno,
@@ -15,59 +15,71 @@ export const transformGridData = (gridData) => {
     });
   return tmpArr;
 };
-export const _viewGridMetaData = (handleDelete, handleEdit, handleView, pageAccess) => {
+export const _viewGridMetaData = (
+  handleDelete,
+  handleEdit,
+  handleView,
+  pageAccess
+) => {
   return [
     {
       sortable: false,
-      cell: (row) => {
+      cell: row => {
         return (
           <>
-          {pageAccess.isDelete &&
-          <IconButton
-            iconName="faTimes"
-            className={"table-delete-icon"}
-            onClick={() => handleDelete(row.id)}
-          />}
+            {pageAccess.isDelete && (
+              <IconButton
+                iconName="faTimes"
+                className={'table-delete-icon'}
+                onClick={() => handleDelete(row.id)}
+              />
+            )}
           </>
         );
       },
-      width: "2%",
+      width: '2%',
     },
     {
-      name: "Grid Number",
-      selector: "gridNum",
+      name: 'Grid Number',
+      selector: 'gridNum',
       sortable: true,
     },
     {
-      name: "Area",
-      selector: "gridArea",
+      name: 'Area',
+      selector: 'gridArea',
       sortable: false,
     },
     {
-      name: "Status",
-      selector: "gridStatus",
+      name: 'Status',
+      selector: 'gridStatus',
       sortable: false,
     },
     {
-      name: "Create date",
-      selector: "createdDate",
+      name: 'Create date',
+      selector: 'createdDate',
       sortable: false,
     },
     {
-      name: "Actions",
+      name: 'Actions',
       sortable: false,
-      cell: (row) => {
+      cell: row => {
+        console.log(`PageAccess: ${JSON.stringify(pageAccess)}`);
         return (
           <>
-          {pageAccess.isView &&
-            <span className="text-primary table-view-link" onClick={() => handleView(row.id)}>View</span>
-          }
-          {pageAccess.isEdit &&
-            <IconButton
-              iconName="faEdit"
-              onClick={() => handleEdit(row.id)}
-            />
-          }
+            {pageAccess.isView && (
+              <span
+                className="text-primary table-view-link"
+                onClick={() => handleView(row.id)}
+              >
+                View
+              </span>
+            )}
+            {pageAccess.isUpdate && (
+              <IconButton
+                iconName="faEdit"
+                onClick={() => handleEdit(row.id)}
+              />
+            )}
           </>
         );
       },

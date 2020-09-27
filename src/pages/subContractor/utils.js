@@ -1,11 +1,10 @@
-import React from "react";
-import IconButton from "../../common/forms/IconButton";
+import React from 'react';
+import IconButton from '../../common/forms/IconButton';
 
-
-export const transformSubCat = (data) => {
+export const transformSubCat = data => {
   let tmpArr = [];
   data &&
-  data.map((item) => {
+    data.map(item => {
       tmpArr.push({
         id: item.subContractorId,
         subId: item.code,
@@ -17,59 +16,60 @@ export const transformSubCat = (data) => {
   return tmpArr;
 };
 
-
 export const viewSCRMetaData = (handleDelete, handleEdit, pageAccess) => {
   return [
     {
       sortable: false,
-      cell: (row) => {
+      cell: row => {
         return (
           <>
-          {pageAccess.isDelete &&
-          <IconButton
-            iconName="faTimes"
-            className={"table-delete-icon"}
-            onClick={() => handleDelete(row.id)}
-          />}
+            {pageAccess.isDelete && (
+              <IconButton
+                iconName="faTimes"
+                className={'table-delete-icon'}
+                onClick={() => handleDelete(row.id)}
+              />
+            )}
           </>
         );
       },
-      width: "2%",
+      width: '2%',
     },
     {
-      name: "Vendor Code",
-      selector: "subId",
+      name: 'Vendor Code',
+      selector: 'subId',
       sortable: false,
     },
     {
-      name: "Name",
-      selector: "subName",
+      name: 'Name',
+      selector: 'subName',
       sortable: false,
     },
     {
-      name: "Email",
-      selector: "subEmail",
+      name: 'Email',
+      selector: 'subEmail',
       sortable: false,
     },
     {
-      name: "Phone",
-      selector: "subPhone",
+      name: 'Phone',
+      selector: 'subPhone',
       sortable: false,
     },
     {
-      name: "Actions",
+      name: 'Actions',
       sortable: false,
-      cell: (row) => {
+      cell: row => {
         return (
           <>
-          {pageAccess.isEdit &&
-            <IconButton
-              iconName="faEdit"
-              onClick={() => handleEdit(row.id)}
-            />}
+            {pageAccess.isUpdate && (
+              <IconButton
+                iconName="faEdit"
+                onClick={() => handleEdit(row.id)}
+              />
+            )}
           </>
         );
-      }
-    }
+      },
+    },
   ];
-}
+};
