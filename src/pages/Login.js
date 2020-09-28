@@ -4,11 +4,14 @@ import { LOGO } from "../assets/images/index.js";
 
 
 class Login extends Component {
-  redirectToDashboard = (e) => {
-    e.preventDefault();
+  componentDidMount() {
+    this.props.checkAuthStatus();
+  }
+  // redirectToDashboard = (e) => {
+  //   e.preventDefault();
 
-    //this.props.history.push("dashboard");
-  };
+  //   this.props.history.push("dashboard");
+  // };
   render() {
     return (
       <div class="container-scroller">

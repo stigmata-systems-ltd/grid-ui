@@ -28,10 +28,17 @@ import SubContractorReport from './container/report/subContractorReportContainer
 import PlaningManager from './container/planningManager/pmContainer';
 import ListRoles from './container/roleManagement/listRoleContainer';
 import EditRole from './container/roleManagement/editRoleContainer';
-import ProtectedRoute from './common/ProtectedRoute';
-import unauthorized from './common/Unauthorized';
-
+import ProtectedRoute from "./common/ProtectedRoute";
+import unauthorized from "./common/Unauthorized";
+import { setRespInterceptor, setAuthHeader } from "./utils/auth";
+setAuthHeader();setRespInterceptor();
 class App extends Component {
+
+  // constructor() {
+  //   super()
+  //   setInterceptor();
+  // }
+  
   render() {
     return (
       <Router>
