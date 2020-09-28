@@ -6,7 +6,10 @@ import {
   fetchLayerData,
   approveLayer,
 } from '../../actions/planningManagerActions';
-import { fetchDashBoardData } from '../../actions/dashBoardActions';
+import {
+  fetchDashBoardData,
+  fetchDashBoardMapData,
+} from '../../actions/dashBoardActions';
 import { propTypes } from 'react-bootstrap/esm/Image';
 import {
   LIST_DASHBOARD_DETAILS,
@@ -19,6 +22,9 @@ const mapDispatchToProps = (dispatch, props) => {
   return {
     fetchDashBoardData() {
       dispatch(fetchDashBoardData());
+    },
+    fetchDashBoardMapData() {
+      dispatch(fetchDashBoardMapData());
     },
     yearChange() {
       console.log(`YearChange`);

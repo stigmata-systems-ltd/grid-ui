@@ -4,6 +4,7 @@ import {
   SIX_MONTH_CHECK,
   MONTH_CHECK,
   TILLDATE_CHECK,
+  LIST_DASHBOARD_MAP_DETAILS,
 } from '../actions/types';
 
 const initialState = {
@@ -12,6 +13,7 @@ const initialState = {
   sixMonthCheck: false,
   monthCheck: false,
   tillDateCheck: false,
+  listMapData: {},
 };
 
 export default function(state = initialState, action) {
@@ -49,6 +51,19 @@ export default function(state = initialState, action) {
         ...state,
         isListDashboardDetailsLoading: false,
       };
+    case `${LIST_DASHBOARD_MAP_DETAILS}_FULFILLED`:
+      console.log(action);
+      return {
+        ...state,
+        listMapData: action.payload.data,
+      };
+    case `${LIST_DASHBOARD_MAP_DETAILS}_REJECTED`:
+      console.log(action);
+      return {
+        ...state,
+        listMapData: '',
+      };
+
     case YEAR_CHECK:
       console.log(action);
       return {

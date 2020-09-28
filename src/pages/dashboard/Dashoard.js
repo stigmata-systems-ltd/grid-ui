@@ -9,6 +9,7 @@ import Loader from '../../common/Loader';
 class Dashboard extends Component {
   componentDidMount() {
     this.props.fetchDashBoardData();
+    this.props.fetchDashBoardMapData();
   }
   render() {
     return (
@@ -40,7 +41,7 @@ class Dashboard extends Component {
                 <div class="card-body">
                   <h4 class="card-title">Grid Map</h4>
                   <div className="google-map" style={{ height: '600px' }}>
-                    <Map />
+                    <Map gridDetails={this.props.db.listMapData} />
                   </div>
                 </div>
               </div>
