@@ -4,7 +4,7 @@ import Login from "../../pages/Login";
 import { withRouter } from "react-router-dom";
 import { authenticateUser, setPageAccess } from "../../actions/authActions";
 import { SET_USERNAME, SET_PASSWORD, SET_TOKEN, RESET_LOGIN_DETAILS, SET_ROLE_BASED_ROUTE_ACCESS } from "../../actions/types";
-import { setAuthTokens } from "../../utils/auth";
+import { setAuthTokens, isUserLoggedIn } from "../../utils/auth";
 import { setRoleBasedRoutes } from "../../utils/pageAccess";
 
 const mapDispatchToProps = (dispatch, ownProps) => {
@@ -39,6 +39,11 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         payload: value,
       });
     },
+    checkAuthStatus(){
+      if(isUserLoggedIn()) {
+        ownProps.history.replace("/dashboard");
+      }
+    }
   };
 };
 
