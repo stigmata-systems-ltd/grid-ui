@@ -17,8 +17,8 @@ export const authenticateUser = () => {
 }
 
 export const setPageAccess = () => {
-    const auth = store.getState().auth;
-    const roleId = getUserDetails().roleId
+    const userDetails = getUserDetails();
+    const roleId = userDetails ? userDetails.roleId : "";
     return {
         type: SET_PAGE_ACCESS,
         payload: axios.get(config.BASE_URL + '/api/PageAccess/getpageaccess/'+roleId)
