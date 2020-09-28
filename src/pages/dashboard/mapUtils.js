@@ -52,12 +52,12 @@ const getGridCords = (lat, lng) => {
       lng: bottomRight.nLng,
     },
     {
-        lat: bottomLeft.nLat,
-        lng: bottomLeft.nLng,
+      lat: bottomLeft.nLat,
+      lng: bottomLeft.nLng,
     },
     {
-        lat: topLeft.nLat,
-        lng: topLeft.nLng,
+      lat: topLeft.nLat,
+      lng: topLeft.nLng,
     },
   ];
 };
@@ -80,63 +80,34 @@ const getCenters = (lat, lng) => {
   };
   return [right, bottom, left, top];
 };
-export const gridData = (lat, lng) => {
-  const centers = getCenters(lat, lng);
-  return [
-    {
-      lat: lat,
-      lng: lng,
-      title: "Grid-H1V1",
-      description: "Center Grid",
-      status: "inProgess",
-      rectCords: getGridCords(lat, lng),
-    },
-    {
-      lat: centers[0].latitude,
-      lng: centers[0].longitude,
-      title: "Grid-H1V2",
-      description: "Right Grid",
-      status: "completed",
-      rectCords: getGridCords(centers[0].latitude, centers[0].longitude),
-    },
-    {
-      lat: centers[1].latitude,
-      lng: centers[1].longitude,
-      title: "Grid-H1V3",
-      description: "Bottom Grid",
-      status: "inProgess",
-      rectCords: getGridCords(centers[1].latitude, centers[1].longitude),
-    },
-    {
-      lat: centers[2].latitude,
-      lng: centers[2].longitude,
-      title: "Grid-H1V4",
-      description: "Left grid",
-      status: "inProgess",
-      rectCords: getGridCords(centers[2].latitude, centers[2].longitude),
-    },
-    {
-      lat: centers[3].latitude,
-      lng: centers[3].longitude,
-      title: "Grid-H1V5",
-      description: "Top grid",
-      status: "inProgess",
-      rectCords: getGridCords(centers[3].latitude, centers[3].longitude),
-    },
-  ];
+export const gridData = gridDetails => {
+  console.log(`Grid Details MapUtils: ${JSON.stringify(gridDetails)}`);
+  // const centers = getCenters(lat, lng);
+  const gridData = gridDetails.lstGridDtls.map(item => ({
+    lat: item.marker_latitide,
+    lng: item.marker_longitude,
+    title: item.gridno,
+    status: item.status,
+    rectCords: item.gridGeoLocation,
+  }));
+  return gridData;
 };
 
 export const gridStatic = [
-  {grid: [
-    { lat: 41.015585, lng: -109.0948787 },
-    { lat: 41.023874, lng: -102.083413 },
-    { lat: 37.040305, lng: -102.083413 },
-    { lat: 37.022764, lng: -109.048745 },
-  ]},
-  {grid: [
-    { lat: 40.046993, lng: -102.061440 },
-    { lat: 39.962839, lng: -94.876382 },
-    { lat: 37.022764, lng: -94.656655 },
-    { lat: 37.075374, lng: -102.083413 },
-  ]},
+  {
+    grid: [
+      { lat: 41.015585, lng: -109.0948787 },
+      { lat: 41.023874, lng: -102.083413 },
+      { lat: 37.040305, lng: -102.083413 },
+      { lat: 37.022764, lng: -109.048745 },
+    ],
+  },
+  {
+    grid: [
+      { lat: 40.046993, lng: -102.06144 },
+      { lat: 39.962839, lng: -94.876382 },
+      { lat: 37.022764, lng: -94.656655 },
+      { lat: 37.075374, lng: -102.083413 },
+    ],
+  },
 ];
