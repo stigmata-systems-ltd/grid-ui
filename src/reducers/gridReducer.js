@@ -521,6 +521,7 @@ export default function(state = initialState, action) {
         rfiInspectionDate: editGridDetails.cG_inspection_date,
         rfiApprovalDate: editGridDetails.cG_approval_date,
         rfiApproval: editGridDetails.status,
+        cgRFIStatus: editGridDetails.cG_RFI_status,
         createCenter: {
           lat: editGridDetails.marker_latitide,
           lng: editGridDetails.marker_longitude,

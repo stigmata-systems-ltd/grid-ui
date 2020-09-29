@@ -40,7 +40,7 @@ const mapStateToProps = state => {
       RFINumber: grid.RFINumber,
       rfiInspectionDate: grid.rfiInspectionDate,
       rfiApprovalDate: grid.rfiApprovalDate,
-      status: grid.rfiApproval,
+      status: grid.cgRFIStatus,
     },
   ];
   return {
