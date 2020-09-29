@@ -56,12 +56,20 @@ export default function(state = initialState, action) {
       return {
         ...state,
         listMapData: action.payload.data,
+        isListDashboardMapDetailsLoading: false,
+      };
+    case `${LIST_DASHBOARD_MAP_DETAILS}_PENDING`:
+      console.log(action);
+      return {
+        ...state,
+        isListDashboardMapDetailsLoading: true,
       };
     case `${LIST_DASHBOARD_MAP_DETAILS}_REJECTED`:
       console.log(action);
       return {
         ...state,
         listMapData: '',
+        isListDashboardMapDetailsLoading: false,
       };
 
     case YEAR_CHECK:

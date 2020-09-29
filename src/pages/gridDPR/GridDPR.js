@@ -59,13 +59,37 @@ class GridDPR extends Component {
   }
 
   CTChange = () => {
-    this.setState({ CTCheckBox: !this.state.CTCheckBox });
-    this.setState({ enableCT: !this.state.enableCT });
+    this.setState(
+      {
+        CTCheckBox: !this.state.CTCheckBox,
+        enableCT: !this.state.enableCT,
+      }
+      // () => {
+      //   if (this.state.CTCheckBox === true) {
+      //     console.log('CTCheckBox is true');
+      //     this.setState({ LVCheckBox: false });
+      //     this.setState({ enableLV: true });
+      //   }
+      // }
+    );
+    // this.setState({ enableCT: !this.state.enableCT });
   };
 
   LVChange = () => {
-    this.setState({ LVCheckBox: !this.state.LVCheckBox });
-    this.setState({ enableLV: !this.state.enableLV });
+    this.setState(
+      {
+        LVCheckBox: !this.state.LVCheckBox,
+        enableLV: !this.state.enableLV,
+      }
+      // () => {
+      //   if (this.state.LVCheckBox === true) {
+      //     console.log('LVCheckBox is true');
+      //     this.setState({ CTCheckBox: false });
+      //     this.setState({ enableCT: true });
+      //   }
+      // }
+    );
+    // this.setState({ enableLV: !this.state.enableLV });
   };
 
   handleGridSelection = val => {
@@ -99,6 +123,10 @@ class GridDPR extends Component {
   }
 
   render() {
+    console.log(`CT : ${this.state.CTCheckBox}`);
+    console.log(`ENABLE CT: ${this.state.enableCT}`);
+    console.log(`LV : ${this.state.LVCheckBox}`);
+    console.log(`ENABLE LV: ${this.state.enableLV}`);
     return (
       <>
         {this.props.grid.isLayerDtlsLoading && <Loader />}
@@ -127,9 +155,7 @@ class GridDPR extends Component {
                 <Cleaning
                   gridNoData={this.props.grid.gridNoData}
                   approvalOptions={this.props.grid.approvalOptions}
-                  onGridNoChange={value =>
-                    this.props.handleGridNoChange(value)
-                  }
+                  onGridNoChange={value => this.props.handleGridNoChange(value)}
                   onapprovalChange={e =>
                     this.props.handleApprovalChange(e.target.value)
                   }

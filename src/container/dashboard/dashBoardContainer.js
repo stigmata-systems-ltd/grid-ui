@@ -20,6 +20,10 @@ import {
 } from '../../actions/types';
 const mapDispatchToProps = (dispatch, props) => {
   return {
+    fetchDashboadInitData() {
+      dispatch(fetchDashBoardData());
+      dispatch(fetchDashBoardMapData());
+    },
     fetchDashBoardData() {
       dispatch(fetchDashBoardData());
     },

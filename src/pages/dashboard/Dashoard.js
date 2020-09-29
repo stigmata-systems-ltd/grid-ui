@@ -8,13 +8,21 @@ import Loader from '../../common/Loader';
 
 class Dashboard extends Component {
   componentDidMount() {
-    this.props.fetchDashBoardData();
-    this.props.fetchDashBoardMapData();
+    this.props.fetchDashboadInitData();
+    // this.props.fetchDashBoardData();
+    // this.props.fetchDashBoardMapData();
   }
   render() {
+    console.log(
+      `Dashboard Loader: ${this.props.db.isListDashboardDetailsLoading}`
+    );
+    console.log(
+      `Dashboard Map Loader: ${this.props.db.isListDashboardMapDetailsLoading}`
+    );
     return (
       <>
-        {this.props.db.isListDashboardDetailsLoading && <Loader />}
+        {this.props.db.isListDashboardDetailsLoading &&
+          this.props.db.isListDashboardMapDetailsLoading && <Loader />}
         <ContentLoader>
           <DashboardFilters
             yearCheck={this.props.db.yearCheck}
@@ -41,7 +49,9 @@ class Dashboard extends Component {
                 <div class="card-body">
                   <h4 class="card-title">Grid Map</h4>
                   <div className="google-map" style={{ height: '600px' }}>
-                    <Map gridDetails={this.props.db.listMapData} />
+                    {!this.props.db.isListDashboardMapDetailsLoading && (
+                      <Map gridDetails={this.props.db.listMapData} />
+                    )}
                   </div>
                 </div>
               </div>
