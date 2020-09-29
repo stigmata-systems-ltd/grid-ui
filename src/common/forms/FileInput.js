@@ -7,12 +7,7 @@ class FileInput extends Component {
       <Col6 size={this.props.size}>
         <div class="form-group">
           <label>{this.props.label}</label>
-          <input
-            type="file"
-            // name="img[]"
-            class="file-upload-default"
-            onChange={e => this.props.onChange(e)}
-          />
+          
           <div class="input-group col-xs-12">
             <input
               type="file"

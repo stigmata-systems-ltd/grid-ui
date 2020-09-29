@@ -198,8 +198,12 @@ export const updateLayerProgress = () => {
   //   lV_RFI_status: grid.rfiLVApprovalStatus,
   //   layerSubContractor: grid.addedQuantity,
   // };
-
+  const lvSts = grid.rfiLVApprovalStatus === null ? "No" : grid.rfiLVApprovalStatus;
+  const ctSts = grid.rfiCTApprovalStatus === null ? "No" : grid.rfiCTApprovalStatus;
+  const rfiNoCT = grid.rfiNoCT === null ? "" : grid.rfiNoCT;
+  const rfiNoLV = grid.rfiNoLV === null ? "" : grid.rfiNoLV;
   const postData = new FormData();
+
   postData.append('gridId', parseInt(grid.dprGridNum.value));
   postData.append('layerId', parseInt(grid.layerNo.value));
   postData.append('fillingDate', grid.dateOfFiling);
@@ -210,16 +214,17 @@ export const updateLayerProgress = () => {
   postData.append('fillType', grid.fillType);
   postData.append('topFillMaterial', grid.fillMaterial);
   postData.append('remarks', grid.rfiRemarks);
-  postData.append('cT_RFIno', grid.rfiNoCT);
+  postData.append('cT_RFIno', rfiNoCT);
   postData.append('cT_inspection_date', grid.rfiInspectionDateCT);
   postData.append('cT_approval_date', grid.rfiApprovalDateCT);
-  postData.append('cT_RFI_status', grid.rfiCTApprovalStatus);
-  postData.append('lV_RFIno', grid.rfiNoLV);
+  postData.append('cT_RFI_status', ctSts);
+  postData.append('lV_RFIno', rfiNoLV);
   postData.append('lV_inspection_date', grid.rfiInspectionDateLV);
   postData.append('lV_approval_date', grid.rfiApprovalDateLV);
-  postData.append('lV_RFI_status', grid.rfiLVApprovalStatus);
-  postData.append('layerSubContractor1', grid.addedQuantity);
+  postData.append('lV_RFI_status', lvSts);
+  postData.append('layerSubContractor1', JSON.stringify(grid.addedQuantity));
   postData.append('user_id', '10');
+  //if()
   postData.append('uploadDocs', grid.rfiFileUpload);
   const configHeader = {
     headers: { 'content-type': 'multipart/form-data' },
