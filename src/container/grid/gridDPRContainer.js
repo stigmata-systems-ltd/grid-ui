@@ -45,6 +45,8 @@ import {
   SET_ADD_SUBCONT_ERROR,
   PHOTO_GRID_NO_CHANGE,
   PHOTO_LAYER_NO_CHANGE,
+  CG_FILE,
+  LP_FILE,
 } from '../../actions/types';
 import { getSelectedGrid, getSelectedLayer } from './dataTransformer';
 
@@ -62,6 +64,20 @@ const mapDispatchToProps = dispatch => {
       dispatch(addCGData());
       dispatch({ type: RESET_CG_FORM });
     },
+    handleCGFileUpload(data) {
+      console.log(data.name);
+      console.log(data);
+      dispatch({
+        type: CG_FILE,
+        payload: data,
+      });
+    },
+    // handleFileUpload(data) {
+    //   dispatch({
+    //     type: LP_FILE,
+    //     payload: data,
+    //   });
+    // },
     cancelCGData() {
       dispatch({ type: RESET_CG_FORM });
     },

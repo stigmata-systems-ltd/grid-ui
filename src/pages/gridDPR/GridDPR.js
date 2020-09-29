@@ -123,10 +123,6 @@ class GridDPR extends Component {
   }
 
   render() {
-    console.log(`CT : ${this.state.CTCheckBox}`);
-    console.log(`ENABLE CT: ${this.state.enableCT}`);
-    console.log(`LV : ${this.state.LVCheckBox}`);
-    console.log(`ENABLE LV: ${this.state.enableLV}`);
     return (
       <>
         {this.props.grid.isLayerDtlsLoading && <Loader />}
@@ -178,6 +174,9 @@ class GridDPR extends Component {
                   message={this.props.grid.cgAdd.message}
                   variant={this.props.grid.variant}
                   isGridCGLoading={this.props.grid.isGridCGLoading}
+                  handleFileUpload={e =>
+                    this.props.handleCGFileUpload(e.target.files[0])
+                  }
                 />
               </TabPane>
               <TabPane isActive={this.state.tabPaneStatus[1].isActive}>

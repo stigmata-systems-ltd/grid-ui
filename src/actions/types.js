@@ -139,3 +139,5 @@ export const SIX_MONTH_CHECK = 'SIX_MONTH_CHECK';
 export const MONTH_CHECK = 'MONTH_CHECK';
 export const TILLDATE_CHECK = 'TILLDATE_CHECK';
 export const LIST_DASHBOARD_MAP_DETAILS = 'LIST_DASHBOARD_MAP_DETAILS';
+export const CG_FILE = 'CG_FILE';
+export const LP_FILE = 'LP_FILE';

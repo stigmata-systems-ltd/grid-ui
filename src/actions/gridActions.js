@@ -132,19 +132,30 @@ export const deleteGrid = id => {
 
 export const addCGData = () => {
   const grid = store.getState().grid;
-  const postData = {
-    grid_id: parseInt(grid.gridNo.value),
-    cG_RFIno: grid.RFINumber,
-    cG_inspection_date: grid.rfiInspectionDate,
-    cG_approval_date: grid.rfiApprovalDate,
-    cG_RFI_status: grid.rfiApproval,
-    user_id: 1,
+  // const postData = {
+  //   grid_id: parseInt(grid.gridNo.value),
+  //   cG_RFIno: grid.RFINumber,
+  //   cG_inspection_date: grid.rfiInspectionDate,
+  //   cG_approval_date: grid.rfiApprovalDate,
+  //   cG_RFI_status: grid.rfiApproval,
+  //   user_id: 1,
+  // };
+  const postData = new FormData();
+  postData.append('cG_RFIno', grid.RFINumber);
+  postData.append('cG_inspection_date', grid.rfiInspectionDate);
+  postData.append('cG_approval_date', grid.rfiApprovalDate);
+  postData.append('cG_RFI_status', grid.rfiApproval);
+  postData.append('uploadDocs', grid.cGFile);
+  const configHeader = {
+    headers: { 'content-type': 'multipart/form-data' },
   };
+  console.log(`Base URL: ${JSON.stringify(config)}`);
   return {
     type: ADD_CG,
     payload: axios.post(
       config.BASE_URL + '/api/Grid/CreateCG/' + grid.gridNo.value,
-      postData
+      postData,
+      configHeader
     ),
   };
 };
@@ -165,32 +176,61 @@ export const addLatLang = () => {
 
 export const updateLayerProgress = () => {
   const grid = store.getState().grid;
-  const postData = {
-    gridId: parseInt(grid.dprGridNum.value),
-    layerId: parseInt(grid.layerNo.value),
-    fillingDate: grid.dateOfFiling,
-    fillingMaterial: grid.rfiMaterialDescription,
-    area_layer: parseInt(grid.areaOfLayer),
-    status: grid.rfiLayerStatus,
-    totalQuantity: grid.totalQuantity,
-    fillType: grid.fillType,
-    topFillMaterial: grid.fillMaterial,
-    remarks: grid.rfiRemarks,
-    user_id: 1,
-    cT_RFIno: grid.rfiNoCT,
-    cT_inspection_date: grid.rfiInspectionDateCT,
-    cT_approval_date: grid.rfiApprovalDateCT,
-    cT_RFI_status: grid.rfiCTApprovalStatus,
-    lV_RFIno: grid.rfiNoLV,
-    lV_inspection_date: grid.rfiInspectionDateLV,
-    lV_approval_date: grid.rfiApprovalDateLV,
-    lV_RFI_status: grid.rfiLVApprovalStatus,
-    layerSubContractor: grid.addedQuantity,
-  };
+  // const postData = {
+  //   gridId: parseInt(grid.dprGridNum.value),
+  //   layerId: parseInt(grid.layerNo.value),
+  //   fillingDate: grid.dateOfFiling,
+  //   fillingMaterial: grid.rfiMaterialDescription,
+  //   area_layer: parseInt(grid.areaOfLayer),
+  //   status: grid.rfiLayerStatus,
+  //   totalQuantity: grid.totalQuantity,
+  //   fillType: grid.fillType,
+  //   topFillMaterial: grid.fillMaterial,
+  //   remarks: grid.rfiRemarks,
+  //   user_id: 1,
+  //   cT_RFIno: grid.rfiNoCT,
+  //   cT_inspection_date: grid.rfiInspectionDateCT,
+  //   cT_approval_date: grid.rfiApprovalDateCT,
+  //   cT_RFI_status: grid.rfiCTApprovalStatus,
+  //   lV_RFIno: grid.rfiNoLV,
+  //   lV_inspection_date: grid.rfiInspectionDateLV,
+  //   lV_approval_date: grid.rfiApprovalDateLV,
+  //   lV_RFI_status: grid.rfiLVApprovalStatus,
+  //   layerSubContractor: grid.addedQuantity,
+  // };
 
+  const postData = new FormData();
+  postData.append('gridId', parseInt(grid.dprGridNum.value));
+  postData.append('layerId', parseInt(grid.layerNo.value));
+  postData.append('fillingDate', grid.dateOfFiling);
+  postData.append('fillingMaterial', grid.rfiMaterialDescription);
+  postData.append('area_layer', parseInt(grid.areaOfLayer));
+  postData.append('status', grid.rfiLayerStatus);
+  postData.append('totalQuantity', grid.totalQuantity);
+  postData.append('fillType', grid.fillType);
+  postData.append('topFillMaterial', grid.fillMaterial);
+  postData.append('remarks', grid.rfiRemarks);
+  postData.append('cT_RFIno', grid.rfiNoCT);
+  postData.append('cT_inspection_date', grid.rfiInspectionDateCT);
+  postData.append('cT_approval_date', grid.rfiApprovalDateCT);
+  postData.append('cT_RFI_status', grid.rfiCTApprovalStatus);
+  postData.append('lV_RFIno', grid.rfiNoLV);
+  postData.append('lV_inspection_date', grid.rfiInspectionDateLV);
+  postData.append('lV_approval_date', grid.rfiApprovalDateLV);
+  postData.append('lV_RFI_status', grid.rfiLVApprovalStatus);
+  postData.append('layerSubContractor1', grid.addedQuantity);
+  postData.append('user_id', '10');
+  postData.append('uploadDocs', grid.rfiFileUpload);
+  const configHeader = {
+    headers: { 'content-type': 'multipart/form-data' },
+  };
   return {
     type: LAYER_PROGRESS,
-    payload: axios.post(config.BASE_URL + '/api/Layer/AddLayer', postData),
+    payload: axios.post(
+      config.BASE_URL + '/api/Layer/AddLayer',
+      postData,
+      configHeader
+    ),
   };
 };
 
