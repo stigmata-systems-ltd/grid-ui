@@ -39,9 +39,9 @@ export const getRefreshToken = () => {
   return JSON.parse(localStorage.getItem("refreshToken"));
 };
 export const setAuthHeader = () => {
-  axios.interceptors.request.use((config) => {
-    config.headers.Authorization = getAccessToken();
-    return config;
+  axios.interceptors.request.use((axiosConfig) => {
+    axiosConfig.headers.Authorization = getAccessToken();
+    return axiosConfig;
   });
 };
 
