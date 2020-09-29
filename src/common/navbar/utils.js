@@ -1,12 +1,10 @@
-import store from "../../store";
+import store from '../../store';
 
 export const getNavbar = () => {
   const auth = store.getState().auth;
   let tmpArr = [];
-  auth.pageAccess && auth.pageAccess.map(item => {
-    
-  })
-}
+  auth.pageAccess && auth.pageAccess.map(item => {});
+};
 export const metaDataNavbar = [
   {
     id: '1',
@@ -40,40 +38,22 @@ export const metaDataNavbar = [
         navText: 'View Grid',
         route: '/grid/view',
       },
-      // {
-      //   id: 'gridSub' + 4,
-      //   navText: 'Grid Details',
-      //   route: 'griddetails',
-      // },
     ],
   },
   {
     id: '3',
+    navText: 'Planning Manager',
+    iconName: 'faUserTie',
+    hasSubNav: false,
+    route: '/planingmanager',
+  },
+  {
+    id: '4',
     navText: 'Client Billing',
     iconName: 'faFileInvoiceDollar',
     hasSubNav: false,
     isSubNavOpen: false,
     route: '/clientbilling',
-  },
-  {
-    id: '4',
-    navText: 'Sub-Contractor',
-    iconName: 'faUser',
-    hasSubNav: true,
-    isSubNavOpen: false,
-    route: '/subcontractor',
-    subNavs: [
-      {
-        id: 'SCRSub' + 1,
-        navText: 'Create SubContractor',
-        route: '/subcontractor/create',
-      },
-      {
-        id: 'SCRSub' + 2,
-        navText: 'List - SubContractor',
-        route: '/subcontractor/list',
-      },
-    ],
   },
   {
     id: '5',
@@ -96,10 +76,23 @@ export const metaDataNavbar = [
   },
   {
     id: '6',
-    navText: 'Planning Manager',
-    iconName: 'faUserTie',
-    hasSubNav: false,
-    route: '/planingmanager',
+    navText: 'Sub-Contractor',
+    iconName: 'faUser',
+    hasSubNav: true,
+    isSubNavOpen: false,
+    route: '/subcontractor',
+    subNavs: [
+      {
+        id: 'SCRSub' + 1,
+        navText: 'Create SubContractor',
+        route: '/subcontractor/create',
+      },
+      {
+        id: 'SCRSub' + 2,
+        navText: 'List - SubContractor',
+        route: '/subcontractor/list',
+      },
+    ],
   },
   {
     id: '7',
@@ -108,23 +101,9 @@ export const metaDataNavbar = [
     hasSubNav: false,
     route: '/roles/list',
   },
-  // {
-  //   id: '6',
-  //   navText: 'Help',
-  //   iconName: 'faQuestionCircle',
-  //   hasSubNav: false,
-  //   route: 'login',
-  // },
-  // {
-  //   id: '7',
-  //   navText: 'Settings',
-  //   iconName: 'faCog',
-  //   hasSubNav: false,
-  //   route: 'login',
-  // },
   {
     id: '8',
-    navText: 'Manage Users',
+    navText: 'Users Management',
     iconName: 'faUsers',
     hasSubNav: false,
     isSubNavOpen: false,
