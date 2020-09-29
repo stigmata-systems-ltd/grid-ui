@@ -1,6 +1,7 @@
 import axios from "axios";
 import store from "../store";
 import { SET_TOKEN } from "../actions/types";
+import config from '../config';
 
 export const isUserLoggedIn = () => {
   if (localStorage.getItem("refreshToken")) {
@@ -54,7 +55,7 @@ export const setRespInterceptor = () => {
       if (error.response.status === 401 && !originalRequest._retry) {
         originalRequest._retry = true;
         return axios
-          .post("https://localhost:5002/api/Auth/refreshtoken", {
+          .post(config.BASE_URL + "/api/Auth/refreshtoken", {
             token: getRefreshToken(),
           })
           .then((res) => {
