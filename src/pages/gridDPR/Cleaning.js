@@ -7,19 +7,8 @@ import Button from '../../common/forms/Button';
 import CustomAlert from '../../common/forms/customAlert';
 import { transformCleaning } from './utils';
 import Loader from '../../common/Loader';
+import FileInput from '../../common/forms/FileInput';
 class Cleaning extends Component {
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     selectedGrid: 0,
-  //   };
-  // }
-  // handleGridSelection = e => {
-  //   this.setState({ selectedLayer: e.target.value });
-  // };
-  // componentDidMount() {
-  //   this.props.fetchGridNoData();
-  // }
   render() {
     return (
       <>
@@ -92,17 +81,16 @@ class Cleaning extends Component {
                   </div>
                 </div>
               </div>
-
               <div class="col-md-6">
                 <div class="form-group row">
                   <label class="col-sm-3 col-form-label">Upload Document</label>
                   <div class="col-sm-9">
-                    <input
-                      type="file"
-                      name="img[]"
-                      class="file-upload-default"
+                    <FileInput
+                      size="col-md-4"
+                      label="Select Documents"
+                      onChange={e => this.props.handleFileUpload(e)}
                     />
-                    <div class="input-group col-xs-12">
+                    {/* <div class="input-group col-xs-12">
                       <input
                         type="text"
                         class="form-control file-upload-info"
@@ -117,7 +105,7 @@ class Cleaning extends Component {
                           Upload
                         </button>
                       </span>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>

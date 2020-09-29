@@ -58,6 +58,8 @@ import {
   PHOTO_LAYER_NO_CHANGE,
   //Grid
   SET_MAP_PREVIEW,
+  CG_FILE,
+  LP_FILE,
 } from '../actions/types';
 import { transformSubCatReducer } from '../pages/gridDPR/utils';
 
@@ -312,6 +314,17 @@ export default function(state = initialState, action) {
       return {
         ...state,
         layerNo: action.payload,
+      };
+    case CG_FILE:
+      return {
+        ...state,
+        cGFile: action.payload,
+      };
+    case LP_FILE:
+      console.log(`LP FILE: ${action.payload.name}`);
+      return {
+        ...state,
+        lpFile: action.payload,
       };
     case `${ADD_CG}_FULFILLED`:
       return {
