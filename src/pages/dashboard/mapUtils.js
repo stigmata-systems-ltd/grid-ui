@@ -80,6 +80,13 @@ const getCenters = (lat, lng) => {
   };
   return [right, bottom, left, top];
 };
+const transformPolygon = data => {
+  let tmparr = [];
+  data.map(item => {
+    tmparr.push({ lat: item.latitude, lng: item.longitude });
+  });
+  return tmparr;
+};
 export const gridData = gridDetails => {
   console.log(`Grid Details MapUtils: ${JSON.stringify(gridDetails)}`);
   // const centers = getCenters(lat, lng);
@@ -88,7 +95,7 @@ export const gridData = gridDetails => {
     lng: item.marker_longitude,
     title: item.gridno,
     status: item.status,
-    rectCords: item.gridGeoLocation,
+    rectCords: transformPolygon(item.gridGeoLocation),
   }));
   return gridData;
 };

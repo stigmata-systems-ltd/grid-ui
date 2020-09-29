@@ -29,7 +29,7 @@ export const layerOverviewMetadata = data => {
 export const overviewMetadata = data => {
   return [
     {
-      title: 'Total Grid',
+      title: 'Total Grids',
       number: data.totalGrid,
       iconName: 'faBorderAll',
       color: 'text-primary',

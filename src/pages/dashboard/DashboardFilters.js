@@ -51,22 +51,22 @@ class DashboardFilters extends Component {
                 <div class="col-md-7">
                   <div class="form-group no-margin-bottom">
                     <Radio
-                      label="Current Year"
+                      label="FTY"
                       checked={this.props.yearCheck}
                       onChange={() => this.props.yearChange()}
                     />
                     <Radio
-                      label="Last 6 Months"
+                      label="For 6 Months"
                       checked={this.props.sixMonthCheck}
                       onChange={() => this.props.sixMonthChange()}
                     />
                     <Radio
-                      label="Current Month"
+                      label="FTM"
                       checked={this.props.monthCheck}
                       onChange={() => this.props.monthChange()}
                     />
                     <Radio
-                      label="Till Date"
+                      label="Custom Date"
                       checked={this.props.tillDateCheck}
                       onChange={() => this.props.tillDateChange()}
                     />
