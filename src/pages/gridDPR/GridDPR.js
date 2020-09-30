@@ -27,6 +27,7 @@ import {
   calcProgress,
   transformLayerList,
   layerDropDownMeta,
+  layerDropDownMetaWithCompleted,
 } from './utils';
 import { transformGridList } from '../../utils/dataTransformer';
 
@@ -392,7 +393,12 @@ class GridDPR extends Component {
                   <SimpleDropDown
                     size="col-md-6"
                     label="Layer Status"
-                    selectOptions={layerDropDownMeta}
+                    selectOptions={
+                      this.props.grid.rfiLVApprovalStatus === 'Yes' &&
+                      this.props.grid.rfiCTApprovalStatus === 'Yes'
+                        ? layerDropDownMetaWithCompleted
+                        : layerDropDownMeta
+                    }
                     onChange={e =>
                       this.props.handleLayerStatusChange(e.target.value)
                     }
