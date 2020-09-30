@@ -174,7 +174,7 @@ export const addLatLang = () => {
   };
 };
 
-export const updateLayerProgress = () => {
+export const updateLayerProgress = (isForBilling) => {
   const grid = store.getState().grid;
   // const postData = {
   //   gridId: parseInt(grid.dprGridNum.value),
@@ -202,6 +202,7 @@ export const updateLayerProgress = () => {
   const ctSts = grid.rfiCTApprovalStatus === null ? "No" : grid.rfiCTApprovalStatus;
   const rfiNoCT = grid.rfiNoCT === null ? "" : grid.rfiNoCT;
   const rfiNoLV = grid.rfiNoLV === null ? "" : grid.rfiNoLV;
+  const layerStatus = isForBilling ? "Completed" : grid.rfiLayerStatus
   const postData = new FormData();
 
   postData.append('gridId', parseInt(grid.dprGridNum.value));
@@ -209,7 +210,7 @@ export const updateLayerProgress = () => {
   postData.append('fillingDate', grid.dateOfFiling);
   postData.append('fillingMaterial', grid.rfiMaterialDescription);
   postData.append('area_layer', parseInt(grid.areaOfLayer));
-  postData.append('status', grid.rfiLayerStatus);
+  postData.append('status', layerStatus);
   postData.append('totalQuantity', grid.totalQuantity);
   postData.append('fillType', grid.fillType);
   postData.append('topFillMaterial', grid.fillMaterial);

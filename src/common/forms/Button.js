@@ -3,8 +3,7 @@ import { NONAME } from 'dns';
 
 class Button extends Component {
   render() {
-    const isDisable = this.props.disable && 'disabled';
-    console.log(`isDisabled: ${isDisable}`);
+    console.log(`isDisabled: ${this.props.disable}`);
     return (
       <button
         type="button"
@@ -12,7 +11,7 @@ class Button extends Component {
           this.props.btnType === 'primary' ? 'btn-primary' : this.props.btnType
         }`}
         onClick={this.props.onClick}
-        isDisable
+        disabled={this.props.disable}
       >
         {this.props.btnText}
       </button>
