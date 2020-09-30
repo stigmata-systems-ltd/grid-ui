@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import FormRow from "../../common/forms/FormRow";
-import SearchableDropDown from '../../common/forms/SearchableDropDown';
+import SearchableDropDown from "../../common/forms/SearchableDropDown";
 import { ImageGroup, Image } from "react-fullscreen-image";
-import {
-  transformLayerList,
-} from './utils';
-import { transformGridList } from '../../utils/dataTransformer';
+import { transformLayerList } from "./utils";
+import { transformGridList } from "../../utils/dataTransformer";
 
 import { gridNumber, layers, images } from "./utils";
 
@@ -42,7 +40,7 @@ class Cleaning extends Component {
               value={this.props.grid.photoLayerNum}
             />
           </FormRow>
-          <ImageGroup>
+          {/* <ImageGroup>
             <ul className="images">
               {images.map((i) => (
                 <li key={i}>
@@ -63,7 +61,14 @@ class Cleaning extends Component {
                 </li>
               ))}
             </ul>
-          </ImageGroup>
+          </ImageGroup> */}
+          <div class="row">
+            {images.map((i) => (
+              <div class="col-md-4">
+                <img src={i} alt={i} style={{width: "100%"}}/>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     );

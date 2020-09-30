@@ -81,16 +81,13 @@ const mapDispatchToProps = dispatch => {
     cancelCGData() {
       dispatch({ type: RESET_CG_FORM });
     },
-    updateLayerProgress() {
-      dispatch(updateLayerProgress()).then(() => {
+    updateLayerProgress(isForBilling) {
+      dispatch(updateLayerProgress(isForBilling)).then(() => {
         dispatch({ type: RESET_DPR_FORM });
       });
     },
     cancelLayerProgress() {
       dispatch({ type: RESET_DPR_FORM });
-    },
-    submitClientBilling() {
-      console.log('Testing Client Billing');
     },
     handleGridNoChange(obj) {
       dispatch({

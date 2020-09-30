@@ -22,6 +22,7 @@
     "react-dom": "^16.13.1",
     "react-fullscreen-image": "0.0.3",
     "react-google-charts": "^3.0.15",
+    "react-image-lightbox": "^5.1.1",
     "react-modal": "^3.11.2",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
