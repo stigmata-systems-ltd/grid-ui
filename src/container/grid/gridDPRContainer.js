@@ -82,6 +82,7 @@ const mapDispatchToProps = dispatch => {
       dispatch({ type: RESET_CG_FORM });
     },
     updateLayerProgress(isForBilling) {
+      console.log(`isForBilling value: ${JSON.stringify(isForBilling)}`);
       dispatch(updateLayerProgress(isForBilling)).then(() => {
         dispatch({ type: RESET_DPR_FORM });
       });
