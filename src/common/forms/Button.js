@@ -3,7 +3,6 @@ import { NONAME } from 'dns';
 
 class Button extends Component {
   render() {
-    console.log(`isDisabled: ${this.props.disable}`);
     return (
       <button
         type="button"
