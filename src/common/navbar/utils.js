@@ -23,11 +23,6 @@ export const metaDataNavbar = [
     route: '/grid',
     subNavs: [
       {
-        id: 'gridSub' + 1,
-        navText: 'Create Grid',
-        route: '/grid/create',
-      },
-      {
         id: 'gridSub' + 2,
         navText: 'Grid Layer - DPR',
         route: '/grid/dpr',
@@ -76,37 +71,71 @@ export const metaDataNavbar = [
   },
   {
     id: '6',
-    navText: 'Sub-Contractor',
-    iconName: 'faUser',
+    navText: 'Master',
+    iconName: 'faChartPie',
     hasSubNav: true,
-    isSubNavOpen: false,
-    route: '/subcontractor',
+    route: '/master',
     subNavs: [
       {
-        id: 'SCRSub' + 1,
+        id: 'MasterSub' + 1,
+        navText: 'Create Grid',
+        route: '/grid/create',
+      },
+      {
+        id: 'MasterSub' + 2,
         navText: 'Create SubContractor',
         route: '/subcontractor/create',
       },
       {
-        id: 'SCRSub' + 2,
+        id: 'MasterSub' + 3,
         navText: 'List - SubContractor',
         route: '/subcontractor/list',
       },
+      {
+        id: 'MasterSub' + 4,
+        navText: 'Role Management',
+        route: '/roles/list',
+      },
+      {
+        id: 'MasterSub' + 5,
+        navText: 'Users Management',
+        route: '/users',
+      },
     ],
   },
-  {
-    id: '7',
-    navText: 'Role Management',
-    iconName: 'faUsersCog',
-    hasSubNav: false,
-    route: '/roles/list',
-  },
-  {
-    id: '8',
-    navText: 'Users Management',
-    iconName: 'faUsers',
-    hasSubNav: false,
-    isSubNavOpen: false,
-    route: '/users',
-  },
+  // {
+  //   id: '7',
+  //   navText: 'Sub-Contractor',
+  //   iconName: 'faUser',
+  //   hasSubNav: true,
+  //   isSubNavOpen: false,
+  //   route: '/subcontractor',
+  //   subNavs: [
+  //     {
+  //       id: 'SCRSub' + 1,
+  //       navText: 'Create SubContractor',
+  //       route: '/subcontractor/create',
+  //     },
+  //     {
+  //       id: 'SCRSub' + 2,
+  //       navText: 'List - SubContractor',
+  //       route: '/subcontractor/list',
+  //     },
+  //   ],
+  // },
+  // {
+  //   id: '8',
+  //   navText: 'Role Management',
+  //   iconName: 'faUsersCog',
+  //   hasSubNav: false,
+  //   route: '/roles/list',
+  // },
+  // {
+  //   id: '9',
+  //   navText: 'Users Management',
+  //   iconName: 'faUsers',
+  //   hasSubNav: false,
+  //   isSubNavOpen: false,
+  //   route: '/users',
+  // },
 ];
