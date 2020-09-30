@@ -1,27 +1,27 @@
-import React, { Component } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import * as fa from '@fortawesome/free-solid-svg-icons';
-import { withRouter } from 'react-router-dom';
-import store from '../../store';
+import React, { Component } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import * as fa from "@fortawesome/free-solid-svg-icons";
+import { withRouter } from "react-router-dom";
+import store from "../../store";
 
 class NavItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isSubNavOpen: false,
-      currentOpenParentId: '0',
-      activeId: '1',
+      currentOpenParentId: "0",
+      activeId: "1",
     };
   }
   componentDidMount = () => {
     this.setActiveMenu(this.props.navData);
   };
   renderSubNavs = (subNavs, id) => {
-    return subNavs.map(subNav => (
+    return subNavs.map((subNav) => (
       <div
-        class={`collapse ${this.state.isSubNavOpen &&
-          this.state.activeId === id &&
-          'show'}`}
+        class={`collapse ${
+          this.state.isSubNavOpen && this.state.activeId === id && "show"
+        }`}
       >
         <ul class="nav flex-column sub-menu">
           <li class="nav-item sub-nav">
@@ -41,7 +41,7 @@ class NavItem extends Component {
     this.setState({ activeId: id });
     this.setState({ isSubNavOpen: true });
   };
-  handleSubMenuShow = navItem => {
+  handleSubMenuShow = (navItem) => {
     this.setState({ activeId: navItem.id }, () => {
       if (navItem.hasSubNav) {
         if (this.state.activeId === navItem.id) {
@@ -57,10 +57,10 @@ class NavItem extends Component {
       }
     });
   };
-  setActiveMenu = navData => {
-    const path = '/' + this.props.history.location.pathname.split('/')[1];
+  setActiveMenu = (navData) => {
+    const path = "/" + this.props.history.location.pathname.split("/")[1];
 
-    navData.map(nav => {
+    navData.map((nav) => {
       if (nav.route === path) {
         this.setState({ activeId: nav.id });
         nav.hasSubNav &&
@@ -72,17 +72,19 @@ class NavItem extends Component {
     });
   };
   render() {
-    return this.props.navData.map(navItem => (
-      <li class={`nav-item ${this.state.activeId === navItem.id && 'active'}`}>
+    return this.props.navData.map((navItem) => (
+      <li class={`nav-item ${this.state.activeId === navItem.id && "active"}`}>
         <button
           key={navItem.id}
-          class={`nav-link ${this.state.isSubNavOpen &&
+          class={`nav-link ${
+            this.state.isSubNavOpen &&
             this.state.activeId === navItem.id &&
-            'show'}`}
+            "show"
+          }`}
           onClick={() => this.handleSubMenuShow(navItem)}
         >
           <FontAwesomeIcon
-            key={'navIcon' + navItem.id}
+            key={"navIcon" + navItem.id}
             icon={fa[navItem.iconName]}
             className="navIcons"
           />

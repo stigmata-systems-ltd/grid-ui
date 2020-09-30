@@ -113,14 +113,21 @@ class GridDPR extends Component {
       }),
     });
   };
-
-  componentDidMount() {
+  onLoad= () => {
     let reset = true;
-    console.log(`Route Params: ${this.props.match.params.id}`);
     if (this.props.match.params.id === 'editPM') {
       reset = false;
     }
     this.props.setInitialData(reset);
+  }
+  componentDidUpdate(prevProps) {
+    if(this.props.location.pathname !== prevProps.location.pathname) {
+      this.onLoad();
+    }
+  }
+
+  componentDidMount() {
+    this.onLoad();
   }
 
   render() {
