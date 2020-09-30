@@ -402,14 +402,23 @@ class GridDPR extends Component {
                 <Button
                   btnText="Save"
                   btnType="primary"
-                  onClick={this.props.updateLayerProgress}
+                  onClick={() =>
+                    this.props.updateLayerProgress(
+                      this.props.grid.rfiLVApprovalStatus === 'Yes' &&
+                        this.props.grid.rfiCTApprovalStatus === 'Yes'
+                        ? true
+                        : false
+                    )
+                  }
                 />
                 <Button
                   btnText="Submit For Client Billing"
                   btnType="btn-primary secondary-btn-fix"
                   disable={
-                    (this.props.grid.rfiLVApprovalStatus === 'Yes' &&
-                    this.props.grid.rfiCTApprovalStatus === 'Yes') ? false : true
+                    this.props.grid.rfiLVApprovalStatus === 'Yes' &&
+                    this.props.grid.rfiCTApprovalStatus === 'Yes'
+                      ? false
+                      : true
                   }
                   onClick={() => this.props.updateLayerProgress(true)}
                 />
