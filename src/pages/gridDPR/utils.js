@@ -186,14 +186,6 @@ export const layerDropDownMeta = [
 ];
 export const layerDropDownMetaWithCompleted = [
   {
-    id: 'New',
-    gridName: 'New',
-  },
-  {
-    id: 'InProgress',
-    gridName: 'InProgress',
-  },
-  {
     id: 'Completed',
     gridName: 'Completed',
   },
