@@ -88,7 +88,6 @@ const transformPolygon = data => {
   return tmparr;
 };
 export const gridData = gridDetails => {
-  console.log(`Grid Details MapUtils: ${JSON.stringify(gridDetails)}`);
   // const centers = getCenters(lat, lng);
   const gridData = gridDetails.lstGridDtls.map(item => ({
     lat: item.marker_latitide,

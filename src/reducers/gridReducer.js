@@ -553,7 +553,9 @@ export default function(state = initialState, action) {
         isLayerDtlsLoading: false,
         isLayerDtlsError: true,
         isLayerUpdateSuccess: false,
-        layerUpdateMsg: 'Internal Server Error',
+        layerUpdateMsg: action.payload.response && action.payload.response.data ? 
+        action.payload.response.data.message : 
+        "Can't update layer, please check you form inputs",
       };
     case `${LAYER_PROGRESS}_FULFILLED`:
       return {
