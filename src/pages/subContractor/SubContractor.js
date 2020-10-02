@@ -13,6 +13,7 @@ import CheckBox from '../../common/forms/CheckBox';
 import { addSubContractor } from '../../actions/subContractorActions';
 import CustomAlert from '../../common/forms/customAlert';
 import Loader from '../../common/Loader';
+
 class SubContractor extends Component {
   constructor(props) {
     super(props);

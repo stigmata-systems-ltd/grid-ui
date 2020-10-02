@@ -12,6 +12,10 @@ class Login extends Component {
 
   //   this.props.history.push("dashboard");
   // };
+  redirectToForgot = (e) => {
+    e.preventDefault();
+    this.props.history.push("forgot");
+  }
   render() {
     return (
       <div class="container-scroller">
@@ -64,7 +68,7 @@ class Login extends Component {
                           <i class="input-helper"></i>
                         </label>
                       </div>
-                      <a href="#" class="auth-link text-black">
+                      <a href="#" class="auth-link text-black" onClick={this.redirectToForgot}>
                         Forgot password?
                       </a>
                     </div>

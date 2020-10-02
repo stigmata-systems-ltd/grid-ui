@@ -256,7 +256,7 @@ class GridDPR extends Component {
                     value={this.props.grid.fillMaterial}
                   />
                   <FileInput
-                    size="col-md-4"
+                    size="col-md-8"
                     label="Select Documents"
                     onChange={e =>
                       this.props.handleFileUpload(e.target.files[0])

@@ -28,6 +28,8 @@ import SubContractorReport from './container/report/subContractorReportContainer
 import PlaningManager from './container/planningManager/pmContainer';
 import ListRoles from './container/roleManagement/listRoleContainer';
 import EditRole from './container/roleManagement/editRoleContainer';
+import Forgot from "./pages/auth/Forgot";
+
 import ProtectedRoute from "./common/ProtectedRoute";
 import unauthorized from "./common/Unauthorized";
 import { setRespInterceptor, setAuthHeader } from "./utils/auth";
@@ -45,6 +47,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Login} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/forgot" component={Forgot} />
           <ProtectedRoute
             exact
             path="/subcontractor/list"
