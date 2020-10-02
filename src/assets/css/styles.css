@@ -30,6 +30,12 @@ select.form-control {
 .content-wrapper {
   padding: 1.04rem 1.04rem;
 }
+.upload-btn-fix {
+  height: 38px;
+}
+.no-margin-top {
+  margin-top: 0 !important;
+}
 /*DataTable Styles
 *****************/
 .table-delete-icon {

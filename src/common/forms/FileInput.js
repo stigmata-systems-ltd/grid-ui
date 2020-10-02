@@ -18,7 +18,7 @@ class FileInput extends Component {
               style={{padding: 7}}
             />
             <span class="input-group-append">
-              <button class="file-upload-browse btn btn-primary" type="button">
+              <button class="file-upload-browse btn btn-primary upload-btn-fix" type="button">
                 Upload
               </button>
             </span>

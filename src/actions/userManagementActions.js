@@ -8,7 +8,10 @@ import {
   DELETE_USER,
   GET_SINGLE_USER,
   UPDATE_USER,
+  GET_PROFILE_DETAILS,
+  CHANGE_PWD,
 } from "./types";
+import { getUserDetails } from "../utils/auth";
 
 export const createUser = () => {
   const {
@@ -92,3 +95,25 @@ export const updateUser = () => {
     payload: axios.put(config.BASE_URL + "/api/User/updateuser/" + userId, updateuser),
   };
 };
+
+export const getProfileDetails = (id) => {
+  const userId = getUserDetails().id;
+  return {
+    type: GET_PROFILE_DETAILS,
+    payload: axios.get(config.BASE_URL + "/api/User/getuser/" + userId),
+  };
+}
+
+export const changePwd = (id) => {
+  const userId = getUserDetails().id;
+  const user = store.getState().user;
+  const data = {
+    userId: userId,
+    currentPassword: user.currentPwd,
+    newPassword: user.newPwd,
+  }
+  return {
+    type: CHANGE_PWD,
+    payload: axios.post(config.BASE_URL + "/api/User/changepassword", data),
+  };
+}

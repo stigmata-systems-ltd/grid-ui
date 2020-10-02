@@ -1,6 +1,6 @@
-import { connect } from 'react-redux';
-import GridDPR from '../../pages/gridDPR/GridDPR';
-import store from '../../store';
+import { connect } from "react-redux";
+import GridDPR from "../../pages/gridDPR/GridDPR";
+import store from "../../store";
 import {
   gridNoList,
   addCGData,
@@ -10,7 +10,7 @@ import {
   getSingleLayerDetails,
   getCompletedLayersByGrid,
   fetchGrid,
-} from '../../actions/gridActions';
+} from "../../actions/gridActions";
 import {
   GRID_NO_LIST,
   GRID_NO,
@@ -47,10 +47,12 @@ import {
   PHOTO_LAYER_NO_CHANGE,
   CG_FILE,
   LP_FILE,
-} from '../../actions/types';
-import { getSelectedGrid, getSelectedLayer } from './dataTransformer';
+  DPR_FORM_VALIDATION_ERROR,
+} from "../../actions/types";
+import { getSelectedGrid, getSelectedLayer } from "./dataTransformer";
+import { validateDpr } from "./validation";
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     setInitialData(reset) {
       dispatch(gridNoList());
@@ -82,10 +84,18 @@ const mapDispatchToProps = dispatch => {
       dispatch({ type: RESET_CG_FORM });
     },
     updateLayerProgress(isForBilling) {
-      console.log(`isForBilling value: ${JSON.stringify(isForBilling)}`);
-      dispatch(updateLayerProgress(isForBilling)).then(() => {
-        dispatch({ type: RESET_DPR_FORM });
-      });
+      const grid = store.getState().grid;
+      const validationResult = validateDpr(grid);
+      if (validationResult.isValid) {
+        dispatch(updateLayerProgress(isForBilling)).then(() => {
+          dispatch({ type: RESET_DPR_FORM });
+        });
+      } else {
+        dispatch({
+          type: DPR_FORM_VALIDATION_ERROR,
+          payload: validationResult.message,
+        });
+      }
     },
     cancelLayerProgress() {
       dispatch({ type: RESET_DPR_FORM });
@@ -96,6 +106,10 @@ const mapDispatchToProps = dispatch => {
         payload: obj,
       });
       dispatch(fetchGrid(obj.value));
+      dispatch({
+        type: DPR_FORM_VALIDATION_ERROR,
+        payload: "",
+      });
     },
     handleGridNoChangeDPR(value) {
       dispatch({
@@ -104,13 +118,21 @@ const mapDispatchToProps = dispatch => {
       });
       const currentLayer = store.getState().grid.layerNo;
       const currentGrid = store.getState().grid.dprGridNum;
-      currentLayer !== '' && this.setSingleLayerDetails();
-      currentGrid !== '' && dispatch(getCompletedLayersByGrid(value));
+      currentLayer !== "" && this.setSingleLayerDetails();
+      currentGrid !== "" && dispatch(getCompletedLayersByGrid(value));
+      dispatch({
+        type: DPR_FORM_VALIDATION_ERROR,
+        payload: "",
+      });
     },
     handleApprovalChange(value) {
       dispatch({
         type: RFI_APPROVAL,
         payload: value,
+      });
+      dispatch({
+        type: DPR_FORM_VALIDATION_ERROR,
+        payload: "",
       });
     },
     handleRFINoChange(value) {
@@ -118,11 +140,19 @@ const mapDispatchToProps = dispatch => {
         type: RFI_NO,
         payload: value,
       });
+      dispatch({
+        type: DPR_FORM_VALIDATION_ERROR,
+        payload: "",
+      });
     },
     handleInspectionDateChange(value) {
       dispatch({
         type: RFI_INSPECTION_DATE,
         payload: value,
+      });
+      dispatch({
+        type: DPR_FORM_VALIDATION_ERROR,
+        payload: "",
       });
     },
     handleApprovalDateChange(value) {
@@ -130,11 +160,19 @@ const mapDispatchToProps = dispatch => {
         type: RFI_APPROVAL_DATE,
         payload: value,
       });
+      dispatch({
+        type: DPR_FORM_VALIDATION_ERROR,
+        payload: "",
+      });
     },
     handleDateOfFilingChange(value) {
       dispatch({
         type: DATE_OF_FILING,
         payload: value,
+      });
+      dispatch({
+        type: DPR_FORM_VALIDATION_ERROR,
+        payload: "",
       });
     },
     handleAreaOfLayerChange(value) {
@@ -142,17 +180,29 @@ const mapDispatchToProps = dispatch => {
         type: AREA_OF_LAYER,
         payload: value,
       });
+      dispatch({
+        type: DPR_FORM_VALIDATION_ERROR,
+        payload: "",
+      });
     },
     handleFillTypeChange(value) {
       dispatch({
         type: FILL_TYPE,
         payload: value,
       });
+      dispatch({
+        type: DPR_FORM_VALIDATION_ERROR,
+        payload: "",
+      });
     },
     handleTopLevelFillMaterialChange(value) {
       dispatch({
         type: FILL_MATERIAL,
         payload: value,
+      });
+      dispatch({
+        type: DPR_FORM_VALIDATION_ERROR,
+        payload: "",
       });
     },
     handleRFILVChange(value) {
@@ -241,11 +291,11 @@ const mapDispatchToProps = dispatch => {
     },
     addQuantity() {
       const grid = store.getState().grid;
-      if (grid.quantity !== '' && grid.subContractorName.value !== '0') {
+      if (grid.quantity !== "" && grid.subContractorName.value !== "0") {
         const data = {
-          quantity: '',
-          subContractorId: '',
-          subContractorName: '',
+          quantity: "",
+          subContractorId: "",
+          subContractorName: "",
         };
         let changedQty = parseInt(grid.quantity);
         let isNewSubCont = true;
@@ -273,7 +323,7 @@ const mapDispatchToProps = dispatch => {
       } else {
         dispatch({
           type: SET_ADD_SUBCONT_ERROR,
-          payload: 'Please Enter Both Quantity and Subcontractor',
+          payload: "Please Enter Both Quantity and Subcontractor",
         });
       }
     },
@@ -318,7 +368,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   const grid = state.grid;
   return {
     grid,

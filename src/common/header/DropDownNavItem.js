@@ -10,6 +10,9 @@ class DropDownNavItem extends Component {
         if(navText === 'Logout') {
             logout(this.props);
         }
+        if(navText === 'Profile') {
+            this.props.history.push("profile")
+        }
     }
 
     render() {
