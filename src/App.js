@@ -29,8 +29,10 @@ import PlaningManager from './container/planningManager/pmContainer';
 import ListRoles from './container/roleManagement/listRoleContainer';
 import EditRole from './container/roleManagement/editRoleContainer';
 import Forgot from "./pages/auth/Forgot";
+import Profile from "./container/userManagement/ProfileContainer";
 
 import ProtectedRoute from "./common/ProtectedRoute";
+import AuthorizedRoute from "./common/AuthorizedRoute";
 import unauthorized from "./common/Unauthorized";
 import { setRespInterceptor, setAuthHeader } from "./utils/auth";
 setAuthHeader();setRespInterceptor();
@@ -92,6 +94,7 @@ class App extends Component {
             path="/report/subcontractor"
             component={SubContractorReport}
           />
+          <AuthorizedRoute path="/profile" component={Profile} />
           <ProtectedRoute path="/planingmanager" component={PlaningManager} />
           <Route exact path="/unauthorized" component={unauthorized} />
         </Switch>

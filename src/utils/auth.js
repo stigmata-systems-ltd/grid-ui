@@ -59,7 +59,6 @@ export const setRespInterceptor = () => {
             token: getRefreshToken(),
           })
           .then((res) => {
-            console.log("----------test in then------------------");
             const resp = res.data;
             setNewTokens(resp.token, resp.refreshToken);
 

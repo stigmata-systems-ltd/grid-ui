@@ -17,10 +17,8 @@ const initialState = {
 };
 
 export default function(state = initialState, action) {
-  console.log(`PM Actions ${action.type}`);
   switch (action.type) {
     case `${LIST_DASHBOARD_DETAILS}_FULFILLED`:
-      console.log(`List SCR: ${action.payload.data}`);
       const result = action.payload.data;
       const dashboardData = {
         totalGrid: result.totalGrid,
@@ -40,32 +38,27 @@ export default function(state = initialState, action) {
         isListDashboardDetailsLoading: false,
       };
     case `${LIST_DASHBOARD_DETAILS}_PENDING`:
-      console.log(action);
       return {
         ...state,
         isListDashboardDetailsLoading: true,
       };
     case `${LIST_DASHBOARD_DETAILS}_REJECTED`:
-      console.log(action);
       return {
         ...state,
         isListDashboardDetailsLoading: false,
       };
     case `${LIST_DASHBOARD_MAP_DETAILS}_FULFILLED`:
-      console.log(action);
       return {
         ...state,
         listMapData: action.payload.data,
         isListDashboardMapDetailsLoading: false,
       };
     case `${LIST_DASHBOARD_MAP_DETAILS}_PENDING`:
-      console.log(action);
       return {
         ...state,
         isListDashboardMapDetailsLoading: true,
       };
     case `${LIST_DASHBOARD_MAP_DETAILS}_REJECTED`:
-      console.log(action);
       return {
         ...state,
         listMapData: '',
@@ -73,7 +66,6 @@ export default function(state = initialState, action) {
       };
 
     case YEAR_CHECK:
-      console.log(action);
       return {
         ...state,
         yearCheck: true,
@@ -82,7 +74,6 @@ export default function(state = initialState, action) {
         tillDateCheck: false,
       };
     case SIX_MONTH_CHECK:
-      console.log(action);
       return {
         ...state,
         yearCheck: false,
@@ -91,7 +82,6 @@ export default function(state = initialState, action) {
         tillDateCheck: false,
       };
     case MONTH_CHECK:
-      console.log(action);
       return {
         ...state,
         yearCheck: false,
@@ -100,7 +90,6 @@ export default function(state = initialState, action) {
         tillDateCheck: false,
       };
     case TILLDATE_CHECK:
-      console.log(action);
       return {
         ...state,
         yearCheck: false,

@@ -21,22 +21,18 @@ const initialState = {
 };
 
 export default function(state = initialState, action) {
-  console.log(`PM Actions ${action.type}`);
   switch (action.type) {
     case `${LIST_LAYER_PM}_FULFILLED`:
-      console.log(`List SCR: ${action.payload.data}`);
       return {
         ...state,
         layerList: action.payload.data,
       };
     case `${LIST_LAYER_PM}_REJECTED`:
-      console.log(action);
       return {
         ...state,
         layerList: [],
       };
     case `${APPROVE_LAYER_PM}_FULFILLED`:
-      console.log(`List SCR: ${action.payload.data}`);
       return {
         ...state,
         approveLayer: {
@@ -45,14 +41,12 @@ export default function(state = initialState, action) {
         },
       };
     case `${APPROVE_LAYER_PM}_REJECTED`:
-      console.log(action);
       return {
         ...state,
         approveLayer: { message: 'Error Occurred', variant: 'danger' },
       };
 
     case SHOW_PM_VIEW_MODEL:
-      console.log(action);
       return {
         ...state,
         showPMViewModal: action.payload,

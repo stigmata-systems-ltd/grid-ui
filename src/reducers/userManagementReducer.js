@@ -19,6 +19,11 @@ import {
   SET_USER_EDIT_MODE,
   UPDATE_USER,
   REMOVE_MODAL_ERROR_MSG,
+  //Profile
+  GET_PROFILE_DETAILS,
+  CHANGE_CURRENT_PWD,
+  CHANGE_NEW_PWD,
+  CHANGE_PWD,
 } from "../actions/types";
 
 const initialState = {
@@ -32,6 +37,10 @@ const initialState = {
   isAddUserMsg: false,
   singleUser: {},
   isEditMode: false,
+  //Profile
+  newPwd: "",
+  currentPwd: "",
+  isProfileValidation: "",
 };
 
 export default function (state = initialState, action) {
@@ -257,6 +266,51 @@ export default function (state = initialState, action) {
       return {
         ...state,
         isModalMsg: action.payload,
+      };
+    case `${GET_PROFILE_DETAILS}_PENDING`:
+      return {
+        ...state,
+        isProfLoading: true,
+      };
+    case `${GET_PROFILE_DETAILS}_REJECTED`:
+      return {
+        ...state,
+        isProfLoading: false,
+      };
+    case `${GET_PROFILE_DETAILS}_FULFILLED`:
+      return {
+        ...state,
+        userDetails: action.payload.data,
+        isProfLoading: false,
+      };
+    case CHANGE_CURRENT_PWD:
+      return {
+        ...state,
+        currentPwd: action.payload,
+      };
+    case CHANGE_NEW_PWD:
+      return {
+        ...state,
+        newPwd: action.payload,
+      };
+      case `${CHANGE_PWD}_PENDING`:
+      return {
+        ...state,
+        isProfLoading: true,
+      };
+    case `${CHANGE_PWD}_REJECTED`:
+      return {
+        ...state,
+        isProfLoading: false,
+        profileMessage: action.payload.response && action.payload.response.data ? 
+        action.payload.response.data.message : 
+        "Can't save password, please check you form inputs",
+      };
+    case `${CHANGE_PWD}_FULFILLED`:
+      return {
+        ...state,
+        profileMessage: action.payload.data.message,
+        isProfLoading: false,
       };
 
     default:
