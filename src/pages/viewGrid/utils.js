@@ -1,10 +1,10 @@
-import React from 'react';
-import IconButton from '../../common/forms/IconButton';
-export const transformGridData = gridData => {
+import React from "react";
+import IconButton from "../../common/forms/IconButton";
+export const transformGridData = (gridData) => {
   let tmpArr = [];
   gridData &&
-    gridData.map(grid => {
-      let gridStatus = grid.status === 'False' ? 'In Progress' : grid.status;
+    gridData.map((grid) => {
+      let gridStatus = grid.status === "False" ? "In Progress" : grid.status;
       tmpArr.push({
         id: grid.gridId,
         gridNum: grid.gridno,
@@ -15,6 +15,7 @@ export const transformGridData = gridData => {
     });
   return tmpArr;
 };
+
 export const _viewGridMetaData = (
   handleDelete,
   handleEdit,
@@ -24,46 +25,65 @@ export const _viewGridMetaData = (
   return [
     {
       sortable: false,
-      cell: row => {
+      cell: (row) => {
         return (
           <>
             {pageAccess.isDelete && (
               <IconButton
                 iconName="faTimes"
-                className={'table-delete-icon'}
+                className={"table-delete-icon"}
                 onClick={() => handleDelete(row.id)}
               />
             )}
           </>
         );
       },
-      width: '2%',
+      width: "2%",
     },
     {
-      name: 'Grid Number',
-      selector: 'gridNum',
+      name: "Grid Number",
+      selector: "gridNum",
       sortable: true,
     },
     {
-      name: 'Area',
-      selector: 'gridArea',
+      name: "Area",
+      selector: "gridArea",
       sortable: false,
     },
     {
-      name: 'Status',
-      selector: 'gridStatus',
+      name: "Status",
+      selector: "gridStatus",
+      sortable: false,
+      cell: (row) => {
+        let bgColor = "bg-primary";
+        const gridSts = row.gridStatus;
+        if (gridSts === "InProgress") {
+          bgColor = "bg-warning";
+        } else if (gridSts === "New") {
+          bgColor = "bg-danger";
+        } else if (gridSts === "Completed") {
+          bgColor = "bg-success";
+        } else if (gridSts === "Billed") {
+          bgColor = "bg-info";
+        }
+        return (
+          <>
+            <mark class={`${bgColor} text-white`}>
+              {gridSts}
+            </mark>
+          </>
+        );
+      },
+    },
+    {
+      name: "Create date",
+      selector: "createdDate",
       sortable: false,
     },
     {
-      name: 'Create date',
-      selector: 'createdDate',
+      name: "Actions",
       sortable: false,
-    },
-    {
-      name: 'Actions',
-      sortable: false,
-      cell: row => {
-        console.log(`PageAccess: ${JSON.stringify(pageAccess)}`);
+      cell: (row) => {
         return (
           <>
             {pageAccess.isView && (
