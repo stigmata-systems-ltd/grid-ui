@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import Profile from "../../pages/profile/Profile";
 import store from "../../store";
 import { changePwd, getProfileDetails } from "../../actions/userManagementActions";
-import { CHANGE_NEW_PWD, CHANGE_CURRENT_PWD } from "../../actions/types";
+import { CHANGE_NEW_PWD, CHANGE_CURRENT_PWD, RESET_CHANGE_PWD_FORM } from "../../actions/types";
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -22,8 +22,17 @@ const mapDispatchToProps = (dispatch) => {
       });
     },
     savePwd() {
-      changePwd();
+      dispatch(changePwd()).then(()=>{
+        dispatch({
+          type: RESET_CHANGE_PWD_FORM,
+        });
+      });
     },
+    resetChangePwdForm() {
+      dispatch({
+        type: RESET_CHANGE_PWD_FORM,
+      });
+    }
   };
 };
 

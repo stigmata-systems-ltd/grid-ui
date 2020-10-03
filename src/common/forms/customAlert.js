@@ -33,6 +33,7 @@ class customAlert extends Component {
         roles.updatePage.message = '';
         pm.approveLayer.message = '';
         user.isAddUserMsg = false;
+        user.profileMessage = "";
       }, 5000);
     });
   }

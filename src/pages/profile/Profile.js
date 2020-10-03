@@ -26,15 +26,23 @@ class SubContractor extends Component {
 
   componentDidMount = () => {
     this.props.getProfileDetails();
+    this.props.resetChangePwdForm();
   };
 
   render() {
     return (
       <>
-        {this.props.user.isLoading && <Loader />}
-        {console.log("user", this.props.user.userDetails)}
+        {this.props.user.isProfLoading && <Loader />}
         <ContentLoader>
           <FormContainer formTitle={"Profile Details"}>
+            <div>
+            {this.props.user.profileMessage ? (
+                <CustomAlert
+                  variant={this.props.user.profileVaraint}
+                  message={this.props.user.profileMessage}
+                />
+              ) : null}
+            </div>
             <FormRow>
               <Col6 size="col-md-4">
                 <h6>

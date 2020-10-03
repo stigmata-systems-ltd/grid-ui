@@ -24,6 +24,7 @@ import {
   CHANGE_CURRENT_PWD,
   CHANGE_NEW_PWD,
   CHANGE_PWD,
+  RESET_CHANGE_PWD_FORM,
 } from "../actions/types";
 
 const initialState = {
@@ -305,12 +306,20 @@ export default function (state = initialState, action) {
         profileMessage: action.payload.response && action.payload.response.data ? 
         action.payload.response.data.message : 
         "Can't save password, please check you form inputs",
+        profileVaraint: "danger"
       };
     case `${CHANGE_PWD}_FULFILLED`:
       return {
         ...state,
         profileMessage: action.payload.data.message,
         isProfLoading: false,
+        profileVaraint: "success"
+      };
+      case RESET_CHANGE_PWD_FORM:
+      return {
+        ...state,
+        currentPwd: "",
+        newPwd: "",
       };
 
     default:
