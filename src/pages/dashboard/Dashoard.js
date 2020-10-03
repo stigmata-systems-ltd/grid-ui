@@ -13,12 +13,6 @@ class Dashboard extends Component {
     // this.props.fetchDashBoardMapData();
   }
   render() {
-    console.log(
-      `Dashboard Loader: ${this.props.db.isListDashboardDetailsLoading}`
-    );
-    console.log(
-      `Dashboard Map Loader: ${this.props.db.isListDashboardMapDetailsLoading}`
-    );
     return (
       <>
         {this.props.db.isListDashboardDetailsLoading &&
@@ -30,9 +24,10 @@ class Dashboard extends Component {
             monthCheck={this.props.db.monthCheck}
             tillDateCheck={this.props.db.tillDateCheck}
             yearChange={() => this.props.yearChange()}
-            sixMonthChange={() => this.props.sixMonthChange()}
             monthChange={() => this.props.monthChange()}
             tillDateChange={() => this.props.tillDateChange()}
+            customDateFrom={(from) => this.props.customDateFrom(from)}
+            customDateTo={(to) => this.props.customDateTo()}
           />
           <Overview dashboardData={this.props.db.dashboardData} />
           <div class="row">
