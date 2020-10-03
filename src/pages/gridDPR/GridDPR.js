@@ -37,7 +37,23 @@ class GridDPR extends Component {
     this.state = {
       selectedGrid: 0,
       selectedLayer: 0,
-      navData: tabMetaData,
+      navData: [
+        {
+          id: 1,
+          navText: 'Cleaning and Grubbing',
+          isActive: true,
+        },
+        {
+          id: 2,
+          navText: 'Layer Progress',
+          isActive: false,
+        },
+        {
+          id: 3,
+          navText: 'Layer Photographs',
+          isActive: false,
+        },
+      ],
       tabPaneStatus: [
         {
           id: 1,
@@ -117,6 +133,39 @@ class GridDPR extends Component {
     let reset = true;
     if (this.props.match.params.id === "editPM") {
       reset = false;
+      this.setState({
+        navData: [
+          {
+            id: 1,
+            navText: 'Cleaning and Grubbing',
+            isActive: false,
+          },
+          {
+            id: 2,
+            navText: 'Layer Progress',
+            isActive: true,
+          },
+          {
+            id: 3,
+            navText: 'Layer Photographs',
+            isActive: false,
+          },
+        ],
+        tabPaneStatus: [
+          {
+            id: 1,
+            isActive: false,
+          },
+          {
+            id: 2,
+            isActive: true,
+          },
+          {
+            id: 3,
+            isActive: false,
+          },
+        ],
+      })
     }
     this.props.setInitialData(reset);
   };

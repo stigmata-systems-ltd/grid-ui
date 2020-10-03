@@ -224,7 +224,7 @@ export const updateLayerProgress = (isForBilling) => {
   postData.append('lV_approval_date', grid.rfiApprovalDateLV);
   postData.append('lV_RFI_status', lvSts);
   postData.append('layerSubContractor1', JSON.stringify(grid.addedQuantity));
-  postData.append('user_id', '10');
+  postData.append('user_id', '1');
   //if()
   postData.append('uploadDocs', grid.rfiFileUpload);
   const configHeader = {
