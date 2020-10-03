@@ -1,35 +1,38 @@
-import React, { Component } from 'react';
-import ContentLoader from '../../common/ContentLoader';
-import FormContainer from '../../common/forms/FormContainer';
-import FormRow from '../../common/forms/FormRow';
-import { _viewGridMetaData, transformGridData } from './utils';
-import CustomAlert from '../../common/forms/customAlert';
-import CustomDataTable from '../../common/CustomDataTable';
-import ConfirmModal from '../../common/ConfirmModal';
-import TableFilter from '../../common/TableFilter';
-import Loader from '../../common/Loader';
+import React, { Component } from "react";
+import ContentLoader from "../../common/ContentLoader";
+import FormContainer from "../../common/forms/FormContainer";
+import FormRow from "../../common/forms/FormRow";
+import { _viewGridMetaData, transformGridData } from "./utils";
+import CustomAlert from "../../common/forms/customAlert";
+import CustomDataTable from "../../common/CustomDataTable";
+import ConfirmModal from "../../common/ConfirmModal";
+import TableFilter from "../../common/TableFilter";
+import Loader from "../../common/Loader";
 class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
       activeGridId: null,
       showDeleteModal: false,
-      filterText: '',
+      filterText: "",
       resetPaginationToggle: false,
     };
   }
   componentDidMount() {
     this.props.fetchGridData();
   }
-  filteredItems = data => {
+  filteredItems = (data) => {
     return (
       data &&
       data.filter(
-        item =>
+        (item) =>
           item.gridno &&
-          item.gridno
+          (item.gridno
             .toLowerCase()
-            .includes(this.state.filterText.toLowerCase())
+            .includes(this.state.filterText.toLowerCase()) ||
+            item.status
+              .toLowerCase()
+              .includes(this.state.filterText.toLowerCase()))
       )
     );
   };
@@ -39,7 +42,7 @@ class Dashboard extends Component {
       <>
         {this.props.grid.isListGridLoading && <Loader />}
         <ContentLoader>
-          <FormContainer formTitle={'Grid List'}>
+          <FormContainer formTitle={"Grid List"}>
             <div>
               {this.props.grid.deleteGrid.message ? (
                 <CustomAlert
@@ -57,11 +60,11 @@ class Dashboard extends Component {
             <FormRow>
               <CustomDataTable
                 metaData={_viewGridMetaData(
-                  id => {
+                  (id) => {
                     this.setState({ activeGridId: id, showDeleteModal: true });
                   },
-                  id => this.props.onEditClick(id),
-                  id => this.props.onViewClick(id),
+                  (id) => this.props.onEditClick(id),
+                  (id) => this.props.onViewClick(id),
                   this.props.pageAccess
                 )}
                 bodyData={transformGridData(
@@ -79,8 +82,8 @@ class Dashboard extends Component {
                 subHeaderComponent={
                   <TableFilter
                     placeholder="Search By Grid Name"
-                    onFilter={e => {
-                      e.target.value === '' &&
+                    onFilter={(e) => {
+                      e.target.value === "" &&
                         this.setState({
                           resetPaginationToggle: !this.state
                             .resetPaginationToggle,
