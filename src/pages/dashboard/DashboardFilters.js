@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import Radio from '../../common/forms/Radio';
+import React, { Component } from "react";
+import Radio from "../../common/forms/Radio";
 
 class DashboardFilters extends Component {
   // constructor(props) {
@@ -47,29 +47,50 @@ class DashboardFilters extends Component {
           <div class="card">
             <div class="card-body">
               <div class="row">
-                <div class="col-md-5"></div>
-                <div class="col-md-7">
+                <div class="col-md-12">
                   <div class="form-group no-margin-bottom">
                     <Radio
                       label="FTY"
                       checked={this.props.yearCheck}
                       onChange={() => this.props.yearChange()}
                     />
-                    <Radio
+                    {/* <Radio
                       label="For 6 Months"
                       checked={this.props.sixMonthCheck}
                       onChange={() => this.props.sixMonthChange()}
-                    />
+                    /> */}
                     <Radio
                       label="FTM"
                       checked={this.props.monthCheck}
                       onChange={() => this.props.monthChange()}
                     />
                     <Radio
-                      label="Custom Date"
+                      label="Till Date"
                       checked={this.props.tillDateCheck}
                       onChange={() => this.props.tillDateChange()}
                     />
+                    <div class="form-group row">
+                      {/* <label class="col-sm-3 col-form-label">From</label> */}
+                      <div class="col-sm-9">
+                        <input
+                          type="date"
+                          class="form-control"
+                          onChange={(e) => this.props.onChangeTo(e)}
+                          value={this.props.value}
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      {/* <label class="col-sm-3 col-form-label">To</label> */}
+                      <div class="col-sm-9">
+                        <input
+                          type="date"
+                          class="form-control"
+                          onChange={(e) => this.props.onChangeTo(e)}
+                          value={this.props.value}
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

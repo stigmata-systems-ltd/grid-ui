@@ -109,8 +109,8 @@ export const changePwd = (id) => {
   const user = store.getState().user;
   const data = {
     userId: userId,
-    currentPassword: user.currentPwd,
-    newPassword: user.newPwd,
+    currentPassword: btoa(user.currentPwd),
+    newPassword: btoa(user.newPwd),
   }
   return {
     type: CHANGE_PWD,
