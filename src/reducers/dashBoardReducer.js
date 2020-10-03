@@ -5,7 +5,9 @@ import {
   MONTH_CHECK,
   TILLDATE_CHECK,
   LIST_DASHBOARD_MAP_DETAILS,
-} from '../actions/types';
+  SET_DB_FROM_DATE,
+  SET_DB_TO_DATE,
+} from "../actions/types";
 
 const initialState = {
   dashboardData: {},
@@ -14,9 +16,11 @@ const initialState = {
   monthCheck: false,
   tillDateCheck: false,
   listMapData: {},
+  customDateFrom: "",
+  customDateTo: "",
 };
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
     case `${LIST_DASHBOARD_DETAILS}_FULFILLED`:
       const result = action.payload.data;
@@ -61,7 +65,7 @@ export default function(state = initialState, action) {
     case `${LIST_DASHBOARD_MAP_DETAILS}_REJECTED`:
       return {
         ...state,
-        listMapData: '',
+        listMapData: "",
         isListDashboardMapDetailsLoading: false,
       };
 
@@ -72,6 +76,8 @@ export default function(state = initialState, action) {
         sixMonthCheck: false,
         monthCheck: false,
         tillDateCheck: false,
+        customDateFrom: "",
+        customDateTo: "",
       };
     case SIX_MONTH_CHECK:
       return {
@@ -80,6 +86,8 @@ export default function(state = initialState, action) {
         sixMonthCheck: true,
         monthCheck: false,
         tillDateCheck: false,
+        customDateFrom: "",
+        customDateTo: "",
       };
     case MONTH_CHECK:
       return {
@@ -88,6 +96,8 @@ export default function(state = initialState, action) {
         sixMonthCheck: false,
         monthCheck: true,
         tillDateCheck: false,
+        customDateFrom: "",
+        customDateTo: "",
       };
     case TILLDATE_CHECK:
       return {
@@ -96,6 +106,26 @@ export default function(state = initialState, action) {
         sixMonthCheck: false,
         monthCheck: false,
         tillDateCheck: true,
+        customDateFrom: "",
+        customDateTo: "",
+      };
+    case SET_DB_FROM_DATE:
+      return {
+        ...state,
+        customDateFrom: action.payload,
+        yearCheck: false,
+        sixMonthCheck: false,
+        monthCheck: false,
+        tillDateCheck: false,
+      };
+    case SET_DB_TO_DATE:
+      return {
+        ...state,
+        customDateTo: action.payload,
+        yearCheck: false,
+        sixMonthCheck: false,
+        monthCheck: false,
+        tillDateCheck: false,
       };
     default:
       return state;

@@ -75,8 +75,8 @@ class DashboardFilters extends Component {
                         <input
                           type="date"
                           class="form-control"
-                          onChange={(e) => this.props.onChangeTo(e)}
-                          value={this.props.value}
+                          onChange={(e) => this.props.customDateFrom(e.target.value)}
+                          value={this.props.db.customDateFrom}
                         />
                       </div>
                     </div>
@@ -86,8 +86,8 @@ class DashboardFilters extends Component {
                         <input
                           type="date"
                           class="form-control"
-                          onChange={(e) => this.props.onChangeTo(e)}
-                          value={this.props.value}
+                          onChange={(e) => this.props.customDateTo(e.target.value)}
+                          value={this.props.db.customDateTo}
                         />
                       </div>
                     </div>
