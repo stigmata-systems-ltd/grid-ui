@@ -146,3 +146,7 @@ export const TILLDATE_CHECK = 'TILLDATE_CHECK';
 export const LIST_DASHBOARD_MAP_DETAILS = 'LIST_DASHBOARD_MAP_DETAILS';
 export const CG_FILE = 'CG_FILE';
 export const LP_FILE = 'LP_FILE';
+
+//Dashboard
+export const SET_DB_FROM_DATE = "SET_DB_FROM_DATE";
+export const SET_DB_TO_DATE = "SET_DB_TO_DATE";

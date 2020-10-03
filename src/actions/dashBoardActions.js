@@ -15,7 +15,9 @@ export const fetchDashBoardData = () => {
         '&isYearly=' +
         db.yearCheck +
         '&isMonthly=' +
-        db.monthCheck
+        db.monthCheck +
+        '&startDate=' + db.customDateFrom +
+        '&endDate=' + db.customDateTo
     ),
   };
 };

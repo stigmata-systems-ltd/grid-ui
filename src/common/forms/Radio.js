@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 class Radio extends Component {
   render() {
-    console.log(`radio checked ${this.props.checked}`);
     return (
       <div class="form-check float-right">
         <label class="form-check-label">

@@ -15,8 +15,8 @@ class Dashboard extends Component {
   render() {
     return (
       <>
-        {this.props.db.isListDashboardDetailsLoading &&
-          this.props.db.isListDashboardMapDetailsLoading && <Loader />}
+        {(this.props.db.isListDashboardDetailsLoading ||
+          this.props.db.isListDashboardMapDetailsLoading) && <Loader />}
         <ContentLoader>
           <DashboardFilters
             yearCheck={this.props.db.yearCheck}
@@ -27,7 +27,8 @@ class Dashboard extends Component {
             monthChange={() => this.props.monthChange()}
             tillDateChange={() => this.props.tillDateChange()}
             customDateFrom={(from) => this.props.customDateFrom(from)}
-            customDateTo={(to) => this.props.customDateTo()}
+            customDateTo={(to) => this.props.customDateTo(to)}
+            {...this.props}
           />
           <Overview dashboardData={this.props.db.dashboardData} />
           <div class="row">
