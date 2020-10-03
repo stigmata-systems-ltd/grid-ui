@@ -79,27 +79,27 @@ export const metaDataNavbar = [
       {
         id: 'MasterSub' + 1,
         navText: 'Create Grid',
-        route: '/grid/create',
+        route: '/master/grid/create',
       },
       {
         id: 'MasterSub' + 2,
         navText: 'Create SubContractor',
-        route: '/subcontractor/create',
+        route: '/master/subcontractor/create',
       },
       {
         id: 'MasterSub' + 3,
         navText: 'List - SubContractor',
-        route: '/subcontractor/list',
+        route: '/master/subcontractor/list',
       },
       {
         id: 'MasterSub' + 4,
         navText: 'Role Management',
-        route: '/roles/list',
+        route: '/master/roles/list',
       },
       {
         id: 'MasterSub' + 5,
         navText: 'Users Management',
-        route: '/users',
+        route: '/master/users',
       },
     ],
   },
