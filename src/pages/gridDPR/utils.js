@@ -176,10 +176,6 @@ export const subContractorTableBodyData = [
 
 export const layerDropDownMeta = [
   {
-    id: 'New',
-    gridName: 'New',
-  },
-  {
     id: 'InProgress',
     gridName: 'InProgress',
   },

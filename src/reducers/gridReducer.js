@@ -117,6 +117,16 @@ export default function (state = initialState, action) {
         ...state,
         gridNoData: action.payload.data,
       };
+    case `${LAYER_NO_LIST}_PENDING`:
+      return {
+        ...state,
+        isLayerDtlsLoading: true,
+      };
+    case `${LAYER_NO_LIST}_REJECTED`:
+      return {
+        ...state,
+        isLayerDtlsLoading: false,
+      };
 
     case `${LAYER_NO_LIST}_FULFILLED`:
       const layerNoList = [];
@@ -132,6 +142,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         LayerNoData: layerNoList,
+        isLayerDtlsLoading: false,
       };
     case GRID_NUMBER:
       return {

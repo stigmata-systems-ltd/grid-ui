@@ -187,7 +187,6 @@ class GridDPR extends Component {
         <ContentLoader>
           <FormContainer formTitle={"Grid Daily Progress"}>
             <div>
-              {console.log("props", this.props.grid.gridAdd.layerUpdateMsg)}
               {this.props.grid.gridAdd.layerUpdateMsg ? (
                 <CustomAlert
                   variant={
