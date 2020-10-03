@@ -34,7 +34,18 @@ class ViewGridDpr extends Component {
     this.state = {
       selectedGrid: 0,
       selectedLayer: 0,
-      navData: tabMetaData,
+      navData: [
+        {
+          id: 1,
+          navText: 'Grid Details',
+          isActive: true,
+        },
+        {
+          id: 2,
+          navText: 'Layer DPR Details',
+          isActive: false,
+        },
+      ],
       tabPaneStatus: [
         {
           id: 1,

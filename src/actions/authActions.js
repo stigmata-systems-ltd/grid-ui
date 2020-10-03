@@ -8,7 +8,7 @@ export const authenticateUser = () => {
     const auth = store.getState().auth;
       const userData = {
           Username: auth.username,
-          Password: auth.password
+          Password: btoa(auth.password)
       }
     return {
         type: AUTHENTICATE_USER,
