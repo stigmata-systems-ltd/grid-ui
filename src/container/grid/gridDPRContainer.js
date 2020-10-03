@@ -116,6 +116,7 @@ const mapDispatchToProps = (dispatch) => {
         type: DPR_GRID_NO_CHANGE,
         payload: value,
       });
+      dispatch(layerNoList());
       const currentLayer = store.getState().grid.layerNo;
       const currentGrid = store.getState().grid.dprGridNum;
       currentLayer !== "" && this.setSingleLayerDetails();

@@ -8,7 +8,7 @@ export const fetchLayerData = () => {
     type: LIST_LAYER_PM,
     payload: axios.get(
       config.BASE_URL +
-        '/api/Layer/LayerList?isApproved=false&layerStatus=Completed'
+        '/api/Layer/LayerList?isApproved=false&layerStatus=Completed&isBillGenerated=false'
     ),
   };
 };
