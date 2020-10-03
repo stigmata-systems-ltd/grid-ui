@@ -24,7 +24,7 @@ const mapDispatchToProps = (dispatch, props) => {
       dispatch(updateSubContractor()).then(() => {
         dispatch({ type: RESET_SUBCONTRACTOR_FORM });
         dispatch(fetchSubContractor());
-        props.history.push("/subcontractor/list");
+        props.history.push("/master/subcontractor/list");
       });
     },
 

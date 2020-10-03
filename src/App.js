@@ -50,17 +50,12 @@ class App extends Component {
           <Route exact path="/" component={Login} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/forgot" component={Forgot} />
-          <ProtectedRoute
-            exact
-            path="/subcontractor/list"
-            component={ListSubContractor}
-          />
-          <ProtectedRoute exact path="/roles/list" component={ListRoles} />
+          <ProtectedRoute exact path="/master/roles/list" component={ListRoles} />
 
           <ProtectedRoute exact path="/roles/edit" component={EditRole} />
           <ProtectedRoute
             exact
-            path="/subcontractor/list"
+            path="/master/subcontractor/list"
             component={ListSubContractor}
           />
           <ProtectedRoute
@@ -71,7 +66,7 @@ class App extends Component {
           <ProtectedRoute path="/dashboard" component={Dashboard} />
           <ProtectedRoute exact path="/grid/dpr" component={GridDPR} />
           <ProtectedRoute path="/grid/dpr/:id" component={GridDPR} />
-          <ProtectedRoute path="/grid/create" component={CreateGrid} />
+          <ProtectedRoute path="/master/grid/create" component={CreateGrid} />
           <ProtectedRoute path="/deletegrid" component={DeleteGrid} />
           <ProtectedRoute path="/editgrid" component={EditGrid} />
           <ProtectedRoute path="/grid/view" component={ViewGrid} />
@@ -80,10 +75,10 @@ class App extends Component {
           <ProtectedRoute path="/editgriddetails" component={EditDridDetails} />
           <ProtectedRoute path="/clientbilling" component={ClientBilling} />
           <ProtectedRoute
-            path="/subcontractor/create"
+            path="/master/subcontractor/create"
             component={SubContractor}
           />
-          <ProtectedRoute path="/users" component={ListUser} />
+          <ProtectedRoute path="/master/users" component={ListUser} />
           <ProtectedRoute
             exact
             path="/report/master"

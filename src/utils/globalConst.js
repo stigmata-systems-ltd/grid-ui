@@ -34,7 +34,7 @@ export const privateRoutes = [
     name: 'GridManagement',
     routes: {
       view: ['/grid/view'],
-      create: ['/grid/create'],
+      create: ['/master/grid/create'],
       edit: ['/editgrid'],
       delete: ['/deletegrid'],
     },
@@ -51,8 +51,8 @@ export const privateRoutes = [
   {
     name: 'SubContractorManagement',
     routes: {
-      view: ['/subcontractor/list'],
-      create: ['/subcontractor/create'],
+      view: ['/master/subcontractor/list'],
+      create: ['/master/subcontractor/create'],
       edit: ['/subcontractor/edit'],
       delete: null,
     },
@@ -60,7 +60,7 @@ export const privateRoutes = [
   {
     name: 'UserManagement',
     routes: {
-      view: ['/users'],
+      view: ['/master/users'],
       create: null,
       edit: null,
       delete: null,
@@ -69,7 +69,7 @@ export const privateRoutes = [
   {
     name: 'RoleManagement',
     routes: {
-      view: ['/roles/list'],
+      view: ['/master/roles/list'],
       create: null,
       edit: ['/roles/edit'],
       delete: null,

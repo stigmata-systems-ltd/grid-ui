@@ -61,12 +61,14 @@ class NavItem extends Component {
     const path = "/" + this.props.history.location.pathname.split("/")[1];
 
     navData.map((nav) => {
-      this.setState({ activeId: nav.id });
-      if (this.state.currentOpenParentId !== nav.id && nav.hasSubNav) {
-        this.setState({
-          isSubNavOpen: true,
-          currentOpenParentId: nav.id,
-        });
+      if (nav.route === path) {
+        this.setState({ activeId: nav.id });
+        if (this.state.currentOpenParentId !== nav.id && nav.hasSubNav) {
+          this.setState({
+            isSubNavOpen: true,
+            currentOpenParentId: nav.id,
+          });
+        }
       }
     });
   };

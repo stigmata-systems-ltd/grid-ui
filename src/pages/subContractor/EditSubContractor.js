@@ -65,7 +65,7 @@ class EditSubContractor extends Component {
               onChange={e =>
                 this.props.handleChangesubContactAddress(e.target.value)
               }
-              value={subprop.subContractorContactAddress}
+              value={subprop.subContractorContactAddres}
             />
           </FormRow>
           <FormRow>
@@ -89,7 +89,7 @@ class EditSubContractor extends Component {
             onClick={this.props.updateSubContractor}
             btnType="primary"
           />
-          <Link to="/subcontractor/list">
+          <Link to="/master/subcontractor/list">
             <Button
               btnText="Cancel"
               btnType="cancel"
