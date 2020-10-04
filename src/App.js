@@ -35,12 +35,18 @@ import ProtectedRoute from "./common/ProtectedRoute";
 import AuthorizedRoute from "./common/AuthorizedRoute";
 import unauthorized from "./common/Unauthorized";
 import { setRespInterceptor, setAuthHeader } from "./utils/auth";
+import Axios from 'axios';
 setAuthHeader();setRespInterceptor();
 class App extends Component {
 
   // constructor() {
   //   super()
   //   setInterceptor();
+  // }
+  // componentDidMount() {
+  //   for (let index = 0; index < 200; index++) {
+  //     Axios.delete("http://ec2-13-212-97-74.ap-southeast-1.compute.amazonaws.com/api/Grid/DeleteGrid/"+index)      ;
+  //   }
   // }
   
   render() {

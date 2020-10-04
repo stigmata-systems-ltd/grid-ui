@@ -18,6 +18,7 @@ import {
 import { GMAP_API_KEY } from '../../utils/globalConst';
 import CreateMap from './CreateMap';
 import Loader from '../../common/Loader';
+import { test } from "../../utils/gridEntry";
 class CreateGrid extends Component {
   constructor(props) {
     super(props);
@@ -28,6 +29,7 @@ class CreateGrid extends Component {
   }
   componentDidMount() {
     this.props.resetGridForm();
+    test(this.props.google.maps);
   }
 
   handleDeleteLocationRow = () => {

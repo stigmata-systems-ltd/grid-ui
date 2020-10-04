@@ -1,12 +1,15 @@
 import { gridData } from "./gridData";
+
 import axios from "axios";
-export const test = (bounds) => {
+export const test = (maps) => {
+
     gridData.map((item) => {
+      const bounds = new maps.LatLngBounds();
       let points = [];
       item.gridGeoLocation.map((gr) => {
         points.push({
-          lat: gr.latitude,
-          lng: gr.longitude,
+          lat: parseFloat(gr.latitude),
+          lng: parseFloat(gr.longitude),
         });
       });
       console.log("points",points);
@@ -15,6 +18,7 @@ export const test = (bounds) => {
         bounds.extend(points[i]);
       }
       const center = bounds.getCenter();
+      console.log("center",center.toString())
       let latLng = center.toString().replace("(", "");
       latLng = latLng.replace(")", "");
       latLng = latLng.replace(" ", "");

@@ -73,6 +73,7 @@ export const createGrid = (bounds) => {
     bounds.extend(points[i]);
   }
   const center = bounds.getCenter();
+  console.log("in act center",center.toString());
   let latLng = center.toString().replace("(", "");
   latLng = latLng.replace(")", "");
   latLng = latLng.replace(" ", "");
