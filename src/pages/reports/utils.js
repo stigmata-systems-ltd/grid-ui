@@ -20,6 +20,18 @@ export const _masterReportbodyData = [
   },
 ];
 
+export const transformLayerList = layerList => {
+  let tmpArr = [];
+  layerList &&
+    layerList.map(layer => {
+      tmpArr.push({
+        value: layer.id,
+        label: layer.layerName,
+      });
+    });
+  return tmpArr;
+};
+
 export const _subContractorReportbodyData = [
   {
     sno: '1',

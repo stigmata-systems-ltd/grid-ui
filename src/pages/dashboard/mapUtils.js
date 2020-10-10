@@ -89,7 +89,7 @@ const transformPolygon = data => {
 };
 export const gridData = gridDetails => {
   // const centers = getCenters(lat, lng);
-  const gridData = gridDetails.lstGridDtls.map(item => ({
+  const gridData = gridDetails && gridDetails.lstGridDtls.map(item => ({
     lat: item.marker_latitide,
     lng: item.marker_longitude,
     title: item.gridno,

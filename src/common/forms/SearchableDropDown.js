@@ -19,6 +19,7 @@ class SimpleDropDown extends Component {
               value={this.props.value}
               options={this.props.selectOptions}
               isSearchable={true}
+              isMulti={this.props.isMulti}
             />
           </div>
         </div>
