@@ -67,6 +67,11 @@ export const metaDataNavbar = [
         navText: 'SubContractor Report',
         route: '/report/subcontractor',
       },
+      {
+        id: 'ReportSub' + 2,
+        navText: 'LayerMap Report',
+        route: '/report/map',
+      },
     ],
   },
   {

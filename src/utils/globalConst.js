@@ -87,7 +87,7 @@ export const privateRoutes = [
   {
     name: 'Report',
     routes: {
-      view: ['/report/master', '/report/subcontractor'],
+      view: ['/report/master', '/report/subcontractor', '/report/map'],
       create: null,
       edit: null,
       delete: null,

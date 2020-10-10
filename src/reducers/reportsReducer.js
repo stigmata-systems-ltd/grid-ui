@@ -5,18 +5,23 @@ import {
   TO_DATE_MASTER,
   FROM_DATE_SCR,
   TO_DATE_SCR,
-} from '../actions/types';
+  GET_ALL_LAYERS,
+  GET_LAYER_WISE_COMPLETED_GRID,
+  CHANGE_LAYER_NUM_REPORT_MAP,
+} from "../actions/types";
 
 const initialState = {
   listSubContractorReport: [],
   listMasterReport: [],
-  fromDateMaster: '',
-  toDateMaster: '',
-  fromDateSCR: '',
-  toDateSCR: '',
+  fromDateMaster: "",
+  toDateMaster: "",
+  fromDateSCR: "",
+  toDateSCR: "",
+  layerList: [],
+  selectedLayers: [],
 };
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
     case `${LIST_SUBCONTRACTOR_REPORT}_FULFILLED`:
       return {
@@ -73,6 +78,40 @@ export default function(state = initialState, action) {
       return {
         ...state,
         toDateSCR: action.payload,
+      };
+    case `${GET_ALL_LAYERS}_PENDING`:
+      return {
+        ...state,
+      };
+    case `${GET_ALL_LAYERS}_REJECTED`:
+      return {
+        ...state,
+      };
+    case `${GET_ALL_LAYERS}_FULFILLED`:
+      return {
+        ...state,
+        layerList: action.payload.data,
+      };
+    case `${GET_LAYER_WISE_COMPLETED_GRID}_PENDING`:
+      return {
+        ...state,
+        mapReportLoading: true,
+      };
+    case `${GET_LAYER_WISE_COMPLETED_GRID}_REJECTED`:
+      return {
+        ...state,
+        mapReportLoading: false,
+      };
+    case `${GET_LAYER_WISE_COMPLETED_GRID}_FULFILLED`:
+      return {
+        ...state,
+        mapReportLoading: false,
+        layerWiseCompGrid: action.payload.data,
+      };
+    case CHANGE_LAYER_NUM_REPORT_MAP:
+      return {
+        ...state,
+        selectedLayers: action.payload,
       };
     default:
       return state;

@@ -30,6 +30,7 @@ import ListRoles from './container/roleManagement/listRoleContainer';
 import EditRole from './container/roleManagement/editRoleContainer';
 import Forgot from "./pages/auth/Forgot";
 import Profile from "./container/userManagement/ProfileContainer";
+import LayerMapReport from "./container/report/LayerMapReportContainer";
 
 import ProtectedRoute from "./common/ProtectedRoute";
 import AuthorizedRoute from "./common/AuthorizedRoute";
@@ -90,6 +91,7 @@ class App extends Component {
             component={SubContractorReport}
           />
           <AuthorizedRoute path="/profile" component={Profile} />
+          <AuthorizedRoute path="/report/map" component={LayerMapReport} />
           <ProtectedRoute path="/planingmanager" component={PlaningManager} />
           <Route exact path="/unauthorized" component={unauthorized} />
         </Switch>

@@ -67,7 +67,7 @@ class GridMap extends Component {
       return MAP_MARKER_COMPLETED
     }
     else if (gridSts === "Billed") {
-      return MAP_MARKER_COMPLETED
+      return MAP_MARKER_BILLED
     } else {
       return MAP_MARKER_START
     }
