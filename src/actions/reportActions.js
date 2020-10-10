@@ -46,7 +46,7 @@ export const layerNoList = () => {
 
 export const getLayerWiseMap = (layerNums) => {
   let layerList = '';
-  layerNums && layerNums !== null && layerNums.map(item => layerList += item.value)
+  layerNums && layerNums != null && layerNums.map(item => layerList += item.value)
   return {
     type: GET_LAYER_WISE_COMPLETED_GRID,
     payload: axios.get(config.BASE_URL + '/api/Reports/GridProgressMap?layerId='+layerList),
