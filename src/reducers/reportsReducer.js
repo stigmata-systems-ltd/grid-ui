@@ -82,14 +82,17 @@ export default function (state = initialState, action) {
     case `${GET_ALL_LAYERS}_PENDING`:
       return {
         ...state,
+        mapReportLoading: true,
       };
     case `${GET_ALL_LAYERS}_REJECTED`:
       return {
         ...state,
+        mapReportLoading: false,
       };
     case `${GET_ALL_LAYERS}_FULFILLED`:
       return {
         ...state,
+        mapReportLoading: false,
         layerList: action.payload.data,
       };
     case `${GET_LAYER_WISE_COMPLETED_GRID}_PENDING`:

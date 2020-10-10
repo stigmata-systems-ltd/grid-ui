@@ -2,7 +2,6 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import LayerMapReport from "../../pages/reports/LayerMapReport";
 import store from "../../store";
-import { fetchDashBoardData, fetchDashBoardMapData } from "../../actions/dashBoardActions";
 import { layerNoList, getLayerWiseMap } from "../../actions/reportActions";
 import {
   CHANGE_LAYER_NUM_REPORT_MAP,
