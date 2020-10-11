@@ -83,11 +83,19 @@ class LayerDPRDetail extends Component {
               label="Grid Number"
               readOnly="test"
               value={this.props.gridNo}
+              size="col-md-4"
             />
             <Label
               label="Layer Number"
               readOnly="test"
               value={this.props.layerNo}
+              size="col-md-4"
+            />
+            <Label
+              label="Area Of Layer (Sqm)"
+              readOnly="test"
+              value={this.props.area_layer}
+              size="col-md-4"
             />
           </FormRow>
           <FormRow>
@@ -95,23 +103,19 @@ class LayerDPRDetail extends Component {
               label="RFI No - Level Verification"
               readOnly="test"
               value={this.props.rfiNoLV}
+              size="col-md-4"
             />
             <Label
               label="RFI No - Compaction Testing"
               readOnly="test"
               value={this.props.rfiNoCT}
+              size="col-md-4"
             />
-          </FormRow>
-          <FormRow>
             <Label
               label="Date of Filing"
               readOnly="test"
               value={this.props.fillingDate}
-            />
-            <Label
-              label="Area Of Layer (Sqm)"
-              readOnly="test"
-              value={this.props.area_layer}
+              size="col-md-4"
             />
           </FormRow>
           <FormRow>
@@ -119,11 +123,13 @@ class LayerDPRDetail extends Component {
               label="Top Level Fill Metrials"
               readOnly="test"
               value={this.props.topFillMaterial}
+              size="col-md-4"
             />
             <Label
               label="Meterial Description"
               readOnly="test"
               value={this.props.fillingMaterial}
+              size="col-md-4"
             />
           </FormRow>
           <FormRow>

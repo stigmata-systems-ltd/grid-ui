@@ -6,8 +6,12 @@ class Label extends Component {
     return (
       <Col6 size={this.props.size}>
         <div class="form-group row">
-          <label class="col-sm-3 col-form-label">{this.props.label}:</label>
-          <label class="col-sm-3 col-form-label">{this.props.value}</label>
+          <label class={`${this.props.labelSize ? this.props.labelSize : "col-sm-6 font-weight-bold"} col-form-label`}>
+            {this.props.label}:
+          </label>
+          <label class={`${this.props.valueSize ? this.props.valueSize : "col-sm-6"} col-form-label`}>
+            {this.props.value}
+          </label>
           {/* <div class="col-sm-9">
             <div>
               {this.props.readOnly === 'test' ? (
