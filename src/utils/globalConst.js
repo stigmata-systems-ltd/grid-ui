@@ -42,7 +42,7 @@ export const privateRoutes = [
   {
     name: 'LayerManagement',
     routes: {
-      view: ['/viewgriddpr'],
+      view: ['/grid/viewgriddpr/:id'],
       create: null,
       edit: ['/grid/dpr', '/grid/dpr/:id'],
       delete: null,

@@ -1,3 +1,5 @@
+import config from "../../config";
+
 export const tranformSubCat = (data) => {
   let tmpArr = [];
   data && data.map(item => {
@@ -6,6 +8,20 @@ export const tranformSubCat = (data) => {
       subName: item.subContractorName,
     })
   });
+  return tmpArr;
+}
+
+export const getLayerImages = (data) => {
+  console.log("input",data);
+  let tmpArr = [];
+  data && data.map(item => {
+    if(item.uploadType === "Images") {
+      tmpArr.push(
+        config.BASE_URL + "/" + item.filepath
+      )
+    }
+  })
+  console.log("img",tmpArr);
   return tmpArr;
 }
 export const tabMetaData = [
@@ -20,6 +36,23 @@ export const tabMetaData = [
     isActive: false,
   },
 ];
+
+export const images = [
+  'https://homepages.cae.wisc.edu/~ece533/images/airplane.png',
+  'https://homepages.cae.wisc.edu/~ece533/images/arctichare.png',
+  'https://homepages.cae.wisc.edu/~ece533/images/boat.png',
+];
+export const transformLayerList = layerList => {
+  let tmpArr = [];
+  layerList &&
+    layerList.map(layer => {
+      tmpArr.push({
+        value: layer.id,
+        label: layer.layerName,
+      });
+    });
+  return tmpArr;
+};
 
 export const _latLongMetaData = ['latitude', 'longitude'];
 

@@ -17,6 +17,8 @@ import {
   SINGLE_LAYER_DETAILS,
   DPR_GRID_NO_CHANGE,
   LAYER_NO,
+  GET_PHOTO_LAYER_LIST,
+  GET_LAYER_PHOTOS,
 } from "./types";
 import store from "../store";
 import axios from "axios";
@@ -306,6 +308,15 @@ export const fetchLayerDetails = (gridId) => {
   };
 };
 
+export const getLayerList = () => {
+  return {
+    type: GET_PHOTO_LAYER_LIST,
+    payload: axios.get(
+      config.BASE_URL + "/api/Layer/LayerNoList"
+    ),
+  };
+};
+
 export const fetchLayerInfo = (i) => {
   const grid = store.getState().grid;
 
@@ -326,3 +337,13 @@ export const fetchLayerInfo = (i) => {
     payload: singleLayerDetails,
   };
 };
+
+export const getLayerPhotos = (gridNum, layerNum) => {
+  return {
+    type: GET_LAYER_PHOTOS,
+    payload: axios.get(
+      config.BASE_URL + "/api/Layer/LayerList?gridId="+parseInt(gridNum) +
+      "&layerId="+parseInt(layerNum)
+    ),
+  };
+}

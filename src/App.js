@@ -71,7 +71,7 @@ class App extends Component {
           <ProtectedRoute path="/deletegrid" component={DeleteGrid} />
           <ProtectedRoute path="/editgrid" component={EditGrid} />
           <ProtectedRoute path="/grid/view" component={ViewGrid} />
-          <ProtectedRoute path="/viewgriddpr" component={ViewGridDpr} />
+          <ProtectedRoute path="/grid/viewgriddpr/:id" component={ViewGridDpr} />
           <ProtectedRoute path="/griddetails" component={GridDetails} />
           <ProtectedRoute path="/editgriddetails" component={EditDridDetails} />
           <ProtectedRoute path="/clientbilling" component={ClientBilling} />

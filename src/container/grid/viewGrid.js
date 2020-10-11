@@ -32,9 +32,7 @@ const mapDispatchToProps = (dispatch, props) => {
       });
     },
     onViewClick(i) {
-      dispatch(editGridDetails(i));
-      dispatch(fetchLayerDetails(i));
-      props.history.push("/viewgriddpr");
+      props.history.push("/grid/viewgriddpr/"+btoa(i));
     },
   };
 };

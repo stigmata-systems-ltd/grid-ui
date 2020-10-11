@@ -56,6 +56,8 @@ import {
   //Photo tab
   PHOTO_GRID_NO_CHANGE,
   PHOTO_LAYER_NO_CHANGE,
+  GET_PHOTO_LAYER_LIST,
+  GET_LAYER_PHOTOS,
   //Grid
   SET_MAP_PREVIEW,
   CG_FILE,
@@ -108,6 +110,8 @@ const initialState = {
   fillMaterial: "",
   rfiLayerStatus: "",
   isDprError: "",
+  //Photo
+  layerListPhoto: [],
 };
 
 export default function (state = initialState, action) {
@@ -688,6 +692,27 @@ export default function (state = initialState, action) {
       return {
         ...state,
         isDprError: action.payload,
+      };
+    case `${GET_PHOTO_LAYER_LIST}_FULFILLED`:
+      return {
+        ...state,
+        layerListPhoto: action.payload.data,
+      };
+    case `${GET_LAYER_PHOTOS}_PENDING`:
+      return {
+        ...state,
+        photoLoading: true,
+      };
+    case `${GET_LAYER_PHOTOS}_REJECTED`:
+      return {
+        ...state,
+        photoLoading: false,
+      };
+    case `${GET_LAYER_PHOTOS}_FULFILLED`:
+      return {
+        ...state,
+        layerPhotos: action.payload.data,
+        photoLoading: false,
       };
 
     default:
