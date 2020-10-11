@@ -17,10 +17,6 @@ class LayerDPRViewModel extends Component {
                     <Modal.Title>{this.props.title}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>{this.props.children}</Modal.Body>
-                <Modal.Footer>
-                    
-                    <Button variant="secondary" onClick={this.props.handleClose} btnText="Close" />
-                </Modal.Footer>
             </Modal>
         )
     }
