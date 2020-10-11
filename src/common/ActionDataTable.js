@@ -24,7 +24,7 @@ class ActionDataTable extends Component {
                     </>
                   ))}
                   <td class="action-btns">
-                    <Link to="/viewgriddpr">
+                    <Link to={"/grid/viewgriddpr"+btoa(i)}>
                       <Button
                         btnText="View"
                         btnType="btn-secondary"

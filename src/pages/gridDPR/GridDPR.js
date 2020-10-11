@@ -15,7 +15,6 @@ import CheckBox from "../../common/forms/CheckBox";
 import FileInput from "../../common/forms/FileInput";
 import Button from "../../common/forms/Button";
 import ProgressBar from "react-bootstrap/ProgressBar";
-import Photographs from "./Photographs";
 import AddQuantity from "./AddQuantity";
 import Loader from "../../common/Loader";
 import CustomAlert from "../../common/forms/customAlert";
@@ -48,11 +47,6 @@ class GridDPR extends Component {
           navText: 'Layer Progress',
           isActive: false,
         },
-        {
-          id: 3,
-          navText: 'Layer Photographs',
-          isActive: false,
-        },
       ],
       tabPaneStatus: [
         {
@@ -61,10 +55,6 @@ class GridDPR extends Component {
         },
         {
           id: 2,
-          isActive: false,
-        },
-        {
-          id: 3,
           isActive: false,
         },
       ],
@@ -144,11 +134,6 @@ class GridDPR extends Component {
             id: 2,
             navText: 'Layer Progress',
             isActive: true,
-          },
-          {
-            id: 3,
-            navText: 'Layer Photographs',
-            isActive: false,
           },
         ],
         tabPaneStatus: [
@@ -502,10 +487,6 @@ class GridDPR extends Component {
                 />
               </TabPane>
               {/* Cleaning Tab */}
-
-              <TabPane isActive={this.state.tabPaneStatus[2].isActive}>
-                <Photographs {...this.props} />
-              </TabPane>
             </TabContent>
           </FormContainer>
         </ContentLoader>

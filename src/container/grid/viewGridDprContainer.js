@@ -7,13 +7,21 @@ import {
   deleteGrid,
   editGridDetails,
   fetchLayerInfo,
+  getLayerList,
+  fetchLayerDetails,
+  getLayerPhotos,
 } from '../../actions/gridActions';
-import { GRID_NO_LIST } from '../../actions/types';
+import {
+  PHOTO_LAYER_NO_CHANGE,
+} from "../../actions/types";
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, props) => {
   return {
     fetchGridNoData() {
       dispatch(gridNoList());
+      dispatch(getLayerList());
+      dispatch(editGridDetails(atob(props.match.params.id)));
+      dispatch(fetchLayerDetails(atob(props.match.params.id)));
     },
     fetchGridData() {
       dispatch(gridList());
@@ -26,6 +34,13 @@ const mapDispatchToProps = dispatch => {
     },
     fetchLayerInfo(i) {
       dispatch(fetchLayerInfo(i));
+    },
+    handleChangeLayerNumber(obj) {
+      dispatch({
+        type: PHOTO_LAYER_NO_CHANGE,
+        payload: obj,
+      })
+      dispatch(getLayerPhotos(atob(props.match.params.id), obj.value));
     },
   };
 };
