@@ -71,8 +71,8 @@ export const calcProgress = data => {
 };
 export const fillTypeMetaData = [
   {
-    id: 'Reclamation fill 100mm down',
-    gridName: 'Reclamation fill 100mm down',
+    id: 'Reclamation fill 75mm down',
+    gridName: 'Reclamation fill 75mm down',
   },
   {
     id: 'Selected Fill 100mm down',
