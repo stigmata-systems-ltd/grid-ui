@@ -95,6 +95,7 @@ export const gridData = gridDetails => {
     title: item.gridno,
     status: item.status,
     rectCords: transformPolygon(item.gridGeoLocation),
+    id: item.gridId
   }));
   return gridData;
 };

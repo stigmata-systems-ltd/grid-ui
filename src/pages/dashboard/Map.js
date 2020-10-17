@@ -26,16 +26,11 @@ class GridMap extends Component {
       selectedSts: "",
       activeMarker: {},
       selectedPlace: {},
+      activeGrid: "",
     };
   }
 
-  onMarkerClick = (props, marker, e, status) =>
-    this.setState({
-      selectedPlace: props,
-      selectedSts: status,
-      activeMarker: marker,
-      showingInfoWindow: true,
-    });
+  onMarkerClick = (id) => this.setState({activeGrid: id},console.log("set",id));
 
   onMapClicked = (props) => {
     if (this.state.showingInfoWindow) {
@@ -45,8 +40,8 @@ class GridMap extends Component {
       });
     }
   };
-  handleGridView = () => {
-    this.props.history.push("griddetails");
+  handleGridView = (id) => {
+    this.props.history.push("/grid/viewgriddpr/"+btoa(id));
   };
 
   getStatusIcon = (sts) => {
@@ -89,20 +84,19 @@ class GridMap extends Component {
         containerStyle={containerStyle}
         onClick={this.onMapClicked}
       >
-        {gridData(this.props.gridDetails).map((grid) => (
+        {/* {gridData(this.props.gridDetails).map((grid) => (
           <Marker
             onClick={(props, marker, e) => this.onMarkerClick(props, marker, e, grid.status)}
             name={grid.title}
             position={{ lat: grid.lat, lng: grid.lng }}
             icon={{
-              url: this.getMapMarkerColor(grid.status),
+              url: "",
             }}
           />
-        ))}
-        {gridData(this.props.gridDetails).map((grid) => (
+        ))} */}
+        {gridData(this.props.gridDetails).map((grid) => grid.title === this.state.activeGrid && (
           <InfoWindow
-            marker={this.state.activeMarker}
-            visible={this.state.showingInfoWindow}
+            visible={true}
             onClose={this.onMapClicked}
           >
             <div className="col-md-12">
@@ -121,13 +115,20 @@ class GridMap extends Component {
         ))}
         {gridData(this.props.gridDetails).map((grid) => (
           <Polygon
+            onClick={() => this.handleGridView(grid.id)}
             paths={grid.rectCords}
             strokeColor="#0000FF"
             strokeOpacity={0.8}
             strokeWeight={2}
             fillColor="#0000FF"
             fillOpacity={0.35}
-          />
+          >
+              <h5>{grid.status}</h5>
+              {/* <h6>{grid.description}</h6> */}
+              <h6>
+                {grid.title}
+              </h6>
+          </Polygon>
         ))}
       </Map>
     );
