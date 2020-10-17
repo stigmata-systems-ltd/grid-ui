@@ -21,10 +21,10 @@ export const validateDpr = (state) => {
         isValid = false;
         message += "fill type, "
     }
-    if(state.rfiMaterialDescription === "") {
-        isValid = false;
-        message += "Material Description, "
-    }
+    // if(state.rfiMaterialDescription === "") {
+    //     isValid = false;
+    //     message += "Material Description, "
+    // }
     if(state.fillMaterial === "") {
         isValid = false;
         message += "Fill Material, "
