@@ -271,17 +271,6 @@ class GridDPR extends Component {
                     }
                     value={this.props.grid.fillType}
                   />
-                  <SimpleDropDown
-                    size="col-md-4"
-                    label="Material Descrip.."
-                    selectOptions={materialDescMetaData}
-                    onChange={(e) =>
-                      this.props.handleMaterialDescriptionChange(e.target.value)
-                    }
-                    value={this.props.grid.rfiMaterialDescription}
-                  />
-                </FormRow>
-                <FormRow>
                   <TextInput
                     size="col-md-4"
                     label="Top Level Fill Material"
@@ -292,6 +281,17 @@ class GridDPR extends Component {
                     }
                     value={this.props.grid.fillMaterial}
                   />
+                  {/* <SimpleDropDown
+                    size="col-md-4"
+                    label="Material Descrip.."
+                    selectOptions={materialDescMetaData}
+                    onChange={(e) =>
+                      this.props.handleMaterialDescriptionChange(e.target.value)
+                    }
+                    value={this.props.grid.rfiMaterialDescription}
+                  /> */}
+                </FormRow>
+                <FormRow>
                   <FileInput
                     size="col-md-8"
                     label="Select Documents"
