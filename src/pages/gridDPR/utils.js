@@ -56,7 +56,7 @@ export const transformLayerList = layerList => {
     layerList.map(layer => {
       tmpArr.push({
         value: layer.id,
-        label: layer.layerName,
+        label: layer.gridName,
       });
     });
   return tmpArr;
