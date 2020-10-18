@@ -7,6 +7,9 @@ import {
   LIST_DASHBOARD_MAP_DETAILS,
   SET_DB_FROM_DATE,
   SET_DB_TO_DATE,
+  DASHBOARD_GRID_LIST,
+  ON_CHANGE_GRID,
+  GRID_DETAILS_BY_ID,
 } from "../actions/types";
 
 const initialState = {
@@ -18,6 +21,13 @@ const initialState = {
   listMapData: {},
   customDateFrom: "",
   customDateTo: "",
+  gridList: [],
+  activeGrid: {},
+  initialCenter: {
+    lat: 18.974770806142327,
+    lng: 72.80579222485957,
+  },
+  zoom: 16,
 };
 
 export default function (state = initialState, action) {
@@ -40,6 +50,7 @@ export default function (state = initialState, action) {
         ...state,
         dashboardData,
         isListDashboardDetailsLoading: false,
+        zoom: 16,
       };
     case `${LIST_DASHBOARD_DETAILS}_PENDING`:
       return {
@@ -55,6 +66,10 @@ export default function (state = initialState, action) {
       return {
         ...state,
         listMapData: action.payload.data,
+        initialCenter: {
+          lat: action.payload.data.gLatitide,
+          lng: action.payload.data.gLongitude,
+        },
         isListDashboardMapDetailsLoading: false,
       };
     case `${LIST_DASHBOARD_MAP_DETAILS}_PENDING`:
@@ -126,6 +141,25 @@ export default function (state = initialState, action) {
         sixMonthCheck: false,
         monthCheck: false,
         tillDateCheck: false,
+      };
+    case `${DASHBOARD_GRID_LIST}_FULFILLED`:
+      return {
+        ...state,
+        gridList: action.payload.data,
+      };
+    case ON_CHANGE_GRID:
+      return {
+        ...state,
+        activeGrid: action.payload,
+        zoom: 19,
+      };
+    case `${GRID_DETAILS_BY_ID}_FULFILLED`:
+      return {
+        ...state,
+        panCenter: {
+          lat: action.payload.data.marker_latitide,
+          lng: action.payload.data.marker_longitude,
+        },
       };
     default:
       return state;

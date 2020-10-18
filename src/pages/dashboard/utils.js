@@ -54,3 +54,14 @@ export const overviewMetadata = data => {
     },
   ];
 };
+
+export const transformGridList = (data) => {
+  let tmpArr = [];
+  data && data.map(item => {
+    tmpArr.push({
+      label: item.gridName,
+      value: item.id,
+    })
+  });
+  return tmpArr;
+}

@@ -21,7 +21,6 @@ export const getLayerImages = (data) => {
       )
     }
   })
-  console.log("img",tmpArr);
   return tmpArr;
 }
 export const tabMetaData = [
