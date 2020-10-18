@@ -154,6 +154,9 @@ export const LP_FILE = 'LP_FILE';
 //Dashboard
 export const SET_DB_FROM_DATE = "SET_DB_FROM_DATE";
 export const SET_DB_TO_DATE = "SET_DB_TO_DATE";
+export const DASHBOARD_GRID_LIST = "DASHBOARD_GRID_LIST";
+export const ON_CHANGE_GRID = "ON_CHANGE_GRID";
+export const GRID_DETAILS_BY_ID = "GRID_DETAILS_BY_ID";
 
 //View Grid Details
 export const ON_CHANGE_LAYER_NUMBER_PHOTO = "ON_CHANGE_LAYER_NUMBER_PHOTO";

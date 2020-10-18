@@ -3,12 +3,10 @@ import { withRouter } from "react-router-dom";
 import DashBoard from "../../pages/dashboard/Dashoard";
 import store from "../../store";
 import {
-  fetchLayerData,
-  approveLayer,
-} from "../../actions/planningManagerActions";
-import {
   fetchDashBoardData,
   fetchDashBoardMapData,
+  getGridList,
+  getGridDetailsById,
 } from "../../actions/dashBoardActions";
 import { propTypes } from "react-bootstrap/esm/Image";
 import {
@@ -19,12 +17,14 @@ import {
   TILLDATE_CHECK,
   SET_DB_FROM_DATE,
   SET_DB_TO_DATE,
+  ON_CHANGE_GRID,
 } from "../../actions/types";
 const mapDispatchToProps = (dispatch, props) => {
   return {
     fetchDashboadInitData() {
       dispatch(fetchDashBoardData());
       dispatch(fetchDashBoardMapData());
+      dispatch(getGridList());
     },
     fetchDashBoardData() {
       dispatch(fetchDashBoardData());
@@ -76,6 +76,13 @@ const mapDispatchToProps = (dispatch, props) => {
         dispatch(fetchDashBoardData());
       }
     },
+    handleGridNoChange(obj) {
+      dispatch({
+        type: ON_CHANGE_GRID,
+        payload: obj,
+      });
+      dispatch(getGridDetailsById(obj.value))
+    }
   };
 };
 
