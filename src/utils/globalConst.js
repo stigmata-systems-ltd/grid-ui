@@ -11,7 +11,7 @@ export const GRID_YET_TO_START_STROKE = "#8b0000";
 export const GRID_ACTIVE_STROKE = "#00008B";
 
 //export const GMAP_API_KEY = "AIzaSyD981UnRbwbMPy4ifleYDzkT5-WH9_rUOY";
-export const GMAP_API_KEY = 'AIzaSyDuOtgLgu6z16WadQEMChsGo2KXt_ThvCM';
+export const GMAP_API_KEY = 'AIzaSyC-1gVCGoCZhe7gCL4DelYqwouUBEXvuAk';
 
 export const accessLevels = [
   {
