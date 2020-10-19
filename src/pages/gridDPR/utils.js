@@ -75,8 +75,8 @@ export const fillTypeMetaData = [
     gridName: 'Reclamation fill 75mm down',
   },
   {
-    id: 'Selected Fill 100mm down',
-    gridName: 'Selected Fill 100mm down',
+    id: 'Selected Fill 75mm down',
+    gridName: 'Selected Fill 75mm down',
   },
 ];
 export const materialDescMetaData = [
