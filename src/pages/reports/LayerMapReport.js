@@ -1,35 +1,35 @@
-import React, { Component } from "react";
-import ContentLoader from "../../common/ContentLoader";
+import React, { Component } from 'react';
+import ContentLoader from '../../common/ContentLoader';
 import {
   Map,
   InfoWindow,
   Marker,
   GoogleApiWrapper,
   Polygon,
-} from "google-maps-react";
-import { gridData } from "../../pages/dashboard/mapUtils";
-import Button from "../../common/forms/Button";
-import { withRouter } from "react-router-dom";
-import FaIcon from "../../common/FaIcon";
-import { GMAP_API_KEY } from "../../utils/globalConst";
+} from 'google-maps-react';
+import { gridData } from '../../pages/dashboard/mapUtils';
+import Button from '../../common/forms/Button';
+import { withRouter } from 'react-router-dom';
+import FaIcon from '../../common/FaIcon';
+import { GMAP_API_KEY } from '../../utils/globalConst';
 import {
   MAP_MARKER_COMPLETED,
   MAP_MARKER_BILLED,
   MAP_MARKER_PROGRESS,
   MAP_MARKER_START,
-} from "../../assets/images/index";
-import FormRow from "../../common/forms/FormRow";
-import SearchableDropDown from "../../common/forms/SearchableDropDown";
-import { transformLayerList } from "./utils";
-import Loader from "../../common/Loader";
-import Divider from "../../common/Divider";
+} from '../../assets/images/index';
+import FormRow from '../../common/forms/FormRow';
+import SearchableDropDown from '../../common/forms/SearchableDropDown';
+import { transformLayerList } from './utils';
+import Loader from '../../common/Loader';
+import Divider from '../../common/Divider';
 
 class GridMap extends Component {
   constructor(props) {
     super(props);
     this.state = {
       showingInfoWindow: false,
-      selectedSts: "",
+      selectedSts: '',
       activeMarker: {},
       selectedPlace: {},
     };
@@ -46,7 +46,7 @@ class GridMap extends Component {
       showingInfoWindow: true,
     });
 
-  onMapClicked = (props) => {
+  onMapClicked = props => {
     if (this.state.showingInfoWindow) {
       this.setState({
         showingInfoWindow: false,
@@ -55,24 +55,24 @@ class GridMap extends Component {
     }
   };
   handleGridView = () => {
-    this.props.history.push("griddetails");
+    this.props.history.push('griddetails');
   };
 
-  getStatusIcon = (sts) => {
-    return sts === "completed" ? (
+  getStatusIcon = sts => {
+    return sts === 'completed' ? (
       <FaIcon iconName="faCheckCircle" className="txt-success" />
     ) : (
       <FaIcon iconName="faPeopleCarry" className="txt-danger" />
     );
   };
-  getMapMarkerColor = (gridSts) => {
-    if (gridSts === "InProgress") {
+  getMapMarkerColor = gridSts => {
+    if (gridSts === 'InProgress') {
       return MAP_MARKER_PROGRESS;
-    } else if (gridSts === "New") {
+    } else if (gridSts === 'New') {
       return MAP_MARKER_START;
-    } else if (gridSts === "Completed") {
+    } else if (gridSts === 'Completed' || gridSts === 'LayerCompleted') {
       return MAP_MARKER_COMPLETED;
-    } else if (gridSts === "Billed") {
+    } else if (gridSts === 'Billed') {
       return MAP_MARKER_BILLED;
     } else {
       return MAP_MARKER_START;
@@ -94,7 +94,7 @@ class GridMap extends Component {
                   selectOptions={transformLayerList(
                     this.props.reports.layerList
                   )}
-                  onChange={(value) =>
+                  onChange={value =>
                     this.props.handleLayerNoChangeReport(value)
                   }
                   value={this.props.reports.selectedLayers}
@@ -113,13 +113,13 @@ class GridMap extends Component {
                         lng: this.props.gridDetails.gLongitude,
                       }}
                       style={{
-                        width: "100%",
-                        height: "500px",
+                        width: '100%',
+                        height: '500px',
                       }}
                       containerStyle={containerStyle}
                       onClick={this.onMapClicked}
                     >
-                      {gridData(this.props.gridDetails).map((grid) => (
+                      {gridData(this.props.gridDetails).map(grid => (
                         <Marker
                           onClick={(props, marker, e) =>
                             this.onMarkerClick(props, marker, e, grid.status)
@@ -131,7 +131,7 @@ class GridMap extends Component {
                           }}
                         />
                       ))}
-                      {gridData(this.props.gridDetails).map((grid) => (
+                      {gridData(this.props.gridDetails).map(grid => (
                         <InfoWindow
                           marker={this.state.activeMarker}
                           visible={this.state.showingInfoWindow}
@@ -142,14 +142,14 @@ class GridMap extends Component {
                             {/* <h6>{grid.description}</h6> */}
                             <h6>{this.state.selectedSts}</h6>
                             <Button
-                              btnText={"View"}
+                              btnText={'View'}
                               btnType="primary"
                               onClick={this.handleGridView}
                             />
                           </div>
                         </InfoWindow>
                       ))}
-                      {gridData(this.props.gridDetails).map((grid) => (
+                      {gridData(this.props.gridDetails).map(grid => (
                         <Polygon
                           paths={grid.rectCords}
                           strokeColor="#0000FF"
@@ -173,8 +173,8 @@ class GridMap extends Component {
 }
 
 const containerStyle = {
-  width: "93%",
-  height: "85%",
+  width: '93%',
+  height: '85%',
 };
 
 export default GoogleApiWrapper({
