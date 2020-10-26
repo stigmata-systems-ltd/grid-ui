@@ -13,6 +13,12 @@ export const layerOverviewMetadata = data => {
       color: 'text-success',
     },
     {
+      title: 'InProgress Layers',
+      number: data.inProgressLayer,
+      iconName: 'faPeopleCarry',
+      color: 'text-warning',
+    },
+    {
       title: `Billed: ${data.billedLayer}`,
       number: `Unbilled: ${data.unBilledLayer}`,
       iconName: 'faFileInvoiceDollar',
@@ -55,13 +61,14 @@ export const overviewMetadata = data => {
   ];
 };
 
-export const transformGridList = (data) => {
+export const transformGridList = data => {
   let tmpArr = [];
-  data && data.map(item => {
-    tmpArr.push({
-      label: item.gridName,
-      value: item.id,
-    })
-  });
+  data &&
+    data.map(item => {
+      tmpArr.push({
+        label: item.gridName,
+        value: item.id,
+      });
+    });
   return tmpArr;
-}
+};

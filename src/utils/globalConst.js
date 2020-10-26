@@ -1,14 +1,15 @@
-export const GRID_IN_PROGRESS = "#ffc100";
-export const GRID_COMPLETED = "#71c016";
-export const GRID_BILLED = "#7859df";
-export const GRID_YET_TO_START = "#ff4747";
-export const GRID_ACTIVE = "#4d83ff";
+export const GRID_IN_PROGRESS = '#ffc100';
+export const GRID_COMPLETED = '#71c016';
+export const LAYER_COMPLETED = '#730f4e';
+export const GRID_BILLED = '#7859df';
+export const GRID_YET_TO_START = '#ff4747';
+export const GRID_ACTIVE = '#4d83ff';
 
-export const GRID_IN_PROGRESS_STROKE = "#CCCC00";
-export const GRID_COMPLETED_STROKE = "#006400";
-export const GRID_BILLED_STROKE = "#9400d3";
-export const GRID_YET_TO_START_STROKE = "#8b0000";
-export const GRID_ACTIVE_STROKE = "#00008B";
+export const GRID_IN_PROGRESS_STROKE = '#CCCC00';
+export const GRID_COMPLETED_STROKE = '#006400';
+export const GRID_BILLED_STROKE = '#9400d3';
+export const GRID_YET_TO_START_STROKE = '#8b0000';
+export const GRID_ACTIVE_STROKE = '#00008B';
 
 //export const GMAP_API_KEY = "AIzaSyD981UnRbwbMPy4ifleYDzkT5-WH9_rUOY";
 export const GMAP_API_KEY = 'AIzaSyC-1gVCGoCZhe7gCL4DelYqwouUBEXvuAk';

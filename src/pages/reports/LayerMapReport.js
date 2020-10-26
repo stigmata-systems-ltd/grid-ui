@@ -29,6 +29,7 @@ import {
   GRID_COMPLETED_STROKE,
   GRID_IN_PROGRESS_STROKE,
   GRID_YET_TO_START_STROKE,
+  LAYER_COMPLETED,
 } from '../../utils/globalConst';
 import FormRow from '../../common/forms/FormRow';
 import SearchableDropDown from '../../common/forms/SearchableDropDown';
@@ -83,11 +84,10 @@ class GridMap extends Component {
       return GRID_IN_PROGRESS_STROKE;
     } else if (gridSts === 'New') {
       return GRID_YET_TO_START_STROKE;
-    } else if (gridSts === 'Completed' || gridSts === 'LayerCompleted') {
-      console.log(
-        `Inside LayerCompleted Section AND GRID_COMPLETED: ${GRID_COMPLETED}`
-      );
+    } else if (gridSts === 'Completed') {
       return GRID_COMPLETED_STROKE;
+    } else if (gridSts === 'LayerCompleted') {
+      return LAYER_COMPLETED;
     } else if (gridSts === 'Billed') {
       return GRID_BILLED_STROKE;
     } else {
@@ -102,11 +102,10 @@ class GridMap extends Component {
     } else if (gridSts === 'New') {
       return GRID_YET_TO_START;
       // return GRID_COMPLETED;
-    } else if (gridSts === 'Completed' || gridSts === 'LayerCompleted') {
-      console.log(
-        `Inside LayerCompleted Section AND GRID_COMPLETED: ${gridSts} ${gridId}`
-      );
+    } else if (gridSts === 'Completed') {
       return GRID_COMPLETED;
+    } else if (gridSts === 'LayerCompleted') {
+      return LAYER_COMPLETED;
     } else if (gridSts === 'Billed') {
       return GRID_BILLED;
     } else {
