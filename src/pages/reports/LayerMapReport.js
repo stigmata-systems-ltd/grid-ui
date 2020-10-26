@@ -35,7 +35,7 @@ import SearchableDropDown from '../../common/forms/SearchableDropDown';
 import { transformLayerList } from './utils';
 import Loader from '../../common/Loader';
 import Divider from '../../common/Divider';
-
+import PolygonMap from './PolygonMap';
 class GridMap extends Component {
   constructor(props) {
     super(props);
@@ -168,7 +168,7 @@ class GridMap extends Component {
                       containerStyle={containerStyle}
                       onClick={this.onMapClicked}
                     >
-                      {gridData(this.props.gridDetails).map(grid => (
+                      {/* {gridData(this.props.gridDetails).map(grid => (
                         <Marker
                           onClick={(props, marker, e) =>
                             this.onMarkerClick(props, marker, e, grid.status)
@@ -179,7 +179,7 @@ class GridMap extends Component {
                             url: this.getMapMarkerColor(grid.status),
                           }}
                         />
-                      ))}
+                      ))} */}
                       {/* {gridData(this.props.gridDetails).map(grid => (
                         <InfoWindow
                           marker={this.state.activeMarker}
@@ -199,16 +199,10 @@ class GridMap extends Component {
                         </InfoWindow>
                       ))} */}
                       {gridData(this.props.gridDetails).map(grid => (
-                        <Polygon
+                        <PolygonMap
                           paths={grid.rectCords}
+                          fillColor={this.getPolygonFillColor(grid.status)}
                           strokeColor={this.getPolygonStrokeColor(grid.status)}
-                          strokeOpacity={1}
-                          strokeWeight={2}
-                          fillColor={this.getPolygonFillColor(
-                            grid.status,
-                            grid.title
-                          )}
-                          fillOpacity={1}
                         />
                       ))}
                     </Map>
