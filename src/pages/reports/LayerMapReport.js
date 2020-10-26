@@ -94,15 +94,17 @@ class GridMap extends Component {
       return GRID_YET_TO_START_STROKE;
     }
   };
-  getPolygonFillColor = gridSts => {
+  getPolygonFillColor = (gridSts, gridId) => {
     // console.log(`Grid Status: ${gridSts}`);
     if (gridSts === 'InProgress') {
       return GRID_IN_PROGRESS;
+      // return GRID_COMPLETED;
     } else if (gridSts === 'New') {
       return GRID_YET_TO_START;
+      // return GRID_COMPLETED;
     } else if (gridSts === 'Completed' || gridSts === 'LayerCompleted') {
       console.log(
-        `Inside LayerCompleted Section AND GRID_COMPLETED: ${GRID_COMPLETED}`
+        `Inside LayerCompleted Section AND GRID_COMPLETED: ${gridSts} ${gridId}`
       );
       return GRID_COMPLETED;
     } else if (gridSts === 'Billed') {
@@ -200,10 +202,13 @@ class GridMap extends Component {
                         <Polygon
                           paths={grid.rectCords}
                           strokeColor={this.getPolygonStrokeColor(grid.status)}
-                          strokeOpacity={0.8}
+                          strokeOpacity={1}
                           strokeWeight={2}
-                          fillColor={this.getPolygonFillColor(grid.status)}
-                          fillOpacity={0.35}
+                          fillColor={this.getPolygonFillColor(
+                            grid.status,
+                            grid.title
+                          )}
+                          fillOpacity={1}
                         />
                       ))}
                     </Map>
