@@ -2,6 +2,7 @@ import store from '../store';
 import axios from 'axios';
 import config from '../config';
 import { GET_CLIENT_GRID_LIST, GET_LAYERS_FOR_BILLING, SAVE_CLIENT_BILLING } from './types';
+import { getUserDetails } from "../utils/auth";
 
 export const getGridList = () => {
   return {
@@ -21,11 +22,13 @@ export const getLayerListForBilling = () => {
   };
 };
 export const saveClientBilling = data => {
+  let postData = data;
+  postData.userId = getUserDetails().id;
   return {
     type: SAVE_CLIENT_BILLING,
     payload: axios.post(
       config.BASE_URL + '/api/Client/CreateClientBilling',
-      data
+      postData
     ),
   };
 };

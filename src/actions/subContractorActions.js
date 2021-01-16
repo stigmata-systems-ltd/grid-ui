@@ -8,6 +8,7 @@ import {
 import store from '../store';
 import axios from 'axios';
 import config from '../config';
+import { getUserDetails } from "../utils/auth";
 
 export const addSubContractor = () => {
   const {
@@ -26,7 +27,7 @@ export const addSubContractor = () => {
     contact_address: subContractorContactAddres,
     phone: subContractorPhone,
     email: subContractorEmail,
-    user_id: 1,
+    user_id: getUserDetails().id,
   };
   return {
     type: ADD_SUBCONTRACTOR,
@@ -84,7 +85,7 @@ export const updateSubContractor = () => {
     contact_address: subContractorContactAddres,
     phone: subContractorPhone,
     email: subContractorEmail,
-    user_id: 1,
+    user_id: getUserDetails().id,
   };
   return {
     type: EDIT_SUBCONTRACTOR,

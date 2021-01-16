@@ -23,6 +23,7 @@ import {
 import store from "../store";
 import axios from "axios";
 import config from "../config";
+import { getUserDetails } from "../utils/auth";
 
 export const gridNoList = () => {
   return {
@@ -84,7 +85,7 @@ export const createGrid = (bounds) => {
     gridno: grid.gridNumber,
     grid_area: parseInt(grid.gridArea),
     gridGeoLocation: grid.gridLatLong,
-    user_id: 1,
+    user_id: getUserDetails().id,
     marker_latitide: parseFloat(latLng[0]),
     marker_longitude: parseFloat(latLng[1]),
   };
@@ -117,7 +118,7 @@ export const editGrid = (bounds) => {
     gridno: grid.gridNumber,
     grid_area: parseInt(grid.gridArea),
     gridGeoLocation: grid.gridLatLong,
-    user_id: 1,
+    user_id: getUserDetails().id,
     marker_latitide: parseFloat(latLng[0]),
     marker_longitude: parseFloat(latLng[1]),
   };
@@ -233,7 +234,7 @@ export const updateLayerProgress = (isForBilling) => {
   postData.append("lV_approval_date", grid.rfiApprovalDateLV);
   postData.append("lV_RFI_status", lvSts);
   postData.append("layerSubContractor1", JSON.stringify(grid.addedQuantity));
-  postData.append("user_id", "1");
+  postData.append("user_id", getUserDetails().id.toString());
   //if()
   postData.append("uploadDocs", grid.rfiFileUpload);
   const configHeader = {
